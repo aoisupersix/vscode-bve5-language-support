@@ -13,15 +13,11 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.sayHello"
+        "onLanguage:bve-map-2.02"
     ],
     "main": "./out/extension",
     "contributes": {
         "commands": [
-            {
-                "command": "extension.sayHello",
-                "title": "Hello World"
-            }
         ],
         "languages": [
             {
