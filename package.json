@@ -8,6 +8,8 @@
         "vscode": "^1.24.0"
     },
     "categories": [
+        "Programming Languages",
+        "Snippets",
         "Other"
     ],
     "activationEvents": [
@@ -19,6 +21,24 @@
             {
                 "command": "extension.sayHello",
                 "title": "Hello World"
+            }
+        ],
+        "languages": [
+            {
+                "id": "bve-map-2.02",
+                "aliases": [
+                    "Bve5 Map 2.02",
+                    "bve5-map"
+                ],
+                "firstLine": "^BveTs\\s*Map\\s*2.02",
+                "configuration": "./lang_config/bve5-map-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "bve-map-2.02",
+                "scopeName": "source.bve-map-2.02",
+                "path": "./syntaxes/bve-map-2.02.json"
             }
         ]
     },
