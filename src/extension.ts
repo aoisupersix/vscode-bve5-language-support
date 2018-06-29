@@ -1,5 +1,9 @@
 'use strict';
+
 import * as vscode from 'vscode';
+import { MapSignatureHelpProvider } from './bve-map/MapSignatureHelpProvider';
+
+const BVE_MAP_MODE: vscode.DocumentFilter = {language: 'bve-map-2.02', scheme: 'file' };
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -10,6 +14,7 @@ export function activate(context: vscode.ExtensionContext) {
 
     context.subscriptions.push(controller);
     context.subscriptions.push(distChecker);
+    context.subscriptions.push(vscode.languages.registerSignatureHelpProvider(BVE_MAP_MODE, new MapSignatureHelpProvider(), '('));
 }
 
 export function deactivate() {
