@@ -48,18 +48,23 @@ export class MapCompletionItemProvider implements vscode.CompletionItemProvider 
                 document.getText(new vscode.Range(new vscode.Position(0, 0), position))
             );
             let nowChar = txt.substring(txt.length - 1);
-            let funcName = this.getFuncName(txt);
+            let mapElement1Name = this.getFuncName(txt);
 
             console.log("nowChar:" + nowChar);
-            console.log("funcName:" + funcName);
+            console.log("mapElement1Name:" + mapElement1Name);
 
             return new Promise((resolve, reject) => {
-                if(funcName === "") {
+                if(mapElement1Name === "") {
                     reject();
                 }else {
-                    let items: vscode.CompletionItem[] = [];
-                    items.push(new vscode.CompletionItem("item1", vscode.CompletionItemKind.Function));
-                    resolve(items);
+                    let syntaxes = MapDocs.instance.getSyntaxes();
+                    let ret: vscode.CompletionItem[] = [];
+                    for(let i in syntaxes) {
+                        if(syntaxes[i].isMatchMapElement1(mapElement1Name)) {
+                            ret.push(syntaxes[i].getFunctionCompletionItem());
+                        }
+                    }
+                    resolve(ret);
                 }
             });
     }

@@ -178,10 +178,18 @@ export class MapDoc {
     }
 
     /**
-     * 引数に与えられたらマップ構文と一致するか？
-     * @param syntaxText マップ構文文字列
+     * 引数に与えられたらマップ構文のマップ要素1名と一致するか？
+     * @param mapElement1Text マップ要素1名
      */
-    equals(syntaxText: string) : boolean {
+    isMatchMapElement1(mapElement1Text: string) : boolean {
+        return mapElement1Text.match(new RegExp(`^${this.syntaxes[0].getMapElement1Name()}$`, "i")) !== null;
+    }
+
+    /**
+     * 引数に与えられたらマップ構文のシンタックスと一致するか？
+     * @param syntaxText マップ構文シンタックス
+     */
+    isMatchSyntax(syntaxText: string) : boolean {
         switch(this.syntaxes[0].getSyntaxType()) {
             case MapSyntaxType.Syntax1:
                 return syntaxText.match(new RegExp(`^${this.syntaxes[0].getMapElement1Name()}\.${this.syntaxes[0].getFuncName()}$`, "i")) !== null;
@@ -209,6 +217,13 @@ export class MapDoc {
         ret.signatures = signatures;
         ret.activeSignature = 0; //TODO
         return ret;
+    }
+
+    /**
+     * 関数名のコード補完アイテムを取得します。
+     */
+    getFunctionCompletionItem() : vscode.CompletionItem {
+        return new vscode.CompletionItem(this.syntaxes[0].getFuncName(), vscode.CompletionItemKind.Function);
     }
 }
 
