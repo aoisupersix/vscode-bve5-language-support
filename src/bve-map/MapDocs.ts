@@ -175,11 +175,11 @@ export class MapDoc {
     equals(syntaxText: string) : boolean {
         switch(this.syntaxes[0].getSyntaxType()) {
             case MapSyntaxType.Syntax1:
-                return syntaxText.match(new RegExp(`${this.syntaxes[0].getMapElement1Name}\.${this.syntaxes[0].getFuncName}`, "i")) !== null;
+                return syntaxText.match(new RegExp(`${this.syntaxes[0].getMapElement1Name()}\.${this.syntaxes[0].getFuncName()}`, "i")) !== null;
             case MapSyntaxType.Syntax2:
-                return syntaxText.match(new RegExp(`${this.syntaxes[0].getMapElement1Name}\[(.*)\]\.${this.syntaxes[0].getFuncName}`, "i")) !== null;
+                return syntaxText.match(new RegExp(`${this.syntaxes[0].getMapElement1Name()}\[(.*)\]\.${this.syntaxes[0].getFuncName()}`, "i")) !== null;
             case MapSyntaxType.Syntax3:
-                return syntaxText.match(new RegExp(`${this.syntaxes[0].getMapElement1Name}\[(.*)\]\.${this.syntaxes[0].getMapElement2Name}\.${this.syntaxes[0].getFuncName}`, "i")) !== null;
+                return syntaxText.match(new RegExp(`${this.syntaxes[0].getMapElement1Name()}\[(.*)\]\.${this.syntaxes[0].getMapElement2Name()}\.${this.syntaxes[0].getFuncName()}`, "i")) !== null;
             default:
                 return false;
         }
