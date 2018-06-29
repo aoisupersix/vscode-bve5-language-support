@@ -18,12 +18,21 @@ export class MapDocs {
 
     /**
      * デフォルトのコンストラクタ
+     * ここで構文の定義を行う
      */
     private constructor() {
         //Curve.Begin(radius, cant)
+        let curve_begintransition = new MapDoc(
+            MapSyntaxType.Syntax1, "Curve", "", "BeginTransition",
+            this.convMarkDown("平面曲線の緩和曲線を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)から開始します。"),
+            [
+            ],
+        );
+
+        //Curve.Begin(radius, cant)
         let curve_begin = new MapDoc(
             MapSyntaxType.Syntax1, "Curve", "", "Begin",
-            this.convMarkDown("平面曲線の円曲線を現在の距離程から開始します。カントを設定する場合は、この手前に Curve.BeginTransition を記述する必要があります。"),
+            this.convMarkDown("平面曲線の円曲線を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)から開始します。カントを設定する場合は、この手前に Curve.BeginTransition を記述する必要があります。"),
             [
                 this.createParam("radius", "曲線半径 [m] (正: 右曲線, 負: 左曲線)"),
                 this.createParam("cant","カント [m]"),
@@ -32,7 +41,7 @@ export class MapDocs {
         //Curve.Begin2(radius)
         curve_begin.addSyntax(
             MapSyntaxType.Syntax1, "Curve", "", "Begin",
-            this.convMarkDown("平面曲線の円曲線を現在の距離程から開始します。"),
+            this.convMarkDown("平面曲線の円曲線を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)から開始します。"),
             [
                 this.createParam("radius", "曲線半径 [m] (正: 右曲線, 負: 左曲線)"),
             ],
@@ -40,12 +49,12 @@ export class MapDocs {
         //Curve.Begin()
         curve_begin.addSyntax(
             MapSyntaxType.Syntax1, "Curve", "", "Begin",
-            this.convMarkDown("平面曲線の円曲線を現在の距離程から開始します。"),
+            this.convMarkDown("平面曲線の円曲線を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)から開始します。"),
             [
             ],
         );
         
-
+        this.syntaxes.push(curve_begintransition);
         this.syntaxes.push(curve_begin);
     }
 
@@ -175,11 +184,11 @@ export class MapDoc {
     equals(syntaxText: string) : boolean {
         switch(this.syntaxes[0].getSyntaxType()) {
             case MapSyntaxType.Syntax1:
-                return syntaxText.match(new RegExp(`${this.syntaxes[0].getMapElement1Name()}\.${this.syntaxes[0].getFuncName()}`, "i")) !== null;
+                return syntaxText.match(new RegExp(`^${this.syntaxes[0].getMapElement1Name()}\.${this.syntaxes[0].getFuncName()}$`, "i")) !== null;
             case MapSyntaxType.Syntax2:
-                return syntaxText.match(new RegExp(`${this.syntaxes[0].getMapElement1Name()}\[(.*)\]\.${this.syntaxes[0].getFuncName()}`, "i")) !== null;
+                return syntaxText.match(new RegExp(`^${this.syntaxes[0].getMapElement1Name()}\[(.*)\]\.${this.syntaxes[0].getFuncName()}$`, "i")) !== null;
             case MapSyntaxType.Syntax3:
-                return syntaxText.match(new RegExp(`${this.syntaxes[0].getMapElement1Name()}\[(.*)\]\.${this.syntaxes[0].getMapElement2Name()}\.${this.syntaxes[0].getFuncName()}`, "i")) !== null;
+                return syntaxText.match(new RegExp(`^${this.syntaxes[0].getMapElement1Name()}\[(.*)\]\.${this.syntaxes[0].getMapElement2Name()}\.${this.syntaxes[0].getFuncName()}$`, "i")) !== null;
             default:
                 return false;
         }
