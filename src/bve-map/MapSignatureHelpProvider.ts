@@ -1,21 +1,18 @@
 'use strict';
+
 import * as vscode from 'vscode';
+import {MapDocs} from './MapDocs';
 
 export class MapSignatureHelpProvider implements vscode.SignatureHelpProvider {
 
-    private sampleSignature = new vscode.SignatureHelp();
-
     constructor() {
-        let items: vscode.SignatureInformation[] = [new vscode.SignatureInformation("Begin0('trackKey', tilt, span, interval, structureKey*)", "ストラクチャーの連続配置を現在の距離程から開始します。")];
-        items[0].parameters = [new vscode.ParameterInformation("trackKey", new vscode.MarkdownString("**trackKey**: 配置先の軌道名 (0: 自軌道)"))];
-        this.sampleSignature.signatures = items;
     }
 
     /**
      * 引数に与えられた文字列から不要な部分を削除します。
      * @param trimText 未整形のマップファイルテキスト
      */
-    private trimMapText(text: String): String {
+    private trimMapText(text: string): string {
         let lines = text.split('\n');
         var ret = "";
         for(let i in lines) {
@@ -33,7 +30,7 @@ export class MapSignatureHelpProvider implements vscode.SignatureHelpProvider {
      * 引数に与えられた文字列から関数名を取得して返します。
      * @param trimedText 整形済みのマップファイルテキスト
      */
-    private getFuncName(trimedText: String): String {
+    private getFuncName(trimedText: string): string {
         let startIdx = trimedText.lastIndexOf(";") + 1;
         let endIdx = trimedText.lastIndexOf("(");
         if(endIdx === -1) {
@@ -47,7 +44,7 @@ export class MapSignatureHelpProvider implements vscode.SignatureHelpProvider {
      * パラメータ数が取得できない場合は-1を返します。
      * @param trimedText 整形済みのマップファイルテキスト
      */
-    private getNowParamCount(trimedText: String): number {
+    private getNowParamCount(trimedText: string): number {
         let startIdx = trimedText.lastIndexOf("(");
         if(startIdx === -1) {
             return -1;
@@ -72,6 +69,7 @@ export class MapSignatureHelpProvider implements vscode.SignatureHelpProvider {
             );
             let nowChar = txt.substring(txt.length - 1);
             let funcName = this.getFuncName(txt);
+            let funcFirstIdx = txt.lastIndexOf(funcName);
             let paramCount = this.getNowParamCount(txt);
 
             console.log("nowChar:" + nowChar);
@@ -79,12 +77,13 @@ export class MapSignatureHelpProvider implements vscode.SignatureHelpProvider {
             console.log("paramCount:" + paramCount);
 
             return new Promise((resolve, reject) => {
-                if(nowChar === ')' || nowChar === ';' || txt.match(/\(/) === null) {
+                if(nowChar === ')' || nowChar === ';' || txt.substring(funcFirstIdx).match(/\(/) === null) {
                     reject();
                 }else {
-                    this.sampleSignature.activeParameter = paramCount;
-                    this.sampleSignature.activeSignature = 0;
-                    resolve(this.sampleSignature);
+                    let syntaxes = MapDocs.instance.getSyntaxes();
+                    let ret = syntaxes[0].getSignatureHelp();
+                    ret.activeParameter = paramCount;
+                    resolve(ret);
                 }
             });
     }
