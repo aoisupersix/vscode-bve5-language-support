@@ -12,6 +12,10 @@
         "Snippets",
         "Other"
     ],
+    "galleryBanner": {
+        "color": "#C80000",
+        "theme": "dark"
+    },
     "activationEvents": [
         "onLanguage:bve-map-2.02"
     ],
@@ -27,7 +31,15 @@
                     "bve5-map"
                 ],
                 "firstLine": "^BveTs\\s*Map\\s*2.02",
-                "configuration": "./lang_config/bve5-map-configuration.json"
+                "configuration": "./lang_config/bve5-map-configuration.json",
+                "extensions": [
+                    ".txt"
+                ],
+                "filenames": [
+                    "MAP",
+                    "Map",
+                    "map"
+                ]
             }
         ],
         "grammars": [
