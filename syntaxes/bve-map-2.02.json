@@ -76,7 +76,7 @@
     },
     {
       "name": "repeater.begin0.bve-map-2.02",
-      "match": "(?i:\\.(Begin0?)\\s*\\((.*)\\);)",
+      "match": "(?i:(Begin0?)\\s*\\((.*)\\);)",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
@@ -109,7 +109,7 @@
     },
     {
       "name": "gauge.bve-map-2.02",
-      "match": "(?i:\\.(Gauge)\\(\\s*(.*)\\s*\\);)",
+      "match": "(?i:(Gauge)\\(\\s*(.*)\\s*\\);)",
       "captures": {
         "1": {
           "name": "invalid.deprecated.bve-map-2.02"
@@ -121,7 +121,7 @@
     },
     {
       "name": "curve.setCenter.bve-map-2.02",
-      "match": "(?i:\\.(SetCenter)\\(\\s*(.*)\\s*\\);)",
+      "match": "(?i:(SetCenter)\\(\\s*(.*)\\s*\\);)",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
@@ -145,7 +145,7 @@
     },
     {
       "name": "curve.beginTransition.bve-map-2.02",
-      "match": "(?i:\\.(BeginTransition)\\(\\);)",
+      "match": "(?i:(BeginTransition)\\(\\);)",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
@@ -154,7 +154,7 @@
     },
     {
       "name": "curve.begin.bve-map-2.02",
-      "match": "(?i:(Curve)\\s*\\.(Begin)\\(((\\d|.|\\s|,)+)\\);)",
+      "match": "(?i:(Curve)\\s*(Begin)\\(((\\d|.|\\s|,)+)\\);)",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -169,7 +169,7 @@
     },
     {
       "name": "curve.end.bve-map-2.02",
-      "match": "(?i:\\.(End)\\(\\);)",
+      "match": "(?i:(End)\\(\\);)",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
@@ -178,7 +178,7 @@
     },
     {
       "name": "curve.interpolate.bve-map-2.02",
-      "match": "(?i:\\.(Interpolate)\\((.*)\\);)",
+      "match": "(?i:(Interpolate)\\((.*)\\);)",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
@@ -190,7 +190,7 @@
     },
     {
       "name": "curve.change.bve-map-2.02",
-      "match": "(?i:\\.(Change)\\((.*)\\);)",
+      "match": "(?i:(Change)\\((.*)\\);)",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
@@ -228,38 +228,26 @@
       }
     },
     {
-      "name": "track.xInterpolate.bve-map-2.02",
-      "match": "(?i:\\.(X)\\.(Interpolate)\\((.*)\\);)",
+      "name": "track.x.bve-map-2.02",
+      "match": "(?i:(X))",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
-        },
-        "2": {
-          "name": "entity.name.type.bve-map-2.02"
-        },
-        "3": {
-          "name": "constant.numeric.bve-map-2.02"
         }
       }
     },
     {
-      "name": "track.yInterpolate.bve-map-2.02",
-      "match": "(?i:\\.(Y)\\.(Interpolate)\\((.*)\\);)",
+      "name": "track.y.bve-map-2.02",
+      "match": "(?i:(Y))",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
-        },
-        "2": {
-          "name": "entity.name.type.bve-map-2.02"
-        },
-        "3": {
-          "name": "constant.numeric.bve-map-2.02"
         }
       }
     },
     {
       "name": "track.position.bve-map-2.02",
-      "match": "(?i:\\.(Position)\\((.*)\\);)",
+      "match": "(?i:(Position)\\((.*)\\);)",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
@@ -271,7 +259,7 @@
     },
     {
       "name": "track.cant.bve-map-2.02",
-      "match": "(?i:\\.(Cant)\\.)",
+      "match": "(?i:(Cant))",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
@@ -406,7 +394,7 @@
     },
     {
       "name": "section.setSpeedLimit.bve-map-2.02",
-      "match": "(?i:\\.(SetSpeedLimit)\\((.*)\\);)",
+      "match": "(?i:(SetSpeedLimit)\\((.*)\\);)",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
@@ -418,7 +406,7 @@
     },
     {
       "name": "section.BeginNew.bve-map-2.02",
-      "match": "(?i:\\.(BeginNew)\\((.*)\\);)",
+      "match": "(?i:(BeginNew)\\((.*)\\);)",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
@@ -538,7 +526,7 @@
     },
     {
       "name": "light.ambient.bve-map-2.02",
-      "match": "(?i:\\.(Ambient)\\((.*)\\);)",
+      "match": "(?i:(Ambient)\\((.*)\\);)",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
@@ -550,7 +538,7 @@
     },
     {
       "name": "light.diffuse.bve-map-2.02",
-      "match": "(?i:\\.(Diffuse)\\((.*)\\);)",
+      "match": "(?i:(Diffuse)\\((.*)\\);)",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
@@ -562,7 +550,7 @@
     },
     {
       "name": "light.direction.bve-map-2.02",
-      "match": "(?i:\\.(Direction)\\((.*)\\);)",
+      "match": "(?i:(Direction)\\((.*)\\);)",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
@@ -583,7 +571,7 @@
     },
     {
       "name": "set.bve-map-2.02",
-      "match": "(?i:\\.(Set)\\s*\\((.*)\\))",
+      "match": "(?i:(Set)\\s*\\((.*)\\))",
       "captures": {
         "1": {
           "name": "invalid.deprecated.bve-map-2.02"
@@ -772,7 +760,7 @@
     },
     {
       "name": "train.load.bve-map-2.02",
-      "match": "(?i:\\.(Load)\\((.+)\\);)",
+      "match": "(?i:(Load)\\((.+)\\);)",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -784,7 +772,7 @@
     },
     {
       "name": "train.enable.bve-map-2.02",
-      "match": "(?i:\\.(Enable)\\('(.*)'\\);)",
+      "match": "(?i:(Enable)\\('(.*)'\\);)",
       "captures": {
         "1": {
           "name": "entity.name.tag.bve-map-2.02"
@@ -796,7 +784,7 @@
     },
     {
       "name": "train.stop.bve-map-2.02",
-      "match": "(?i:\\.(Stop)\\s*\\((.*)\\);)",
+      "match": "(?i:(Stop)\\s*\\((.*)\\);)",
       "captures": {
         "1": {
           "name": "entity.name.tag.bve-map-2.02"
