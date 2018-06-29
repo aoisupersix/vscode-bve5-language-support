@@ -279,10 +279,12 @@ export class MapSyntax {
 
         //引数の追加
         displayName += "(";
-        for(let i in this.params) {
-            displayName += this.params[i].Name + ", ";
+        if(this.params.length > 0) {
+            for(let i in this.params) {
+                displayName += this.params[i].Name + ", ";
+            }
+            displayName = displayName.substring(0, displayName.length - 2); //最後のコンマは消す
         }
-        displayName = displayName.substring(0, displayName.length - 2); //最後のコンマは消す
         displayName += ")";
 
         return displayName;
