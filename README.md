@@ -1,5 +1,7 @@
 # bve5-language-support for VsCode
 
+![bve5-language-support](images/language-support.png)
+
 VsCodeでBveTrainsim5.7構文をサポートするためのエクステンションです。
 
 ## Features
@@ -10,6 +12,8 @@ VsCodeでBveTrainsim5.7構文をサポートするためのエクステンショ
 - 構文のヒント表示(シグネチャヘルプ)
 - スニペット挿入
 - マップファイルの距離程表示
+
+![snippet-sample](images/snippets.gif)
 
 現在はBveTs5.7のマップファイルのみに対応しています。その他の構文は今後対応予定です。
 
