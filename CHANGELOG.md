@@ -1,7 +1,10 @@
 # Change Log
-All notable changes to the "bve5-language-suport" extension will be documented in this file.
-
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+All notable changes to the "bve5-language-support" extension will be documented in this file.
 
 ## [Unreleased]
-- Initial release
+- TODO
+
+## [0.1.0] - 2018/07/03
+### Added
+- Support BveTs5.7 map files syntax highlighting, signature help, code completion and snippets.
+- Publish this extension.

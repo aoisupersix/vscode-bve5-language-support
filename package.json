@@ -2,8 +2,18 @@
     "name": "bve5-language-support",
     "displayName": "Bve5 Language Support",
     "description": "Language support extension for BveTrainsim5.7.",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "publisher": "aoisupersix",
+    "author": {
+        "email": "aoisupersix@gmail.com",
+        "name": "aoisupersix",
+        "url": "http://aoisupersix.tokyo"
+    },
+    "license": "The MIT License(MIT)",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/aoisupersix/vscode-bve5-language-support"
+    },
     "engines": {
         "vscode": "^1.24.0"
     },
