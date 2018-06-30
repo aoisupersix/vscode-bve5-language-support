@@ -4,7 +4,7 @@
   "patterns": [
     {
       "name": "header.bve-map-2.02",
-      "match": "(?i:(BveTs\\s*Map\\s*2.02))",
+      "match": "(?imx-imx)(?imx-imx)(?i:(BveTs\\s*Map\\s*2.02))",
       "captures": {
         "1": {
           "name": "keyword.other.bve-map-2.02"
@@ -13,7 +13,7 @@
     },
     {
       "name": "comment.bve-map-2.02",
-      "match": "((//|#).*)",
+      "match": "(?imx-imx)((//|#).*)",
       "captures": {
         "1": {
           "name": "comment.line.bve-map-2.02"
@@ -22,7 +22,7 @@
     },
     {
       "name": "distance.bve-map-2.02",
-      "match": "^\\s*((?i:\\d+|\\.|\\+|-|\\*|/|%|distance|\\$\\w+)+)\\s*;",
+      "match": "(?imx-imx)^\\s*((?i:\\d+|\\.|\\+|-|\\*|/|%|distance|\\$\\w+)+)\\s*;",
       "captures": {
         "1": {
           "name": "entity.name.section.bve-map-2.02"
@@ -31,7 +31,7 @@
     },
     {
       "name": "var.declaration.bve-map-2.02",
-      "match": "(\\$)(\\w+)\\s*=\\s*(.+)\\s*;",
+      "match": "(?imx-imx)(\\$)(\\w+)\\s*=\\s*(.+)\\s*;",
       "captures": {
         "1": {
           "name": "storage.type.bve-map-2.02"
@@ -46,7 +46,7 @@
     },
     {
       "name": "include.bve-map-2.02",
-      "match": "(?i:(include)\\s*'(.+)'\\s*;)",
+      "match": "(?imx-imx)(?i:(include)\\s*'(.+)'\\s*;)",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -58,7 +58,7 @@
     },
     {
       "name": "repeater.bve-map-2.02",
-      "match": "(?i:(Repeater)\\s*\\[\\s*(?:'(.+)'|(\\$)(\\w+))\\s*\\])",
+      "match": "(?imx-imx)(?i:(Repeater)\\s*\\[\\s*(?:'(.+)'|(\\$)(\\w+))\\s*\\])",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -76,7 +76,7 @@
     },
     {
       "name": "repeater.begin0.bve-map-2.02",
-      "match": "(?i:(Begin0?)\\s*\\((.*)\\);)",
+      "match": "(?imx-imx)(?i:(Begin0?)\\s*\\((.*)\\);)",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
@@ -88,7 +88,7 @@
     },
     {
       "name": "curve.bve-map-2.02",
-      "match": "(?i:\\b(Curve))",
+      "match": "(?imx-imx)(?i:\\b(Curve))",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -97,7 +97,7 @@
     },
     {
       "name": "curve.setGauge.bve-map-2.02",
-      "match": "(?i:(SetGauge)\\(\\s*(.*)\\s*\\);)",
+      "match": "(?imx-imx)(?i:(SetGauge)\\(\\s*(.*)\\s*\\);)",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
@@ -109,7 +109,7 @@
     },
     {
       "name": "gauge.bve-map-2.02",
-      "match": "(?i:(Gauge)\\(\\s*(.*)\\s*\\);)",
+      "match": "(?imx-imx)(?i:(Gauge)\\(\\s*(.*)\\s*\\);)",
       "captures": {
         "1": {
           "name": "invalid.deprecated.bve-map-2.02"
@@ -121,7 +121,7 @@
     },
     {
       "name": "curve.setCenter.bve-map-2.02",
-      "match": "(?i:(SetCenter)\\(\\s*(.*)\\s*\\);)",
+      "match": "(?imx-imx)(?i:(SetCenter)\\(\\s*(.*)\\s*\\);)",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
@@ -133,7 +133,7 @@
     },
     {
       "name": "curve.setFunction.bve-map-2.02",
-      "match": "(?i:(SetFunction)\\(\\s*(\\d)\\s*\\);)",
+      "match": "(?imx-imx)(?i:(SetFunction)\\(\\s*(\\d)\\s*\\);)",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
@@ -145,7 +145,7 @@
     },
     {
       "name": "curve.beginTransition.bve-map-2.02",
-      "match": "(?i:(BeginTransition)\\(\\);)",
+      "match": "(?imx-imx)(?i:(BeginTransition)\\(\\);)",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
@@ -154,7 +154,7 @@
     },
     {
       "name": "curve.begin.bve-map-2.02",
-      "match": "(?i:(Curve)\\s*(Begin)\\(((\\d|.|\\s|,)+)\\);)",
+      "match": "(?imx-imx)(?i:(Curve)\\s*(Begin)\\(((\\d|.|\\s|,)+)\\);)",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -169,7 +169,7 @@
     },
     {
       "name": "curve.end.bve-map-2.02",
-      "match": "(?i:(End)\\(\\);)",
+      "match": "(?imx-imx)(?i:(End)\\(\\);)",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
@@ -178,7 +178,7 @@
     },
     {
       "name": "curve.interpolate.bve-map-2.02",
-      "match": "(?i:(Interpolate)\\((.*)\\);)",
+      "match": "(?imx-imx)(?i:(Interpolate)\\((.*)\\);)",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
@@ -190,7 +190,7 @@
     },
     {
       "name": "curve.change.bve-map-2.02",
-      "match": "(?i:(Change)\\((.*)\\);)",
+      "match": "(?imx-imx)(?i:(Change)\\((.*)\\);)",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
@@ -202,7 +202,7 @@
     },
     {
       "name": "gradient.bve-map-2.02",
-      "match": "(?i:\\b(Gradient))",
+      "match": "(?imx-imx)(?i:\\b(Gradient))",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -211,7 +211,7 @@
     },
     {
       "name": "track.bve-map-2.02",
-      "match": "(?i:\\b(Track)\\[(?:'(.+)'|(\\$)(\\w+))\\])",
+      "match": "(?imx-imx)(?i:\\b(Track)\\[(?:'(.+)'|(\\$)(\\w+))\\])",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
@@ -229,7 +229,7 @@
     },
     {
       "name": "track.x.bve-map-2.02",
-      "match": "(?i:(X))",
+      "match": "(?imx-imx)(?i:(X))",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
@@ -238,7 +238,7 @@
     },
     {
       "name": "track.y.bve-map-2.02",
-      "match": "(?i:(Y))",
+      "match": "(?imx-imx)(?i:(Y))",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
@@ -247,7 +247,7 @@
     },
     {
       "name": "track.position.bve-map-2.02",
-      "match": "(?i:(Position)\\((.*)\\);)",
+      "match": "(?imx-imx)(?i:(Position)\\((.*)\\);)",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
@@ -259,7 +259,7 @@
     },
     {
       "name": "track.cant.bve-map-2.02",
-      "match": "(?i:(Cant))",
+      "match": "(?imx-imx)(?i:(Cant))",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
@@ -268,7 +268,7 @@
     },
     {
       "name": "structure.load.bve-map-2.02",
-      "match": "(?i:\\b(Structure)\\.(Load)\\((.*)\\);)",
+      "match": "(?imx-imx)(?i:\\b(Structure)\\.(Load)\\((.*)\\);)",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -283,7 +283,7 @@
     },
     {
       "name": "structure.put.bve-map-2.02",
-      "match": "(?i:\\b(Structure)\\[(?:'(.+)'|(\\$)(\\w+))\\]\\.(Put0?)\\(\\s*'?(\\.*)'?(.*)\\);)",
+      "match": "(?imx-imx)(?i:\\b(Structure)\\[(?:'(.+)'|(\\$)(\\w+))\\]\\.(Put0?)\\(\\s*'?(\\.*)'?(.*)\\);)",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -310,7 +310,7 @@
     },
     {
       "name": "structure.putBetWeen.bve-map-2.02",
-      "match": "(?i:\\b(Structure)\\[(?:'(.+)'|(\\$)(\\w+))\\]\\.(PutBetween)\\((.*)\\);)",
+      "match": "(?imx-imx)(?i:\\b(Structure)\\[(?:'(.+)'|(\\$)(\\w+))\\]\\.(PutBetween)\\((.*)\\);)",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -337,7 +337,7 @@
     },
     {
       "name": "background.change.bve-map-2.02",
-      "match": "(?i:\\b(Background)\\.(Change)\\((.+)\\);)",
+      "match": "(?imx-imx)(?i:\\b(Background)\\.(Change)\\((.+)\\);)",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -352,7 +352,7 @@
     },
     {
       "name": "station.load.bve-map-2.02",
-      "match": "(?i:\\b(Station)\\.(Load)\\((.+)\\);)",
+      "match": "(?imx-imx)(?i:\\b(Station)\\.(Load)\\((.+)\\);)",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -367,7 +367,7 @@
     },
     {
       "name": "station.put.bve-map-2.02",
-      "match": "(?i:\\b(Station)\\[(.+)\\]\\.(Put)\\((.*)\\);)",
+      "match": "(?imx-imx)(?i:\\b(Station)\\[(.+)\\]\\.(Put)\\((.*)\\);)",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -385,7 +385,7 @@
     },
     {
       "name": "section.bve-map-2.02",
-      "match": "(?i:\\b(Section))",
+      "match": "(?imx-imx)(?i:\\b(Section))",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -394,7 +394,7 @@
     },
     {
       "name": "section.setSpeedLimit.bve-map-2.02",
-      "match": "(?i:(SetSpeedLimit)\\((.*)\\);)",
+      "match": "(?imx-imx)(?i:(SetSpeedLimit)\\((.*)\\);)",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
@@ -406,7 +406,7 @@
     },
     {
       "name": "section.BeginNew.bve-map-2.02",
-      "match": "(?i:(BeginNew)\\((.*)\\);)",
+      "match": "(?imx-imx)(?i:(BeginNew)\\((.*)\\);)",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
@@ -418,7 +418,7 @@
     },
     {
       "name": "signal.bve-map-2.02",
-      "match": "(?i:\\b(Signal)\\.(SpeedLimit)\\((.*)\\);)",
+      "match": "(?imx-imx)(?i:\\b(Signal)\\.(SpeedLimit)\\((.*)\\);)",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -433,7 +433,7 @@
     },
     {
       "name": "signal.load.bve-map-2.02",
-      "match": "(?i:\\b(Signal)\\.(Load)\\((.+)\\);)",
+      "match": "(?imx-imx)(?i:\\b(Signal)\\.(Load)\\((.+)\\);)",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -448,7 +448,7 @@
     },
     {
       "name": "signal.put.bve-map-2.02",
-      "match": "(?i:\\b(Signal)\\[(?:'(.+)'|(\\$)(\\w+))\\]\\.(Put)\\((.*),(.*),(.*)\\);)",
+      "match": "(?imx-imx)(?i:\\b(Signal)\\[(?:'(.+)'|(\\$)(\\w+))\\]\\.(Put)\\((.*),(.*),(.*)\\);)",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -478,7 +478,7 @@
     },
     {
       "name": "beacon.put.bve-map-2.02",
-      "match": "(?i:\\b(Beacon)\\.(Put)\\((.*)\\);)",
+      "match": "(?imx-imx)(?i:\\b(Beacon)\\.(Put)\\((.*)\\);)",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -493,7 +493,7 @@
     },
     {
       "name": "speedLimit.bve-map-2.02",
-      "match": "(?i:\\b(SpeedLimit))",
+      "match": "(?imx-imx)(?i:\\b(SpeedLimit))",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -502,7 +502,7 @@
     },
     {
       "name": "pretrain.pass.bve-map-2.02",
-      "match": "(?i:\\b(PreTrain)\\.(Pass)\\((.*)\\);)",
+      "match": "(?imx-imx)(?i:\\b(PreTrain)\\.(Pass)\\((.*)\\);)",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -517,7 +517,7 @@
     },
     {
       "name": "light.bve-map-2.02",
-      "match": "(?i:\\b(Light))",
+      "match": "(?imx-imx)(?i:\\b(Light))",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -526,7 +526,7 @@
     },
     {
       "name": "light.ambient.bve-map-2.02",
-      "match": "(?i:(Ambient)\\((.*)\\);)",
+      "match": "(?imx-imx)(?i:(Ambient)\\((.*)\\);)",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
@@ -538,7 +538,7 @@
     },
     {
       "name": "light.diffuse.bve-map-2.02",
-      "match": "(?i:(Diffuse)\\((.*)\\);)",
+      "match": "(?imx-imx)(?i:(Diffuse)\\((.*)\\);)",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
@@ -550,7 +550,7 @@
     },
     {
       "name": "light.direction.bve-map-2.02",
-      "match": "(?i:(Direction)\\((.*)\\);)",
+      "match": "(?imx-imx)(?i:(Direction)\\((.*)\\);)",
       "captures": {
         "1": {
           "name": "entity.name.type.bve-map-2.02"
@@ -562,7 +562,7 @@
     },
     {
       "name": "fog.bve-map-2.02",
-      "match": "(?i:(Fog))",
+      "match": "(?imx-imx)(?i:(Fog))",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -571,7 +571,7 @@
     },
     {
       "name": "set.bve-map-2.02",
-      "match": "(?i:(Set)\\s*\\((.*)\\))",
+      "match": "(?imx-imx)(?i:(Set)\\s*\\((.*)\\))",
       "captures": {
         "1": {
           "name": "invalid.deprecated.bve-map-2.02"
@@ -583,7 +583,7 @@
     },
     {
       "name": "drawdistance.bve-map-2.02",
-      "match": "(?i:\\b(DrawDistance))",
+      "match": "(?imx-imx)(?i:\\b(DrawDistance))",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -592,7 +592,7 @@
     },
     {
       "name": "cabIlluminance.bve-map-2.02",
-      "match": "(?i:\\b(CabIlluminance))",
+      "match": "(?imx-imx)(?i:\\b(CabIlluminance))",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -601,7 +601,7 @@
     },
     {
       "name": "irregularity.bve-map-2.02",
-      "match": "(?i:\\b(Irregularity))",
+      "match": "(?imx-imx)(?i:\\b(Irregularity))",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -610,7 +610,7 @@
     },
     {
       "name": "adhesion.bve-map-2.02",
-      "match": "(?i:\\b(Adhesion))",
+      "match": "(?imx-imx)(?i:\\b(Adhesion))",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -619,7 +619,7 @@
     },
     {
       "name": "sound.load.bve-map-2.02",
-      "match": "(?i:\\b(Sound)\\.(Load)\\((.+)\\);)",
+      "match": "(?imx-imx)(?i:\\b(Sound)\\.(Load)\\((.+)\\);)",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -634,7 +634,7 @@
     },
     {
       "name": "sound.play.bve-map-2.02",
-      "match": "(?i:\\b(Sound)\\[(?:'(.+)'|(\\$)(\\w+))\\]\\.(Play)\\(\\);)",
+      "match": "(?imx-imx)(?i:\\b(Sound)\\[(?:'(.+)'|(\\$)(\\w+))\\]\\.(Play)\\(\\);)",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -655,7 +655,7 @@
     },
     {
       "name": "sound3d.load.bve-map-2.02",
-      "match": "(?i:\\b(Sound3D)\\.(Load)\\((.+)\\);)",
+      "match": "(?imx-imx)(?i:\\b(Sound3D)\\.(Load)\\((.+)\\);)",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -670,7 +670,7 @@
     },
     {
       "name": "sound3d.put.bve-map-2.02",
-      "match": "(?i:\\b(Sound3D)\\[(?:'(.+)'|(\\$)(\\w+))\\]\\.(Put)\\((.*)\\);)",
+      "match": "(?imx-imx)(?i:\\b(Sound3D)\\[(?:'(.+)'|(\\$)(\\w+))\\]\\.(Put)\\((.*)\\);)",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -694,7 +694,7 @@
     },
     {
       "name": "rollingNoise.bve-map-2.02",
-      "match": "(?i:\\b(RollingNoise))",
+      "match": "(?imx-imx)(?i:\\b(RollingNoise))",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -703,7 +703,7 @@
     },
     {
       "name": "flangeNoise.bve-map-2.02",
-      "match": "(?i:\\b(FlangeNoise))",
+      "match": "(?imx-imx)(?i:\\b(FlangeNoise))",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -712,7 +712,7 @@
     },
     {
       "name": "jointNoise.play.bve-map-2.02",
-      "match": "(?i:\\b(JointNoise)\\.(Play)\\((.*)\\);)",
+      "match": "(?imx-imx)(?i:\\b(JointNoise)\\.(Play)\\((.*)\\);)",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -727,7 +727,7 @@
     },
     {
       "name": "train.add.bve-map-2.02",
-      "match": "(?i:\\b(Train)\\.(Add)\\((.*)\\);)",
+      "match": "(?imx-imx)(?i:\\b(Train)\\.(Add)\\((.*)\\);)",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -742,7 +742,7 @@
     },
     {
       "name": "train.bve-map-2.02",
-      "match": "(?i:\\b(Train)\\[(?:'(.+)'|(\\$)(\\w+))\\])",
+      "match": "(?imx-imx)(?i:\\b(Train)\\[(?:'(.+)'|(\\$)(\\w+))\\])",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -760,7 +760,7 @@
     },
     {
       "name": "train.load.bve-map-2.02",
-      "match": "(?i:(Load)\\((.+)\\);)",
+      "match": "(?imx-imx)(?i:(Load)\\((.+)\\);)",
       "captures": {
         "1": {
           "name": "keyword.control.bve-map-2.02"
@@ -772,7 +772,7 @@
     },
     {
       "name": "train.enable.bve-map-2.02",
-      "match": "(?i:(Enable)\\('(.*)'\\);)",
+      "match": "(?imx-imx)(?i:(Enable)\\('(.*)'\\);)",
       "captures": {
         "1": {
           "name": "entity.name.tag.bve-map-2.02"
@@ -784,7 +784,7 @@
     },
     {
       "name": "train.stop.bve-map-2.02",
-      "match": "(?i:(Stop)\\s*\\((.*)\\);)",
+      "match": "(?imx-imx)(?i:(Stop)\\s*\\((.*)\\);)",
       "captures": {
         "1": {
           "name": "entity.name.tag.bve-map-2.02"
