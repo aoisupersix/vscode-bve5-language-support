@@ -608,6 +608,319 @@ export class MapDocs {
         this.syntaxes.push(pretrain_pass);
 
         //#endregion 先行列車
+
+        //#region 光源
+
+        //Light.Ambient(red, green, blue)
+        let light_ambient = new MapDoc(
+            MapSyntaxType.Syntax1, "Light", "", "Ambient",
+            this.convMarkDown("環境光の色 (アンビエント色) を設定します。この構文は、マップファイルに 1 回のみ記述可能です。"),
+            [
+                this.createParam("red", "**red**: 赤成分 (0 ~ 1)"),
+                this.createParam("green", "**green**: 緑成分 (0 ~ 1)"),
+                this.createParam("blue", "**blue**: 青成分 (0 ~ 1)"),
+            ]
+        );
+
+        //Light.Diffuse(red, green, blue)
+        let light_diffuse = new MapDoc(
+            MapSyntaxType.Syntax1, "Light", "", "Diffuse",
+            this.convMarkDown("平行光の色 (ディフューズ色) を設定します。この構文は、マップファイルに 1 回のみ記述可能です。"),
+            [
+                this.createParam("red", "**red**: 赤成分 (0 ~ 1)"),
+                this.createParam("green", "**green**: 緑成分 (0 ~ 1)"),
+                this.createParam("blue", "**blue**: 青成分 (0 ~ 1)"),
+            ]
+        );
+
+        //Light.Direction(pitch, yaw)
+        let light_direction = new MapDoc(
+            MapSyntaxType.Syntax1, "Light", "", "Direction",
+            this.convMarkDown("距離程 0 において、平行光が指す方向を設定します。この構文は、マップファイルに 1 回のみ記述可能です。"),
+            [
+                this.createParam("pitch", "**pitch**: 平行光のピッチ角 [deg]"),
+                this.createParam("yaw", "**yaw**: 平行光のヨー角 [deg]"),
+            ]
+        );
+
+        this.syntaxes.push(
+            light_ambient,
+            light_diffuse,
+            light_direction
+        );
+
+        //#endregion
+
+        //#region 霧効果
+
+        //Fog.Interpolate(density, red, green, blue)
+        let fog_interpolate = new MapDoc(
+            MapSyntaxType.Syntax1, "Fog", "", "Interpolate",
+            this.convMarkDown("現在の距離程における霧効果を設定します。2 つの Fog.Interpolate の間は線形補間されます。"),
+            [
+                this.createParam("density", "**density**: 濃度"),
+                this.createParam("red", "**red**: 赤成分 (0 ~ 1)"),
+                this.createParam("green", "**green**: 緑成分 (0 ~ 1)"),
+                this.createParam("blue", "**blue**: 青成分 (0 ~ 1)"),
+            ]
+        );
+        //Fog.Interpolate(density)
+        fog_interpolate.addSyntax(
+            this.convMarkDown("現在の距離程における霧効果を設定します。2 つの Fog.Interpolate の間は線形補間されます。"),
+            [
+                this.createParam("density", "**density**: 濃度"),
+            ]
+        );
+        fog_interpolate.addSyntax(
+            this.convMarkDown("現在の距離程における霧効果を設定します。2 つの Fog.Interpolate の間は線形補間されます。"),
+            [
+            ]
+        );
+
+        this.syntaxes.push(fog_interpolate);
+
+        //#endregion
+
+        //#region 風景描画距離
+
+        //DrawDistance.Change(value)
+        let drawdistance_change = new MapDoc(
+            MapSyntaxType.Syntax1, "DrawDistance", "", "Change",
+            this.convMarkDown("現在の距離程以降の風景の描画距離を設定します。[設定] ウィンドウで設定される描画距離と、ここで設定する描画距離の短い方が適用されます。"),
+            [
+                this.createParam("value", "**value**: 距離 [m] (0: [設定] ウィンドウで設定される描画距離を適用)")
+            ]
+        );
+
+        this.syntaxes.push(drawdistance_change);
+
+        //#endregion
+
+        //#region 運転台の明るさ
+
+        //CabIlluminance.Interpolate(value)
+        let cab_interpolate = new MapDoc(
+            MapSyntaxType.Syntax1, "CabIlluminance", "", "Interpolate",
+            this.convMarkDown("現在の距離程における運転台の明るさを設定します。2 つの CabIlluminance.Interpolate の間は線形補間されます。"),
+            [
+                this.createParam("value", "**value**: 昼間画像と夜間画像の混合比 (0: 夜間画像 ~ 1: 昼間画像)")
+            ]
+        );
+        //CabIlluminance.Interpolate()
+        cab_interpolate.addSyntax(
+            this.convMarkDown("現在の距離程における運転台の明るさを設定します。2 つの CabIlluminance.Interpolate の間は線形補間されます。"),
+            [
+            ]
+        );
+
+        this.syntaxes.push(cab_interpolate);
+
+        //#endregion
+
+        //#region 軌道変位
+
+        //Irregularity.Change(x, y, r, lx, ly, lr)
+        let irregularity_change = new MapDoc(
+            MapSyntaxType.Syntax1, "Irregularity", "", "Change",
+            this.convMarkDown("現在の距離程以降の軌道変位を設定します。"),
+            [
+                this.createParam("x", "**x**: 左右変位 (左と右のレールの通り変位の平均に相当) の標準偏差 [m]"),
+                this.createParam("y", "**y**: 上下変位 (左と右のレールの高低変位の平均に相当) の標準偏差 [m]"),
+                this.createParam("r", "**r**: ロール変位 (水準変位を軌間で除した値に相当) の標準偏差 [rad]"),
+                this.createParam("lx", "**lx**: 左右変位の遮断波長 [m]"),
+                this.createParam("ly", "**ly**: 上下変位の遮断波長 [m]"),
+                this.createParam("lr", "**lr**: ロール変位の遮断波長 [m]"),
+            ]
+        );
+
+        this.syntaxes.push(irregularity_change);
+
+        //#endregion
+
+        //#region 粘着特性
+
+        //Adhesion.Change(a)
+        let adhesion_change = new MapDoc(
+            MapSyntaxType.Syntax1, "Adhesion", "", "Change",
+            this.convMarkDown("現在の距離程以降の車輪-レール間の粘着特性を設定します。"),
+            [
+                this.createParam("a", "**a**: 走行速度 0 km/h における粘着係数"),
+            ]
+        );
+        //Adhesion.Change(a,b,c)
+        adhesion_change.addSyntax(
+            this.convMarkDown("現在の距離程以降の車輪-レール間の粘着特性を設定します。"),
+            [
+                this.createParam("a", "**a**: 走行速度 0 km/h における粘着係数"),
+                this.createParam("b", "**b**: 粘着係数の走行速度に対する変化を表す係数"),
+                this.createParam("c", "**c**: 粘着係数の走行速度に対する変化を表す係数"),
+            ]
+        );
+
+        this.syntaxes.push(adhesion_change);
+
+        //#endregion
+
+        //#region 音
+
+        //Sound.Load(filePath)
+        let sound_load = new MapDoc(
+            MapSyntaxType.Syntax1, "Sound", "", "Load",
+            this.convMarkDown("サウンドリストファイルにもとづいてサウンドを読み込みます。"),
+            [
+                this.createParam("filePath", "**filePath**: このファイルからサウンドリストファイルへの相対パス"),
+            ]
+        );
+
+        //Sound[].Play()
+        let sound_play = new MapDoc(
+            MapSyntaxType.Syntax2, "Sound", "", "Play",
+            this.convMarkDown("現在の距離程を通過するときにサウンドを 1 回再生します。"),
+            [
+            ]
+        );
+
+        this.syntaxes.push(
+            sound_load,
+            sound_play,
+        );
+
+        //#endregion
+
+        //#region 固定音源
+
+        //Sound3D.Load(filePath)
+        let sound3d_load = new MapDoc(
+            MapSyntaxType.Syntax1, "Sound3D", "", "Load",
+            this.convMarkDown("サウンドリストファイルにもとづいてサウンドを読み込みます。"),
+            [
+                this.createParam("filePath", "**filePath**: このファイルからサウンドリストファイルへの相対パス"),
+            ]
+        );
+
+        //Sound3D[].Put(x, y)
+        let sound3d_put = new MapDoc(
+            MapSyntaxType.Syntax2, "Sound3D", "", "Put",
+            this.convMarkDown("地上に固定された音源を現在の距離程に設置します。サウンドは連続再生されます。"),
+            [
+                this.createParam("x", "**x**: 軌道からの x 座標 [m]"),
+                this.createParam("y", "**y**: 軌道からの y 座標 [m]"),
+            ]
+        );
+
+        this.syntaxes.push(
+            sound3d_load,
+            sound3d_put,
+        );
+
+        //#endregion
+
+        //#region 走行音
+
+        //RollingNoise.Change(index)
+        let rollingnoise_change = new MapDoc(
+            MapSyntaxType.Syntax1, "RollingNoise", "", "Change",
+            this.convMarkDown("現在の距離程以降の車輪転動音を設定します。"),
+            [
+                this.createParam("index", "**index**: 車両サウンドファイルの [Run] セクションで定義したインデックス")
+            ]
+        );
+
+        this.syntaxes.push(rollingnoise_change);
+
+        //#endregion
+
+        //#region フランジきしり音
+
+        //FlangeNoise.Change(index)
+        let flangenoise_change = new MapDoc(
+            MapSyntaxType.Syntax1, "FlangeNoise", "", "Change",
+            this.convMarkDown("現在の距離程以降のフランジきしり音を設定します。"),
+            [
+                this.createParam("index", "**index**: 車両サウンドファイルの [Flange] セクションで定義したインデックス")
+            ]
+        );
+
+        this.syntaxes.push(flangenoise_change);
+
+        //#endregion
+
+        //#region 分岐器通過音
+
+        //JointNoise.Play(index)
+        let jointnoise_play = new MapDoc(
+            MapSyntaxType.Syntax1, "JointNoise", "", "Play",
+            this.convMarkDown("現在の距離程を通過するときに分岐器通過音を走行速度に応じて再生します。"),
+            [
+                this.createParam("index", "**index**: 車両サウンドファイルの [Joint] セクションで定義したインデックス")
+            ]
+        );
+
+        this.syntaxes.push(jointnoise_play);
+
+        //#endregion
+        
+        //#region 他列車
+
+        //Train.Add(trainKey, filePath, trackKey, direction)
+        let train_add = new MapDoc(
+            MapSyntaxType.Syntax1, "Train", "", "Add",
+            this.convMarkDown("他列車ファイルにもとづいて他列車を定義します。"),
+            [
+                this.createParam("trainKey", "**trainKey**: 他列車名 (任意の文字列)"),
+                this.createParam("filePath", "**filePath**: このファイルから他列車ファイルへの相対パス"),
+                this.createParam("trackKey", "**trackKey**: 走行する軌道"),
+                this.createParam("direction", "**direction**: 進行方向 (-1: 対向, 1: 並走)"),
+            ]
+        );
+
+        //Train[trainKey].Load(filePath, trackKey, direction)
+        let train_load = new MapDoc(
+            MapSyntaxType.Syntax2, "Train", "", "Load",
+            this.convMarkDown("他列車ファイルにもとづいて他列車を定義します。"),
+            [
+                this.createParam("filePath", "**filePath**: このファイルから他列車ファイルへの相対パス"),
+                this.createParam("trackKey", "**trackKey**: 走行する軌道"),
+                this.createParam("direction", "**direction**: 進行方向 (-1: 対向, 1: 並走)"),
+            ]
+        );
+
+        //Train[].Enable(time)
+        let train_enable = new MapDoc(
+            MapSyntaxType.Syntax2, "Train", "", "Enable",
+            this.convMarkDown("自列車が現在の距離程を通過し、かつ設定された時刻になったとき、他列車の動作を有効にします。"),
+            [
+                this.createParam("time", "**time**: 時刻を表す文字列 ('hh:mm:ss')"),
+            ]
+        );
+        //Train[].Enable(second)
+        train_enable.addSyntax(
+            this.convMarkDown("自列車が現在の距離程を通過し、かつ設定された時刻になったとき、他列車の動作を有効にします。"),
+            [
+                this.createParam("second", "**second**: 00:00:00 からの経過時間 [sec]"),
+            ]
+        );
+
+        //Train[].Stop(decelerate, stopTime, accelerate, speed)
+        let train_stop = new MapDoc(
+            MapSyntaxType.Syntax2, "Train", "", "Stop",
+            this.convMarkDown("他列車を現在の距離程に一旦停車させます。"),
+            [
+                this.createParam("decelerate", "**decelerate**: 減速度 [km/h/s]"),
+                this.createParam("stopTime", "**stopTime**: 停車時間 [s]"),
+                this.createParam("accelerate", "**accelerate**: 加速度 [km/h/s]"),
+                this.createParam("speed", "**speed**: 加速後の走行速度 [km/h]"),
+            ]
+        );
+
+        this.syntaxes.push(
+            train_add,
+            train_load,
+            train_enable,
+            train_stop,
+        );
+
+        //#endregion
     }
 
 
