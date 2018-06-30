@@ -48,7 +48,7 @@ export class MapCompletionItemProvider implements vscode.CompletionItemProvider 
             let txt = this.trimMapText(
                 document.getText(new vscode.Range(new vscode.Position(0, 0), position))
             );
-            let nowChar = txt.substring(txt.length - 1);
+            //let nowChar = txt.substring(txt.length - 1);
             let mapElementName = this.getFuncName(txt);
 
             return new Promise((resolve, reject) => {

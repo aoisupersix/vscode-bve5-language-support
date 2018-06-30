@@ -467,6 +467,129 @@ export class MapDocs {
             background_change,
         );
         //#endregion
+    
+        //#region 停車場
+
+        //Station.Load(filePath)
+        let station_load = new MapDoc(
+            MapSyntaxType.Syntax1, "Station", "", "Load",
+            this.convMarkDown("停車場リストファイルにもとづいて停車場を定義します。"),
+            [
+                this.createParam("filePath", "**filePath**: このファイルから停車場リストファイルへの相対パス"),
+            ]
+        );
+
+        //Station[].Put(door, margin1, margin2)
+        let station_put = new MapDoc(
+            MapSyntaxType.Syntax2, "Station", "", "Put",
+            this.convMarkDown("この列車の停止位置を現在の距離程に設定します。列車停止位置目標ストラクチャーを設置するには Structure.Put を使用してください。"),
+            [
+                this.createParam("door", "**door**: 開くドアの方向 (-1: 左, 1: 右)"),
+                this.createParam("margin1", "**margin1**: 停止位置誤差の後方許容範囲 (負の値で設定)"),
+                this.createParam("margin2", "**margin2**: 停止位置誤差の前方許容範囲"),
+            ]
+        );
+
+        this.syntaxes.push(
+            station_load,
+            station_put,
+        );
+
+        //#endregion
+
+        //#region 地上信号機
+
+        //Signal.Load(filePath)
+        let signal_load = new MapDoc(
+            MapSyntaxType.Syntax1, "Signal", "", "Load",
+            this.convMarkDown("信号現示リストファイルにもとづいて信号現示を定義します。"),
+            [
+                this.createParam("filePath", "**filePath**: このファイルから信号現示リストファイルへの相対パス"),
+            ]
+        );
+
+        //Signal.Put(section, trackKey, x, y)
+        let signal_put = new MapDoc(
+            MapSyntaxType.Syntax2, "Signal", "", "Put",
+            this.convMarkDown("地上信号機を現在の距離程に設置します。"),
+            [
+                this.createParam("section", "**section**: 関連づける閉そくの相対インデックス"),
+                this.createParam("trackKey", "**trackKey**: 配置先の軌道名"),
+                this.createParam("x", "**x**: 軌道からの x 座標 [m]"),
+                this.createParam("y", "**y**: 軌道からの y 座標 [m]"),
+            ]
+        );
+
+        //Signal.Put(section, trackKey, x, y, z, rx, ry, rz, tilt, span)
+        signal_put.addSyntax(
+            this.convMarkDown("地上信号機を現在の距離程に設置します。"),
+            [
+                this.createParam("section", "**section**: 関連づける閉そくの相対インデックス"),
+                this.createParam("trackKey", "**trackKey**: 配置先の軌道名"),
+                this.createParam("x", "**x**: 軌道からの x 座標 [m]"),
+                this.createParam("y", "**y**: 軌道からの y 座標 [m]"),
+                this.createParam("z", "**z**: 現在の距離程からの z 座標 [m]"),
+                this.createParam("rx", "**rx**: 軌道に対する x 軸回りの角 [deg]"),
+                this.createParam("ry", "**ry**: 軌道に対する y 軸回りの角 [deg]"),
+                this.createParam("rz", "**rz**: 軌道に対する z 軸回りの角 [deg]"),
+                this.createParam("tilt", "**tilt**: 傾斜オプション (0: 常に水平, 1: 勾配に連動, 2: カントに連動, 3: 勾配とカントに連動)"),
+                this.createParam("span", "**span**: 曲線における弦の長さ [m]"),
+            ]
+        );
+
+        this.syntaxes.push(
+            signal_load,
+            signal_put,
+        );
+
+        //#endregion
+
+        //#region 地上子
+
+        //Beacon.Put(type, section, sendData)
+        let beacon_put = new MapDoc(
+            MapSyntaxType.Syntax1, "Beacon", "", "Put",
+            this.convMarkDown("地上子の送信イベントを現在の距離程に定義します。地上子ストラクチャーを設置するには Structure[].Put 構文を使用してください。"),
+            [
+                this.createParam("type", "**type**: 保安装置に送る地上子種別 (整数)"),
+                this.createParam("section", "**section**: 関連づける閉そくの相対インデックス"),
+                this.createParam("sendData", "**sendData**: 保安装置に送る値 (整数)"),
+            ]
+        );
+
+        this.syntaxes.push(beacon_put);
+
+        //#endregion
+
+        //#region 速度制限
+
+        //SpeedLimit.Begin(v)
+        let speedlimit_begin = new MapDoc(
+            MapSyntaxType.Syntax1, "SpeedLimit", "", "Begin",
+            this.convMarkDown("速度制限を現在の距離程から開始します。速度制限標識ストラクチャーを設置するには Structure.Put 構文を使用してください。"),
+            [
+                this.createParam("v", "**v**: 走行速度 [km/h]"),
+            ]
+        );
+
+        //SpeedLimit.End()
+        let speedlimit_end = new MapDoc(
+            MapSyntaxType.Syntax1, "SpeedLimit", "", "End",
+            this.convMarkDown("速度制限を現在の距離程で終了します。速度制限解除標識ストラクチャーを設置するには Structure.Put 構文を使用してください。"),
+            [
+            ]
+        );
+
+        this.syntaxes.push(
+            speedlimit_begin,
+            speedlimit_end,
+        );
+
+        //#endregion
+   
+        //#region 先行列車
+
+        //#endregion 先行列車
     }
 
 
