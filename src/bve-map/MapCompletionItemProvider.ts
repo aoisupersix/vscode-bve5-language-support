@@ -51,15 +51,13 @@ export class MapCompletionItemProvider implements vscode.CompletionItemProvider 
             let nowChar = txt.substring(txt.length - 1);
             let mapElementName = this.getFuncName(txt);
 
-            console.log("nowChar:" + nowChar);
-            console.log("mapElement1Name:" + mapElementName);
-
             return new Promise((resolve, reject) => {
+                let syntaxes = MapDocs.instance.getSyntaxes();
+                let ret = new List<vscode.CompletionItem>();
+
                 if(mapElementName === "") {
                     reject();
                 }else {
-                    let syntaxes = MapDocs.instance.getSyntaxes();
-                    let ret = new List<vscode.CompletionItem>();
 
                     //一致する補完の追加
                     for(let i in syntaxes) {
@@ -82,11 +80,12 @@ export class MapCompletionItemProvider implements vscode.CompletionItemProvider 
                             }
                         }
                     }
-                    if(ret.Any()) {
-                        resolve(ret.ToArray());
-                    }
-                    reject();
                 }
+
+                if(ret.Any()) {
+                    resolve(ret.ToArray());
+                }
+                reject();
             });
     }
 }

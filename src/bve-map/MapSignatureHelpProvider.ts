@@ -22,7 +22,6 @@ export class MapSignatureHelpProvider implements vscode.SignatureHelpProvider {
             }
             ret += lines[i].replace(/\s+/g, "");
         }
-        console.log("TrimText:" + ret);
         return ret;
     }
 
@@ -71,10 +70,6 @@ export class MapSignatureHelpProvider implements vscode.SignatureHelpProvider {
             let funcName = this.getFuncName(txt);
             let funcFirstIdx = txt.lastIndexOf(funcName);
             let paramCount = this.getNowParamCount(txt);
-
-            console.log("nowChar:" + nowChar);
-            console.log("funcName:" + funcName);
-            console.log("paramCount:" + paramCount);
 
             return new Promise((resolve, reject) => {
                 if(nowChar === ')' || nowChar === ';' || txt.substring(funcFirstIdx).match(/\(/) === null) {

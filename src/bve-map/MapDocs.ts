@@ -408,6 +408,65 @@ export class MapDocs {
             structure_putbetween,
         );
         //#endregion
+
+        //#region 連続ストラクチャ
+
+        //Repeater[].Begin(trackKey, x, y, z, rx, ry, rz, tilt, span, interval, ...structureKeyN)
+        let repeater_begin = new MapDoc(
+            MapSyntaxType.Syntax2, "Repeater", "", "Begin",
+            this.convMarkDown("ストラクチャーの連続配置を現在の距離程から開始します。ストラクチャーは、軌道に沿って一定間隔に配置されます。"),
+            [
+                this.createParam("trackKey", "**trackKey**: 配置先の軌道名 (0: 自軌道)"),
+                this.createParam("x", "**x**: 軌道からの x 座標 [m]"),
+                this.createParam("y", "**y**: 軌道からの y 座標 [m]"),
+                this.createParam("z", "**z**: 現在の距離程からの z 座標 [m]"),
+                this.createParam("rx", "**rx**: 軌道に対する x 軸回りの角 [deg]"),
+                this.createParam("ry", "**ry**: 軌道に対する y 軸回りの角 [deg]"),
+                this.createParam("rz", "**rz**: 軌道に対する z 軸回りの角 [deg]"),
+                this.createParam("tilt", "**tilt**: 傾斜オプション (0: 常に水平, 1: 勾配に連動, 2: カントに連動, 3: 勾配とカントに連動)"),
+                this.createParam("span", "**span**: 曲線における弦の長さ [m]"),
+                this.createParam("interval", "**interval**: 配置間隔 [m]"),
+                this.createParam("...structureKeyN", "**structureKeyN**: ストラクチャー名 (ストラクチャーリストファイルで定義した文字列)"),
+            ]
+        );
+
+        //Repeater[].Begin0(trackKey, tilt, span, interval, ...structureKeyN)
+        let repeater_begin0 = new MapDoc(
+            MapSyntaxType.Syntax2, "Repeater", "", "Begin0",
+            this.convMarkDown("ストラクチャーの連続配置を現在の距離程から開始します。Repeater[].Begin 構文の x, y, z, rx, ry, rz に 0 を設定したことと同じです。"),
+            [
+                this.createParam("trackKey", "**trackKey**: 配置先の軌道名 (0: 自軌道)"),
+                this.createParam("tilt", "**tilt**: 傾斜オプション (0: 常に水平, 1: 勾配に連動, 2: カントに連動, 3: 勾配とカントに連動)"),
+                this.createParam("span", "**span**: 曲線における弦の長さ [m]"),
+                this.createParam("interval", "**interval**: 配置間隔 [m]"),
+                this.createParam("...structureKeyN", "**structureKeyN**: ストラクチャー名 (ストラクチャーリストファイルで定義した文字列)"),
+            ]
+        );
+
+        //Repeater[].End()
+        let repeater_end = new MapDoc(
+            MapSyntaxType.Syntax2, "Repeater", "", "End",
+            this.convMarkDown("ストラクチャーの連続配置を現在の距離程で終了します。"),
+            [
+            ]
+        );
+
+        //Background.Change(structureKey)
+        let background_change = new MapDoc(
+            MapSyntaxType.Syntax1, "BackGround", "", "Change",
+            this.convMarkDown("背景を変更します。"),
+            [
+                this.createParam("structureKey", "**structureKey**: ストラクチャー名")
+            ]
+        );
+
+        this.syntaxes.push(
+            repeater_begin,
+            repeater_begin0,
+            repeater_end,
+            background_change,
+        );
+        //#endregion
     }
 
 
@@ -614,6 +673,13 @@ export class MapDoc {
         //アクティブパラメータの設定
         ret.activeParameter = paramIdx;
         return ret;
+    }
+
+    /**
+     * マップ要素1のコード補完アイテムを取得します。
+     */
+    getMapElement1CompletionItem() : vscode.CompletionItem {
+        return new vscode.CompletionItem(this.syntaxes[0].getMapElement1Name(), vscode.CompletionItemKind.Class);
     }
 
     /**
