@@ -1,442 +1,107 @@
 {
-    "curve": {
-        "prefix": "Curve",
-        "body": "Curve",
-        "description": "自軌道の平面曲線を表すマップ要素です。"
+    "curve.begintransition": {
+        "prefix": "Curve.BeginTransition()",
+        "body": "Curve.BeginTransition();${0:}",
+        "description": "平面曲線の緩和曲線を現在の距離程から開始します。"
     },
-    "curve.setgauge": {
-        "prefix": "SetGauge(value)",
-        "body": "SetGauge(${1:value});${2:}",
-        "description": "現在の距離程以降の軌間を設定します。この値は、カントを角度に換算するために使用します。"
-    },
-    "curve.setcenter": {
-        "prefix": "SetCenter(x)",
-        "body": "SetCenter(${1:x});${2:}",
-        "description": "現在の距離程以降のカントの回転中心位置を設定します。"
-    },
-    "curve.setfunction": {
-        "prefix": "SetFunction(id)",
-        "body": "SetFunction(${1:id});${2:}",
-        "description": "現在の距離程以降の緩和曲線関数を設定します。"
-    },
-    "curve.begin1": {
-        "prefix": "Begin(radius,cant)",
-        "body": "Begin(${1:radius},${2:cant});${3:}",
+    "curve.begin": {
+        "prefix": "Curve.Begin(radius,cant)",
+        "body": "Curve.Begin(${1:radius},${2:cant});${0:}",
         "description": "平面曲線の円曲線を現在の距離程から開始します。"
     },
-    "curve.begin2": {
-        "prefix": "Begin(radius)",
-        "body": "Begin(${1:radius});${2:}",
-        "description": "平面曲線の円曲線を現在の距離程から開始します。"
-    },
-    "curve.interpolate1": {
-        "prefix": "Interpolate(radius,cant)",
-        "body": "Interpolate(${1:radius},${2:cant});${3:}",
-        "description": "現在の距離程における平面曲線の半径とカントを設定します。"
-    },
-    "curve.interpolate2": {
-        "prefix": "Interpolate(radius)",
-        "body": "Interpolate(${1:radius});${2:}",
-        "description": "現在の距離程における平面曲線の半径とカントを設定します。"
-    },
-    "curve.interpolate3": {
-        "prefix": "Interpolate()",
-        "body": "Interpolate();${1:}",
-        "description": "現在の距離程における平面曲線の半径とカントを設定します。"
-    },
-    "gradient": {
-        "prefix": "Gradient",
-        "body": "Gradient",
-        "description": "自軌道の勾配を表すマップ要素です。"
+    "gradient.begintransition": {
+        "prefix": "Gradient.BeginTransition()",
+        "body": "Gradient.BeginTransition();${0:}",
+        "description": "縦曲線を現在の距離程から開始します。"
     },
     "gradient.begin": {
         "prefix": "Begin(gradient)",
-        "body": "Begin(${1:gradient});${2:}",
+        "body": "Begin(${1:gradient});${0:}",
         "description": "縦曲線を現在の距離程で終了し、勾配を一定に保ちます。"
     },
-    "gradient.interpolate1": {
-        "prefix": "Interpolate(gradient)",
-        "body": "Interpolate(${1:gradient});${2:}",
-        "description": "現在の距離程に置ける勾配を設定します。2つのInterpolate間は線形補間されます。"
-    },
-    "gradient.interpolate2": {
-        "prefix": "Interpolate()",
-        "body": "Interpolate();${1:}",
-        "description": "現在の距離程に置ける勾配を設定します。2つのInterpolate間は線形補間されます。"
-    },
-    "track": {
-        "prefix": "Track['trackKey']",
-        "body": "Track['${1:trackKey}']${2:}",
-        "description": "他軌道を表すマップ要素です。"
-    },
-    "track.x.interpolate1": {
-        "prefix": "X.Interpolate(x,radius)",
-        "body": "X.Interpolate(${1:x},${2:radius});${3:}",
+    "track.x.interpolate": {
+        "prefix": "Track.X.Interpolate(x,radius)",
+        "body": "Track['${1:trackKey}'].X.Interpolate(${2:x},${3:radius});${0:}",
         "description": "現在に距離程における他軌道のx方向位置を設定します。2つのX.Interpolate間は線形補間されます。"
     },
-    "track.x.interpolate2": {
-        "prefix": "X.Interpolate(x)",
-        "body": "X.Interpolate(${1:x});${2:}",
-        "description": "現在に距離程における他軌道のx方向位置を設定します。2つのX.Interpolate間は線形補間されます。"
-    },
-    "track.x.interpolate3": {
-        "prefix": "X.Interpolate()",
-        "body": "X.Interpolate();${1:}",
-        "description": "現在に距離程における他軌道のx方向位置を設定します。2つのX.Interpolate間は線形補間されます。"
-    },
-    "track.y.interpolate1": {
-        "prefix": "Y.Interpolate(y,radius)",
-        "body": "Y.Interpolate(${1:y},${2:radius});${3:}",
+    "track.y.interpolate": {
+        "prefix": "Track.Y.Interpolate(y,radius)",
+        "body": "Track['${1:trackKey}'].Y.Interpolate(${2:y},${3:radius});${0:}",
         "description": "現在に距離程における他軌道のy方向位置を設定します。2つのY.Interpolate間は線形補間されます。"
     },
-    "track.y.interpolate2": {
-        "prefix": "Y.Interpolate(y)",
-        "body": "Y.Interpolate(${1:y});${2:}",
-        "description": "現在に距離程における他軌道のy方向位置を設定します。2つのY.Interpolate間は線形補間されます。"
-    },
-    "track.y.interpolate3": {
-        "prefix": "Y.Interpolate()",
-        "body": "Y.Interpolate();${1:}",
-        "description": "現在に距離程における他軌道のy方向位置を設定します。2つのY.Interpolate間は線形補間されます。"
-    },
-    "track.position1": {
-        "prefix": "Position(x,y,radiusH,radiusV)",
-        "body": "Position(${1:x},${2:y},${3:radiusH},${4:radiusV});${5:}",
+    "track.position": {
+        "prefix": "Track.Position(x,y)",
+        "body": "Track['${1:trackKey}'].Position(${2:x},${3:y});${0:}",
         "description": "現在の距離程における他軌道の位置を設定します。"
-    },
-    "track.position2": {
-        "prefix": "Position(x,y,radiusH)",
-        "body": "Position(${1:x},${2:y},${3:radiusH});${4:}",
-        "description": "現在の距離程における他軌道の位置を設定します。"
-    },
-    "track.position3": {
-        "prefix": "Position(x,y)",
-        "body": "Position(${1:x},${2:y});${3:}",
-        "description": "現在の距離程における他軌道の位置を設定します。"
-    },
-    "track.cant.setgauge": {
-        "prefix": "Cant.SetGauge(gauge)",
-        "body": "Cant.setGauge(${1:gauge});${2:}",
-        "description": "現在の距離程以降の他軌道の軌間を設定します。"
-    },
-    "track.cant.setcenter": {
-        "prefix": "Cant.SetCenter(x)",
-        "body": "Cant.setCenter(${1:x});${2:}",
-        "description": "現在の距離程以降の他軌道のカントの回転中心位置を設定します。"
-    },
-    "track.cant.setfunction": {
-        "prefix": "Cant.SetFunction(id)",
-        "body": "Cant.SetFunction(${1:id});${2:}",
-        "description": "現在の距離程以降の他軌道のカント逓減関数を設定します。"
-    },
-    "track.cant.begintransition": {
-        "prefix": "Cant.BeginTransition()",
-        "body": "Cant.BeginTransition();${1:}",
-        "description": "他軌道のカントの逓減を現在の距離程から開始します。"
-    },
-    "track.cant.begin": {
-        "prefix": "Cant.Begin(cant)",
-        "body": "Cant.Begin(${1:cant});${2:}",
-        "description": "他軌道のカントの逓減を現在の距離程で終了し、カントを一定に保ちます。"
-    },
-    "track.cant.end": {
-        "prefix": "Cant.End()",
-        "body": "Cant.Begin();${1:}",
-        "description": "他軌道のカントを現在の距離程で終了します。"
-    },
-    "track.cant.interpolate1": {
-        "prefix": "Cant.Interpolate(cant)",
-        "body": "Cant.Interpolate(${1:cant});${2:}",
-        "description": "現在の距離程における他軌道のカントを設定します。2つのCant.Interpolate間のカントは補完されます。"
-    },
-    "track.cant.interpolate2": {
-        "prefix": "Cant.Interpolate()",
-        "body": "Cant.Interpolate();${1:}",
-        "description": "現在の距離程における他軌道のカントを設定します。2つのCant.Interpolate間のカントは補完されます。"
-    },
-    "structure.load": {
-        "prefix": "Structure.Load('StructureFilePath')",
-        "body": "Structure.Load('${1:filePath}');${2:}",
-        "description": "ストラクチャリストファイルに基づいてストラクチャを読み込みます。"
-    },
-    "structure": {
-        "prefix": "Structure['structureKey']",
-        "body": "Structure['${1:structureKey}']${2:}",
-        "description": "ストラクチャを表すマップ要素です。"
     },
     "structure.put": {
-        "prefix": "Put('trackKey',x,y,z,rx,ry,rz,tilt,span)",
-        "body": "Put('${1:trackKey}',${2:x},${3:y},${4:z},${5:rx},${6:ry},${7:rz},${8:tilt},${9:span});${10:}",
+        "prefix": "Structure.Put('trackKey',x,y,z,rx,ry,rz,tilt,span)",
+        "body": "Structure['${1:structureKey}'].Put('${2:trackKey}',${3:x},${4:y},${5:z},${6:rx},${7:ry},${8:rz},${9:tilt},${10:span});${0:}",
         "description": "ストラクチャを設置します。"
     },
     "structure.put0": {
-        "prefix": "Put0('trackKey'tilt,span)",
-        "body": "Put0('${1:trackKey}',${2:tilt},${3:span});${4:}",
+        "prefix": "Structure.Put0('trackKey'tilt,span)",
+        "body": "Structure['${1:structureKey}'].Put0('${2:trackKey}',${3:tilt},${4:span});${0:}",
         "description": "ストラクチャを設置します。"
     },
-    "structure.putbetween1": {
-        "prefix": "PutBetWeen('trackKey1','trackKey2',flag)",
-        "body": "PutBetWeen('${1:trackKey1}','${2:trackKey2}',${3:flag});${4:}",
+    "structure.putbetween": {
+        "prefix": "Structure.PutBetWeen('trackKey1','trackKey2')",
+        "body": "Structure['${1:structureKey}'].PutBetWeen('${2:trackKey1}','${3:trackKey2}');${0:}",
         "description": "ストラクチャを現在の距離程の2つの軌道の間に設置します。ストラクチャは軌道間の距離に応じて変形します。"
-    },
-    "structure.putbetween2": {
-        "prefix": "PutBetWeen('trackKey1','trackKey2')",
-        "body": "PutBetWeen('${1:trackKey1}','${2:trackKey2}');${3:}",
-        "description": "ストラクチャを現在の距離程の2つの軌道の間に設置します。ストラクチャは軌道間の距離に応じて変形します。"
-    },
-    "repeater": {
-        "prefix": "Repeater['repeaterKey']",
-        "body": "Repeater['${1:repeaterKey}']${2:}",
-        "description": "連続ストラクチャを表すマップ要素です。"
     },
     "repeater.begin": {
-        "prefix": "Begin('trackKey',x,y,z,rx,ry,rz,tilt,span,interval)",
-        "body": "Begin('${1:trackKey}',${2:x},${3:y},${4:z},${5:rx},${6:ry},${7:rz},${8:tilt},${9:span},${10:interval},'${11:structureKey}');${12:}",
+        "prefix": "Repeater.Begin('trackKey',x,y,z,rx,ry,rz,tilt,span,interval)",
+        "body": "Repeater['${1:repeaterKey}'].Begin('${2:trackKey}',${3:x},${4:y},${5:z},${6:rx},${7:ry},${8:rz},${9:tilt},${10:span},${11:interval},'${12:structureKey}');${0:}",
         "description": "ストラクチャの連続配置を現在の距離程から開始します。"
     },
     "repeater.begin0": {
-        "prefix": "Begin0('trackKey',tilt,span,interval)",
-        "body": "Begin0('${1:trackKey}',${2:tilt},${3:span},${4:interval},'${5:structureKey}');${6:}",
+        "prefix": "Repeater.Begin0('trackKey',tilt,span,interval)",
+        "body": "Repeater['${1:repeaterKey}'].Begin0('${2:trackKey}',${3:tilt},${4:span},${5:interval},'${6:structureKey}');${0:}",
         "description": "ストラクチャの連続配置を現在の距離程から開始します。"
     },
-    "background.change": {
-        "prefix": "Background.Change(structureKey)",
-        "body": "Background.Change('${1:structureKey}');${2:}",
-        "description": "背景を変更します。"
-    },
-    "station.load": {
-        "prefix": "Station.Load('StationFilePath')",
-        "body": "Station.Load('${1:filePath}');${2:}",
-        "description": "停車場リストファイルに基づいて停車場を定義します。"
-    },
-    "station.put": {
-        "prefix": "Station['stationKey'].Put(door,margin1,margin2)",
-        "body": "Station['${1:stationKey}'].Put(${2:door},${3:margin1},${4:margin2});${5:}",
-        "description": "この列車の停止位置を現在の距離程に設定します。"
-    },
-    "section": {
-        "prefix": "Section",
-        "body": "Section",
-        "description": "閉塞を表すマップ要素です。"
-    },
     "section.begin": {
-        "prefix": "Begin('singal0','signal1',...,'signalN')",
-        "body": "Begin('${1:signal0}','${2:signal1}','${3:signal2}');${4:}",
+        "prefix": "Section.Begin('singal0','signal1',...,'signalN')",
+        "body": "Section.Begin('${1:signal0}','${2:signal1}','${3:signal2}');${0:}",
         "description": "新しい閉塞を現在の距離程から開始します。"
     },
-    "section.setspeedlimit": {
-        "prefix": "SetSpeedLimit(v0,v1,...,vN)",
-        "body": "SetSpeedLimit(${1:v0},${2:v1},${3:v2},${4:v3},${5:v4});${6:}",
-        "description": "信号現示の許容速度を設定します。"
-    },
-    "signal": {
-        "prefix": "Signal['signalAspectKey']",
-        "body": "Signal['${1:signalAspectKey}']${2:}",
-        "description": "地上信号機を表すマップ要素です。"
-    },
-    "signal.load": {
-        "prefix": "Load('SignalFilePath')",
-        "body": "Load('${1:filePath}');${2:}",
-        "description": "信号現示リストファイルに基づいて信号現示を定義します。"
-    },
-    "signal.put1": {
-        "prefix": "Put(section,'trackKey',x,y)",
-        "body": "Put(${1:section},'${2:trackKey}',${3:x},${4:y});${5:}",
-        "description": "地上信号機を現在の距離程に設置します。"
-    },
-    "signal.put2": {
-        "prefix": "Put(section,'trackKey',x,y,z,rx,ry,rz,tilt,span)",
-        "body": "Put(${1:section},'${2:trackKey}',${3:x},${4:y},${5:z},${6:rx},${7:ry},${8:rz},${9:tilt},${10:span});${11:}",
+    "signal.put": {
+        "prefix": "Signal.Put(section,'trackKey',x,y,z,rx,ry,rz,tilt,span)",
+        "body": "Signal['${1:signalAspectKey}'].Put(${2:section},'${3:trackKey}',${4:x},${5:y},${6:z},${7:rx},${8:ry},${9:rz},${10:tilt},${11:span});${0:}",
         "description": "地上信号機を現在の距離程に設置します。"
     },
     "beacon.put": {
         "prefix": "Beacon.Put(type,section,sendData)",
-        "body": "Beacon.Put(${1:type},${2:section},${3:sendData});${4:}",
+        "body": "Beacon.Put(${1:type},${2:section},${3:sendData});${0:}",
         "description": "地上子の送信イベントを現在の距離程に定義します。"
     },
-    "speedlimit": {
-        "prefix": "SpeedLimit",
-        "body": "SpeedLimit",
-        "description": "速度制限を表すマップ要素です。"
-    },
-    "speedlimit.begin": {
-        "prefix": "Begin(v)",
-        "body": "Begin(${1:v});${2:}",
-        "description": "速度制限を現在の距離程から開始します。"
-    },
-    "pretrain": {
-        "prefix": "PreTrain",
-        "body": "PreTrain",
-        "description": "先行列車を表すマップ要素です。"
-    },
-    "pretrain.pass1": {
-        "prefix": "Pass('hh:mm:ss')",
-        "body": "Pass('${1:hh}:${2:mm}:${3:ss}');${4:}",
-        "description": "先行列車が現在の距離程を通過する時刻を設定します。"
-    },
-    "pretrain.pass2": {
-        "prefix": "Pass(second)",
-        "body": "Pass(${1:second});${2:}",
-        "description": "先行列車が現在の距離程を通過する時刻を設定します。"
-    },
-    "light": {
-        "prefix": "Light",
-        "body": "Light",
-        "description": "光源を表すマップ要素です。"
-    },
-    "light.ambient": {
-        "prefix": "Ambient(red,green,blue)",
-        "body": "Ambient(${1:red},${2:green},${3:blue});${4:}",
-        "description": "環境光の色(アンビエント色)を設定します。この構文はマップファイルに1回のみ記述可能です。"
-    },
-    "light.diffuse": {
-        "prefix": "Diffuse(red,green,blue)",
-        "body": "Diffuse(${1:red},${2:green},${3:blue});${4:}",
-        "description": "平行光の色(デフューズ色)を設定します。この構文はマップファイルに1回のみ記述可能です。"
-    },
-    "light.direction": {
-        "prefix": "Direction(pitch,yaw)",
-        "body": "Direction(${1:pitch},${2:yaw});${3:}",
-        "description": "距離程0において、平行光がさす方向を設定します。この構文はマップファイルに1回のみ記述可能です。"
-    },
-    "fog": {
-        "prefix": "Fog",
-        "body": "Fog",
-        "description": "霧効果を表すマップ要素です。"
-    },
-    "fog.interpolate1": {
-        "prefix": "Interpolate(density,red,green,blue)",
-        "body": "Interpolate(${1:density},${2:red},${3:green},${4:blue});${5:}",
-        "description": "現在の距離程における霧効果を設定します。2つのFog.Interpolate間は線形補間されます。"
-    },
-    "fog.interpolate2": {
-        "prefix": "Interpolate(density)",
-        "body": "Interpolate(${1:density});${2:}",
-        "description": "現在の距離程における霧効果を設定します。2つのFog.Interpolate間は線形補間されます。"
-    },
-    "fog.interpolate3": {
-        "prefix": "Interpolate()",
-        "body": "Interpolate();${1:}",
-        "description": "現在の距離程における霧効果を設定します。2つのFog.Interpolate間は線形補間されます。"
-    },
-    "drawdistance.change": {
-        "prefix": "DrawDistance.Change(value)",
-        "body": "DrawDistance.Change(${1:value});${2:}",
-        "description": "現在の距離程以降の風景の描画距離を設定します。"
-    },
-    "cabilluminance": {
-        "prefix": "cabIlluminance",
-        "body": "CabIlluminance",
-        "description": "運転台の明るさを表すマップ要素です。"
-    },
-    "cabilluminance.interpolate1": {
-        "prefix": "Interpolate(value)",
-        "body": "Interpolate(${1:value});${2:}",
+    "cabilluminance.interpolate": {
+        "prefix": "CabIlluminance.Interpolate(value)",
+        "body": "CabIlluminance.Interpolate(${1:value});${0:}",
         "description": "現在の距離程における運転台の明るさを設定します。2つのCabIlluminance.Interpolate間は線形補間されます。"
-    },
-    "cabilluminance.interpolate2": {
-        "prefix": "Interpolate()",
-        "body": "Interpolate();${1:}",
-        "description": "現在の距離程における運転台の明るさを設定します。2つのCabIlluminance.Interpolate間は線形補間されます。"
-    },
-    "irregularity.change": {
-        "prefix": "Irregularity.Change(x,y,r,lx,ly,lr)",
-        "body": "Irregularity.Change(${1:x},${2:y},${3:r},${4:lx},${5:ly},${6:lr});${7:}",
-        "description": "現在の距離程以降の軌道変位を設定します。"
-    },
-    "adhesion": {
-        "prefix": "Adhesion",
-        "body": "Adhesion",
-        "description": "粘着特性を表すマップ要素です。"
-    },
-    "adhesion.change1": {
-        "prefix": "Change(a)",
-        "body": "Change(${1:a});${2:}",
-        "description": "現在の距離程以降の車輪とレール間の粘着特性を設定します。"
-    },
-    "adhesion.change2": {
-        "prefix": "Change(a,b,c)",
-        "body": "Change(${1:a},${2:b},${3:c});${4:}",
-        "description": "現在の距離程以降の車輪とレール間の粘着特性を設定します。"
-    },
-    "sound.load": {
-        "prefix": "Sound.Load('SoundFilePath')",
-        "body": "Sound.Load('${1:filePath}');${2:}",
-        "description": "サウンドリストファイルに基づいてサウンドを読み込みます。"
     },
     "sound.play": {
-        "prefix": "Sound['soundKey'].Play()",
-        "body": "Sound['${1:soundKey}'].Play();${2:}",
+        "prefix": "Sound.Play()",
+        "body": "Sound['${1:soundKey}'].Play();${0:}",
         "description": "現在の距離程を通過するときにサウンドを1回再生します。"
-    },
-    "sound3d.load": {
-        "prefix": "Sound3D.Load('Sound3DFilePath')",
-        "body": "Sound.Load('${1:filePath}');${2:}",
-        "description": "サウンドリストファイルに基づいてサウンドを読み込みます。"
     },
     "sound3d.put": {
         "prefix": "Sound3D['soundKey'].Put(x,y)",
-        "body": "Sound3D['${1:soundKey}'].Put(${3:x},${4:y});${5:}",
+        "body": "Sound3D['${1:soundKey}'].Put(${2:x},${3:y});${0:}",
         "description": "地上に固定された音源を現在の距離程に設置します。サウンドは連続再生されます。"
     },
     "rollingnoise.change": {
         "prefix": "RollingNoise.Change(index)",
-        "body": "RollingNoise.Change(${1:index});${2:}",
+        "body": "RollingNoise.Change(${1:index});${0:}",
         "description": "現在の距離程以降の車輪転動音を設定します。"
     },
     "flangenoise.change": {
         "prefix": "FlangeNoise.Change(index)",
-        "body": "FlangeNoise.Change(${1:index});${2:}",
+        "body": "FlangeNoise.Change(${1:index});${0:}",
         "description": "現在の距離程以降のフランジきしり音を設定します。"
     },
     "jointnoise.play": {
         "prefix": "JointNoise.Play(index)",
-        "body": "JointNoise.Play(${1:index});${2:}",
+        "body": "JointNoise.Play(${1:index});${0:}",
         "description": "現在の距離程を通過するときに分岐器通過音を走行速度に応じて再生します。"
-    },
-    "train": {
-        "prefix": "Train['trainKey']",
-        "body": "Train['trainKey']",
-        "description": "他列車を表すマップ要素です。"
-    },
-    "train.add": {
-        "prefix": "Train.Add('trainKey',filePath,'trackKey',direction)",
-        "body": "Train.Add('${1:trainKey}',${2:filePath},'${3:trackKey}',${4:direction});${5:}",
-        "description": "他列車を定義します。"
-    },
-    "train.load": {
-        "prefix": "Load('filePath','trackKey',direction)",
-        "body": "Load('${1:filePath}','${2:trackKey}',${3:direction});${4:}",
-        "description": "他列車を定義します。"
-    },
-    "train.enable1": {
-        "prefix": "Enable('time')",
-        "body": "Enable('${1:hh}:${2:mm}:${3:ss}');${4:}",
-        "description": "他列車が現在の距離程を通過し、かつ設定された時刻になったとき、他列車の動作を有効にします。"
-    },
-    "train.enable2": {
-        "prefix": "Enable(second)",
-        "body": "Enable(${1:second});${2:}",
-        "description": "他列車が現在の距離程を通過し、かつ設定された時刻になったとき、他列車の動作を有効にします。"
-    },
-    "train.stop": {
-        "prefix": "Stop(decelerate,stopTime,accelerate,speed)",
-        "body": "Stop(${1:decelerate},${2:stopTime},${3:accelerate},${4:speed});${5:}",
-        "description": "他列車を現在の距離程に一旦停車させます。"
-    },
-    "include": {
-        "prefix": "include 'submap.txt'",
-        "body": "include '${1:submap}.txt';${2:}",
-        "description": "他マップファイルの内容をその位置に挿入します。"
-    },
-    "end": {
-        "prefix": "End",
-        "body": "End();${1:}",
-        "description": "平面曲線,縦曲線,ストラクチャの連続配置,速度制限を現在の距離程から開始します。"
-    },
-    "begintransition": {
-        "prefix": "BeginTransition",
-        "body": "BeginTransition();",
-        "description": "緩和曲線,縦曲線の遷移を現在の距離程から開始します。"
     }
 }

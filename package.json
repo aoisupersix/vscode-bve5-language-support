@@ -47,6 +47,12 @@
                 "scopeName": "source.bve-map-2.02",
                 "path": "./syntaxes/bve-map-2.02.json"
             }
+        ],
+        "snippets": [
+            {
+                "language": "bve-map-2.02",
+                "path": "./snippets/bve-map-2.02.json"
+            }
         ]
     },
     "scripts": {
