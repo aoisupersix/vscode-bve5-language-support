@@ -22,7 +22,34 @@ export class MapDocs {
      */
     private constructor() {
         //#region カーブ
-        //Curve.Begin(radius, cant)
+        //Curve.SetGauge(value)
+        let curve_setgauge = new MapDoc(
+            MapSyntaxType.Syntax1, "Curve", "", "SetGauge",
+            this.convMarkDown("[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)以降の軌間を設定します。この値は、カントを角度に換算するために使用します。"),
+            [
+                this.createParam("value", "**value**: 軌間 [m]"),
+            ],
+        );
+
+        //Curve.SetCenter(x)
+        let curve_setcenter = new MapDoc(
+            MapSyntaxType.Syntax1, "Curve", "", "SetGauge",
+            this.convMarkDown("[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)以降のカントの回転中心位置を設定します。"),
+            [
+                this.createParam("x", "**x**: 軌間 [m]"),
+            ],
+        );
+
+        //Curve.SetFunction(id)
+        let curve_setfunction = new MapDoc(
+            MapSyntaxType.Syntax1, "Curve", "", "SetFunction",
+            this.convMarkDown("[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)以降の緩和曲線関数を設定します。"),
+            [
+                this.createParam("id", "**id**: 関数番号 (0: サイン半波長逓減, 1: 直線逓減)"),
+            ],
+        );
+
+        //Curve.BeginTransition()
         let curve_begintransition = new MapDoc(
             MapSyntaxType.Syntax1, "Curve", "", "BeginTransition",
             this.convMarkDown("平面曲線の緩和曲線を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)から開始します。"),
@@ -35,15 +62,15 @@ export class MapDocs {
             MapSyntaxType.Syntax1, "Curve", "", "Begin",
             this.convMarkDown("平面曲線の円曲線を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)から開始します。カントを設定する場合は、この手前に Curve.BeginTransition を記述する必要があります。"),
             [
-                this.createParam("radius", "曲線半径 [m] (正: 右曲線, 負: 左曲線)"),
-                this.createParam("cant","カント [m]"),
+                this.createParam("radius", "**radius**: 曲線半径 [m] (正: 右曲線, 負: 左曲線)"),
+                this.createParam("cant","**cant**: カント [m]"),
             ],
         );
         //Curve.Begin2(radius)
         curve_begin.addSyntax(
             this.convMarkDown("平面曲線の円曲線を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)から開始します。"),
             [
-                this.createParam("radius", "曲線半径 [m] (正: 右曲線, 負: 左曲線)"),
+                this.createParam("radius", "**radius**: 曲線半径 [m] (正: 右曲線, 負: 左曲線)"),
             ],
         );
         //Curve.Begin()
@@ -52,9 +79,57 @@ export class MapDocs {
             [
             ],
         );
+
+        //Curve.End()
+        let curve_end = new MapDoc(
+            MapSyntaxType.Syntax1, "Curve", "", "End",
+            this.convMarkDown("平面曲線を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)で終了し、直線を開始します。"),
+            [
+            ],
+        );
+
+        //Curve.Interpolate(radius, cant)
+        let curve_interpolate = new MapDoc(
+            MapSyntaxType.Syntax1, "Curve", "", "Interpolate",
+            this.convMarkDown("現在の距離程における平面曲線の半径とカントを設定します。1 つ手前の Curve.Interpolate または Curve.Change の間は補間されます。補間関数は、Curve.SetFunction で設定します。"),
+            [
+                this.createParam("radius", "**radius**: 曲線半径 [m] (正: 右曲線, 負: 左曲線, 0: 直線)"),
+                this.createParam("cant","**cant**: カント [m]"),
+            ],
+        );
+        //Curve.Interpolate(radius)
+        curve_interpolate.addSyntax(
+            this.convMarkDown("現在の距離程における平面曲線の半径とカントを設定します。1 つ手前の Curve.Interpolate または Curve.Change の間は補間されます。補間関数は、Curve.SetFunction で設定します。引数を省略した場合、1 つ手前の Curve.Interpolate の値が使用されます。"),
+            [
+                this.createParam("radius", "**radius**: 曲線半径 [m] (正: 右曲線, 負: 左曲線, 0: 直線)"),
+            ],
+        );
+        //Curve.Interpolate()
+        curve_interpolate.addSyntax(
+            this.convMarkDown("現在の距離程における平面曲線の半径とカントを設定します。1 つ手前の Curve.Interpolate または Curve.Change の間は補間されます。補間関数は、Curve.SetFunction で設定します。引数を省略した場合、1 つ手前の Curve.Interpolate の値が使用されます。"),
+            [
+            ],
+        );
+
+        //Curve.Change(radius)
+        let curve_change = new MapDoc(
+            MapSyntaxType.Syntax1, "Curve", "", "Change",
+            this.convMarkDown("現在の距離程以降の平面曲線の半径を設定します。Curve.Begin(radius) と同等です。"),
+            [
+                this.createParam("id", "**id**: 曲線半径 [m] (正: 右曲線, 負: 左曲線, 0: 直線)"),
+            ],
+        );
         
-        this.syntaxes.push(curve_begintransition);
-        this.syntaxes.push(curve_begin);
+        this.syntaxes.push(
+            curve_setgauge,
+            curve_setcenter,
+            curve_setfunction,
+            curve_begintransition,
+            curve_begin,
+            curve_end,
+            curve_interpolate,
+            curve_change
+        );
         //#endregion
 
         //#region 他軌道
