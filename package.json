@@ -1,7 +1,7 @@
 {
-    "name": "bve5-language-suport",
-    "displayName": "Bve5 Language Suport",
-    "description": "bve5.7 language support",
+    "name": "bve5-language-support",
+    "displayName": "Bve5 Language Support",
+    "description": "Language support extension for BveTrainsim5.7.",
     "version": "0.0.1",
     "publisher": "aoisupersix",
     "engines": {
@@ -59,7 +59,6 @@
     "devDependencies": {
         "typescript": "^2.6.1",
         "vscode": "^1.1.6",
-        "tslint": "^5.8.0",
         "@types/node": "^7.0.43",
         "@types/mocha": "^2.2.42"
     },
