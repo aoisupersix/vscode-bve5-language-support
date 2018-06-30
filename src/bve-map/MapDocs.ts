@@ -341,6 +341,73 @@ export class MapDocs {
             track_cant_interpolate
         );
         //#endregion
+    
+        //#region ストラクチャ
+
+        //Structure.Load(filePath)
+        let structure_load = new MapDoc(
+            MapSyntaxType.Syntax1, "Structure", "", "Load",
+            this.convMarkDown("ストラクチャーリストファイルにもとづいてストラクチャーを読み込みます。ストラクチャーを使用する前にこの構文を記述する必要があります。"),
+            [
+                this.createParam("filePath", "**filePath**: このファイルからストラクチャーリストファイルへの相対パス"),
+            ]
+        );
+
+        //Structure.Put(trackKey, x, y, z, rx, ry, rz, tilt, span)
+        let structure_put = new MapDoc(
+            MapSyntaxType.Syntax2, "Structure", "", "Put",
+            this.convMarkDown("ストラクチャーを設置します。"),
+            [
+                this.createParam("trackKey", "**trackKey**: 配置先の軌道名 (0: 自軌道)"),
+                this.createParam("x", "**x**: 軌道からの x 座標 [m]"),
+                this.createParam("y", "**y**: 軌道からの y 座標 [m]"),
+                this.createParam("z", "**z**: 現在の距離程からの z 座標 [m]"),
+                this.createParam("rx", "**rx**: 軌道に対する x 軸回りの角 [deg]"),
+                this.createParam("ry", "**ry**: 軌道に対する y 軸回りの角 [deg]"),
+                this.createParam("rz", "**rz**: 軌道に対する z 軸回りの角 [deg]"),
+                this.createParam("tilt", "**tilt**: 傾斜オプション (0: 常に水平, 1: 勾配に連動, 2: カントに連動, 3: 勾配とカントに連動)"),
+                this.createParam("span", "**span**: 曲線における弦の長さ [m]"),
+            ]
+        );
+
+        //Structure.Put0(trackKey, tilt, span)
+        let structure_put0 = new MapDoc(
+            MapSyntaxType.Syntax2, "Structure", "", "Put0",
+            this.convMarkDown("ストラクチャーを設置します。Structure[].Put 構文の x, y, z, rx, ry, rz に 0 を設定したことと同じです。"),
+            [
+                this.createParam("trackKey", "**trackKey**: 配置先の軌道名 (0: 自軌道)"),
+                this.createParam("tilt", "**tilt**: 傾斜オプション (0: 常に水平, 1: 勾配に連動, 2: カントに連動, 3: 勾配とカントに連動)"),
+                this.createParam("span", "**span**: 曲線における弦の長さ [m]"),
+            ]
+        );
+
+        //Structure.PutBetween(trackKey1, trackKey2, flag)
+        let structure_putbetween = new MapDoc(
+            MapSyntaxType.Syntax2, "Structure", "", "PutBetWeen",
+            this.convMarkDown("ストラクチャーを設置します。Structure[].Put 構文の x, y, z, rx, ry, rz に 0 を設定したことと同じです。"),
+            [
+                this.createParam("trackKey1", "**trackKey1**: 一方の軌道の軌道名 (0: 自軌道)"),
+                this.createParam("trackKey2", "**trackKey2**: 他方の軌道の軌道名"),
+                this.createParam("flag", "**flag**: 変形方向 (0: x および y 方向に変形, 1: x 方向のみに変形)"),
+            ]
+        );
+
+        //Structure.PutBetween(trackKey1, trackKey2)
+        structure_putbetween.addSyntax(
+            this.convMarkDown("ストラクチャーを現在の距離程の 2 つの軌道の間に設置します。ストラクチャーは、軌道間の距離に応じて変形します。"),
+            [
+                this.createParam("trackKey1", "**trackKey1**: 一方の軌道の軌道名 (0: 自軌道)"),
+                this.createParam("trackKey2", "**trackKey2**: 他方の軌道の軌道名"),
+            ]
+        )
+
+        this.syntaxes.push(
+            structure_load,
+            structure_put,
+            structure_put0,
+            structure_putbetween,
+        );
+        //#endregion
     }
 
 
