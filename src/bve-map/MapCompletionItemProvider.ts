@@ -2,6 +2,7 @@
 
 import * as vscode from 'vscode';
 import {MapDocs, MapSyntaxType} from './MapDocs';
+import { List } from 'linqts';
 
 export class MapCompletionItemProvider implements vscode.CompletionItemProvider {
 
@@ -58,27 +59,33 @@ export class MapCompletionItemProvider implements vscode.CompletionItemProvider 
                     reject();
                 }else {
                     let syntaxes = MapDocs.instance.getSyntaxes();
-                    let ret: vscode.CompletionItem[] = [];
+                    let ret = new List<vscode.CompletionItem>();
 
                     //一致する補完の追加
                     for(let i in syntaxes) {
                         //関数名補完
                         if(syntaxes[i].isMatchMapElement(mapElementName)) {
-                            ret.push(syntaxes[i].getFunctionCompletionItem());
+                            let item = syntaxes[i].getFunctionCompletionItem();
+                            //重複チェック
+                            if(!ret.Any(x => x!.label === item.label)) {
+                                ret.Add(item);
+                            }
                         }
                         if(syntaxes[i].getSyntaxType() === MapSyntaxType.Syntax3) {
                             //シンタックス3のマップ要素2補完
                             if(syntaxes[i].isMatchMapElement1(mapElementName)) {
-                                ret.push(syntaxes[i].getMapElement2CompletionItem());
+                                let item = syntaxes[i].getMapElement2CompletionItem();
+                                //重複チェック
+                                if(!ret.Any(x => x!.label === item.label)) {
+                                    ret.Add(item);
+                                }                         
                             }
                         }
                     }
-
-                    if(ret.length === 0) {
-                        reject();
-                    }else {
-                        resolve(ret);
+                    if(ret.Any()) {
+                        resolve(ret.ToArray());
                     }
+                    reject();
                 }
             });
     }

@@ -332,6 +332,7 @@ export class MapDocs {
             track_x_interpolate,
             track_y_interpolate,
             track_position,
+            track_cant_setgauge,
             track_cant_setcenter,
             track_cant_setfunction,
             track_cant_begintransition,

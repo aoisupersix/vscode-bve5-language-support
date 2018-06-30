@@ -21,8 +21,7 @@
     ],
     "main": "./out/extension",
     "contributes": {
-        "commands": [
-        ],
+        "commands": [],
         "languages": [
             {
                 "id": "bve-map-2.02",
@@ -63,5 +62,8 @@
         "tslint": "^5.8.0",
         "@types/node": "^7.0.43",
         "@types/mocha": "^2.2.42"
+    },
+    "dependencies": {
+        "linqts": "^1.11.0"
     }
 }
