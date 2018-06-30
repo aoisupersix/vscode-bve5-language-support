@@ -21,6 +21,7 @@ export class MapDocs {
      * ここで構文の定義を行う
      */
     private constructor() {
+        //#region カーブ
         //Curve.Begin(radius, cant)
         let curve_begintransition = new MapDoc(
             MapSyntaxType.Syntax1, "Curve", "", "BeginTransition",
@@ -56,6 +57,20 @@ export class MapDocs {
         
         this.syntaxes.push(curve_begintransition);
         this.syntaxes.push(curve_begin);
+        //#endregion
+
+        //#region 他軌道
+        let track_x_interpolate = new MapDoc(
+            MapSyntaxType.Syntax3, "Track", "X", "Interpolate",
+            this.convMarkDown("現在の[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における他軌道の x 方向位置を設定します。2 つの Track[].X.Interpolate との間の x 座標は補間されます。引数が省略された場合、1 つ手前の Track[].X.Interpolate の値が使用されます。"),
+            [
+                this.createParam("x", "自軌道からの x 座標 [m]"),
+                this.createParam("radius", "現在の距離程以降の自軌道との平面曲線相対半径 [m] (0: 直線)")
+            ],
+        );
+
+        this.syntaxes.push(track_x_interpolate);
+        //#endregion
     }
 
 
@@ -178,11 +193,49 @@ export class MapDoc {
     }
 
     /**
+     * 保持している構文シンタックスを返します
+     */
+    getSyntaxes(): MapSyntax[] {
+        return this.syntaxes;
+    }
+
+    /**
+     * シンタックスのタイプを取得します。
+     */
+    getSyntaxType(): MapSyntaxType {
+        return this.syntaxes[0].getSyntaxType();
+    }
+
+    /**
      * 引数に与えられたらマップ構文のマップ要素1名と一致するか？
      * @param mapElement1Text マップ要素1名
      */
     isMatchMapElement1(mapElement1Text: string) : boolean {
-        return mapElement1Text.match(new RegExp(`^${this.syntaxes[0].getMapElement1Name()}$`, "i")) !== null;
+        let type = this.syntaxes[0].getSyntaxType();
+        if(type === MapSyntaxType.Syntax1) {
+            //シンタックス1はキーがない
+            return mapElement1Text.match(new RegExp(String.raw`^${this.syntaxes[0].getMapElement1Name()}$`, "i")) !== null;
+        }else {
+            return mapElement1Text.match(new RegExp(String.raw`^${this.syntaxes[0].getMapElement1Name()}\[.*\]$`, "i")) !== null;
+        }
+    }
+
+    /**
+     * 引数に与えられたマップ要素と一致するか？
+     * 全てのシンタックスタイプに対応
+     * @param mapElementText マップ要素
+     */
+    isMatchMapElement(mapElementText: string) : boolean {
+        let type = this.syntaxes[0].getSyntaxType();
+        if(type === MapSyntaxType.Syntax1 || type === MapSyntaxType.Syntax2) {
+            //シンタックス1 or 2の場合はマップ要素1のみの結果を返す
+            return this.isMatchMapElement1(mapElementText);
+        }else if(type === MapSyntaxType.Syntax3) {
+            //シンタックス3の場合はマップ要素1 + マップ要素2の結果を返す
+            return mapElementText.match(new RegExp(String.raw`^${this.syntaxes[0].getMapElement1Name()}\[.*\]\.${this.syntaxes[0].getMapElement2Name()}$`, "i")) !== null;
+        }
+
+        return false;
     }
 
     /**
@@ -192,11 +245,11 @@ export class MapDoc {
     isMatchSyntax(syntaxText: string) : boolean {
         switch(this.syntaxes[0].getSyntaxType()) {
             case MapSyntaxType.Syntax1:
-                return syntaxText.match(new RegExp(`^${this.syntaxes[0].getMapElement1Name()}\.${this.syntaxes[0].getFuncName()}$`, "i")) !== null;
+                return syntaxText.match(new RegExp(String.raw`^${this.syntaxes[0].getMapElement1Name()}\.${this.syntaxes[0].getFuncName()}$`, "i")) !== null;
             case MapSyntaxType.Syntax2:
-                return syntaxText.match(new RegExp(`^${this.syntaxes[0].getMapElement1Name()}\[(.*)\]\.${this.syntaxes[0].getFuncName()}$`, "i")) !== null;
+                return syntaxText.match(new RegExp(String.raw`^${this.syntaxes[0].getMapElement1Name()}\[.*\]\.${this.syntaxes[0].getFuncName()}$`, "i")) !== null;
             case MapSyntaxType.Syntax3:
-                return syntaxText.match(new RegExp(`^${this.syntaxes[0].getMapElement1Name()}\[(.*)\]\.${this.syntaxes[0].getMapElement2Name()}\.${this.syntaxes[0].getFuncName()}$`, "i")) !== null;
+                return syntaxText.match(new RegExp(String.raw`^${this.syntaxes[0].getMapElement1Name()}\[.*\]\.${this.syntaxes[0].getMapElement2Name()}\.${this.syntaxes[0].getFuncName()}$`, "i")) !== null;
             default:
                 return false;
         }
@@ -217,6 +270,13 @@ export class MapDoc {
         ret.signatures = signatures;
         ret.activeSignature = 0; //TODO
         return ret;
+    }
+
+    /**
+     * マップ要素2のコード補完アイテムを取得します。(シンタックス3のみ)
+     */
+    getMapElement2CompletionItem() : vscode.CompletionItem {
+        return new vscode.CompletionItem(this.syntaxes[0].getMapElement2Name(), vscode.CompletionItemKind.Function);
     }
 
     /**

@@ -1,7 +1,7 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import {MapDocs} from './MapDocs';
+import {MapDocs, MapSyntaxType} from './MapDocs';
 
 export class MapCompletionItemProvider implements vscode.CompletionItemProvider {
 
@@ -48,23 +48,37 @@ export class MapCompletionItemProvider implements vscode.CompletionItemProvider 
                 document.getText(new vscode.Range(new vscode.Position(0, 0), position))
             );
             let nowChar = txt.substring(txt.length - 1);
-            let mapElement1Name = this.getFuncName(txt);
+            let mapElementName = this.getFuncName(txt);
 
             console.log("nowChar:" + nowChar);
-            console.log("mapElement1Name:" + mapElement1Name);
+            console.log("mapElement1Name:" + mapElementName);
 
             return new Promise((resolve, reject) => {
-                if(mapElement1Name === "") {
+                if(mapElementName === "") {
                     reject();
                 }else {
                     let syntaxes = MapDocs.instance.getSyntaxes();
                     let ret: vscode.CompletionItem[] = [];
+
+                    //一致する補完の追加
                     for(let i in syntaxes) {
-                        if(syntaxes[i].isMatchMapElement1(mapElement1Name)) {
+                        //関数名補完
+                        if(syntaxes[i].isMatchMapElement(mapElementName)) {
                             ret.push(syntaxes[i].getFunctionCompletionItem());
                         }
+                        if(syntaxes[i].getSyntaxType() === MapSyntaxType.Syntax3) {
+                            //シンタックス3のマップ要素2補完
+                            if(syntaxes[i].isMatchMapElement1(mapElementName)) {
+                                ret.push(syntaxes[i].getMapElement2CompletionItem());
+                            }
+                        }
                     }
-                    resolve(ret);
+
+                    if(ret.length === 0) {
+                        reject();
+                    }else {
+                        resolve(ret);
+                    }
                 }
             });
     }
