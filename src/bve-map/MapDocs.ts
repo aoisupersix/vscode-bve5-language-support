@@ -132,21 +132,73 @@ export class MapDocs {
         );
         //#endregion
 
+        //#region 自軌道の勾配
+
+        //Gradient.BeginTransition()
+        let gradient_begintransition = new MapDoc(
+            MapSyntaxType.Syntax1, "Gradient", "", "BeginTransition",
+            this.convMarkDown("縦曲線を現在の距離程から開始します。"),
+            [
+            ],
+        );
+
+        //Gradient.Begin(gradient)
+        let gradient_begin = new MapDoc(
+            MapSyntaxType.Syntax1, "Gradient", "", "Begin",
+            this.convMarkDown("縦曲線を現在の距離程で終了し、勾配を一定に保ちます。"),
+            [
+                this.createParam("gradient", "**gradient**: 勾配 [‰]"),
+            ],
+        );
+
+        //Gradient.End()
+        let gradient_end = new MapDoc(
+            MapSyntaxType.Syntax1, "Gradient", "", "End",
+            this.convMarkDown("勾配を現在の距離程で終了し、レベル (水平) を開始します。"),
+            [
+            ],
+        );
+
+        //Gradient.Interpolate(gradient)
+        let gradient_interpolate = new MapDoc(
+            MapSyntaxType.Syntax1, "Gradient", "", "Interpolate",
+            this.convMarkDown("現在の距離程における勾配を設定します。2 つの Gradient.Interpolate の間の勾配は線形補間されます。"),
+            [
+                this.createParam("gradient", "**gradient**: 勾配 [‰]"),
+            ],
+        );
+        //Gradient.Interpolate()
+        gradient_interpolate.addSyntax(
+            this.convMarkDown("現在の距離程における勾配を設定します。2 つの Gradient.Interpolate の間の勾配は線形補間されます。引数を省略した場合、1 つ手前の Gradient.Interpolate の値が使用されます。"),
+            [
+            ],
+        );
+
+        this.syntaxes.push(
+            gradient_begintransition,
+            gradient_begin,
+            gradient_end,
+            gradient_interpolate,
+        );
+
+        //#endregion
+
         //#region 他軌道
+
         //Track[].X.Interpolate(x, radius)
         let track_x_interpolate = new MapDoc(
             MapSyntaxType.Syntax3, "Track", "X", "Interpolate",
             this.convMarkDown("現在の[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における他軌道の x 方向位置を設定します。2 つの Track[].X.Interpolate との間の x 座標は補間されます。引数が省略された場合、1 つ手前の Track[].X.Interpolate の値が使用されます。"),
             [
-                this.createParam("x", "自軌道からの x 座標 [m]"),
-                this.createParam("radius", "現在の距離程以降の自軌道との平面曲線相対半径 [m] (0: 直線)")
+                this.createParam("x", "**x**: 自軌道からの x 座標 [m]"),
+                this.createParam("radius", "**radius**: 現在の距離程以降の自軌道との平面曲線相対半径 [m] (0: 直線)")
             ],
         );
         //Track[].X.Interpolate(x)
         track_x_interpolate.addSyntax(
             this.convMarkDown("現在の[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における他軌道の x 方向位置を設定します。2 つの Track[].X.Interpolate との間の x 座標は補間されます。引数が省略された場合、1 つ手前の Track[].X.Interpolate の値が使用されます。"),
             [
-                this.createParam("x", "自軌道からの x 座標 [m]"),
+                this.createParam("x", "**x**: 自軌道からの x 座標 [m]"),
             ],
         );
         //Track[].X.Interpolate()
@@ -156,7 +208,137 @@ export class MapDocs {
             ],
         );
 
-        this.syntaxes.push(track_x_interpolate);
+        //Track[].Y.Interpolate(x, radius)
+        let track_y_interpolate = new MapDoc(
+            MapSyntaxType.Syntax3, "Track", "Y", "Interpolate",
+            this.convMarkDown("現在の[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における他軌道の y 方向位置を設定します。2 つの Track[].Y.Interpolate との間の y 座標は補間されます。引数が省略された場合、1 つ手前の Track[].Y.Interpolate の値が使用されます。"),
+            [
+                this.createParam("y", "**y**: 自軌道からの y 座標 [m]"),
+                this.createParam("radius", "**radius**: 現在の距離程以降の自軌道との縦曲線相対半径 [m] (0: 直線)")
+            ],
+        );
+        //Track[].Y.Interpolate(x)
+        track_y_interpolate.addSyntax(
+            this.convMarkDown("現在の[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における他軌道の y 方向位置を設定します。2 つの Track[].Y.Interpolate との間の y 座標は補間されます。引数が省略された場合、1 つ手前の Track[].Y.Interpolate の値が使用されます。"),
+            [
+                this.createParam("y", "**y**: 自軌道からの y 座標 [m]"),
+            ],
+        );
+        //Track[].Y.Interpolate()
+        track_y_interpolate.addSyntax(
+            this.convMarkDown("現在の[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における他軌道の y 方向位置を設定します。2 つの Track[].Y.Interpolate との間の y 座標は補間されます。引数が省略された場合、1 つ手前の Track[].Y.Interpolate の値が使用されます。"),
+            [
+            ],
+        );
+
+        //Track[].Position(x, y, radiusH, radiusV)
+        let track_position = new MapDoc(
+            MapSyntaxType.Syntax2, "Track", "", "Position",
+            this.convMarkDown("現在の距離程における他軌道の位置を設定します。Track[].X.Interpolate と Track[].Y.Interpolate を同時に記述することと同等です。"),
+            [
+                this.createParam("x", "**x**: 自軌道からの x 座標 [m]"),
+                this.createParam("y", "**y**: 自軌道からの y 座標 [m]"),
+                this.createParam("radiusH", "**radiusH**: 現在の距離程以降の自軌道との平面曲線相対半径 [m] (0: 直線)"),
+                this.createParam("radiusV", "**radiusV**: 現在の距離程以降の自軌道との縦曲線相対半径 [m] (0: 直線)"),
+            ]
+        );
+        //Track[].Position(x, y, radiusH)
+        track_position.addSyntax(
+            this.convMarkDown("現在の距離程における他軌道の位置を設定します。Track[].X.Interpolate と Track[].Y.Interpolate を同時に記述することと同等です。ただし、引数が省略された場合、0 が代入されます。"),
+            [
+                this.createParam("x", "**x**: 自軌道からの x 座標 [m]"),
+                this.createParam("y", "**y**: 自軌道からの y 座標 [m]"),
+                this.createParam("radiusH", "**radiusH**: 現在の距離程以降の自軌道との平面曲線相対半径 [m] (0: 直線)"),
+            ]
+        );
+        //Track[].Position(x, y)
+        track_position.addSyntax(
+            this.convMarkDown("現在の距離程における他軌道の位置を設定します。Track[].X.Interpolate と Track[].Y.Interpolate を同時に記述することと同等です。ただし、引数が省略された場合、0 が代入されます。"),
+            [
+                this.createParam("x", "**x**: 自軌道からの x 座標 [m]"),
+                this.createParam("y", "**y**: 自軌道からの y 座標 [m]"),
+            ]
+        );
+
+        //Track[].Cant.SetGauge(gauge)
+        let track_cant_setgauge = new MapDoc(
+            MapSyntaxType.Syntax3, "Track", "Cant", "SetGauge",
+            this.convMarkDown("現在の距離程以降の他軌道の軌間を設定します。この値は、カントを角度に換算するために使用します。"),
+            [
+                this.createParam("gauge", "**gauge**: 軌間 [m]"),
+            ],
+        );
+
+        //Track[].Cant.SetCenter(x)
+        let track_cant_setcenter = new MapDoc(
+            MapSyntaxType.Syntax3, "Track", "Cant", "SetCenter",
+            this.convMarkDown("現在の距離程以降の他軌道のカントの回転中心位置を設定します。"),
+            [
+                this.createParam("x", "**x**: 回転中心の x 座標 [m] (正: 曲線の内側, 負: 曲線の外側)"),
+            ],
+        );
+
+        //Track[].Cant.SetFunction(id)
+        let track_cant_setfunction = new MapDoc(
+            MapSyntaxType.Syntax3, "Track", "Cant", "SetFunction",
+            this.convMarkDown("現在の距離程以降の他軌道のカント逓減関数を設定します。"),
+            [
+                this.createParam("id", "**id**: 関数番号 (0: サイン半波長逓減, 1: 直線逓減)"),
+            ],
+        );
+
+        //Track[].Cant.BeginTransition()
+        let track_cant_begintransition = new MapDoc(
+            MapSyntaxType.Syntax3, "Track", "Cant", "BeginTransition",
+            this.convMarkDown("他軌道のカントの逓減を現在の距離程から開始します。"),
+            [
+            ],
+        );
+
+        //Track[].Cant.Begin(cant)
+        let track_cant_begin = new MapDoc(
+            MapSyntaxType.Syntax3, "Track", "Cant", "Begin",
+            this.convMarkDown("他軌道のカントの逓減を現在の距離程で終了し、カントを一定に保ちます。"),
+            [
+                this.createParam("cant", "**cant**: カント [m] (正: 右に傾ける, 負: 左に傾ける)"),
+            ],
+        );
+
+        //Track[].Cant.End()
+        let track_cant_end = new MapDoc(
+            MapSyntaxType.Syntax3, "Track", "Cant", "End",
+            this.convMarkDown("他軌道のカントを現在の距離程で終了します。"),
+            [
+            ],
+        );
+
+        //Track[].Cant.Interpolate(cant)
+        let track_cant_interpolate = new MapDoc(
+            MapSyntaxType.Syntax3, "Track", "Cant", "Interpolate",
+            this.convMarkDown("現在の距離程における他軌道のカントを設定します。2 つの Track[].Cant.Interpolate の間のカントは補間されます。補間関数は、Track[].Cant.SetFunction で設定します。"),
+            [
+                this.createParam("cant", "**cant**: カント [m] (正: 右に傾ける, 負: 左に傾ける)"),
+            ],
+        );
+
+        //Track[].Cant.Interpolate()
+        track_cant_interpolate.addSyntax(
+            this.convMarkDown("現在の距離程における他軌道のカントを設定します。2 つの Track[].Cant.Interpolate の間のカントは補間されます。補間関数は、Track[].Cant.SetFunction で設定します。引数を省略した場合、1 つ手前の Track[].Cant.Interpolate の値が使用されます。"),
+            [
+            ],
+        );
+
+        this.syntaxes.push(
+            track_x_interpolate,
+            track_y_interpolate,
+            track_position,
+            track_cant_setcenter,
+            track_cant_setfunction,
+            track_cant_begintransition,
+            track_cant_begin,
+            track_cant_end,
+            track_cant_interpolate
+        );
         //#endregion
     }
 
