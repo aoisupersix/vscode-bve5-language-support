@@ -258,7 +258,7 @@ export class MapDoc {
     /**
      * SignatureHelpを取得します。
      */
-    getSignatureHelp() : vscode.SignatureHelp {
+    getSignatureHelp(paramIdx: number) : vscode.SignatureHelp {
         let ret = new vscode.SignatureHelp();
         let signatures: vscode.SignatureInformation[] = [];
         for(let i in this.syntaxes) {
@@ -267,8 +267,17 @@ export class MapDoc {
             signatures.push(signature);
         }
         
-        ret.signatures = signatures;
-        ret.activeSignature = 0; //TODO
+        ret.signatures = signatures.sort((a, b) => a.parameters.length - b.parameters.length); //パラメータ数で昇順ソート
+        //パラメータ数からシグネチャを選択
+        ret.activeSignature = ret.signatures.length - 1;
+        for(var i = ret.signatures.length - 1; i >= 0; i--) {
+            if((paramIdx+1) <= ret.signatures[i].parameters.length) {
+                ret.activeSignature = i;
+            }
+        }
+
+        //アクティブパラメータの設定
+        ret.activeParameter = paramIdx;
         return ret;
     }
 

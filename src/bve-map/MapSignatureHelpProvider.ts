@@ -83,8 +83,7 @@ export class MapSignatureHelpProvider implements vscode.SignatureHelpProvider {
                     let syntaxes = MapDocs.instance.getSyntaxes();
                     for(let i in syntaxes) {
                         if(syntaxes[i].isMatchSyntax(funcName)) {
-                            let ret = syntaxes[i].getSignatureHelp();
-                            ret.activeParameter = paramCount;
+                            let ret = syntaxes[i].getSignatureHelp(paramCount);
                             resolve(ret);
                         }
                     }
