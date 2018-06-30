@@ -41,7 +41,6 @@ export class MapDocs {
         );
         //Curve.Begin2(radius)
         curve_begin.addSyntax(
-            MapSyntaxType.Syntax1, "Curve", "", "Begin",
             this.convMarkDown("平面曲線の円曲線を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)から開始します。"),
             [
                 this.createParam("radius", "曲線半径 [m] (正: 右曲線, 負: 左曲線)"),
@@ -49,7 +48,6 @@ export class MapDocs {
         );
         //Curve.Begin()
         curve_begin.addSyntax(
-            MapSyntaxType.Syntax1, "Curve", "", "Begin",
             this.convMarkDown("平面曲線の円曲線を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)から開始します。"),
             [
             ],
@@ -60,12 +58,26 @@ export class MapDocs {
         //#endregion
 
         //#region 他軌道
+        //Track[].X.Interpolate(x, radius)
         let track_x_interpolate = new MapDoc(
             MapSyntaxType.Syntax3, "Track", "X", "Interpolate",
             this.convMarkDown("現在の[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における他軌道の x 方向位置を設定します。2 つの Track[].X.Interpolate との間の x 座標は補間されます。引数が省略された場合、1 つ手前の Track[].X.Interpolate の値が使用されます。"),
             [
                 this.createParam("x", "自軌道からの x 座標 [m]"),
                 this.createParam("radius", "現在の距離程以降の自軌道との平面曲線相対半径 [m] (0: 直線)")
+            ],
+        );
+        //Track[].X.Interpolate(x)
+        track_x_interpolate.addSyntax(
+            this.convMarkDown("現在の[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における他軌道の x 方向位置を設定します。2 つの Track[].X.Interpolate との間の x 座標は補間されます。引数が省略された場合、1 つ手前の Track[].X.Interpolate の値が使用されます。"),
+            [
+                this.createParam("x", "自軌道からの x 座標 [m]"),
+            ],
+        );
+        //Track[].X.Interpolate()
+        track_x_interpolate.addSyntax(
+            this.convMarkDown("現在の[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における他軌道の x 方向位置を設定します。2 つの Track[].X.Interpolate との間の x 座標は補間されます。引数が省略された場合、1 つ手前の Track[].X.Interpolate の値が使用されます。"),
+            [
             ],
         );
 
@@ -161,31 +173,29 @@ export class MapDoc {
         funcName: string,
         document: vscode.MarkdownString,
         params: MapParameter[]
-    ) { this.addSyntax(syntaxType, mapElement1Name, mapElement2Name, funcName, document, params); }
-
-    /**
-     * 構文のシンタックスを追加します。
-     * @param syntaxType マップ構文の種類
-     * @param mapElement1Name マップ要素1名
-     * @param mapElement2Name マップ要素2名
-     * @param funcName 関数名
-     * @param document 関数の説明
-     * @param params 引数
-     */
-    addSyntax(
-        syntaxType: MapSyntaxType,
-        mapElement1Name: string,
-        mapElement2Name: string,
-        funcName: string,
-        document: vscode.MarkdownString,
-        params: MapParameter[]
-    ) {
+    ) {         
         this.syntaxes.push(
             new MapSyntax(
                 syntaxType,
                 mapElement1Name,
                 mapElement2Name,
                 funcName,
+                document,
+                params
+            )
+        );
+    }
+
+    addSyntax(
+        document: vscode.MarkdownString,
+        params: MapParameter[]
+    ) {
+        this.syntaxes.push(
+            new MapSyntax(
+                this.syntaxes[0].getSyntaxType(),
+                this.syntaxes[0].getMapElement1Name(),
+                this.syntaxes[0].getMapElement2Name(),
+                this.syntaxes[0].getFuncName(),
                 document,
                 params
             )
