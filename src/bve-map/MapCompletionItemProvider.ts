@@ -1,31 +1,11 @@
 'use strict';
 
 import * as vscode from 'vscode';
+import * as util from '../util';
 import {MapDocs, MapSyntaxType} from './MapDocs';
 import { List } from 'linqts';
 
 export class MapCompletionItemProvider implements vscode.CompletionItemProvider {
-
-    constructor() {
-    }
-
-    /**
-     * 引数に与えられた文字列から不要な部分を削除します。
-     * @param trimText 未整形のマップファイルテキスト
-     */
-    private trimMapText(text: string): string {
-        let lines = text.split('\n');
-        var ret = "";
-        for(let i in lines) {
-            let commentIdx = lines[i].search(/#|\/\//);
-            if(commentIdx !== -1) {
-                lines[i] = lines[i].substring(0, commentIdx);
-            }
-            ret += lines[i].replace(/\s+/g, "");
-        }
-        console.log("TrimText:" + ret);
-        return ret;
-    }
 
     /**
      * 引数に与えられた文字列から関数名を取得して返します。
@@ -45,7 +25,7 @@ export class MapCompletionItemProvider implements vscode.CompletionItemProvider 
         Promise<vscode.CompletionItem[]> {
 
             //テキスト取得
-            let txt = this.trimMapText(
+            let txt = util.trimMapText(
                 document.getText(new vscode.Range(new vscode.Position(0, 0), position))
             );
             //let nowChar = txt.substring(txt.length - 1);

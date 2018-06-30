@@ -1,6 +1,7 @@
 'use strict';
 
 import * as vscode from 'vscode';
+import * as util from './util';
 import { MapSignatureHelpProvider } from './bve-map/MapSignatureHelpProvider';
 import { MapCompletionItemProvider } from './bve-map/MapCompletionItemProvider';
 
@@ -55,27 +56,6 @@ class DistanceChecker {
 
     private _statusBarItem: vscode.StatusBarItem =  vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
 
-    /**
-     * 引数に与えられた文字列から不要な部分を削除します。
-     * @param trimText 未整形のマップファイルテキスト
-     */
-    private trimMapText(text: string): string {
-        //ヘッダの削除
-        let headerRegex = /^\s*BveTs\s*Map\s*\d+\.\d+\s*(?::.*)?\s*(?:$|\r\n|\n|\r)/gi
-        text = text.replace(headerRegex, "");
-
-        let lines = text.split('\n');
-        var ret = "";
-        for(let i in lines) {
-            let commentIdx = lines[i].search(/#|\/\//);
-            if(commentIdx !== -1) {
-                lines[i] = lines[i].substring(0, commentIdx);
-            }
-            ret += lines[i].replace(/\s+/g, "");
-        }
-        return ret;
-    }
-
     public updateDistance() {
 
         // テキストエディタを取得
@@ -107,7 +87,7 @@ class DistanceChecker {
         if (selections.length === 1) {
             let pos = selections[0].active;
             let range = new vscode.Range(new vscode.Position(0,0), pos);
-            let utext = this.trimMapText(doc.getText(range));
+            let utext = util.trimMapText(doc.getText(range));
 
             //全ての距離程を取得
             let m = utext.match(distRegex);
