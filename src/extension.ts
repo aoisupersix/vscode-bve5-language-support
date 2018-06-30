@@ -55,6 +55,27 @@ class DistanceChecker {
 
     private _statusBarItem: vscode.StatusBarItem =  vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
 
+    /**
+     * 引数に与えられた文字列から不要な部分を削除します。
+     * @param trimText 未整形のマップファイルテキスト
+     */
+    private trimMapText(text: string): string {
+        //ヘッダの削除
+        let headerRegex = /^\s*BveTs\s*Map\s*\d+\.\d+\s*(?::.*)?\s*(?:$|\r\n|\n|\r)/gi
+        text = text.replace(headerRegex, "");
+
+        let lines = text.split('\n');
+        var ret = "";
+        for(let i in lines) {
+            let commentIdx = lines[i].search(/#|\/\//);
+            if(commentIdx !== -1) {
+                lines[i] = lines[i].substring(0, commentIdx);
+            }
+            ret += lines[i].replace(/\s+/g, "");
+        }
+        return ret;
+    }
+
     public updateDistance() {
 
         // テキストエディタを取得
@@ -81,16 +102,21 @@ class DistanceChecker {
      * @param selections Cursors
      */
     public _getDistance(doc: vscode.TextDocument, selections: vscode.Selection[]): string {
+        let distRegex = /(?:^|;)(?:\$[a-zA-Z]+|\d+(?:\.\d+)?)(?:[+\-*/%](?:\$[a-zA-Z]+|\d+(?:\.\d+)?))*;/g
 
         if (selections.length === 1) {
             let pos = selections[0].active;
             let range = new vscode.Range(new vscode.Position(0,0), pos);
-            let utext = doc.getText(range);
+            let utext = this.trimMapText(doc.getText(range));
 
-            //距離程がカーソルの位置より上にあるか
-            let m = utext.match(/\d+(?:\.\d+)?;/gi);
+            //全ての距離程を取得
+            let m = utext.match(distRegex);
             if (m !== null){
-                return m[m.length - 1].replace(';', '');
+                let nowDist = m[m.length-1].replace(/;/g, ""); //現在の距離程
+                let distNumber = nowDist.match(/^\d+(?:\.\d+)?$/gi)
+                if(distNumber !== null){
+                    return distNumber[0]
+                }
             }
         }
 

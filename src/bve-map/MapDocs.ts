@@ -589,6 +589,24 @@ export class MapDocs {
    
         //#region 先行列車
 
+        //PreTrain.Pass(time)
+        let pretrain_pass = new MapDoc(
+            MapSyntaxType.Syntax1, "PreTrain", "", "Pass",
+            this.convMarkDown("先行列車が現在の距離程を通過する時刻を設定します。"),
+            [
+                this.createParam("time", "**time**: 時刻を表す文字列 ('hh:mm:ss')")
+            ]
+        )
+        //PreTrain.Pass(second)
+        pretrain_pass.addSyntax(
+            this.convMarkDown("先行列車が現在の距離程を通過する時刻を設定します。"),
+            [
+                this.createParam("second", "**second**: 00:00:00 からの経過時間 [sec]")
+            ]
+        );
+
+        this.syntaxes.push(pretrain_pass);
+
         //#endregion 先行列車
     }
 
