@@ -23,7 +23,7 @@ VsCodeでBveTrainsim5.7構文をサポートするためのエクステンショ
 
 ## Release Notes
 
-詳細は[CHANGELOG](CHANGELOD.md)を見てください。
+詳細は[CHANGELOG](CHANGELOG.md)を見てください。
 
 ### 0.1.0 - 2018/07/03
 
@@ -37,4 +37,4 @@ The MIT License(MIT)
 
 Copyright(c) 2018 aoisupersix
 
-[License.md](License.md)
+[License.md](LICENSE.md)
