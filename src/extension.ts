@@ -10,8 +10,6 @@ const BVE_MAP_MODE: vscode.DocumentFilter = {language: 'bve-map-2.02', scheme: '
 
 export function activate(context: vscode.ExtensionContext) {
 
-    console.log('Congratulations, your extension "bve5-language-suport" is now active!');
-
     let distChecker = new DistanceChecker();
     let controller = new DistanceCheckerController(distChecker);
 

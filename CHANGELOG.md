@@ -5,6 +5,12 @@ All notable changes to the "bve5-language-support" extension will be documented 
 - 他ファイルの対応
 - インデントの改良
 
+## [0.2.1] - 2018/07/01
+### Updated
+- マーケットプレイスのデザインを改良
+- ドキュメントの改良
+- 余計なログを非表示に改良
+
 ## [0.2.0] - 2018/07/01
 ### Added
 - マップ構文のホバー表示を実装
