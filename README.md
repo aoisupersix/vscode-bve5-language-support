@@ -25,7 +25,7 @@ VSCodeでBveTrainsim5.7構文をサポートするための拡張です。
 ## How to use this extension?
 
 1. [Visual Studio Code](https://code.visualstudio.com)をインストールして起動し、 `Ctrl+Shift+X`、もしくは`Cmd+Shift+X`を入力して拡張機能パネルを開いてください。 
-2. [Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-vscode.Go)から`Bve5 Language Support`を検索してインストールします。
+2. [Marketplace](https://marketplace.visualstudio.com/items?itemName=aoisupersix.bve5-language-support)から`Bve5 Language Support`を検索してインストールします。
 3. `Map.txt`という名前のファイルを開く/保存するか、`言語モードの選択`をクリックして`BveTs Map 2.02`を選択することで拡張を有効化することが出来ます。
 
 ## Release Notes
