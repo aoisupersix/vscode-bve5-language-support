@@ -15,8 +15,8 @@
         "description": "縦曲線を現在の距離程から開始します。"
     },
     "gradient.begin": {
-        "prefix": "Begin(gradient)",
-        "body": "Begin(${1:gradient});${0:}",
+        "prefix": "Gradient.Begin(gradient)",
+        "body": "Gradient.Begin(${1:gradient});${0:}",
         "description": "縦曲線を現在の距離程で終了し、勾配を一定に保ちます。"
     },
     "track.x.interpolate": {
