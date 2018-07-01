@@ -537,6 +537,42 @@ export class MapDocs {
 
         //#endregion
 
+        //#region 閉そく
+
+        //Section.Begin(signal0, signal1, ...signalN)
+        let section_signal = new MapDoc(
+            MapSyntaxType.Syntax1, "Section", "", "Begin",
+            this.convMarkDown("新しい閉そくを現在の距離程から開始します。"),
+            [
+                this.createParam("signal0", "**signal0**: 先行列車がこの閉そくに存在する場合の信号インデックス"),
+                this.createParam("signal1", "**signal0**: 先行列車が 1 閉そく先に存在する場合の信号インデックス"),
+                this.createParam("...signalN", "**signalN**: 先行列車が N 閉そく先に存在する場合の信号インデックス"),
+            ]
+        );
+
+        //Section.SetSpeedLimit(v0, v1, ...vN)
+        let section_setspeedlimit = new MapDoc(
+            MapSyntaxType.Syntax1, "Section", "", "SetSpeedLimit",
+            this.convMarkDown("信号現示の許容速度を設定します。"),
+            [
+                this.createParam("signal0", "**signal0**: 走行速度 [km/h] (null: 許容速度なし)"),
+                this.createParam("signal1", "**signal0**: 走行速度 [km/h] (null: 許容速度なし)"),
+                this.createParam("...signalN", "**signalN**: 走行速度 [km/h] (null: 許容速度なし)"),
+            ]
+        );
+
+        this.mapElements.push(new MapDoc(
+            MapSyntaxType.Syntax1, "Section", "", "",
+            this.convMarkDown("閉そく"), []
+        ));
+
+        this.syntaxes.push(
+            section_signal,
+            section_setspeedlimit
+        );
+
+        //#endregion 閉そく
+
         //#region 地上信号機
 
         //Signal.Load(filePath)
