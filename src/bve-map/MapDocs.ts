@@ -17,6 +17,11 @@ export class MapDocs {
     private syntaxes: MapDoc[] = [];
 
     /**
+     * 全てのマップ要素名
+     */
+    private mapElements: MapDoc[] = [];
+
+    /**
      * デフォルトのコンストラクタ
      * ここで構文の定義を行う
      */
@@ -63,7 +68,7 @@ export class MapDocs {
             this.convMarkDown("平面曲線の円曲線を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)から開始します。カントを設定する場合は、この手前に Curve.BeginTransition を記述する必要があります。"),
             [
                 this.createParam("radius", "**radius**: 曲線半径 [m] (正: 右曲線, 負: 左曲線)"),
-                this.createParam("cant","**cant**: カント [m]"),
+                this.createParam("cant", "**cant**: カント [m]"),
             ],
         );
         //Curve.Begin2(radius)
@@ -94,7 +99,7 @@ export class MapDocs {
             this.convMarkDown("現在の距離程における平面曲線の半径とカントを設定します。1 つ手前の Curve.Interpolate または Curve.Change の間は補間されます。補間関数は、Curve.SetFunction で設定します。"),
             [
                 this.createParam("radius", "**radius**: 曲線半径 [m] (正: 右曲線, 負: 左曲線, 0: 直線)"),
-                this.createParam("cant","**cant**: カント [m]"),
+                this.createParam("cant", "**cant**: カント [m]"),
             ],
         );
         //Curve.Interpolate(radius)
@@ -119,7 +124,12 @@ export class MapDocs {
                 this.createParam("id", "**id**: 曲線半径 [m] (正: 右曲線, 負: 左曲線, 0: 直線)"),
             ],
         );
-        
+
+        this.mapElements.push(new MapDoc(
+            MapSyntaxType.Syntax1, "Curve", "", "",
+            this.convMarkDown("自軌道の平面曲線 (曲率とカント)"), []
+        ));
+
         this.syntaxes.push(
             curve_setgauge,
             curve_setcenter,
@@ -173,6 +183,11 @@ export class MapDocs {
             [
             ],
         );
+
+        this.mapElements.push(new MapDoc(
+            MapSyntaxType.Syntax1, "Gradient", "", "",
+            this.convMarkDown("自軌道の勾配"), []
+        ));
 
         this.syntaxes.push(
             gradient_begintransition,
@@ -328,6 +343,11 @@ export class MapDocs {
             ],
         );
 
+        this.mapElements.push(new MapDoc(
+            MapSyntaxType.Syntax1, "Track", "", "",
+            this.convMarkDown("他軌道"), []
+        ));
+
         this.syntaxes.push(
             track_x_interpolate,
             track_y_interpolate,
@@ -341,7 +361,7 @@ export class MapDocs {
             track_cant_interpolate
         );
         //#endregion
-    
+
         //#region ストラクチャ
 
         //Structure.Load(filePath)
@@ -399,7 +419,12 @@ export class MapDocs {
                 this.createParam("trackKey1", "**trackKey1**: 一方の軌道の軌道名 (0: 自軌道)"),
                 this.createParam("trackKey2", "**trackKey2**: 他方の軌道の軌道名"),
             ]
-        )
+        );
+
+        this.mapElements.push(new MapDoc(
+            MapSyntaxType.Syntax1, "Structure", "", "",
+            this.convMarkDown("ストラクチャー"), []
+        ));
 
         this.syntaxes.push(
             structure_load,
@@ -460,6 +485,16 @@ export class MapDocs {
             ]
         );
 
+        this.mapElements.push(new MapDoc(
+            MapSyntaxType.Syntax1, "Repeater", "", "",
+            this.convMarkDown("連続ストラクチャー"), []
+        ));
+
+        this.mapElements.push(new MapDoc(
+            MapSyntaxType.Syntax1, "BackGround", "", "",
+            this.convMarkDown("背景"), []
+        ));
+
         this.syntaxes.push(
             repeater_begin,
             repeater_begin0,
@@ -467,7 +502,7 @@ export class MapDocs {
             background_change,
         );
         //#endregion
-    
+
         //#region 停車場
 
         //Station.Load(filePath)
@@ -489,6 +524,11 @@ export class MapDocs {
                 this.createParam("margin2", "**margin2**: 停止位置誤差の前方許容範囲"),
             ]
         );
+
+        this.mapElements.push(new MapDoc(
+            MapSyntaxType.Syntax1, "Station", "", "",
+            this.convMarkDown("停車場"), []
+        ));
 
         this.syntaxes.push(
             station_load,
@@ -537,6 +577,11 @@ export class MapDocs {
             ]
         );
 
+        this.mapElements.push(new MapDoc(
+            MapSyntaxType.Syntax1, "Signal", "", "",
+            this.convMarkDown("地上信号機"), []
+        ));
+
         this.syntaxes.push(
             signal_load,
             signal_put,
@@ -556,6 +601,11 @@ export class MapDocs {
                 this.createParam("sendData", "**sendData**: 保安装置に送る値 (整数)"),
             ]
         );
+
+        this.mapElements.push(new MapDoc(
+            MapSyntaxType.Syntax1, "Beacon", "", "",
+            this.convMarkDown("地上子"), []
+        ));
 
         this.syntaxes.push(beacon_put);
 
@@ -580,13 +630,18 @@ export class MapDocs {
             ]
         );
 
+        this.mapElements.push(new MapDoc(
+            MapSyntaxType.Syntax1, "SppedLimit", "", "",
+            this.convMarkDown("速度制限"), []
+        ));
+
         this.syntaxes.push(
             speedlimit_begin,
             speedlimit_end,
         );
 
         //#endregion
-   
+
         //#region 先行列車
 
         //PreTrain.Pass(time)
@@ -604,6 +659,11 @@ export class MapDocs {
                 this.createParam("second", "**second**: 00:00:00 からの経過時間 [sec]")
             ]
         );
+
+        this.mapElements.push(new MapDoc(
+            MapSyntaxType.Syntax1, "PreTrain", "", "",
+            this.convMarkDown("先行列車"), []
+        ));
 
         this.syntaxes.push(pretrain_pass);
 
@@ -643,6 +703,11 @@ export class MapDocs {
             ]
         );
 
+        this.mapElements.push(new MapDoc(
+            MapSyntaxType.Syntax1, "Light", "", "",
+            this.convMarkDown("光源"), []
+        ));
+
         this.syntaxes.push(
             light_ambient,
             light_diffuse,
@@ -677,6 +742,11 @@ export class MapDocs {
             ]
         );
 
+        this.mapElements.push(new MapDoc(
+            MapSyntaxType.Syntax1, "Fog", "", "",
+            this.convMarkDown("霧効果"), []
+        ));
+
         this.syntaxes.push(fog_interpolate);
 
         //#endregion
@@ -691,6 +761,11 @@ export class MapDocs {
                 this.createParam("value", "**value**: 距離 [m] (0: [設定] ウィンドウで設定される描画距離を適用)")
             ]
         );
+
+        this.mapElements.push(new MapDoc(
+            MapSyntaxType.Syntax1, "DrawDistance", "", "",
+            this.convMarkDown("風景描画距離"), []
+        ));
 
         this.syntaxes.push(drawdistance_change);
 
@@ -713,6 +788,11 @@ export class MapDocs {
             ]
         );
 
+        this.mapElements.push(new MapDoc(
+            MapSyntaxType.Syntax1, "CabIlluminance", "", "",
+            this.convMarkDown("運転台の明るさ"), []
+        ));
+
         this.syntaxes.push(cab_interpolate);
 
         //#endregion
@@ -732,6 +812,11 @@ export class MapDocs {
                 this.createParam("lr", "**lr**: ロール変位の遮断波長 [m]"),
             ]
         );
+
+        this.mapElements.push(new MapDoc(
+            MapSyntaxType.Syntax1, "Irregularity", "", "",
+            this.convMarkDown("軌道変位"), []
+        ));
 
         this.syntaxes.push(irregularity_change);
 
@@ -757,6 +842,11 @@ export class MapDocs {
             ]
         );
 
+        this.mapElements.push(new MapDoc(
+            MapSyntaxType.Syntax1, "Adhesion", "", "",
+            this.convMarkDown("粘着特性"), []
+        ));
+
         this.syntaxes.push(adhesion_change);
 
         //#endregion
@@ -779,6 +869,11 @@ export class MapDocs {
             [
             ]
         );
+
+        this.mapElements.push(new MapDoc(
+            MapSyntaxType.Syntax1, "Sound", "", "",
+            this.convMarkDown("音"), []
+        ));
 
         this.syntaxes.push(
             sound_load,
@@ -808,6 +903,11 @@ export class MapDocs {
             ]
         );
 
+        this.mapElements.push(new MapDoc(
+            MapSyntaxType.Syntax1, "Sound3D", "", "",
+            this.convMarkDown("固定音源"), []
+        ));
+
         this.syntaxes.push(
             sound3d_load,
             sound3d_put,
@@ -826,6 +926,11 @@ export class MapDocs {
             ]
         );
 
+        this.mapElements.push(new MapDoc(
+            MapSyntaxType.Syntax1, "RollingNoise", "", "",
+            this.convMarkDown("走行音"), []
+        ));
+
         this.syntaxes.push(rollingnoise_change);
 
         //#endregion
@@ -840,6 +945,11 @@ export class MapDocs {
                 this.createParam("index", "**index**: 車両サウンドファイルの [Flange] セクションで定義したインデックス")
             ]
         );
+
+        this.mapElements.push(new MapDoc(
+            MapSyntaxType.Syntax1, "FlangeNoise", "", "",
+            this.convMarkDown("フランジきしり音"), []
+        ));
 
         this.syntaxes.push(flangenoise_change);
 
@@ -856,10 +966,15 @@ export class MapDocs {
             ]
         );
 
+        this.mapElements.push(new MapDoc(
+            MapSyntaxType.Syntax1, "JointNoise", "", "",
+            this.convMarkDown("分岐器通過音"), []
+        ));
+
         this.syntaxes.push(jointnoise_play);
 
         //#endregion
-        
+
         //#region 他列車
 
         //Train.Add(trainKey, filePath, trackKey, direction)
@@ -913,6 +1028,11 @@ export class MapDocs {
             ]
         );
 
+        this.mapElements.push(new MapDoc(
+            MapSyntaxType.Syntax1, "Train", "", "",
+            this.convMarkDown("他列車"), []
+        ));
+
         this.syntaxes.push(
             train_add,
             train_load,
@@ -929,7 +1049,7 @@ export class MapDocs {
      * @param name パラメータ名
      * @param documentString パラメータの説明
      */
-    private createParam(name: string, documentString: string) : MapParameter {
+    private createParam(name: string, documentString: string): MapParameter {
         return new MapParameter(name, this.convMarkDown(documentString));
     }
 
@@ -957,6 +1077,13 @@ export class MapDocs {
      */
     getSyntaxes() {
         return this.syntaxes;
+    }
+
+    /**
+     * 全てのマップ要素名を取得します。
+     */
+    getMapElements() {
+        return this.mapElements;
     }
 }
 
@@ -1011,7 +1138,7 @@ export class MapDoc {
         funcName: string,
         document: vscode.MarkdownString,
         params: MapParameter[]
-    ) {         
+    ) {
         this.syntaxes.push(
             new MapSyntax(
                 syntaxType,
@@ -1058,12 +1185,12 @@ export class MapDoc {
      * 引数に与えられたらマップ構文のマップ要素1名と一致するか？
      * @param mapElement1Text マップ要素1名
      */
-    isMatchMapElement1(mapElement1Text: string) : boolean {
+    isMatchMapElement1(mapElement1Text: string): boolean {
         let type = this.syntaxes[0].getSyntaxType();
-        if(type === MapSyntaxType.Syntax1) {
+        if (type === MapSyntaxType.Syntax1) {
             //シンタックス1はキーがない
             return mapElement1Text.match(new RegExp(String.raw`^${this.syntaxes[0].getMapElement1Name()}$`, "i")) !== null;
-        }else {
+        } else {
             return mapElement1Text.match(new RegExp(String.raw`^${this.syntaxes[0].getMapElement1Name()}\[.*\]$`, "i")) !== null;
         }
     }
@@ -1073,12 +1200,12 @@ export class MapDoc {
      * 全てのシンタックスタイプに対応
      * @param mapElementText マップ要素
      */
-    isMatchMapElement(mapElementText: string) : boolean {
+    isMatchMapElement(mapElementText: string): boolean {
         let type = this.syntaxes[0].getSyntaxType();
-        if(type === MapSyntaxType.Syntax1 || type === MapSyntaxType.Syntax2) {
+        if (type === MapSyntaxType.Syntax1 || type === MapSyntaxType.Syntax2) {
             //シンタックス1 or 2の場合はマップ要素1のみの結果を返す
             return this.isMatchMapElement1(mapElementText);
-        }else if(type === MapSyntaxType.Syntax3) {
+        } else if (type === MapSyntaxType.Syntax3) {
             //シンタックス3の場合はマップ要素1 + マップ要素2の結果を返す
             return mapElementText.match(new RegExp(String.raw`^${this.syntaxes[0].getMapElement1Name()}\[.*\]\.${this.syntaxes[0].getMapElement2Name()}$`, "i")) !== null;
         }
@@ -1090,8 +1217,8 @@ export class MapDoc {
      * 引数に与えられたらマップ構文のシンタックスと一致するか？
      * @param syntaxText マップ構文シンタックス
      */
-    isMatchSyntax(syntaxText: string) : boolean {
-        switch(this.syntaxes[0].getSyntaxType()) {
+    isMatchSyntax(syntaxText: string): boolean {
+        switch (this.syntaxes[0].getSyntaxType()) {
             case MapSyntaxType.Syntax1:
                 return syntaxText.match(new RegExp(String.raw`^${this.syntaxes[0].getMapElement1Name()}\.${this.syntaxes[0].getFuncName()}$`, "i")) !== null;
             case MapSyntaxType.Syntax2:
@@ -1106,20 +1233,20 @@ export class MapDoc {
     /**
      * SignatureHelpを取得します。
      */
-    getSignatureHelp(paramIdx: number) : vscode.SignatureHelp {
+    getSignatureHelp(paramIdx: number): vscode.SignatureHelp {
         let ret = new vscode.SignatureHelp();
         let signatures: vscode.SignatureInformation[] = [];
-        for(let i in this.syntaxes) {
+        for (let i in this.syntaxes) {
             let signature = new vscode.SignatureInformation(this.syntaxes[i].getDisplayName(), this.syntaxes[i].getDocument());
             signature.parameters = this.syntaxes[i].getSignatureParams();
             signatures.push(signature);
         }
-        
+
         ret.signatures = signatures.sort((a, b) => a.parameters.length - b.parameters.length); //パラメータ数で昇順ソート
         //パラメータ数からシグネチャを選択
         ret.activeSignature = ret.signatures.length - 1;
-        for(var i = ret.signatures.length - 1; i >= 0; i--) {
-            if((paramIdx+1) <= ret.signatures[i].parameters.length) {
+        for (var i = ret.signatures.length - 1; i >= 0; i--) {
+            if ((paramIdx + 1) <= ret.signatures[i].parameters.length) {
                 ret.activeSignature = i;
             }
         }
@@ -1132,22 +1259,35 @@ export class MapDoc {
     /**
      * マップ要素1のコード補完アイテムを取得します。
      */
-    getMapElement1CompletionItem() : vscode.CompletionItem {
+    getMapElement1CompletionItem(): vscode.CompletionItem {
         return new vscode.CompletionItem(this.syntaxes[0].getMapElement1Name(), vscode.CompletionItemKind.Class);
     }
 
     /**
      * マップ要素2のコード補完アイテムを取得します。(シンタックス3のみ)
      */
-    getMapElement2CompletionItem() : vscode.CompletionItem {
+    getMapElement2CompletionItem(): vscode.CompletionItem {
         return new vscode.CompletionItem(this.syntaxes[0].getMapElement2Name(), vscode.CompletionItemKind.Function);
     }
 
     /**
      * 関数名のコード補完アイテムを取得します。
      */
-    getFunctionCompletionItem() : vscode.CompletionItem {
+    getFunctionCompletionItem(): vscode.CompletionItem {
         return new vscode.CompletionItem(this.syntaxes[0].getFuncName(), vscode.CompletionItemKind.Function);
+    }
+
+    /**
+     * マップ要素1のホバーを取得します。
+     */
+    getMapElement1Hover(range: vscode.Range): vscode.Hover {
+        return new vscode.Hover(
+            [
+                new vscode.MarkdownString(`マップ要素： *${this.syntaxes[0].getMapElement1Name()}*`),
+                this.syntaxes[0].getDocument()
+            ],
+            range
+        );
     }
 }
 
@@ -1171,7 +1311,7 @@ export class MapSyntax {
         private funcName: string,
         private document: vscode.MarkdownString,
         private params: MapParameter[]
-    ) {}
+    ) { }
 
     /**
      * マップ構文の種類を取得します。
@@ -1213,7 +1353,7 @@ export class MapSyntax {
      */
     getDisplayName(): string {
         let displayName = "";
-        switch(this.syntaxType) {
+        switch (this.syntaxType) {
             case MapSyntaxType.Syntax1:
                 displayName += `${this.mapElement1Name}.${this.funcName}`;
                 break;
@@ -1227,8 +1367,8 @@ export class MapSyntax {
 
         //引数の追加
         displayName += "(";
-        if(this.params.length > 0) {
-            for(let i in this.params) {
+        if (this.params.length > 0) {
+            for (let i in this.params) {
                 displayName += this.params[i].Name + ", ";
             }
             displayName = displayName.substring(0, displayName.length - 2); //最後のコンマは消す
@@ -1243,7 +1383,7 @@ export class MapSyntax {
      */
     getSignatureParams(): vscode.ParameterInformation[] {
         let paramInfos: vscode.ParameterInformation[] = [];
-        for(let i in this.params) {
+        for (let i in this.params) {
             paramInfos.push(this.params[i].getParameterInfo());
         }
         return paramInfos;
@@ -1263,7 +1403,7 @@ export class MapParameter {
     constructor(
         public Name: string,
         public Document: vscode.MarkdownString
-        ){}
+    ) { }
 
     /**
      * ParameterInfoを取得します。

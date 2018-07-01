@@ -4,6 +4,7 @@ import * as vscode from 'vscode';
 import * as util from './util';
 import { MapSignatureHelpProvider } from './bve-map/MapSignatureHelpProvider';
 import { MapCompletionItemProvider } from './bve-map/MapCompletionItemProvider';
+import { MapHoverProvider } from './bve-map/MapHoverProvider';
 
 const BVE_MAP_MODE: vscode.DocumentFilter = {language: 'bve-map-2.02', scheme: 'file' };
 
@@ -18,6 +19,7 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(distChecker);
     context.subscriptions.push(vscode.languages.registerSignatureHelpProvider(BVE_MAP_MODE, new MapSignatureHelpProvider(), '('));
     context.subscriptions.push(vscode.languages.registerCompletionItemProvider(BVE_MAP_MODE, new MapCompletionItemProvider(), '.'));
+    context.subscriptions.push(vscode.languages.registerHoverProvider(BVE_MAP_MODE, new MapHoverProvider()));
 }
 
 export function deactivate() {
