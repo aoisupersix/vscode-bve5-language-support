@@ -403,8 +403,8 @@ export class MapDocs {
 
         //Structure.PutBetween(trackKey1, trackKey2, flag)
         let structure_putbetween = new MapDoc(
-            MapSyntaxType.Syntax2, "Structure", "", "PutBetWeen",
-            this.convMarkDown("ストラクチャーを設置します。Structure[].Put 構文の x, y, z, rx, ry, rz に 0 を設定したことと同じです。"),
+            MapSyntaxType.Syntax2, "Structure", "", "PutBetween",
+            this.convMarkDown("ストラクチャーを現在の距離程の 2 つの軌道の間に設置します。ストラクチャーは、軌道間の距離に応じて変形します。"),
             [
                 this.createParam("trackKey1", "**trackKey1**: 一方の軌道の軌道名 (0: 自軌道)"),
                 this.createParam("trackKey2", "**trackKey2**: 他方の軌道の軌道名"),
@@ -1214,6 +1214,14 @@ export class MapDoc {
     }
 
     /**
+     * 引数に与えられた関数名と一致するか？
+     * @param funcName 関数名
+     */
+    isMatchFuncName(funcName: string): boolean {
+        return funcName.match(new RegExp(String.raw`^${this.syntaxes[0].getFuncName()}$`, "gi")) !== null;
+    }
+
+    /**
      * 引数に与えられたらマップ構文のシンタックスと一致するか？
      * @param syntaxText マップ構文シンタックス
      */
@@ -1237,7 +1245,7 @@ export class MapDoc {
         let ret = new vscode.SignatureHelp();
         let signatures: vscode.SignatureInformation[] = [];
         for (let i in this.syntaxes) {
-            let signature = new vscode.SignatureInformation(this.syntaxes[i].getDisplayName(), this.syntaxes[i].getDocument());
+            let signature = new vscode.SignatureInformation(this.syntaxes[i].getSyntaxDisplayName() + this.syntaxes[i].getParameterDispalyName(), this.syntaxes[i].getDocument());
             signature.parameters = this.syntaxes[i].getSignatureParams();
             signatures.push(signature);
         }
@@ -1279,11 +1287,26 @@ export class MapDoc {
 
     /**
      * マップ要素1のホバーを取得します。
+     * @param range　ホバー範囲
      */
     getMapElement1Hover(range: vscode.Range): vscode.Hover {
         return new vscode.Hover(
             [
-                new vscode.MarkdownString(`マップ要素： *${this.syntaxes[0].getMapElement1Name()}*`),
+                new vscode.MarkdownString(`マップ要素： ${this.syntaxes[0].getMapElement1Name()}`),
+                this.syntaxes[0].getDocument()
+            ],
+            range
+        );
+    }
+
+    /**
+     * 関数名のホバーを取得します。
+     * @param range ホバー範囲
+     */
+    getFunctionHover(range: vscode.Range): vscode.Hover {
+        return new vscode.Hover(
+            [
+                new vscode.MarkdownString(`${this.syntaxes[0].getSyntaxDisplayName()}`),
                 this.syntaxes[0].getDocument()
             ],
             range
@@ -1351,7 +1374,7 @@ export class MapSyntax {
     /**
      * 構文の表示名を取得します。
      */
-    getDisplayName(): string {
+    getSyntaxDisplayName(): string {
         let displayName = "";
         switch (this.syntaxType) {
             case MapSyntaxType.Syntax1:
@@ -1364,6 +1387,15 @@ export class MapSyntax {
                 displayName += `${this.mapElement1Name}.${this.mapElement2Name}.${this.funcName}`;
                 break;
         }
+
+        return displayName;
+    }
+
+    /**
+     * 引数の表示名を取得します。
+     */
+    getParameterDispalyName(): string {
+        let displayName = "";
 
         //引数の追加
         displayName += "(";
