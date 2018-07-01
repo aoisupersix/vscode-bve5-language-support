@@ -23,10 +23,6 @@
         "Snippets",
         "Other"
     ],
-    "galleryBanner": {
-        "color": "#EFF1F3",
-        "theme": "dark"
-    },
     "activationEvents": [
         "onLanguage:bve-map-2.02"
     ],
