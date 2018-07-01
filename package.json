@@ -4,7 +4,7 @@
     "description": "BveTrainsim5.7 language support extension for VSCode.",
     "version": "0.2.0",
     "publisher": "aoisupersix",
-    "icon": "./icons/extension-icon.png",
+    "icon": "icons/extension-icon.png",
     "author": {
         "email": "aoisupersix@gmail.com",
         "name": "aoisupersix",
