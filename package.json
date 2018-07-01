@@ -1,7 +1,7 @@
 {
     "name": "bve5-language-support",
     "displayName": "Bve5 Language Support",
-    "description": "Language support extension for BveTrainsim5.7.",
+    "description": "BveTrainsim5.7 language support extension for VSCode.",
     "version": "0.1.0",
     "publisher": "aoisupersix",
     "icon": "./icons/extension-icon.png",
