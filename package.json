@@ -4,6 +4,7 @@
     "description": "Language support extension for BveTrainsim5.7.",
     "version": "0.1.0",
     "publisher": "aoisupersix",
+    "icon": "./icons/extension-icon.png",
     "author": {
         "email": "aoisupersix@gmail.com",
         "name": "aoisupersix",
