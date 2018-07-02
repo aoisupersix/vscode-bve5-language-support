@@ -1,6 +1,6 @@
 'use strict';
 import * as vscode from 'vscode';
-import { MapDoc, MapSyntaxType, MapParameter } from './mapDoc';
+import { MapDoc, MapSyntaxType, MapParameter } from './MapDoc';
 
 /**
  * マップ構文を管理するシングルトンクラス

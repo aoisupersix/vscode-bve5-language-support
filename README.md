@@ -1,4 +1,8 @@
+![build_badge](https://travis-ci.org/aoisupersix/vscode-bve5-language-support.svg?branch=master)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](/LICENSE.md)
+
 # Bve5 Language Support for VSCode
+
 
 ![bve5-language-support](images/language-support.png)
 
