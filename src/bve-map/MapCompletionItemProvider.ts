@@ -2,7 +2,8 @@
 
 import * as vscode from 'vscode';
 import * as util from '../util';
-import {MapDocs, MapSyntaxType} from './MapDocs';
+import { MapDocs } from './MapDocs';
+import { MapSyntaxType } from './MapDoc';
 import { List } from 'linqts';
 
 export class MapCompletionItemProvider implements vscode.CompletionItemProvider {
