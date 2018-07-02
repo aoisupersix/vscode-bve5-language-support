@@ -97,7 +97,7 @@ export class MapDocs {
         //Curve.Interpolate(radius, cant)
         let curve_interpolate = new MapDoc(
             MapSyntaxType.Syntax1, "Curve", "", "Interpolate",
-            this.convMarkDown("現在の距離程における平面曲線の半径とカントを設定します。1 つ手前の Curve.Interpolate または Curve.Change の間は補間されます。補間関数は、Curve.SetFunction で設定します。"),
+            this.convMarkDown("[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における平面曲線の半径とカントを設定します。1 つ手前の Curve.Interpolate または Curve.Change の間は補間されます。補間関数は、Curve.SetFunction で設定します。"),
             [
                 this.createParam("radius", "**radius**: 曲線半径 [m] (正: 右曲線, 負: 左曲線, 0: 直線)"),
                 this.createParam("cant", "**cant**: カント [m]"),
@@ -105,14 +105,14 @@ export class MapDocs {
         );
         //Curve.Interpolate(radius)
         curve_interpolate.addSyntax(
-            this.convMarkDown("現在の距離程における平面曲線の半径とカントを設定します。1 つ手前の Curve.Interpolate または Curve.Change の間は補間されます。補間関数は、Curve.SetFunction で設定します。引数を省略した場合、1 つ手前の Curve.Interpolate の値が使用されます。"),
+            this.convMarkDown("[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における平面曲線の半径とカントを設定します。1 つ手前の Curve.Interpolate または Curve.Change の間は補間されます。補間関数は、Curve.SetFunction で設定します。引数を省略した場合、1 つ手前の Curve.Interpolate の値が使用されます。"),
             [
                 this.createParam("radius", "**radius**: 曲線半径 [m] (正: 右曲線, 負: 左曲線, 0: 直線)"),
             ],
         );
         //Curve.Interpolate()
         curve_interpolate.addSyntax(
-            this.convMarkDown("現在の距離程における平面曲線の半径とカントを設定します。1 つ手前の Curve.Interpolate または Curve.Change の間は補間されます。補間関数は、Curve.SetFunction で設定します。引数を省略した場合、1 つ手前の Curve.Interpolate の値が使用されます。"),
+            this.convMarkDown("[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における平面曲線の半径とカントを設定します。1 つ手前の Curve.Interpolate または Curve.Change の間は補間されます。補間関数は、Curve.SetFunction で設定します。引数を省略した場合、1 つ手前の Curve.Interpolate の値が使用されます。"),
             [
             ],
         );
@@ -120,7 +120,7 @@ export class MapDocs {
         //Curve.Change(radius)
         let curve_change = new MapDoc(
             MapSyntaxType.Syntax1, "Curve", "", "Change",
-            this.convMarkDown("現在の距離程以降の平面曲線の半径を設定します。Curve.Begin(radius) と同等です。"),
+            this.convMarkDown("[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)以降の平面曲線の半径を設定します。Curve.Begin(radius) と同等です。"),
             [
                 this.createParam("id", "**id**: 曲線半径 [m] (正: 右曲線, 負: 左曲線, 0: 直線)"),
             ],
@@ -148,7 +148,7 @@ export class MapDocs {
         //Gradient.BeginTransition()
         let gradient_begintransition = new MapDoc(
             MapSyntaxType.Syntax1, "Gradient", "", "BeginTransition",
-            this.convMarkDown("縦曲線を現在の距離程から開始します。"),
+            this.convMarkDown("縦曲線を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)から開始します。"),
             [
             ],
         );
@@ -156,7 +156,7 @@ export class MapDocs {
         //Gradient.Begin(gradient)
         let gradient_begin = new MapDoc(
             MapSyntaxType.Syntax1, "Gradient", "", "Begin",
-            this.convMarkDown("縦曲線を現在の距離程で終了し、勾配を一定に保ちます。"),
+            this.convMarkDown("縦曲線を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)で終了し、勾配を一定に保ちます。"),
             [
                 this.createParam("gradient", "**gradient**: 勾配 [‰]"),
             ],
@@ -165,7 +165,7 @@ export class MapDocs {
         //Gradient.End()
         let gradient_end = new MapDoc(
             MapSyntaxType.Syntax1, "Gradient", "", "End",
-            this.convMarkDown("勾配を現在の距離程で終了し、レベル (水平) を開始します。"),
+            this.convMarkDown("勾配を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)で終了し、レベル (水平) を開始します。"),
             [
             ],
         );
@@ -173,14 +173,14 @@ export class MapDocs {
         //Gradient.Interpolate(gradient)
         let gradient_interpolate = new MapDoc(
             MapSyntaxType.Syntax1, "Gradient", "", "Interpolate",
-            this.convMarkDown("現在の距離程における勾配を設定します。2 つの Gradient.Interpolate の間の勾配は線形補間されます。"),
+            this.convMarkDown("[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における勾配を設定します。2 つの Gradient.Interpolate の間の勾配は線形補間されます。"),
             [
                 this.createParam("gradient", "**gradient**: 勾配 [‰]"),
             ],
         );
         //Gradient.Interpolate()
         gradient_interpolate.addSyntax(
-            this.convMarkDown("現在の距離程における勾配を設定します。2 つの Gradient.Interpolate の間の勾配は線形補間されます。引数を省略した場合、1 つ手前の Gradient.Interpolate の値が使用されます。"),
+            this.convMarkDown("[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における勾配を設定します。2 つの Gradient.Interpolate の間の勾配は線形補間されます。引数を省略した場合、1 つ手前の Gradient.Interpolate の値が使用されます。"),
             [
             ],
         );
@@ -207,7 +207,7 @@ export class MapDocs {
             this.convMarkDown("現在の[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における他軌道の x 方向位置を設定します。2 つの Track[].X.Interpolate との間の x 座標は補間されます。引数が省略された場合、1 つ手前の Track[].X.Interpolate の値が使用されます。"),
             [
                 this.createParam("x", "**x**: 自軌道からの x 座標 [m]"),
-                this.createParam("radius", "**radius**: 現在の距離程以降の自軌道との平面曲線相対半径 [m] (0: 直線)")
+                this.createParam("radius", "**radius**: [現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)以降の自軌道との平面曲線相対半径 [m] (0: 直線)")
             ],
         );
         //Track[].X.Interpolate(x)
@@ -230,7 +230,7 @@ export class MapDocs {
             this.convMarkDown("現在の[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における他軌道の y 方向位置を設定します。2 つの Track[].Y.Interpolate との間の y 座標は補間されます。引数が省略された場合、1 つ手前の Track[].Y.Interpolate の値が使用されます。"),
             [
                 this.createParam("y", "**y**: 自軌道からの y 座標 [m]"),
-                this.createParam("radius", "**radius**: 現在の距離程以降の自軌道との縦曲線相対半径 [m] (0: 直線)")
+                this.createParam("radius", "**radius**: [現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)以降の自軌道との縦曲線相対半径 [m] (0: 直線)")
             ],
         );
         //Track[].Y.Interpolate(x)
@@ -250,26 +250,26 @@ export class MapDocs {
         //Track[].Position(x, y, radiusH, radiusV)
         let track_position = new MapDoc(
             MapSyntaxType.Syntax2, "Track", "", "Position",
-            this.convMarkDown("現在の距離程における他軌道の位置を設定します。Track[].X.Interpolate と Track[].Y.Interpolate を同時に記述することと同等です。"),
+            this.convMarkDown("[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における他軌道の位置を設定します。Track[].X.Interpolate と Track[].Y.Interpolate を同時に記述することと同等です。"),
             [
                 this.createParam("x", "**x**: 自軌道からの x 座標 [m]"),
                 this.createParam("y", "**y**: 自軌道からの y 座標 [m]"),
-                this.createParam("radiusH", "**radiusH**: 現在の距離程以降の自軌道との平面曲線相対半径 [m] (0: 直線)"),
-                this.createParam("radiusV", "**radiusV**: 現在の距離程以降の自軌道との縦曲線相対半径 [m] (0: 直線)"),
+                this.createParam("radiusH", "**radiusH**: [現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)以降の自軌道との平面曲線相対半径 [m] (0: 直線)"),
+                this.createParam("radiusV", "**radiusV**: [現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)以降の自軌道との縦曲線相対半径 [m] (0: 直線)"),
             ]
         );
         //Track[].Position(x, y, radiusH)
         track_position.addSyntax(
-            this.convMarkDown("現在の距離程における他軌道の位置を設定します。Track[].X.Interpolate と Track[].Y.Interpolate を同時に記述することと同等です。ただし、引数が省略された場合、0 が代入されます。"),
+            this.convMarkDown("[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における他軌道の位置を設定します。Track[].X.Interpolate と Track[].Y.Interpolate を同時に記述することと同等です。ただし、引数が省略された場合、0 が代入されます。"),
             [
                 this.createParam("x", "**x**: 自軌道からの x 座標 [m]"),
                 this.createParam("y", "**y**: 自軌道からの y 座標 [m]"),
-                this.createParam("radiusH", "**radiusH**: 現在の距離程以降の自軌道との平面曲線相対半径 [m] (0: 直線)"),
+                this.createParam("radiusH", "**radiusH**: [現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)以降の自軌道との平面曲線相対半径 [m] (0: 直線)"),
             ]
         );
         //Track[].Position(x, y)
         track_position.addSyntax(
-            this.convMarkDown("現在の距離程における他軌道の位置を設定します。Track[].X.Interpolate と Track[].Y.Interpolate を同時に記述することと同等です。ただし、引数が省略された場合、0 が代入されます。"),
+            this.convMarkDown("[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における他軌道の位置を設定します。Track[].X.Interpolate と Track[].Y.Interpolate を同時に記述することと同等です。ただし、引数が省略された場合、0 が代入されます。"),
             [
                 this.createParam("x", "**x**: 自軌道からの x 座標 [m]"),
                 this.createParam("y", "**y**: 自軌道からの y 座標 [m]"),
@@ -279,7 +279,7 @@ export class MapDocs {
         //Track[].Cant.SetGauge(gauge)
         let track_cant_setgauge = new MapDoc(
             MapSyntaxType.Syntax3, "Track", "Cant", "SetGauge",
-            this.convMarkDown("現在の距離程以降の他軌道の軌間を設定します。この値は、カントを角度に換算するために使用します。"),
+            this.convMarkDown("[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)以降の他軌道の軌間を設定します。この値は、カントを角度に換算するために使用します。"),
             [
                 this.createParam("gauge", "**gauge**: 軌間 [m]"),
             ],
@@ -288,7 +288,7 @@ export class MapDocs {
         //Track[].Cant.SetCenter(x)
         let track_cant_setcenter = new MapDoc(
             MapSyntaxType.Syntax3, "Track", "Cant", "SetCenter",
-            this.convMarkDown("現在の距離程以降の他軌道のカントの回転中心位置を設定します。"),
+            this.convMarkDown("[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)以降の他軌道のカントの回転中心位置を設定します。"),
             [
                 this.createParam("x", "**x**: 回転中心の x 座標 [m] (正: 曲線の内側, 負: 曲線の外側)"),
             ],
@@ -297,7 +297,7 @@ export class MapDocs {
         //Track[].Cant.SetFunction(id)
         let track_cant_setfunction = new MapDoc(
             MapSyntaxType.Syntax3, "Track", "Cant", "SetFunction",
-            this.convMarkDown("現在の距離程以降の他軌道のカント逓減関数を設定します。"),
+            this.convMarkDown("[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)以降の他軌道のカント逓減関数を設定します。"),
             [
                 this.createParam("id", "**id**: 関数番号 (0: サイン半波長逓減, 1: 直線逓減)"),
             ],
@@ -306,7 +306,7 @@ export class MapDocs {
         //Track[].Cant.BeginTransition()
         let track_cant_begintransition = new MapDoc(
             MapSyntaxType.Syntax3, "Track", "Cant", "BeginTransition",
-            this.convMarkDown("他軌道のカントの逓減を現在の距離程から開始します。"),
+            this.convMarkDown("他軌道のカントの逓減を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)から開始します。"),
             [
             ],
         );
@@ -314,7 +314,7 @@ export class MapDocs {
         //Track[].Cant.Begin(cant)
         let track_cant_begin = new MapDoc(
             MapSyntaxType.Syntax3, "Track", "Cant", "Begin",
-            this.convMarkDown("他軌道のカントの逓減を現在の距離程で終了し、カントを一定に保ちます。"),
+            this.convMarkDown("他軌道のカントの逓減を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)で終了し、カントを一定に保ちます。"),
             [
                 this.createParam("cant", "**cant**: カント [m] (正: 右に傾ける, 負: 左に傾ける)"),
             ],
@@ -323,7 +323,7 @@ export class MapDocs {
         //Track[].Cant.End()
         let track_cant_end = new MapDoc(
             MapSyntaxType.Syntax3, "Track", "Cant", "End",
-            this.convMarkDown("他軌道のカントを現在の距離程で終了します。"),
+            this.convMarkDown("他軌道のカントを[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)で終了します。"),
             [
             ],
         );
@@ -331,7 +331,7 @@ export class MapDocs {
         //Track[].Cant.Interpolate(cant)
         let track_cant_interpolate = new MapDoc(
             MapSyntaxType.Syntax3, "Track", "Cant", "Interpolate",
-            this.convMarkDown("現在の距離程における他軌道のカントを設定します。2 つの Track[].Cant.Interpolate の間のカントは補間されます。補間関数は、Track[].Cant.SetFunction で設定します。"),
+            this.convMarkDown("[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における他軌道のカントを設定します。2 つの Track[].Cant.Interpolate の間のカントは補間されます。補間関数は、Track[].Cant.SetFunction で設定します。"),
             [
                 this.createParam("cant", "**cant**: カント [m] (正: 右に傾ける, 負: 左に傾ける)"),
             ],
@@ -339,7 +339,7 @@ export class MapDocs {
 
         //Track[].Cant.Interpolate()
         track_cant_interpolate.addSyntax(
-            this.convMarkDown("現在の距離程における他軌道のカントを設定します。2 つの Track[].Cant.Interpolate の間のカントは補間されます。補間関数は、Track[].Cant.SetFunction で設定します。引数を省略した場合、1 つ手前の Track[].Cant.Interpolate の値が使用されます。"),
+            this.convMarkDown("[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における他軌道のカントを設定します。2 つの Track[].Cant.Interpolate の間のカントは補間されます。補間関数は、Track[].Cant.SetFunction で設定します。引数を省略した場合、1 つ手前の Track[].Cant.Interpolate の値が使用されます。"),
             [
             ],
         );
@@ -368,9 +368,9 @@ export class MapDocs {
         //Structure.Load(filePath)
         let structure_load = new MapDoc(
             MapSyntaxType.Syntax1, "Structure", "", "Load",
-            this.convMarkDown("ストラクチャーリストファイルにもとづいてストラクチャーを読み込みます。ストラクチャーを使用する前にこの構文を記述する必要があります。"),
+            this.convMarkDown("[ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)にもとづいてストラクチャーを読み込みます。ストラクチャーを使用する前にこの構文を記述する必要があります。"),
             [
-                this.createParam("filePath", "**filePath**: このファイルからストラクチャーリストファイルへの相対パス"),
+                this.createParam("filePath", "**filePath**: このファイルから[ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)への相対パス"),
             ]
         );
 
@@ -382,7 +382,7 @@ export class MapDocs {
                 this.createParam("trackKey", "**trackKey**: 配置先の軌道名 (0: 自軌道)"),
                 this.createParam("x", "**x**: 軌道からの x 座標 [m]"),
                 this.createParam("y", "**y**: 軌道からの y 座標 [m]"),
-                this.createParam("z", "**z**: 現在の距離程からの z 座標 [m]"),
+                this.createParam("z", "**z**: [現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)からの z 座標 [m]"),
                 this.createParam("rx", "**rx**: 軌道に対する x 軸回りの角 [deg]"),
                 this.createParam("ry", "**ry**: 軌道に対する y 軸回りの角 [deg]"),
                 this.createParam("rz", "**rz**: 軌道に対する z 軸回りの角 [deg]"),
@@ -405,7 +405,7 @@ export class MapDocs {
         //Structure.PutBetween(trackKey1, trackKey2, flag)
         let structure_putbetween = new MapDoc(
             MapSyntaxType.Syntax2, "Structure", "", "PutBetween",
-            this.convMarkDown("ストラクチャーを現在の距離程の 2 つの軌道の間に設置します。ストラクチャーは、軌道間の距離に応じて変形します。"),
+            this.convMarkDown("ストラクチャーを[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)の 2 つの軌道の間に設置します。ストラクチャーは、軌道間の距離に応じて変形します。"),
             [
                 this.createParam("trackKey1", "**trackKey1**: 一方の軌道の軌道名 (0: 自軌道)"),
                 this.createParam("trackKey2", "**trackKey2**: 他方の軌道の軌道名"),
@@ -415,7 +415,7 @@ export class MapDocs {
 
         //Structure.PutBetween(trackKey1, trackKey2)
         structure_putbetween.addSyntax(
-            this.convMarkDown("ストラクチャーを現在の距離程の 2 つの軌道の間に設置します。ストラクチャーは、軌道間の距離に応じて変形します。"),
+            this.convMarkDown("ストラクチャーを[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)の 2 つの軌道の間に設置します。ストラクチャーは、軌道間の距離に応じて変形します。"),
             [
                 this.createParam("trackKey1", "**trackKey1**: 一方の軌道の軌道名 (0: 自軌道)"),
                 this.createParam("trackKey2", "**trackKey2**: 他方の軌道の軌道名"),
@@ -440,39 +440,39 @@ export class MapDocs {
         //Repeater[].Begin(trackKey, x, y, z, rx, ry, rz, tilt, span, interval, ...structureKeyN)
         let repeater_begin = new MapDoc(
             MapSyntaxType.Syntax2, "Repeater", "", "Begin",
-            this.convMarkDown("ストラクチャーの連続配置を現在の距離程から開始します。ストラクチャーは、軌道に沿って一定間隔に配置されます。"),
+            this.convMarkDown("ストラクチャーの連続配置を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)から開始します。ストラクチャーは、軌道に沿って一定間隔に配置されます。"),
             [
                 this.createParam("trackKey", "**trackKey**: 配置先の軌道名 (0: 自軌道)"),
                 this.createParam("x", "**x**: 軌道からの x 座標 [m]"),
                 this.createParam("y", "**y**: 軌道からの y 座標 [m]"),
-                this.createParam("z", "**z**: 現在の距離程からの z 座標 [m]"),
+                this.createParam("z", "**z**: [現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)からの z 座標 [m]"),
                 this.createParam("rx", "**rx**: 軌道に対する x 軸回りの角 [deg]"),
                 this.createParam("ry", "**ry**: 軌道に対する y 軸回りの角 [deg]"),
                 this.createParam("rz", "**rz**: 軌道に対する z 軸回りの角 [deg]"),
                 this.createParam("tilt", "**tilt**: 傾斜オプション (0: 常に水平, 1: 勾配に連動, 2: カントに連動, 3: 勾配とカントに連動)"),
                 this.createParam("span", "**span**: 曲線における弦の長さ [m]"),
                 this.createParam("interval", "**interval**: 配置間隔 [m]"),
-                this.createParam("...structureKeyN", "**structureKeyN**: ストラクチャー名 (ストラクチャーリストファイルで定義した文字列)"),
+                this.createParam("...structureKeyN", "**structureKeyN**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)"),
             ]
         );
 
         //Repeater[].Begin0(trackKey, tilt, span, interval, ...structureKeyN)
         let repeater_begin0 = new MapDoc(
             MapSyntaxType.Syntax2, "Repeater", "", "Begin0",
-            this.convMarkDown("ストラクチャーの連続配置を現在の距離程から開始します。Repeater[].Begin 構文の x, y, z, rx, ry, rz に 0 を設定したことと同じです。"),
+            this.convMarkDown("ストラクチャーの連続配置を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)から開始します。Repeater[].Begin 構文の x, y, z, rx, ry, rz に 0 を設定したことと同じです。"),
             [
                 this.createParam("trackKey", "**trackKey**: 配置先の軌道名 (0: 自軌道)"),
                 this.createParam("tilt", "**tilt**: 傾斜オプション (0: 常に水平, 1: 勾配に連動, 2: カントに連動, 3: 勾配とカントに連動)"),
                 this.createParam("span", "**span**: 曲線における弦の長さ [m]"),
                 this.createParam("interval", "**interval**: 配置間隔 [m]"),
-                this.createParam("...structureKeyN", "**structureKeyN**: ストラクチャー名 (ストラクチャーリストファイルで定義した文字列)"),
+                this.createParam("...structureKeyN", "**structureKeyN**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)"),
             ]
         );
 
         //Repeater[].End()
         let repeater_end = new MapDoc(
             MapSyntaxType.Syntax2, "Repeater", "", "End",
-            this.convMarkDown("ストラクチャーの連続配置を現在の距離程で終了します。"),
+            this.convMarkDown("ストラクチャーの連続配置を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)で終了します。"),
             [
             ]
         );
@@ -509,16 +509,16 @@ export class MapDocs {
         //Station.Load(filePath)
         let station_load = new MapDoc(
             MapSyntaxType.Syntax1, "Station", "", "Load",
-            this.convMarkDown("停車場リストファイルにもとづいて停車場を定義します。"),
+            this.convMarkDown("[停車場リストファイル](http://bvets.net/jp/edit/formats/route/station.html)にもとづいて停車場を定義します。"),
             [
-                this.createParam("filePath", "**filePath**: このファイルから停車場リストファイルへの相対パス"),
+                this.createParam("filePath", "**filePath**: このファイルから[停車場リストファイル](http://bvets.net/jp/edit/formats/route/station.html)への相対パス"),
             ]
         );
 
         //Station[].Put(door, margin1, margin2)
         let station_put = new MapDoc(
             MapSyntaxType.Syntax2, "Station", "", "Put",
-            this.convMarkDown("この列車の停止位置を現在の距離程に設定します。列車停止位置目標ストラクチャーを設置するには Structure.Put を使用してください。"),
+            this.convMarkDown("この列車の停止位置を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)に設定します。列車停止位置目標ストラクチャーを設置するには Structure.Put を使用してください。"),
             [
                 this.createParam("door", "**door**: 開くドアの方向 (-1: 左, 1: 右)"),
                 this.createParam("margin1", "**margin1**: 停止位置誤差の後方許容範囲 (負の値で設定)"),
@@ -543,7 +543,7 @@ export class MapDocs {
         //Section.Begin(signal0, signal1, ...signalN)
         let section_signal = new MapDoc(
             MapSyntaxType.Syntax1, "Section", "", "Begin",
-            this.convMarkDown("新しい閉そくを現在の距離程から開始します。"),
+            this.convMarkDown("新しい閉そくを[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)から開始します。"),
             [
                 this.createParam("signal0", "**signal0**: 先行列車がこの閉そくに存在する場合の信号インデックス"),
                 this.createParam("signal1", "**signal0**: 先行列車が 1 閉そく先に存在する場合の信号インデックス"),
@@ -579,16 +579,16 @@ export class MapDocs {
         //Signal.Load(filePath)
         let signal_load = new MapDoc(
             MapSyntaxType.Syntax1, "Signal", "", "Load",
-            this.convMarkDown("信号現示リストファイルにもとづいて信号現示を定義します。"),
+            this.convMarkDown("[信号現示リストファイル](http://bvets.net/jp/edit/formats/route/signal.html)にもとづいて信号現示を定義します。"),
             [
-                this.createParam("filePath", "**filePath**: このファイルから信号現示リストファイルへの相対パス"),
+                this.createParam("filePath", "**filePath**: このファイルから[信号現示リストファイル](http://bvets.net/jp/edit/formats/route/signal.html)への相対パス"),
             ]
         );
 
         //Signal.Put(section, trackKey, x, y)
         let signal_put = new MapDoc(
             MapSyntaxType.Syntax2, "Signal", "", "Put",
-            this.convMarkDown("地上信号機を現在の距離程に設置します。"),
+            this.convMarkDown("地上信号機を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)に設置します。"),
             [
                 this.createParam("section", "**section**: 関連づける閉そくの相対インデックス"),
                 this.createParam("trackKey", "**trackKey**: 配置先の軌道名"),
@@ -599,13 +599,13 @@ export class MapDocs {
 
         //Signal.Put(section, trackKey, x, y, z, rx, ry, rz, tilt, span)
         signal_put.addSyntax(
-            this.convMarkDown("地上信号機を現在の距離程に設置します。"),
+            this.convMarkDown("地上信号機を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)に設置します。"),
             [
                 this.createParam("section", "**section**: 関連づける閉そくの相対インデックス"),
                 this.createParam("trackKey", "**trackKey**: 配置先の軌道名"),
                 this.createParam("x", "**x**: 軌道からの x 座標 [m]"),
                 this.createParam("y", "**y**: 軌道からの y 座標 [m]"),
-                this.createParam("z", "**z**: 現在の距離程からの z 座標 [m]"),
+                this.createParam("z", "**z**: [現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)からの z 座標 [m]"),
                 this.createParam("rx", "**rx**: 軌道に対する x 軸回りの角 [deg]"),
                 this.createParam("ry", "**ry**: 軌道に対する y 軸回りの角 [deg]"),
                 this.createParam("rz", "**rz**: 軌道に対する z 軸回りの角 [deg]"),
@@ -631,7 +631,7 @@ export class MapDocs {
         //Beacon.Put(type, section, sendData)
         let beacon_put = new MapDoc(
             MapSyntaxType.Syntax1, "Beacon", "", "Put",
-            this.convMarkDown("地上子の送信イベントを現在の距離程に定義します。地上子ストラクチャーを設置するには Structure[].Put 構文を使用してください。"),
+            this.convMarkDown("地上子の送信イベントを[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)に定義します。地上子ストラクチャーを設置するには Structure[].Put 構文を使用してください。"),
             [
                 this.createParam("type", "**type**: 保安装置に送る地上子種別 (整数)"),
                 this.createParam("section", "**section**: 関連づける閉そくの相対インデックス"),
@@ -653,7 +653,7 @@ export class MapDocs {
         //SpeedLimit.Begin(v)
         let speedlimit_begin = new MapDoc(
             MapSyntaxType.Syntax1, "SpeedLimit", "", "Begin",
-            this.convMarkDown("速度制限を現在の距離程から開始します。速度制限標識ストラクチャーを設置するには Structure.Put 構文を使用してください。"),
+            this.convMarkDown("速度制限を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)から開始します。速度制限標識ストラクチャーを設置するには Structure.Put 構文を使用してください。"),
             [
                 this.createParam("v", "**v**: 走行速度 [km/h]"),
             ]
@@ -662,7 +662,7 @@ export class MapDocs {
         //SpeedLimit.End()
         let speedlimit_end = new MapDoc(
             MapSyntaxType.Syntax1, "SpeedLimit", "", "End",
-            this.convMarkDown("速度制限を現在の距離程で終了します。速度制限解除標識ストラクチャーを設置するには Structure.Put 構文を使用してください。"),
+            this.convMarkDown("速度制限を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)で終了します。速度制限解除標識ストラクチャーを設置するには Structure.Put 構文を使用してください。"),
             [
             ]
         );
@@ -684,14 +684,14 @@ export class MapDocs {
         //PreTrain.Pass(time)
         let pretrain_pass = new MapDoc(
             MapSyntaxType.Syntax1, "PreTrain", "", "Pass",
-            this.convMarkDown("先行列車が現在の距離程を通過する時刻を設定します。"),
+            this.convMarkDown("先行列車が[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)を通過する時刻を設定します。"),
             [
                 this.createParam("time", "**time**: 時刻を表す文字列 ('hh:mm:ss')")
             ]
         )
         //PreTrain.Pass(second)
         pretrain_pass.addSyntax(
-            this.convMarkDown("先行列車が現在の距離程を通過する時刻を設定します。"),
+            this.convMarkDown("先行列車が[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)を通過する時刻を設定します。"),
             [
                 this.createParam("second", "**second**: 00:00:00 からの経過時間 [sec]")
             ]
@@ -758,7 +758,7 @@ export class MapDocs {
         //Fog.Interpolate(density, red, green, blue)
         let fog_interpolate = new MapDoc(
             MapSyntaxType.Syntax1, "Fog", "", "Interpolate",
-            this.convMarkDown("現在の距離程における霧効果を設定します。2 つの Fog.Interpolate の間は線形補間されます。"),
+            this.convMarkDown("[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における霧効果を設定します。2 つの Fog.Interpolate の間は線形補間されます。"),
             [
                 this.createParam("density", "**density**: 濃度"),
                 this.createParam("red", "**red**: 赤成分 (0 ~ 1)"),
@@ -768,13 +768,13 @@ export class MapDocs {
         );
         //Fog.Interpolate(density)
         fog_interpolate.addSyntax(
-            this.convMarkDown("現在の距離程における霧効果を設定します。2 つの Fog.Interpolate の間は線形補間されます。"),
+            this.convMarkDown("[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における霧効果を設定します。2 つの Fog.Interpolate の間は線形補間されます。"),
             [
                 this.createParam("density", "**density**: 濃度"),
             ]
         );
         fog_interpolate.addSyntax(
-            this.convMarkDown("現在の距離程における霧効果を設定します。2 つの Fog.Interpolate の間は線形補間されます。"),
+            this.convMarkDown("[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における霧効果を設定します。2 つの Fog.Interpolate の間は線形補間されます。"),
             [
             ]
         );
@@ -793,7 +793,7 @@ export class MapDocs {
         //DrawDistance.Change(value)
         let drawdistance_change = new MapDoc(
             MapSyntaxType.Syntax1, "DrawDistance", "", "Change",
-            this.convMarkDown("現在の距離程以降の風景の描画距離を設定します。[設定] ウィンドウで設定される描画距離と、ここで設定する描画距離の短い方が適用されます。"),
+            this.convMarkDown("[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)以降の風景の描画距離を設定します。[設定] ウィンドウで設定される描画距離と、ここで設定する描画距離の短い方が適用されます。"),
             [
                 this.createParam("value", "**value**: 距離 [m] (0: [設定] ウィンドウで設定される描画距離を適用)")
             ]
@@ -813,14 +813,14 @@ export class MapDocs {
         //CabIlluminance.Interpolate(value)
         let cab_interpolate = new MapDoc(
             MapSyntaxType.Syntax1, "CabIlluminance", "", "Interpolate",
-            this.convMarkDown("現在の距離程における運転台の明るさを設定します。2 つの CabIlluminance.Interpolate の間は線形補間されます。"),
+            this.convMarkDown("[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における運転台の明るさを設定します。2 つの CabIlluminance.Interpolate の間は線形補間されます。"),
             [
                 this.createParam("value", "**value**: 昼間画像と夜間画像の混合比 (0: 夜間画像 ~ 1: 昼間画像)")
             ]
         );
         //CabIlluminance.Interpolate()
         cab_interpolate.addSyntax(
-            this.convMarkDown("現在の距離程における運転台の明るさを設定します。2 つの CabIlluminance.Interpolate の間は線形補間されます。"),
+            this.convMarkDown("[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における運転台の明るさを設定します。2 つの CabIlluminance.Interpolate の間は線形補間されます。"),
             [
             ]
         );
@@ -839,7 +839,7 @@ export class MapDocs {
         //Irregularity.Change(x, y, r, lx, ly, lr)
         let irregularity_change = new MapDoc(
             MapSyntaxType.Syntax1, "Irregularity", "", "Change",
-            this.convMarkDown("現在の距離程以降の軌道変位を設定します。"),
+            this.convMarkDown("[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)以降の軌道変位を設定します。"),
             [
                 this.createParam("x", "**x**: 左右変位 (左と右のレールの通り変位の平均に相当) の標準偏差 [m]"),
                 this.createParam("y", "**y**: 上下変位 (左と右のレールの高低変位の平均に相当) の標準偏差 [m]"),
@@ -864,14 +864,14 @@ export class MapDocs {
         //Adhesion.Change(a)
         let adhesion_change = new MapDoc(
             MapSyntaxType.Syntax1, "Adhesion", "", "Change",
-            this.convMarkDown("現在の距離程以降の車輪-レール間の粘着特性を設定します。"),
+            this.convMarkDown("[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)以降の車輪-レール間の粘着特性を設定します。"),
             [
                 this.createParam("a", "**a**: 走行速度 0 km/h における粘着係数"),
             ]
         );
         //Adhesion.Change(a,b,c)
         adhesion_change.addSyntax(
-            this.convMarkDown("現在の距離程以降の車輪-レール間の粘着特性を設定します。"),
+            this.convMarkDown("[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)以降の車輪-レール間の粘着特性を設定します。"),
             [
                 this.createParam("a", "**a**: 走行速度 0 km/h における粘着係数"),
                 this.createParam("b", "**b**: 粘着係数の走行速度に対する変化を表す係数"),
@@ -893,16 +893,16 @@ export class MapDocs {
         //Sound.Load(filePath)
         let sound_load = new MapDoc(
             MapSyntaxType.Syntax1, "Sound", "", "Load",
-            this.convMarkDown("サウンドリストファイルにもとづいてサウンドを読み込みます。"),
+            this.convMarkDown("[サウンドリストファイル](http://bvets.net/jp/edit/formats/route/sound.html)にもとづいてサウンドを読み込みます。"),
             [
-                this.createParam("filePath", "**filePath**: このファイルからサウンドリストファイルへの相対パス"),
+                this.createParam("filePath", "**filePath**: このファイルから[サウンドリストファイル](http://bvets.net/jp/edit/formats/route/sound.html)への相対パス"),
             ]
         );
 
         //Sound[].Play()
         let sound_play = new MapDoc(
             MapSyntaxType.Syntax2, "Sound", "", "Play",
-            this.convMarkDown("現在の距離程を通過するときにサウンドを 1 回再生します。"),
+            this.convMarkDown("[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)を通過するときにサウンドを 1 回再生します。"),
             [
             ]
         );
@@ -924,16 +924,16 @@ export class MapDocs {
         //Sound3D.Load(filePath)
         let sound3d_load = new MapDoc(
             MapSyntaxType.Syntax1, "Sound3D", "", "Load",
-            this.convMarkDown("サウンドリストファイルにもとづいてサウンドを読み込みます。"),
+            this.convMarkDown("[サウンドリストファイル](http://bvets.net/jp/edit/formats/route/sound.html)にもとづいてサウンドを読み込みます。"),
             [
-                this.createParam("filePath", "**filePath**: このファイルからサウンドリストファイルへの相対パス"),
+                this.createParam("filePath", "**filePath**: このファイルから[サウンドリストファイル](http://bvets.net/jp/edit/formats/route/sound.html)への相対パス"),
             ]
         );
 
         //Sound3D[].Put(x, y)
         let sound3d_put = new MapDoc(
             MapSyntaxType.Syntax2, "Sound3D", "", "Put",
-            this.convMarkDown("地上に固定された音源を現在の距離程に設置します。サウンドは連続再生されます。"),
+            this.convMarkDown("地上に固定された音源を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)に設置します。サウンドは連続再生されます。"),
             [
                 this.createParam("x", "**x**: 軌道からの x 座標 [m]"),
                 this.createParam("y", "**y**: 軌道からの y 座標 [m]"),
@@ -957,9 +957,9 @@ export class MapDocs {
         //RollingNoise.Change(index)
         let rollingnoise_change = new MapDoc(
             MapSyntaxType.Syntax1, "RollingNoise", "", "Change",
-            this.convMarkDown("現在の距離程以降の車輪転動音を設定します。"),
+            this.convMarkDown("[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)以降の車輪転動音を設定します。"),
             [
-                this.createParam("index", "**index**: 車両サウンドファイルの [Run] セクションで定義したインデックス")
+                this.createParam("index", "**index**: [車両サウンドファイル](http://bvets.net/jp/edit/formats/vehicle/sound.html)の [Run] セクションで定義したインデックス")
             ]
         );
 
@@ -977,9 +977,9 @@ export class MapDocs {
         //FlangeNoise.Change(index)
         let flangenoise_change = new MapDoc(
             MapSyntaxType.Syntax1, "FlangeNoise", "", "Change",
-            this.convMarkDown("現在の距離程以降のフランジきしり音を設定します。"),
+            this.convMarkDown("[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)以降のフランジきしり音を設定します。"),
             [
-                this.createParam("index", "**index**: 車両サウンドファイルの [Flange] セクションで定義したインデックス")
+                this.createParam("index", "**index**: [車両サウンドファイル](http://bvets.net/jp/edit/formats/vehicle/sound.html)の [Flange] セクションで定義したインデックス")
             ]
         );
 
@@ -997,9 +997,9 @@ export class MapDocs {
         //JointNoise.Play(index)
         let jointnoise_play = new MapDoc(
             MapSyntaxType.Syntax1, "JointNoise", "", "Play",
-            this.convMarkDown("現在の距離程を通過するときに分岐器通過音を走行速度に応じて再生します。"),
+            this.convMarkDown("[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)を通過するときに分岐器通過音を走行速度に応じて再生します。"),
             [
-                this.createParam("index", "**index**: 車両サウンドファイルの [Joint] セクションで定義したインデックス")
+                this.createParam("index", "**index**: [車両サウンドファイル](http://bvets.net/jp/edit/formats/vehicle/sound.html)の [Joint] セクションで定義したインデックス")
             ]
         );
 
@@ -1017,10 +1017,10 @@ export class MapDocs {
         //Train.Add(trainKey, filePath, trackKey, direction)
         let train_add = new MapDoc(
             MapSyntaxType.Syntax1, "Train", "", "Add",
-            this.convMarkDown("他列車ファイルにもとづいて他列車を定義します。"),
+            this.convMarkDown("[他列車ファイル](http://bvets.net/jp/edit/formats/route/train.html)にもとづいて他列車を定義します。"),
             [
                 this.createParam("trainKey", "**trainKey**: 他列車名 (任意の文字列)"),
-                this.createParam("filePath", "**filePath**: このファイルから他列車ファイルへの相対パス"),
+                this.createParam("filePath", "**filePath**: このファイルから[他列車ファイル](http://bvets.net/jp/edit/formats/route/train.html)への相対パス"),
                 this.createParam("trackKey", "**trackKey**: 走行する軌道"),
                 this.createParam("direction", "**direction**: 進行方向 (-1: 対向, 1: 並走)"),
             ]
@@ -1029,9 +1029,9 @@ export class MapDocs {
         //Train[trainKey].Load(filePath, trackKey, direction)
         let train_load = new MapDoc(
             MapSyntaxType.Syntax2, "Train", "", "Load",
-            this.convMarkDown("他列車ファイルにもとづいて他列車を定義します。"),
+            this.convMarkDown("[他列車ファイル](http://bvets.net/jp/edit/formats/route/train.html)にもとづいて他列車を定義します。"),
             [
-                this.createParam("filePath", "**filePath**: このファイルから他列車ファイルへの相対パス"),
+                this.createParam("filePath", "**filePath**: このファイルから[他列車ファイル](http://bvets.net/jp/edit/formats/route/train.html)への相対パス"),
                 this.createParam("trackKey", "**trackKey**: 走行する軌道"),
                 this.createParam("direction", "**direction**: 進行方向 (-1: 対向, 1: 並走)"),
             ]
@@ -1040,14 +1040,14 @@ export class MapDocs {
         //Train[].Enable(time)
         let train_enable = new MapDoc(
             MapSyntaxType.Syntax2, "Train", "", "Enable",
-            this.convMarkDown("自列車が現在の距離程を通過し、かつ設定された時刻になったとき、他列車の動作を有効にします。"),
+            this.convMarkDown("自列車が[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)を通過し、かつ設定された時刻になったとき、他列車の動作を有効にします。"),
             [
                 this.createParam("time", "**time**: 時刻を表す文字列 ('hh:mm:ss')"),
             ]
         );
         //Train[].Enable(second)
         train_enable.addSyntax(
-            this.convMarkDown("自列車が現在の距離程を通過し、かつ設定された時刻になったとき、他列車の動作を有効にします。"),
+            this.convMarkDown("自列車が[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)を通過し、かつ設定された時刻になったとき、他列車の動作を有効にします。"),
             [
                 this.createParam("second", "**second**: 00:00:00 からの経過時間 [sec]"),
             ]
@@ -1056,7 +1056,7 @@ export class MapDocs {
         //Train[].Stop(decelerate, stopTime, accelerate, speed)
         let train_stop = new MapDoc(
             MapSyntaxType.Syntax2, "Train", "", "Stop",
-            this.convMarkDown("他列車を現在の距離程に一旦停車させます。"),
+            this.convMarkDown("他列車を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)に一旦停車させます。"),
             [
                 this.createParam("decelerate", "**decelerate**: 減速度 [km/h/s]"),
                 this.createParam("stopTime", "**stopTime**: 停車時間 [s]"),
