@@ -52,7 +52,7 @@ class DistanceCheckerController {
     }
 }
 
-class DistanceChecker {
+export class DistanceChecker {
 
     private _statusBarItem: vscode.StatusBarItem =  vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
 

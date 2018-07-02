@@ -77,6 +77,8 @@
         "vscode": "^1.1.6"
     },
     "dependencies": {
-        "linqts": "^1.11.0"
+        "assert": "^1.4.1",
+        "linqts": "^1.11.0",
+        "npm": "^6.1.0"
     }
 }
