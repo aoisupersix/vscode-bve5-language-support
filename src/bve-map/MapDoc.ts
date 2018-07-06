@@ -189,7 +189,7 @@ export class MapDoc {
      * マップ要素2のコード補完アイテムを取得します。(シンタックス3のみ)
      */
     getMapElement2CompletionItem(): vscode.CompletionItem {
-        return new vscode.CompletionItem(this.syntaxes[0].getMapElement2Name(), vscode.CompletionItemKind.Function);
+        return new vscode.CompletionItem(this.syntaxes[0].getMapElement2Name(), vscode.CompletionItemKind.Class);
     }
 
     /**

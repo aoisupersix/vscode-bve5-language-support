@@ -5,6 +5,7 @@
 {
 	"version": "0.2.1",
     "configurations": [
+
         {
             "name": "Extension",
             "type": "extensionHost",
@@ -12,11 +13,9 @@
             "runtimeExecutable": "${execPath}",
             "args": [
                 "--extensionDevelopmentPath=${workspaceFolder}",
-                "--extensionTestsPath=${workspaceFolder}/out/test"
             ],
             "outFiles": [
                 "${workspaceFolder}/out/**/*.js",
-                "${workspaceFolder}/out/test/**/*.js"
             ],
             "preLaunchTask": "npm: watch"
         },
