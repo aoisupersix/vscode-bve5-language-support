@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * 引数に与えられた文字列から不要な部分を削除します。
+ * 引数に与えられたMap構文から不要な部分を削除します。
  * @param mapTextData 未整形のマップファイルテキスト
  */
 export function trimMapText(mapTextData: string): string {
