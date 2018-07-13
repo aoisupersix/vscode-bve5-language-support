@@ -18,7 +18,39 @@ export class VehicleDocs {
             "このファイルから[車両性能ファイル](http://bvets.net/jp/edit/formats/vehicle/perform.html)への相対パスを記述します。"
         );
 
-        this._elements.push(performance_curve);
+        let parameters = new VehicleDoc(
+            "Parameter",
+            "このファイルから[車両パラメータファイル](http://bvets.net/jp/edit/formats/vehicle/params.html)への相対パスを記述します。"
+        );
+
+        let panel = new VehicleDoc(
+            "Panel",
+            "このファイルから[運転台パネルファイル](http://bvets.net/jp/edit/formats/vehicle/panel.html)への相対パスを記述します。"
+        );
+
+        let sound = new VehicleDoc(
+            "Sound",
+            "このファイルから[車両サウンドファイル](http://bvets.net/jp/edit/formats/vehicle/sound.html)への相対パスを記述します。"
+        );
+
+        let ats = new VehicleDoc(
+            "Ats",
+            "このファイルから[保安装置プラグイン](http://bvets.net/jp/edit/formats/vehicle/ats.html)への相対パスを記述します。"
+        );
+
+        let motornoise = new VehicleDoc(
+            "MotorNoise",
+            "このファイルからモータ音ファイルへの相対パスを記述します。"
+        );
+
+        this._elements.push(
+            performance_curve,
+            parameters,
+            panel,
+            sound,
+            ats,
+            motornoise
+        );
     }
 
     /**
