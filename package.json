@@ -24,7 +24,8 @@
         "Other"
     ],
     "activationEvents": [
-        "onLanguage:bve-map-2.02"
+        "onLanguage:bve-map-2.02",
+        "onLanguage:bve-vehicle-1.00"
     ],
     "main": "./out/extension",
     "contributes": {

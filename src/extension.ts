@@ -8,13 +8,18 @@ import { MapHoverProvider } from './bve-map/MapHoverProvider';
 
 const BVE_MAP_MODE: vscode.DocumentFilter = {language: 'bve-map-2.02', scheme: 'file' };
 
+const LANG_ID_MAP: string = "bve-map-2.02";
+
 export function activate(context: vscode.ExtensionContext) {
+    let editor = vscode.window.activeTextEditor;
+    if(editor != undefined && editor.document.languageId === LANG_ID_MAP) {
+        let distChecker = new DistanceChecker();
+        let controller = new DistanceCheckerController(distChecker);
 
-    let distChecker = new DistanceChecker();
-    let controller = new DistanceCheckerController(distChecker);
+        context.subscriptions.push(controller);
+        context.subscriptions.push(distChecker);
+    }
 
-    context.subscriptions.push(controller);
-    context.subscriptions.push(distChecker);
     context.subscriptions.push(vscode.languages.registerSignatureHelpProvider(BVE_MAP_MODE, new MapSignatureHelpProvider(), '('));
     context.subscriptions.push(vscode.languages.registerCompletionItemProvider(BVE_MAP_MODE, new MapCompletionItemProvider(), '.'));
     context.subscriptions.push(vscode.languages.registerHoverProvider(BVE_MAP_MODE, new MapHoverProvider()));
