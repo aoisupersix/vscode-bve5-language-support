@@ -37,15 +37,16 @@
                     "bve5-map"
                 ],
                 "firstLine": "^BveTs\\s*Map\\s*2.02",
-                "configuration": "./lang_config/bve5-map-configuration.json",
-                "extensions": [
-                    ".txt"
+                "configuration": "./lang_config/bve5-map-configuration.json"
+            },
+            {
+                "id": "bve-vehicle-1.00",
+                "aliases": [
+                    "BveTs Vehicle 1.00",
+                    "bve5-vehicle"
                 ],
-                "filenames": [
-                    "MAP",
-                    "Map",
-                    "map"
-                ]
+                "firstLine": "^BveTs\\s*Vehicle\\s*1.00",
+                "configuration": "./lang_config/bve5-vehicle-configuration.json"
             }
         ],
         "grammars": [
@@ -53,6 +54,11 @@
                 "language": "bve-map-2.02",
                 "scopeName": "source.bve-map-2.02",
                 "path": "./syntaxes/bve-map-2.02.json"
+            },
+            {
+                "language": "bve-vehicle-1.00",
+                "scopeName": "source.bve-vehicle-1.00",
+                "path": "./syntaxes/bve-vehicle-1.00.json"
             }
         ],
         "snippets": [

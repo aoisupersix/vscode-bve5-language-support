@@ -1,0 +1,39 @@
+{
+    "scopeName": "source.bve-vehicle-1.00",
+    "name": "BveTs-Vehicle-1.00",
+    "patterns": [
+      {
+        "name": "header.bve-vehicle-1.00",
+        "match": "(?imx-imx)(?i:(BveTs\\s*Vehicle\\s*1.00))",
+        "captures": {
+          "1": {
+            "name": "keyword.other.bve-vehicle-1.00"
+          }
+        }
+      },
+      {
+        "name": "comment.bve-vehicle-1.00",
+        "match": "((#|;).*)",
+        "captures": {
+          "1": {
+            "name": "comment.line.bve-vehicle-1.00"
+          }
+        }
+      },
+      {
+        "name": "vehicle-element.bve-vehicle-1.00",
+        "match": "(?imx-imx)(?i:(performancecurve|parameters|panel|sound|ats|motornoise)\\s*(?i:(=)(.*?))?)",
+        "captures": {
+          "1": {
+            "name": "support.constant.bve-vehicle-1.00"
+          },
+          "2": {
+            "name": "keyword.operator.bve-vehicle-1.00"
+          },
+          "3": {
+            "name": "string.unquoted.bve-vehicle-1.00"
+          }
+        }
+      }
+    ]
+  }
