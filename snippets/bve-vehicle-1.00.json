@@ -1,0 +1,32 @@
+{
+    "performancecurve": {
+        "prefix": "PerformanceCurve",
+        "body": "PerformanceCurve = ./${1:RelativeFilePath}",
+        "description": "このファイルから車両性能ファイルへの相対パスを記述します。"
+    },
+    "parameters": {
+        "prefix": "Parameters",
+        "body": "Parameters = ./${1:RelativeFilePath}",
+        "description": "このファイルから車両パラメータファイルへの相対パスを記述します。"
+    },
+    "panel": {
+        "prefix": "Panel",
+        "body": "Panel = ./${1:RelativeFilePath}",
+        "description": "このファイルから運転台パネルファイルへの相対パスを記述します。"
+    },
+    "sound": {
+        "prefix": "Sound",
+        "body": "Sound = ./${1:RelativeFilePath}",
+        "description": "このファイルから車両サウンドファイルへの相対パスを記述します。"
+    },
+    "ats": {
+        "prefix": "Ats",
+        "body": "Ats = ./${1:RelativeFilePath}",
+        "description": "このファイルから保安装置プラグインへの相対パスを記述します。"
+    },
+    "motornoise": {
+        "prefix": "MotorNoise",
+        "body": "MotorNoise = ./${1:RelativeFilePath}",
+        "description": "このファイルからモーター音ファイルへの相対パスを記述します。"
+    }
+}

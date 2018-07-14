@@ -72,6 +72,10 @@
             {
                 "language": "bve-map-2.02",
                 "path": "./snippets/bve-map-2.02.json"
+            },
+            {
+                "language": "bve-vehicle-1.00",
+                "path": "./snippets/bve-vehicle-1.00.json"
             }
         ]
     },
