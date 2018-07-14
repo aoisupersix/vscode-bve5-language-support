@@ -37,7 +37,10 @@
                     "BveTs Map 2.02",
                     "bve5-map"
                 ],
-                "firstLine": "^BveTs\\s*Map\\s*2.02",
+                "filenamePatterns": [
+                    "*Map*.txt"
+                ],
+                "firstLine": "BveTs\\s*Map\\s*2.02",
                 "configuration": "./lang_config/bve5-map-configuration.json"
             },
             {
@@ -46,7 +49,10 @@
                     "BveTs Vehicle 1.00",
                     "bve5-vehicle"
                 ],
-                "firstLine": "^BveTs\\s*Vehicle\\s*1.00",
+                "filenamePatterns": [
+                    "*Vehicle*.txt"
+                ],
+                "firstLine": "BveTs\\s*Vehicle\\s*1.00",
                 "configuration": "./lang_config/bve5-vehicle-configuration.json"
             }
         ],
