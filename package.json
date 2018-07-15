@@ -10,7 +10,7 @@
         "name": "aoisupersix",
         "url": "http://aoisupersix.tokyo"
     },
-    "license": "The MIT License(MIT)",
+    "license": "MIT",
     "repository": {
         "type": "git",
         "url": "https://github.com/aoisupersix/vscode-bve5-language-support"
@@ -96,6 +96,6 @@
     "dependencies": {
         "assert": "^1.4.1",
         "linqts": "^1.11.0",
-        "npm": "^6.1.0"
+        "npm": "^6.2.0"
     }
 }
