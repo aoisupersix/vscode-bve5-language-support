@@ -20,7 +20,15 @@ VSCodeでBveTrainsim5.7構文をサポートするための拡張です。
 - スニペット挿入
 - マップファイルの距離程表示
 
-現在はBveTrainsim5.7のマップファイルのみに対応しています。その他の構文は今後対応予定です。
+なお、ファイルの種別によって対応する機能が異なります。
+現在対応しているファイル種別と機能を以下の通りです。
+
+|ファイル種別 |vscode上での文法名|シンタックスハイライト|コード補完|ホバー|シグネチャヘルプ|スニペット|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|[マップファイル](http://bvets.net/jp/edit/formats/route/map.html)|BveTs Map 2.02|○|○|○|○|△|
+|[車両ファイル](http://bvets.net/jp/edit/formats/vehicle/vehicle.html)|BveTs Vehicle 1.00|○|-|○|-|○|
+
+凡例：`○`...全構文に対応, `△`...一部構文に対応, `-`...非対応
 
 ## Requirements
 
@@ -30,21 +38,17 @@ VSCodeでBveTrainsim5.7構文をサポートするための拡張です。
 
 1. [Visual Studio Code](https://code.visualstudio.com)をインストールして起動し、 `Ctrl+Shift+X`、もしくは`Cmd+Shift+X`を入力して拡張機能パネルを開いてください。 
 2. [Marketplace](https://marketplace.visualstudio.com/items?itemName=aoisupersix.bve5-language-support)から`Bve5 Language Support`を検索してインストールします。
-3. `Map.txt`という名前のファイルを開く/保存するか、`言語モードの選択`をクリックして`BveTs Map 2.02`を選択することで拡張を有効化することが出来ます。
+3. エディタ右下の`言語モードの選択`をクリックして`BveTs Map 2.02`or`BveTs Vehicle 1.00`を選択することで拡張を有効化することが出来ます。
 
 ## Code completion
 
-マップ要素(`Curve`,`Gradient`など)を入力した直後、\``.(DOT)`\`を入力することで、マップ要素に対応する関数名の候補を表示します。
-
-現在全てのマップ構文に対応しています。
+要素名(`Curve`,`Gradient`など)を入力した直後、\``.(DOT)`\`を入力することで、マップ要素に対応する関数名の候補を表示します。
 
 ## Hover
 
 ![hover-demo](images/hover.gif)
 
 構文にカーソルを重ねた際に、その構文のヒントを表示します。
-
-現在全てのマップ構文に対応しています。
 
 ## Signature Help
 
@@ -61,7 +65,7 @@ VSCodeでBveTrainsim5.7構文をサポートするための拡張です。
 スニペット挿入とは繰り返し入力する記述を自動で入力してくれる機能です。
 スニペット挿入に対応している構文を入力するとスニペットの候補が出てくるので、`TAB`を押すことで構文を自動で入力、引数の位置へとカーソルを移動してくれます。
 
-スニペット挿入は個人的によく使う、もしくは他の構文と被らないと考えた以下の構文にのみ対応しています。
+なお、マップファイルのスニペット挿入は個人的によく使う、もしくは他の構文と被らないと考えた以下の構文にのみ対応しています。
 - Curve.BeginTransition
 - Curve.Begin
 - Gradient.BeginTransition
@@ -90,7 +94,7 @@ VSCodeでBveTrainsim5.7構文をサポートするための拡張です。
 
 ![distance](images/distance-hint.png)
 
-VSCodeのステータスバーにカーソル位置の距離程を表示します。
+マップファイル文法において、VSCodeのステータスバーにカーソル位置の距離程を表示します。
 
 変数や数式が含まれる距離程には未対応ですが、数式に関しては今後サポートするかもしれません。
 
