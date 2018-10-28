@@ -1,0 +1,85 @@
+BveTs Train 1.00
+
+[Structure]
+Key = E2571
+Distance = 3
+Z = -2.6
+Span = 14
+
+[Structure]
+Key = E2572
+Distance = 23
+Z = -2.6
+Span = 14
+
+[Structure]
+Key = E2573
+Distance = 43
+Z = -2.6
+Span = 14
+
+[Structure]
+Key = E2574
+Distance = 63
+Z = -2.6
+Span = 14
+
+[Structure]
+Key = E25757
+Distance = 83
+Z = -2.6
+Span = 14
+
+[Structure]
+Key = E25768
+Distance = 103
+Z = -2.6
+Span = 14
+
+[Structure]
+Key = E25757
+Distance = 123
+Z = -2.6
+Span = 14
+
+[Structure]
+Key = E25768
+Distance = 143
+Z = -2.6
+Span = 14
+
+[Structure]
+Key = E2579
+Distance = 163
+Z = -2.6
+Span = 14
+
+[Sound3d]
+Key = E233Run
+Distance2 = 20
+Distance1 = 40
+Function = run
+
+[Sound3d]
+Key = E233Run
+Distance2 = 40
+Distance1 = 60
+Function = run
+
+[Sound3d]
+Key = E233Run
+Distance2 = 100
+Distance1 = 120
+Function = run
+
+[Sound3d]
+Key = E233Run
+Distance2 = 120
+Distance1 = 140
+Function = run
+
+[Sound3d]
+Key = E233Run
+Distance2 = 140
+Distance1 = 160
+Function = run

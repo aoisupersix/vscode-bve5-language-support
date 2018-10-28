@@ -1,0 +1,14 @@
+BveTs Sound List 2.00
+//共通
+HachiDC, Sounds\Hachi_DC.wav
+ToyoDep, Sounds\Toyo_Dep.wav
+ToyoStaD, Sounds\Toyo_StaD.wav
+HinoArr, Sounds\Hino_Arr.wav
+HinoDC, Sounds\Hino_DC.wav
+HinoDep, Sounds\Hino_Dep.wav
+
+//1370T
+1370T_HachiSta, Sounds\1370T\Hachi_Sta.wav
+1370T_HachiDep, Sounds\1370T\Hachi_Dep.wav
+1370T_ToyoArr, Sounds\1370T\Toyo_Arr.wav
+1370T_TachiArr, Sounds\1370T\Tachi_Arr.wav

@@ -1,0 +1,18 @@
+BveTs Map 2.02
+
+//****************************
+//* 1370T放送
+//****************************
+
+20160;
+  Sound['1370T_HachiDep'].Play();
+23550;
+  Sound['1370T_ToyoArr'].Play();
+24390;
+  Sound['ToyoDep'].Play();
+26050;
+  Sound['HinoArr'].Play();
+26740;
+  Sound['HinoDep'].Play();
+28300;
+  Sound['1370T_TachiArr'].Play();

@@ -1,0 +1,9 @@
+﻿Bvets Scenario 1.00
+
+Route = aoi-ChuoRapidLine\Mapfile-1370T\1370T.txt
+Vehicle = ---ここに車両を指定してください---
+Title = 1370T 中央特快・東京行き
+Image = aoi-ChuoRapidLine\1370T.jpg
+RouteTitle = 中央快速線
+Author = aoi
+Comment = 八王子→立川

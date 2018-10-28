@@ -1,0 +1,312 @@
+﻿BveTs Structure List 1.00
+
+//背景
+BG5, Backgrounds\bg5.x
+//地面
+GroundGrass, Grounds\Grass.x
+GroundForest, Grounds\GrassForest.x
+GroundAsagawa, Grounds\Asagawa.x
+GroundTamagawa, Grounds\Tamagawa.x
+GroundUnder, Grounds\GrassUnder.x
+GroundAsphalt, Grounds\Asphalt.x
+GroundAsphalt2, Grounds\Asphalt2.x
+CrackL, Rails\CrackL.x
+CrackR, Rails\CrackR.x
+CrackGL1, Rails\CrackGL1.x
+CrackGL2, Rails\CrackGL2.x
+
+//レール
+BallastCross, Rails\BallastCross.x
+Ballast200M, Rails\Ballast200m.x
+Ballast200ME, Rails\Ballast200End.x
+Ballast25M, Rails\Ballast25m.x
+Ballast5M, Rails\Ballast5m.x
+Ballast5MDark, Rails\Ballast5mDark.x
+Ballast5MC, Rails\Ballast5mCurve.x
+Ballast5MC2, Rails\Ballast5mCurve2.x
+Ballast1M, Rails\Ballast1_1m.x
+BallastEnd, Rails\BallastEnd.x
+Slab5M, Rails\Slab5m.x
+Joint5M, Rails\Joint_5m.x
+244Start, Rails\244Start.x
+-244Start, Rails\-244Start.x
+244End, Rails\244End.x
+-244End, Rails\-244End.x
+Dike, Rails\Dike.x
+DikeStart, Rails\DikeStart.x
+DikeLongR, Rails\DikeLongR.x
+DikeLongL, Rails\DikeLongL.x
+DikeGuardR, Rails\DikeGuardR.x
+DikeGuardL, Rails\DikeGuardL.x
+DikeAsphaltR, Rails\DikeAsphaltR.x
+Dike_GrAsphaltL, Rails\Dike_GrAsphaltL.x
+Dike_GrAsphaltR, Rails\Dike_GrAsphaltR.x
+DikeBridge1, Rails\DikeBridge1.x
+DikeBridge1-2, Rails\DikeBridge1-2.x
+DikeBridge1-Pole, Rails\DikeBridge1-Pole.x
+DikeBridge2L, Rails\DikeBridge2L.x
+DikeBridge2R, Rails\DikeBridge2R.x
+DikeBridge3L, Rails\DikeBridge3L.x #10m
+DikeBridge3R, Rails\DikeBridge3R.x
+Wall_IshigakiStartL, Rails\Wall_IshigakiStartL.x
+Wall_IshigakiStartR, Rails\Wall_IshigakiStartR.x
+Wall_Ishigaki2StartL, Rails\Wall_Ishigaki2StartL.x
+Wall_Ishigaki2StartR, Rails\Wall_Ishigaki2StartR.x
+Wall_IshigakiL, Rails\Wall_IshigakiL.x
+Wall_IshigakiR, Rails\Wall_IshigakiR.x
+Wall_Ishigaki2L, Rails\Wall_Ishigaki2L.x
+Wall_Ishigaki2R, Rails\Wall_Ishigaki2R.x
+DikeFence1, Rails\DikeFence1.x
+DikeFence1R, Rails\DikeFence1R.x
+DikeFence1L, Rails\DikeFence1L.x
+DikeFence2R, Rails\DikeFence2R.x
+//DikeFence1L, Rails\DikeFence1L.x
+
+//架線
+wire, Poles\wire.x
+wire5, Poles\wire5.x
+Pole1L, Poles\1L.x
+Pole1R, Poles\1R.x
+Pole2L, Poles\2L.x
+Pole2L2, Poles\2L2.x
+Pole3L, Poles\3L.x
+Pole4L, Poles\4L.x
+Pole4L2, Poles\4L2.x
+Pole6L, Poles\6L.x
+PoleFormR, Poles\FormR.x
+
+//踏切
+CrossRail, Crossing\CrossRail.x
+CrossRoadR, Ensen\CrossRoadR.x
+CrossRoadL, Ensen\CrossRoadL.x
+CrossSpaceR, Crossing\CrossSpaceR.x
+CrossL, Crossing\CrossL.x
+CrossR, Crossing\CrossR.x
+
+//駅
+Teimoku, Stations\Teimoku.x
+TeimokuT11, Stations\TeimokuT11.x
+Teimoku10, Stations\Teimoku10.x
+Teimoku8, Stations\Teimoku8.x
+TeimokuT6, Stations\TeimokuT6.x
+Teimoku6, Stations\Teimoku6.x
+Teimoku4, Stations\Teimoku4.x
+Teimoku3, Stations\Teimoku3.x
+StaKoya1, Stations\normal\Sta_Koya1.x
+FormCR, Stations\normal\FormCR.x
+FormCR2, Stations\normal\FormCR2.x
+FormR, Stations\normal\FormR.x
+FormCL, Stations\normal\FormCL.x
+FormCR2, Stations\normal\FormCR2.x
+FormL, Stations\normal\FormL.x
+RoofL, Stations\normal\RoofL.x
+RoofR, Stations\normal\RoofR.x
+RoofCR, Stations\normal\RoofCR.x
+RoofEscalator, Stations\normal\RoofEscalator.x
+Escalator, Stations\normal\Escalator.x
+Bench, Stations\normal\Bench.x
+FormFence, Stations\normal\FormFence.x
+Women-only, Stations\normal\Women-only.x
+Elevator, Stations\normal\elevator.x
+Elevator-direct, Stations\normal\Elevator-direct.x
+Machiai, Stations\normal\Machiai.x
+StaEndKoya, Stations\normal\StaEndKoya.x
+//八王子
+Hachioji_StaName, Stations\Hachioji\StaName_Hachioji.x
+Hachioji_Form, Stations\Hachioji\Hachioji_Form.x
+Hachioji_End, Stations\Hachioji\Form_Hachioji_End.x
+//豊田
+ToyodaStaBr, Stations\Toyoda\ToyodaBridge.x
+ToyodaStaBr2, Stations\Toyoda\ToyodaBridge2.x
+Toyoda_FormDirect4R, Stations\Toyoda\FormDirect4R.x
+Toyoda_StaDisp43, Stations\Toyoda\StaDisp_43.x
+Toyoda_StaName, Stations\Toyoda\StaName_Toyoda.x
+//日野
+Hino_Ad, Stations\Hino\Hino_Ad.x
+Hino_StaDisp, Stations\Hino\StaDisp_Hino.x
+Hino_StaName, Stations\Hino\StaName_Hino.x
+//立川
+Tachikawa_StaName, Stations\Tachikawa\StaName_Tachikawa.x
+Tachikawa_FormDarkL, Stations\Tachikawa\Tachikawa_FormDarkL.x
+Tachikawa_FormDarkR, Stations\Tachikawa\Tachikawa_FormDarkR.x
+Tachikawa_FormDarkCR, Stations\Tachikawa\Tachikawa_FormDarkCR.x
+Tachikawa_FormDarkCR2, Stations\Tachikawa\Tachikawa_FormDarkCR2.x
+Tachikawa_RoofL, Stations\Tachikawa\Tachikawa_RoofL.x
+Tachikawa_RoofR, Stations\Tachikawa\Tachikawa_RoofR.x
+Tachikawa_RoofDarkL, Stations\Tachikawa\Tachikawa_RoofDarkL.x
+Tachikawa_RoofDarkR, Stations\Tachikawa\Tachikawa_RoofDarkR.x
+ecute, Stations\Tachikawa\ecute.x
+
+//標識
+LimitKaizyo, Limits\Kaizyo.x
+Limit25L, Limits\25L.x
+Limit35L, Limits\35L.x
+Limit35R, Limits\35R.x
+Limit40, Limits\40.x
+Limit45L, Limits\45L.x
+Limit45R, Limits\45R.x
+Limit60, Limits\60.x
+Limit65, Limits\65.x
+Limit75, Limits\75.x
+Limit85-144, Limits\85-144.x
+Limit85-274, Limits\85-274.x
+GradientCS, Labels\Gradient_CS.x
+GradientCE, Labels\Gradient_CE.x
+GradientDE, Labels\Gradient_DE.x
+GradientDS, Labels\Gradient_DS.x
+ATSCheck, Labels\ATSP_Check.x
+Sigdisp_dep, Labels\sigdisp_dep.x
+Sigdisp_chuo, Labels\sigdisp_thuo.x
+Sigdisp_hachiko, Labels\sigdisp_hachiko.x
+Sigdisp_yokohama, Labels\sigdisp_yokohama.x
+Sigdisp_honIchijo, Labels\sigdisp_honIchijo.x
+Sigdisp_noboriIchijo, Labels\sigdisp_noboriIchijo.x
+Sigdisp_nizyo, Labels\sigdisp_Nizyo.x
+Sigdisp_honde, Labels\sigdisp_honde.x
+Sigdisp_nakade, Labels\sigdisp_nakade.x
+Sigdisp_nakazyo, Labels\sigdisp_nakazyo.x
+Sigdisp_nakanizyo, Labels\sigdisp_nakanizyo.x
+Sigdisp_sanzyo, Labels\Sigdisp_sanzyo.x
+Sigdisp_de, Labels\Sigdisp_de.x
+dist_ko37, Labels\dist_ko37.x
+dist_ko36, Labels\dist_ko36.x
+dist_ko35, Labels\dist_ko35.x
+dist_ko34, Labels\dist_ko34.x
+dist_ko33, Labels\dist_ko33.x
+dist_ko32, Labels\dist_ko32.x
+dist_ko31, Labels\dist_ko31.x
+dist_ko30, Labels\dist_ko30.x
+dist_ko29, Labels\dist_ko29.x
+dist_ko28, Labels\dist_ko28.x
+dist_otsu, Labels\dist_otsu.x
+dist_hei1, Labels\dist_hei1.x
+dist_hei2, Labels\dist_hei2.x
+dist_hei3, Labels\dist_hei3.x
+dist_hei4, Labels\dist_hei4.x
+dist_hei6, Labels\dist_hei6.x
+dist_hei7, Labels\dist_hei7.x
+dist_hei8, Labels\dist_hei8.x
+dist_hei9, Labels\dist_hei9.x
+s_wind, Labels\s_wind.x
+e_wind, Labels\e_wind.x
+sign_border, Labels\sign_border.x
+
+//ATS-P地上子
+Beacon3, Signals\Beacon3.x
+Beacon4, Signals\Beacon4.x
+
+//信号
+//3灯式
+Signal30, Signals\Signal30.x
+Signal32, Signals\Signal32.x
+Signal34, Signals\Signal34.x
+//4灯式(減速現示)
+Signal4yg0, Signals\Signal4yg0.x
+Signal4yg2, Signals\Signal4yg2.x
+Signal4yg3, Signals\Signal4yg3.x
+Signal4yg4, Signals\Signal4yg4.x
+//5灯式
+Signal50, Signals\Signal50.x
+Signal51, Signals\Signal51.x
+Signal52, Signals\Signal52.x
+Signal53, Signals\Signal53.x
+Signal54, Signals\Signal54.x
+//中継
+SignalRP, Signals\Relay4.x
+SignalRC, Signals\Relay1.x
+SignalRS, Signals\Relay0.x
+//柱
+SigPole, Signals\SigPole.x
+SigArm, Signals\SigArm.x
+
+//建物
+aska, Buildings\aska.x
+askaBill, Buildings\askaBill.x
+Zakkyo1, Buildings\zakkyo1.x
+Zakkyo2, Buildings\zakkyo2.x
+Bill1, Buildings\Bill1.x
+Bill2, Buildings\Bill2.x
+Bill3, Buildings\Bill3.x
+Bill4, Buildings\Bill4.x
+mBill1, Buildings\mBill1.x
+mBill2, Buildings\mBill2.x #豊田のコンクリ建物
+teraross, Buildings\teraross.x
+penguin, Buildings\penguin.x
+Shop1, Buildings\Shop1.x
+RamenShop, Buildings\ramenShop.x
+Mansion1, Buildings\Mansion1.x
+Mansion2, Buildings\Mansion2.x
+Mansion3, Buildings\Mansion3.x #国国あおやぎ苑
+MansionBack1, Buildings\MansionBack1.x
+Parking1, Buildings\Parking1.x
+Ie1, Buildings\Ie1.x  #回転非対応
+Ie2, Buildings\Ie2.x
+Ie3, Buildings\Ie3.x  #TODO
+Ie4, Buildings\Ie4.x
+Ie5, Buildings\Ie5.x
+Ie6, Buildings\Ie6.x
+Ie7, Buildings\Ie7.x
+Ie8, Buildings\Ie8.x
+IeBack, Buildings\IeBack.x
+Koya1, Buildings\Koya1.x
+Koya2, Buildings\Koya2.x
+Zooms, Buildings\Zooms.x
+soko1, Buildings\soko1.x
+VinylHouse, Buildings\VinylHouse.x
+ToyodaWare, Buildings\Toyoda-Warehouse.x
+ToyodaBack2, Buildings\ToyodaBack2.x
+TamagawaDanchi, Buildings\TamagawaDanchi.x
+
+//沿線
+Road, Ensen\Road.x
+Road2, Ensen\Road2.x
+Road2FL, Ensen\Road2FL.x
+Road2FR, Ensen\Road2FR.x
+Road2FDL, Ensen\Road2FDL.x #フェンス堤防あり
+Road2FDR, Ensen\Road2FDR.x #フェンス堤防あり
+Road2As, Ensen\Road2As.x
+Road2AsLong, Ensen\Road2AsLong.x #10m
+RoadCross, Ensen\CrossRoad.x
+RoadCross4, Ensen\CrossRoad4.x
+ToyoEnterRoad, Ensen\ToyoEnterRoad.x
+AsagawaLabel, Ensen\AsagawaLabel.x
+TamagawaLabel, Ensen\TamagawaLabel.x
+TreeWallCR, Ensen\TreeWallCR.x
+TreeWallR, Ensen\TreeWallR.x
+TreeWallCL, Ensen\TreeWallCL.x
+TreeWallL, Ensen\TreeWallL.x
+Tree1, Ensen\Tree1.x
+Tree2, Ensen\Tree2.x
+Tree3, Ensen\Tree3.x
+overpass1, Ensen\OverPass1.x
+overpass2, Ensen\OverPass2.x
+overpass3, Ensen\OverPass3.x
+NishiToyoda1, Ensen\NishiToyoda1.x
+KusaBlock, Ensen\KusaBlock.x
+
+//列車
+//E233-0番台
+E233-0-10, Trains\E233-0\E233-10.x
+E233-0-64, Trains\E233-0\E233-64.x
+E233-0TCHL, Trains\E233-0\E233-Tc-HL.x
+E233-0TCTL, Trains\E233-0\E233-Tc-TL.x
+E233-0MNN, Trains\E233-0\E233-M-NN.x
+E233-0MUU, Trains\E233-0\E233-M-UU.x
+E233-0MDU, Trains\E233-0\E233-M-DU.x
+E233-0MNU, Trains\E233-0\E233-M-NU.x
+E233-0TCEND, Trains\E233-0\E233-Tc-End.x
+//E233-6000番台
+E233-6000TCHL, Trains\E233-6000\E233-Tc-HL.x
+E233-6000TCTL, Trains\E233-6000\E233-Tc-TL.x
+E233-6000MNN, Trains\E233-6000\E233-M-NN.x
+E233-6000MUU, Trains\E233-6000\E233-M-UU.x
+E233-6000MNU, Trains\E233-6000\E233-M-NU.x
+E233-6000TCEND, Trains\E233-6000\E233-Tc-End.x
+//E257
+E2571, Trains\E257\1.x
+E2572, Trains\E257\2.x
+E2573, Trains\E257\3.x
+E2574, Trains\E257\4.x
+E25757, Trains\E257\57.x
+E25768, Trains\E257\68.x
+E2579, Trains\E257\9.x

@@ -1,0 +1,418 @@
+BveTs Map 2.02
+
+//****************************
+//* 先行列車:1344T 快速東京行き
+//****************************
+20000;
+  PreTrain.Pass('13:13:00');
+24090;
+  #豊田到着
+  PreTrain.Pass('13:17:40');
+24350;
+  #豊田発車
+  PreTrain.Pass('13:18:10');
+26450;
+  #日野到着
+  PreTrain.Pass('13:20:20');
+26650;
+  #日野発車
+  PreTrain.Pass('13:20:50');
+29620;
+  #立川到着
+  PreTrain.Pass('13:27:20');
+29880;
+  #立川発車
+  PreTrain.Pass('13:27:50');
+50000;
+  //暫定
+  PreTrain.Pass('13:30:00');
+
+//****************************
+//* ATS-P
+//****************************
+20000;
+  #最高速度115
+  Beacon.Put(7,0,110);
+20020;
+  # P即時停止:八王子出発
+  Beacon.Put(4,-1,0);
+  Structure['Beacon4'].Put0(,1,5);
+#20045;
+  #八王子2番出発
+20050;
+  #制限65
+  Beacon.Put(6,0,35075);
+  Structure['Beacon3'].Put0(,1,5);
+20070;
+  #制限75
+  Beacon.Put(6,0,35085);
+  Structure['Beacon3'].Put0(,1,5);
+20480;
+  #P停止信号:第5閉塞
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+20515;
+  #P停止信号:第5閉塞
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+20570;
+  #P即時停止:第5閉塞
+  Beacon.Put(4,-1,0);
+  Structure['Beacon4'].Put0(,1,5);
+#20600;
+  #第5閉塞
+20920;
+  #P停止信号:第4閉塞
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+21400;
+  #P停止信号:第4閉塞
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+21445;
+  #P停止信号:第4閉塞
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+21490;
+  #P即時停止:第4閉塞
+  Beacon.Put(4,-1,0);
+  Structure['Beacon4'].Put0(,1,5);
+#201520;
+  #第4閉塞
+21620;
+  #P停止信号:第3閉塞
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+22100;
+  #P停止信号:第3閉塞
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+22145;
+  #P停止信号:第3閉塞
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+22190;
+  #P即時停止:第3閉塞
+  Beacon.Put(4,-1,0);
+  Structure['Beacon4'].Put0(,1,5);
+#202220;
+  #第3閉塞
+23000;
+  #P停止信号:第2閉塞
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+23060;
+  #P停止信号:第2閉塞
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+23095;
+  #P停止信号:第2閉塞
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+23150;
+  #P即時停止:第2閉塞
+  Beacon.Put(4,-1,0);
+  Structure['Beacon4'].Put0(,1,5);
+#23180;
+  #第2閉塞
+23370;
+  #P停止信号:第1閉塞
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+23465;
+  #P停止信号:第1閉塞
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+23520;
+  #P即時停止:第1閉塞
+  Beacon.Put(4,-1,0);
+  Structure['Beacon4'].Put0(,1,5);
+#23550;
+  #第1閉塞
+23600;
+  #豊田誤通過防止
+  Beacon.Put(8,0,750);
+23620;
+  #P停止信号:上本一場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+23720;
+  #P停止信号:上本一場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+23770;
+  #P停止信号:上本一場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+23815;
+  #P停止信号:上本一場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+23850;
+  #P停止信号:上本一場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+23875;
+  #P即時停止:上本一場
+  Beacon.Put(4,-1,0);
+  Structure['Beacon4'].Put0(,1,5);
+#23900;
+  #豊田上本一場
+23940;
+  #P停止信号:上本二場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+24040;
+  #P停止信号:上本二場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+24090;
+  #P停止信号:上本二場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+24135;
+  #P停止信号:上本二場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+24170;
+  #P停止信号:上本二場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+24195;
+  #P即時停止:上本二場
+  Beacon.Put(4,-1,0);
+  Structure['Beacon4'].Put0(,1,5);
+#24220;
+  #豊田上本二場
+24210;
+  #P停止信号:豊田出発
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+24260;
+  #P停止信号:豊田出発
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+24305;
+  #P停止信号:豊田出発
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+24340;
+  #P停止信号:豊田出発
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+24365;
+  #P即時停止:豊田出発
+  Beacon.Put(4,-1,0);
+  Structure['Beacon4'].Put0(,1,5);
+#24390
+  #豊田4番出発
+24810;
+  #P停止信号:第2閉塞
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+24905;
+  #P停止信号:第2閉塞
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+24960;
+  #P即時停止:第2閉塞
+  Beacon.Put(4,-1,0);
+  Structure['Beacon4'].Put0(,1,5);
+#24990;
+  #第2閉塞
+25150;
+  #P停止信号:第1閉塞
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+25275;
+  #P停止信号:第1閉塞
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+25330;
+  #P即時停止:第1閉塞
+  Beacon.Put(4,-1,0);
+  Structure['Beacon4'].Put0(,1,5);
+#25360;
+  #第1閉塞
+25650;
+  #P停止信号:日野一場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+25750;
+  #P停止信号:日野一場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+25800;
+  #P停止信号:日野一場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+25845;
+  #P停止信号:日野一場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+25880;
+  #P停止信号:日野一場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+25905;
+  #P即時停止:日野一場
+  Beacon.Put(4,-1,0);
+  Structure['Beacon4'].Put0(,1,5);
+#25930
+  #日野一場
+26090;
+  #P停止信号:日野二場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+26190;
+  #P停止信号:日野二場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+26240;
+  #P停止信号:日野二場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+26285;
+  #P停止信号:日野二場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+26320;
+  #P停止信号:日野二場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+26345;
+  #P即時停止:日野二場
+  Beacon.Put(4,-1,0);
+  Structure['Beacon4'].Put0(,1,5);
+#26370
+  #日野二場
+26435;
+  #P停止信号:日野三場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+26470;
+  #P停止信号:日野三場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+26495;
+  #P即時停止:日野三場
+  Beacon.Put(4,-1,0);
+  Structure['Beacon4'].Put0(,1,5);
+#26520
+  #日野三場
+26580;
+  #P停止信号:日野出発
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+26625;
+  #P停止信号:日野出発
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+26660;
+  #P停止信号:日野出発
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+26685;
+  #P即時停止:日野出発
+  Beacon.Put(4,-1,0);
+  Structure['Beacon4'].Put0(,1,5);
+#26710
+  #日野出発
+26890;
+  #P停止信号:第3閉塞
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+26985;
+  #P停止信号:第3閉塞
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+27040;
+  #P即時停止:第3閉塞
+  Beacon.Put(4,-1,0);
+  Structure['Beacon4'].Put0(,1,5);
+#27070
+  #第3閉塞
+27600;
+  #P停止信号:第2閉塞
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+27695;
+  #P停止信号:第2閉塞
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+27750;
+  #P即時停止:第2閉塞
+  Beacon.Put(4,-1,0);
+  Structure['Beacon4'].Put0(,1,5);
+#27780
+  #第2閉塞
+28305;
+  #P停止信号:第1閉塞
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+28400;
+  #P停止信号:第1閉塞
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+28455;
+  #P即時停止:第1閉塞
+  Beacon.Put(4,-1,0);
+  Structure['Beacon4'].Put0(,1,5);
+#28485
+  #第1閉塞
+28630;
+  #P停止信号:立川本一場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+28950;
+  #P停止信号:立川本一場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+29050;
+  #P停止信号:立川本一場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+29100;
+  #P停止信号:立川本一場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+29145;
+  #P停止信号:立川本一場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+29180;
+  #P停止信号:立川本一場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+29205;
+  #P即時停止:立川本一場
+  Beacon.Put(4,-1,0);
+  Structure['Beacon4'].Put0(,1,5);
+#29230
+  #立川本一場
+29280;
+  #P停止信号:立川本二場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+29380;
+  #P停止信号:立川本二場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+29430;
+  #P停止信号:立川本二場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+29475;
+  #P停止信号:立川本二場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+29510;
+  #P停止信号:立川本二場
+  Beacon.Put(3,-1,0);
+  Structure['Beacon3'].Put0(,1,5);
+29535;
+  #P即時停止:立川本二場
+  Beacon.Put(4,-1,0);
+  Structure['Beacon4'].Put0(,1,5);
+#29560
+  #立川本二場
