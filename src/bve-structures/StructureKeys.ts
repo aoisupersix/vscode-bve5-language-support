@@ -1,4 +1,7 @@
 import * as fs from 'fs';
+import * as encoding from 'encoding-japanese';
+import * as iconv from 'iconv-lite';
+import * as csvSync from 'csv-parse/lib/sync';
 
 export class StructureKeys {
   /**
@@ -20,7 +23,10 @@ export class StructureKeys {
   }
 
   public loadFromFilePath(filePath: string) {
-    const data = fs.readFileSync(filePath);
+    const buf = fs.readFileSync(filePath);
+    const encode = encoding.detect(buf);
+    const data = iconv.decode(buf, encode);
+    //csvSync(data);
     console.log(data);
   }
 }
