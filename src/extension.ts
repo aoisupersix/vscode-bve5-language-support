@@ -5,6 +5,7 @@ import * as util from './util';
 import { MapSignatureHelpProvider } from './bve-map/MapSignatureHelpProvider';
 import { MapCompletionItemProvider } from './bve-map/MapCompletionItemProvider';
 import { MapHoverProvider } from './bve-map/MapHoverProvider';
+import { StructureKeys } from './bve-structures/StructureKeys';
 import { VehicleHoverProvider } from './bve-vehicle/VehicleHoverProvider';
 
 const BVE_MAP_MODE: vscode.DocumentFilter = {language: 'bve-map-2.02', scheme: 'file' };
@@ -20,6 +21,8 @@ export function activate(context: vscode.ExtensionContext) {
 
         context.subscriptions.push(controller);
         context.subscriptions.push(distChecker);
+
+        StructureKeys.instance.loadFromFilePath('G:/Library/Documents/bve5_ChuoRapidLine/aoi-ChuoRapidLine/Structures/Structures.csv');
     }
 
     //マップ
