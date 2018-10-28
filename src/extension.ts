@@ -5,6 +5,7 @@ import { DistanceChecker, DistanceCheckerController } from './bve-map/DistanceCh
 import { MapSignatureHelpProvider } from './bve-map/MapSignatureHelpProvider';
 import { MapCompletionItemProvider } from './bve-map/MapCompletionItemProvider';
 import { MapHoverProvider } from './bve-map/MapHoverProvider';
+import { ListFileLoaderController } from './bve-map/ListFileLoader';
 import { StructureKeys } from './bve-structures/StructureKeys';
 import { VehicleHoverProvider } from './bve-vehicle/VehicleHoverProvider';
 
@@ -31,6 +32,9 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(vscode.languages.registerHoverProvider(BVE_MAP_MODE, new MapHoverProvider()));
     //車両
     context.subscriptions.push(vscode.languages.registerHoverProvider(BVE_VEHICLE_MODE, new VehicleHoverProvider()));
+
+    //リストファイル
+    context.subscriptions.push(new ListFileLoaderController());
 }
 
 export function deactivate() {

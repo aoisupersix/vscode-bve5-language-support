@@ -1,6 +1,7 @@
 'use strict';
 
 import * as fs from 'fs';
+import * as readline from 'readline';
 import * as encoding from 'encoding-japanese';
 import * as iconv from 'iconv-lite';
 
@@ -69,7 +70,7 @@ export function trimWhiteSpace(data: string, headerRegex?: RegExp, commentRegex:
 }
 
 /**
- * 引数に指定されたファイルパスのファイルを読み込みます。
+ * 引数に与えられたファイルパスのファイルを読み込みます。
  * @param filePath ファイルパス
  */
 export function loadFile(filePath: string): string {

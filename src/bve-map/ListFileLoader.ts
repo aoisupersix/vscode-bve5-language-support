@@ -5,7 +5,7 @@ import * as util from '../util';
 
 export class ListFileLoaderController {
 
-  private _listFileLoader: ListFileLoader = new ListFileLoader();
+  private _listFileLoader: ListFileLoader;
   private _disposable: vscode.Disposable;
 
   constructor() {
@@ -16,6 +16,7 @@ export class ListFileLoaderController {
       vscode.workspace.onDidSaveTextDocument(this._onEvent, this, subscriptions);
 
       // update the counter for the current file
+      this._listFileLoader = new ListFileLoader();
       this._listFileLoader.loadFiles();
 
       // create a combined disposable from both event subscriptions
@@ -33,7 +34,15 @@ export class ListFileLoaderController {
 
 export class ListFileLoader {
 
-  public loadFiles() {
+  loadFiles() {
+      vscode.workspace.findFiles('**/*.{txt,csv}').then((files) => {
+        for(const i in files) {
+            const txt = util.loadFile(files[i].fsPath);
+            console.log(txt);
+        }
+      }, (reason) => {
+        console.log(reason);
+      });
 
   }
 }
