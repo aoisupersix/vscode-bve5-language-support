@@ -4,6 +4,7 @@ import * as vscode from 'vscode';
 import * as util from '../util';
 import { MapDocs } from './MapDocs';
 import { MapSyntaxType } from './MapDoc';
+import { StructureKeys } from '../bve-structures/StructureKeys';
 import { List } from 'linqts';
 
 export class MapCompletionItemProvider implements vscode.CompletionItemProvider {
@@ -19,7 +20,7 @@ export class MapCompletionItemProvider implements vscode.CompletionItemProvider 
         let startIdx = trimedText.lastIndexOf(";") + 1;
         let endIdx = trimedText.lastIndexOf(".");
         if(endIdx === -1) {
-            endIdx = trimedText.length - 1;
+            endIdx = trimedText.length;
         }
         return trimedText.substring(startIdx, endIdx);
     }
@@ -68,7 +69,19 @@ export class MapCompletionItemProvider implements vscode.CompletionItemProvider 
 
     private getKeyCompletionItems(txt: string): Promise<vscode.CompletionItem[]> {
         return new Promise((resolve, reject) => {
-
+            const strKeys = StructureKeys.instance.KeyList;
+            if (txt.substring(txt.length - 2) === '[\'') {
+                //関数のキー名
+                const a = txt.substring(0, txt.length - 2);
+                const mapElementName = this.getFuncName(a);
+                if (mapElementName === 'Structure') {
+                    //ストラクチャーリストの表示
+                    resolve(strKeys.Select(k => new vscode.CompletionItem(k[0], vscode.CompletionItemKind.Variable)).ToArray());
+                    return;
+                }
+            }
+            //TODO
+            reject();
         });
     }
 
