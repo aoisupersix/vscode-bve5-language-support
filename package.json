@@ -84,7 +84,8 @@
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",
         "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+        "test": "mocha --opts ./test/cli-test-mocha.opts",
+        "test-mode": "mocha --opts ./test/cli-test-mocha.opts --watch"
     },
     "devDependencies": {
         "@types/mocha": "^2.2.42",
