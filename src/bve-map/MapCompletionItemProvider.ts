@@ -19,7 +19,7 @@ export class MapCompletionItemProvider implements vscode.CompletionItemProvider 
     private getFuncName(trimedText: string): string {
         let startIdx = trimedText.lastIndexOf(";") + 1;
         let endIdx = trimedText.lastIndexOf(".");
-        if(endIdx === -1) {
+        if(endIdx === -1 || endIdx <= startIdx) {
             endIdx = trimedText.length;
         }
         return trimedText.substring(startIdx, endIdx);

@@ -1,6 +1,6 @@
 'use strict';
 
-import { loadFile, trimWhiteSpace } from '../util';
+import { trimWhiteSpace } from '../util';
 import { List } from 'linqts';
 import * as csvSync from 'csv-parse/lib/sync';
 
@@ -16,6 +16,10 @@ export class StructureKeys {
     return this._keyList;
   }
 
+  public clearKey() {
+    this._keyList.RemoveAll;
+  }
+
   /**
    * インスタンスを取得します。
    */
@@ -28,20 +32,18 @@ export class StructureKeys {
   }
 
   /**
-   * 引数に与えられたストラクチャーリストファイルのファイルパスからキーを取得します。
-   * @param filePath ファイルパス
+   * 引数に与えられたストラクチャーリストファイルからキーを取得しますして追加します。
+   * @param data ストラクチャーリストファイル
    */
-  public loadFromFilePath(filePath: string) {
-    let data = loadFile(filePath);
+  public addKeys(data: string) {
 
     let headerRegex = /^\s*BveTs\s*Structure\s*List\s*\d+\.\d+\s*(?::.*)?\s*(?:$|\r\n|\n|\r)/gi
-    if (data.match(headerRegex)) {
-      console.log("Loaded structures list file.");
-      data = trimWhiteSpace(data, headerRegex);
-      const matrix = csvSync(data);
 
-      const keyList = new List<string[]>(matrix);
-      this._keyList = keyList.Where(k => k !== undefined && k.length == 2);
-    }
+    console.log("Loaded structures list file.");
+    data = trimWhiteSpace(data, headerRegex);
+    const matrix = csvSync(data);
+
+    const keyList = new List<string[]>(matrix);
+    this._keyList = keyList.Where(k => k !== undefined && k.length == 2);
   }
 }

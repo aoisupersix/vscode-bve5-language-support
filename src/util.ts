@@ -1,7 +1,6 @@
 'use strict';
 
 import * as fs from 'fs';
-import * as readline from 'readline';
 import * as encoding from 'encoding-japanese';
 import * as iconv from 'iconv-lite';
 
