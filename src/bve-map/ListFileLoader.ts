@@ -39,10 +39,28 @@ export class ListFileLoader {
       // 初期化
       StructureKeys.instance.clearKey();
 
-      // 読み込み
-      vscode.workspace.findFiles('**/*.{txt,csv}').then((files) => {
+      const rootPath = vscode.workspace.rootPath
+      if (rootPath === undefined) {
+          this.loadFilesFromSyntax();
+      }else {
+          this.loadFilesFromWorkspace();
+      }
+  }
+
+  /**
+   * リストファイルを構文から取得します。
+   */
+  loadFilesFromSyntax() {
+
+  }
+
+  /**
+   * リストファイルをワークスペースのテキストから取得します。
+   */
+  loadFilesFromWorkspace() {
+    vscode.workspace.findFiles('**/*.{txt,csv}').then((files) => {
         for(const i in files) {
-            const txt = util.loadFile(files[i].fsPath);
+        const txt = util.loadFile(files[i].fsPath);
             const header = txt.split(/[\n\r]/)[0];
 
             if (header.match(/^\s*BveTs\s*Structure\s*List\s*\d+\.\d+\s*(?::.*)?\s*(?:$|\r\n|\n|\r)/gi)) {
@@ -54,6 +72,5 @@ export class ListFileLoader {
       }, (reason) => {
         console.log(reason);
       });
-
   }
 }
