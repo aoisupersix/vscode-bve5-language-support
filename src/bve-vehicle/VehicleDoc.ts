@@ -5,36 +5,36 @@ import * as vscode from 'vscode'
  * 車両ファイルの要素を格納するクラス
  */
 export class VehicleDoc {
-  private _elementName: string
-  private _description: string
+  private elementName: string
+  private description: string
 
   /**
    * デフォルトのコンストラクタ
-   * @param elem_name 要素名
+   * @param elemName 要素名
    * @param description 要素の説明
    */
-  constructor(elem_name: string, description: string) {
-    this._elementName = elem_name
-    this._description = description
+  constructor(elemName: string, description: string) {
+    this.elementName = elemName
+    this.description = description
   }
 
   /**
    * 引数に与えられた要素名と一致するか？
-   * @param elem_name 要素名
+   * @param elemName 要素名
    */
-  isMatch(elem_name: string): boolean {
-    return elem_name.match(new RegExp(`${this._elementName}`, 'gi')) !== null
+  public isMatch(elemName: string): boolean {
+    return elemName.match(new RegExp(`${this.elementName}`, 'gi')) !== null
   }
 
   /**
    * ホバーを取得します。
    * @param range　ホバー範囲
    */
-  getMapHover(range: vscode.Range): vscode.Hover {
+  public getMapHover(range: vscode.Range): vscode.Hover {
     return new vscode.Hover(
       [
-        new vscode.MarkdownString(`${this._elementName}`),
-        new vscode.MarkdownString(`${this._description}`)
+        new vscode.MarkdownString(`${this.elementName}`),
+        new vscode.MarkdownString(`${this.description}`)
       ],
       range
     )

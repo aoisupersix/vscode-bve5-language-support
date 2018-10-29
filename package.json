@@ -90,6 +90,7 @@
         "@types/mocha": "^2.2.42",
         "@types/node": "^7.0.43",
         "mocha": "^5.2.0",
+        "tslint-config-prettier": "^1.15.0",
         "typescript": "^2.6.1",
         "vscode": "^1.1.6"
     },
@@ -100,6 +101,7 @@
         "encoding-japanese": "^1.0.29",
         "iconv-lite": "^0.4.24",
         "linqts": "^1.11.0",
-        "npm": "^6.4.1"
+        "npm": "^6.4.1",
+        "tslint": "^5.11.0"
     }
 }

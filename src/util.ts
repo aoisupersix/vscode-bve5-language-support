@@ -1,8 +1,9 @@
 'use strict'
 
-import * as fs from 'fs'
 import * as encoding from 'encoding-japanese'
+import * as fs from 'fs'
 import * as iconv from 'iconv-lite'
+
 import * as headers from './const/headers';
 
 /**
@@ -31,27 +32,26 @@ export function trimWhiteSpace(
   commentRegex: RegExp = COMMENT_REGEX,
   isDeleteNewLine?: boolean
 ): string {
-  //ヘッダの削除
+  // ヘッダの削除
   if (headerRegex !== undefined) {
     data = data.replace(headerRegex, '')
   }
 
-  //WhiteSpaceの削除
-  let lines = data.split(/[\n\r]/)
-  var ret = ''
-  for (let i in lines) {
-    let line = lines[i]
-    let commentIdx = line.search(commentRegex)
+  // WhiteSpaceの削除
+  const lines = data.split(/[\n\r]/)
+  let ret = ''
+  for (let line of lines) {
+    const commentIdx = line.search(commentRegex)
     if (commentIdx !== -1) {
       line = line.substring(0, commentIdx)
     }
     line = line.replace(/\s+/g, '')
 
-    //空行は飛ばす
+    // 空行は飛ばす
     if (line !== '') {
       ret += line
 
-      //改行の追加
+      // 改行の追加
       if (isDeleteNewLine === undefined || isDeleteNewLine === false) {
         ret += '\n'
       }

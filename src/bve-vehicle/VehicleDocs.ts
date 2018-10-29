@@ -1,4 +1,5 @@
 'use strict'
+
 import { VehicleDoc } from './VehicleDoc'
 
 /**
@@ -8,43 +9,43 @@ export class VehicleDocs {
   /**
    * インスタンス
    */
-  private static _instance: VehicleDocs
+  private static instance: VehicleDocs
 
-  private _elements: VehicleDoc[] = []
+  private elements: VehicleDoc[] = []
 
   private constructor() {
-    let performance_curve = new VehicleDoc(
+    const performanceCurve = new VehicleDoc(
       'PerformanceCurve',
       'このファイルから[車両性能ファイル](http://bvets.net/jp/edit/formats/vehicle/perform.html)への相対パスを記述します。'
     )
 
-    let parameters = new VehicleDoc(
+    const parameters = new VehicleDoc(
       'Parameter',
       'このファイルから[車両パラメータファイル](http://bvets.net/jp/edit/formats/vehicle/params.html)への相対パスを記述します。'
     )
 
-    let panel = new VehicleDoc(
+    const panel = new VehicleDoc(
       'Panel',
       'このファイルから[運転台パネルファイル](http://bvets.net/jp/edit/formats/vehicle/panel.html)への相対パスを記述します。'
     )
 
-    let sound = new VehicleDoc(
+    const sound = new VehicleDoc(
       'Sound',
       'このファイルから[車両サウンドファイル](http://bvets.net/jp/edit/formats/vehicle/sound.html)への相対パスを記述します。'
     )
 
-    let ats = new VehicleDoc(
+    const ats = new VehicleDoc(
       'Ats',
       'このファイルから[保安装置プラグイン](http://bvets.net/jp/edit/formats/vehicle/ats.html)への相対パスを記述します。'
     )
 
-    let motornoise = new VehicleDoc(
+    const motornoise = new VehicleDoc(
       'MotorNoise',
       'このファイルからモータ音ファイルへの相対パスを記述します。'
     )
 
-    this._elements.push(
-      performance_curve,
+    this.elements.push(
+      performanceCurve,
       parameters,
       panel,
       sound,
@@ -56,18 +57,18 @@ export class VehicleDocs {
   /**
    * インスタンスを取得します。
    */
-  public static get instance(): VehicleDocs {
-    if (!this._instance) {
-      this._instance = new VehicleDocs()
+  public static get Instance(): VehicleDocs {
+    if (!this.instance) {
+      this.instance = new VehicleDocs()
     }
 
-    return this._instance
+    return this.instance
   }
 
   /**
    * 全ての車両ファイル構文を取得します。
    */
   public getElements() {
-    return this._elements
+    return this.elements
   }
 }

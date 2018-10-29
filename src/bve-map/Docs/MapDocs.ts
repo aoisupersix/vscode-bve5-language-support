@@ -1,6 +1,9 @@
 'use strict'
+
 import * as vscode from 'vscode'
-import { MapDoc, MapSyntaxType, MapParameter } from './MapDoc'
+
+import { MapDoc, MapSyntaxType } from './MapDoc'
+import { MapParameter } from './MapParameter'
 
 /**
  * マップ構文を管理するシングルトンクラス
@@ -9,7 +12,7 @@ export class MapDocs {
   /**
    * インスタンス
    */
-  private static _instance: MapDocs
+  private static instance: MapDocs
 
   /**
    * 全てのマップ構文
@@ -26,9 +29,9 @@ export class MapDocs {
    * ここで構文の定義を行う
    */
   private constructor() {
-    //#region カーブ
-    //Curve.SetGauge(value)
-    let curve_setgauge = new MapDoc(
+    // #region カーブ
+    // Curve.SetGauge(value)
+    const curveSetgauge = new MapDoc(
       MapSyntaxType.Syntax1,
       'Curve',
       '',
@@ -39,8 +42,8 @@ export class MapDocs {
       [this.createParam('value', '**value**: 軌間 [m]')]
     )
 
-    //Curve.SetCenter(x)
-    let curve_setcenter = new MapDoc(
+    // Curve.SetCenter(x)
+    const curveSetcenter = new MapDoc(
       MapSyntaxType.Syntax1,
       'Curve',
       '',
@@ -51,8 +54,8 @@ export class MapDocs {
       [this.createParam('x', '**x**: 軌間 [m]')]
     )
 
-    //Curve.SetFunction(id)
-    let curve_setfunction = new MapDoc(
+    // Curve.SetFunction(id)
+    const curveSetfunction = new MapDoc(
       MapSyntaxType.Syntax1,
       'Curve',
       '',
@@ -68,8 +71,8 @@ export class MapDocs {
       ]
     )
 
-    //Curve.BeginTransition()
-    let curve_begintransition = new MapDoc(
+    // Curve.BeginTransition()
+    const curveBegintransition = new MapDoc(
       MapSyntaxType.Syntax1,
       'Curve',
       '',
@@ -80,8 +83,8 @@ export class MapDocs {
       []
     )
 
-    //Curve.Begin(radius, cant)
-    let curve_begin = new MapDoc(
+    // Curve.Begin(radius, cant)
+    const curveBegin = new MapDoc(
       MapSyntaxType.Syntax1,
       'Curve',
       '',
@@ -97,8 +100,8 @@ export class MapDocs {
         this.createParam('cant', '**cant**: カント [m]')
       ]
     )
-    //Curve.Begin2(radius)
-    curve_begin.addSyntax(
+    // Curve.Begin2(radius)
+    curveBegin.addSyntax(
       this.convMarkDown(
         '平面曲線の円曲線を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)から開始します。'
       ),
@@ -109,16 +112,16 @@ export class MapDocs {
         )
       ]
     )
-    //Curve.Begin()
-    curve_begin.addSyntax(
+    // Curve.Begin()
+    curveBegin.addSyntax(
       this.convMarkDown(
         '平面曲線の円曲線を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)から開始します。'
       ),
       []
     )
 
-    //Curve.End()
-    let curve_end = new MapDoc(
+    // Curve.End()
+    const curveEnd = new MapDoc(
       MapSyntaxType.Syntax1,
       'Curve',
       '',
@@ -129,8 +132,8 @@ export class MapDocs {
       []
     )
 
-    //Curve.Interpolate(radius, cant)
-    let curve_interpolate = new MapDoc(
+    // Curve.Interpolate(radius, cant)
+    const curveInterpolate = new MapDoc(
       MapSyntaxType.Syntax1,
       'Curve',
       '',
@@ -146,8 +149,8 @@ export class MapDocs {
         this.createParam('cant', '**cant**: カント [m]')
       ]
     )
-    //Curve.Interpolate(radius)
-    curve_interpolate.addSyntax(
+    // Curve.Interpolate(radius)
+    curveInterpolate.addSyntax(
       this.convMarkDown(
         '[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における平面曲線の半径とカントを設定します。1 つ手前の Curve.Interpolate または Curve.Change の間は補間されます。補間関数は、Curve.SetFunction で設定します。引数を省略した場合、1 つ手前の Curve.Interpolate の値が使用されます。'
       ),
@@ -158,16 +161,16 @@ export class MapDocs {
         )
       ]
     )
-    //Curve.Interpolate()
-    curve_interpolate.addSyntax(
+    // Curve.Interpolate()
+    curveInterpolate.addSyntax(
       this.convMarkDown(
         '[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における平面曲線の半径とカントを設定します。1 つ手前の Curve.Interpolate または Curve.Change の間は補間されます。補間関数は、Curve.SetFunction で設定します。引数を省略した場合、1 つ手前の Curve.Interpolate の値が使用されます。'
       ),
       []
     )
 
-    //Curve.Change(radius)
-    let curve_change = new MapDoc(
+    // Curve.Change(radius)
+    const curveChange = new MapDoc(
       MapSyntaxType.Syntax1,
       'Curve',
       '',
@@ -195,21 +198,21 @@ export class MapDocs {
     )
 
     this.syntaxes.push(
-      curve_setgauge,
-      curve_setcenter,
-      curve_setfunction,
-      curve_begintransition,
-      curve_begin,
-      curve_end,
-      curve_interpolate,
-      curve_change
+      curveSetgauge,
+      curveSetcenter,
+      curveSetfunction,
+      curveBegintransition,
+      curveBegin,
+      curveEnd,
+      curveInterpolate,
+      curveChange
     )
     //#endregion
 
     //#region 自軌道の勾配
 
-    //Gradient.BeginTransition()
-    let gradient_begintransition = new MapDoc(
+    // Gradient.BeginTransition()
+    const gradientBegintransition = new MapDoc(
       MapSyntaxType.Syntax1,
       'Gradient',
       '',
@@ -220,8 +223,8 @@ export class MapDocs {
       []
     )
 
-    //Gradient.Begin(gradient)
-    let gradient_begin = new MapDoc(
+    // Gradient.Begin(gradient)
+    const gradientBegin = new MapDoc(
       MapSyntaxType.Syntax1,
       'Gradient',
       '',
@@ -232,8 +235,8 @@ export class MapDocs {
       [this.createParam('gradient', '**gradient**: 勾配 [‰]')]
     )
 
-    //Gradient.End()
-    let gradient_end = new MapDoc(
+    // Gradient.End()
+    const gradientEnd = new MapDoc(
       MapSyntaxType.Syntax1,
       'Gradient',
       '',
@@ -244,8 +247,8 @@ export class MapDocs {
       []
     )
 
-    //Gradient.Interpolate(gradient)
-    let gradient_interpolate = new MapDoc(
+    // Gradient.Interpolate(gradient)
+    const gradientInterpolate = new MapDoc(
       MapSyntaxType.Syntax1,
       'Gradient',
       '',
@@ -255,8 +258,8 @@ export class MapDocs {
       ),
       [this.createParam('gradient', '**gradient**: 勾配 [‰]')]
     )
-    //Gradient.Interpolate()
-    gradient_interpolate.addSyntax(
+    // Gradient.Interpolate()
+    gradientInterpolate.addSyntax(
       this.convMarkDown(
         '[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における勾配を設定します。2 つの Gradient.Interpolate の間の勾配は線形補間されます。引数を省略した場合、1 つ手前の Gradient.Interpolate の値が使用されます。'
       ),
@@ -275,18 +278,18 @@ export class MapDocs {
     )
 
     this.syntaxes.push(
-      gradient_begintransition,
-      gradient_begin,
-      gradient_end,
-      gradient_interpolate
+      gradientBegintransition,
+      gradientBegin,
+      gradientEnd,
+      gradientInterpolate
     )
 
     //#endregion
 
     //#region 他軌道
 
-    //Track[].X.Interpolate(x, radius)
-    let track_x_interpolate = new MapDoc(
+    // Track[].X.Interpolate(x, radius)
+    const trackInterpolate = new MapDoc(
       MapSyntaxType.Syntax3,
       'Track',
       'X',
@@ -302,23 +305,23 @@ export class MapDocs {
         )
       ]
     )
-    //Track[].X.Interpolate(x)
-    track_x_interpolate.addSyntax(
+    // Track[].X.Interpolate(x)
+    trackInterpolate.addSyntax(
       this.convMarkDown(
         '現在の[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における他軌道の x 方向位置を設定します。2 つの Track[].X.Interpolate との間の x 座標は補間されます。引数が省略された場合、1 つ手前の Track[].X.Interpolate の値が使用されます。'
       ),
       [this.createParam('x', '**x**: 自軌道からの x 座標 [m]')]
     )
-    //Track[].X.Interpolate()
-    track_x_interpolate.addSyntax(
+    // Track[].X.Interpolate()
+    trackInterpolate.addSyntax(
       this.convMarkDown(
         '現在の[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における他軌道の x 方向位置を設定します。2 つの Track[].X.Interpolate との間の x 座標は補間されます。引数が省略された場合、1 つ手前の Track[].X.Interpolate の値が使用されます。'
       ),
       []
     )
 
-    //Track[].Y.Interpolate(x, radius)
-    let track_y_interpolate = new MapDoc(
+    // Track[].Y.Interpolate(x, radius)
+    const trackYInterpolate = new MapDoc(
       MapSyntaxType.Syntax3,
       'Track',
       'Y',
@@ -334,23 +337,23 @@ export class MapDocs {
         )
       ]
     )
-    //Track[].Y.Interpolate(x)
-    track_y_interpolate.addSyntax(
+    // Track[].Y.Interpolate(x)
+    trackYInterpolate.addSyntax(
       this.convMarkDown(
         '現在の[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における他軌道の y 方向位置を設定します。2 つの Track[].Y.Interpolate との間の y 座標は補間されます。引数が省略された場合、1 つ手前の Track[].Y.Interpolate の値が使用されます。'
       ),
       [this.createParam('y', '**y**: 自軌道からの y 座標 [m]')]
     )
-    //Track[].Y.Interpolate()
-    track_y_interpolate.addSyntax(
+    // Track[].Y.Interpolate()
+    trackYInterpolate.addSyntax(
       this.convMarkDown(
         '現在の[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における他軌道の y 方向位置を設定します。2 つの Track[].Y.Interpolate との間の y 座標は補間されます。引数が省略された場合、1 つ手前の Track[].Y.Interpolate の値が使用されます。'
       ),
       []
     )
 
-    //Track[].Position(x, y, radiusH, radiusV)
-    let track_position = new MapDoc(
+    // Track[].Position(x, y, radiusH, radiusV)
+    const trackPosition = new MapDoc(
       MapSyntaxType.Syntax2,
       'Track',
       '',
@@ -371,8 +374,8 @@ export class MapDocs {
         )
       ]
     )
-    //Track[].Position(x, y, radiusH)
-    track_position.addSyntax(
+    // Track[].Position(x, y, radiusH)
+    trackPosition.addSyntax(
       this.convMarkDown(
         '[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における他軌道の位置を設定します。Track[].X.Interpolate と Track[].Y.Interpolate を同時に記述することと同等です。ただし、引数が省略された場合、0 が代入されます。'
       ),
@@ -385,8 +388,8 @@ export class MapDocs {
         )
       ]
     )
-    //Track[].Position(x, y)
-    track_position.addSyntax(
+    // Track[].Position(x, y)
+    trackPosition.addSyntax(
       this.convMarkDown(
         '[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における他軌道の位置を設定します。Track[].X.Interpolate と Track[].Y.Interpolate を同時に記述することと同等です。ただし、引数が省略された場合、0 が代入されます。'
       ),
@@ -396,8 +399,8 @@ export class MapDocs {
       ]
     )
 
-    //Track[].Cant.SetGauge(gauge)
-    let track_cant_setgauge = new MapDoc(
+    // Track[].Cant.SetGauge(gauge)
+    const trackCantSetgauge = new MapDoc(
       MapSyntaxType.Syntax3,
       'Track',
       'Cant',
@@ -408,8 +411,8 @@ export class MapDocs {
       [this.createParam('gauge', '**gauge**: 軌間 [m]')]
     )
 
-    //Track[].Cant.SetCenter(x)
-    let track_cant_setcenter = new MapDoc(
+    // Track[].Cant.SetCenter(x)
+    const trackCantSetcenter = new MapDoc(
       MapSyntaxType.Syntax3,
       'Track',
       'Cant',
@@ -425,8 +428,8 @@ export class MapDocs {
       ]
     )
 
-    //Track[].Cant.SetFunction(id)
-    let track_cant_setfunction = new MapDoc(
+    // Track[].Cant.SetFunction(id)
+    const trackCantSetfunction = new MapDoc(
       MapSyntaxType.Syntax3,
       'Track',
       'Cant',
@@ -442,8 +445,8 @@ export class MapDocs {
       ]
     )
 
-    //Track[].Cant.BeginTransition()
-    let track_cant_begintransition = new MapDoc(
+    // Track[].Cant.BeginTransition()
+    const trackCantBegintransition = new MapDoc(
       MapSyntaxType.Syntax3,
       'Track',
       'Cant',
@@ -454,8 +457,8 @@ export class MapDocs {
       []
     )
 
-    //Track[].Cant.Begin(cant)
-    let track_cant_begin = new MapDoc(
+    // Track[].Cant.Begin(cant)
+    const trackCantBegin = new MapDoc(
       MapSyntaxType.Syntax3,
       'Track',
       'Cant',
@@ -471,8 +474,8 @@ export class MapDocs {
       ]
     )
 
-    //Track[].Cant.End()
-    let track_cant_end = new MapDoc(
+    // Track[].Cant.End()
+    const trackCantEnd = new MapDoc(
       MapSyntaxType.Syntax3,
       'Track',
       'Cant',
@@ -483,8 +486,8 @@ export class MapDocs {
       []
     )
 
-    //Track[].Cant.Interpolate(cant)
-    let track_cant_interpolate = new MapDoc(
+    // Track[].Cant.Interpolate(cant)
+    const trackCantInterpolate = new MapDoc(
       MapSyntaxType.Syntax3,
       'Track',
       'Cant',
@@ -500,8 +503,8 @@ export class MapDocs {
       ]
     )
 
-    //Track[].Cant.Interpolate()
-    track_cant_interpolate.addSyntax(
+    // Track[].Cant.Interpolate()
+    trackCantInterpolate.addSyntax(
       this.convMarkDown(
         '[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における他軌道のカントを設定します。2 つの Track[].Cant.Interpolate の間のカントは補間されます。補間関数は、Track[].Cant.SetFunction で設定します。引数を省略した場合、1 つ手前の Track[].Cant.Interpolate の値が使用されます。'
       ),
@@ -520,23 +523,23 @@ export class MapDocs {
     )
 
     this.syntaxes.push(
-      track_x_interpolate,
-      track_y_interpolate,
-      track_position,
-      track_cant_setgauge,
-      track_cant_setcenter,
-      track_cant_setfunction,
-      track_cant_begintransition,
-      track_cant_begin,
-      track_cant_end,
-      track_cant_interpolate
+      trackInterpolate,
+      trackInterpolate,
+      trackPosition,
+      trackCantSetgauge,
+      trackCantSetcenter,
+      trackCantSetfunction,
+      trackCantBegintransition,
+      trackCantBegin,
+      trackCantEnd,
+      trackCantInterpolate
     )
     //#endregion
 
     //#region ストラクチャ
 
-    //Structure.Load(filePath)
-    let structure_load = new MapDoc(
+    // Structure.Load(filePath)
+    const structureLoad = new MapDoc(
       MapSyntaxType.Syntax1,
       'Structure',
       '',
@@ -552,8 +555,8 @@ export class MapDocs {
       ]
     )
 
-    //Structure.Put(trackKey, x, y, z, rx, ry, rz, tilt, span)
-    let structure_put = new MapDoc(
+    // Structure.Put(trackKey, x, y, z, rx, ry, rz, tilt, span)
+    const structurePut = new MapDoc(
       MapSyntaxType.Syntax2,
       'Structure',
       '',
@@ -581,8 +584,8 @@ export class MapDocs {
       ]
     )
 
-    //Structure.Put0(trackKey, tilt, span)
-    let structure_put0 = new MapDoc(
+    // Structure.Put0(trackKey, tilt, span)
+    const structurePut0 = new MapDoc(
       MapSyntaxType.Syntax2,
       'Structure',
       '',
@@ -603,8 +606,8 @@ export class MapDocs {
       ]
     )
 
-    //Structure.PutBetween(trackKey1, trackKey2, flag)
-    let structure_putbetween = new MapDoc(
+    // Structure.PutBetween(trackKey1, trackKey2, flag)
+    const structurePutbetween = new MapDoc(
       MapSyntaxType.Syntax2,
       'Structure',
       '',
@@ -625,8 +628,8 @@ export class MapDocs {
       ]
     )
 
-    //Structure.PutBetween(trackKey1, trackKey2)
-    structure_putbetween.addSyntax(
+    // Structure.PutBetween(trackKey1, trackKey2)
+    structurePutbetween.addSyntax(
       this.convMarkDown(
         'ストラクチャーを[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)の 2 つの軌道の間に設置します。ストラクチャーは、軌道間の距離に応じて変形します。'
       ),
@@ -651,17 +654,17 @@ export class MapDocs {
     )
 
     this.syntaxes.push(
-      structure_load,
-      structure_put,
-      structure_put0,
-      structure_putbetween
+      structureLoad,
+      structurePut,
+      structurePut0,
+      structurePutbetween
     )
     //#endregion
 
     //#region 連続ストラクチャ
 
-    //Repeater[].Begin(trackKey, x, y, z, rx, ry, rz, tilt, span, interval, ...structureKeyN)
-    let repeater_begin = new MapDoc(
+    // Repeater[].Begin(trackKey, x, y, z, rx, ry, rz, tilt, span, interval, ...structureKeyN)
+    const repeaterBegin = new MapDoc(
       MapSyntaxType.Syntax2,
       'Repeater',
       '',
@@ -696,8 +699,8 @@ export class MapDocs {
       ]
     )
 
-    //Repeater[].Begin0(trackKey, tilt, span, interval, ...structureKeyN)
-    let repeater_begin0 = new MapDoc(
+    // Repeater[].Begin0(trackKey, tilt, span, interval, ...structureKeyN)
+    const repeaterBegin0 = new MapDoc(
       MapSyntaxType.Syntax2,
       'Repeater',
       '',
@@ -723,8 +726,8 @@ export class MapDocs {
       ]
     )
 
-    //Repeater[].End()
-    let repeater_end = new MapDoc(
+    // Repeater[].End()
+    const repeaterEnd = new MapDoc(
       MapSyntaxType.Syntax2,
       'Repeater',
       '',
@@ -735,8 +738,8 @@ export class MapDocs {
       []
     )
 
-    //Background.Change(structureKey)
-    let background_change = new MapDoc(
+    // Background.Change(structureKey)
+    const backgroundChange = new MapDoc(
       MapSyntaxType.Syntax1,
       'BackGround',
       '',
@@ -768,17 +771,17 @@ export class MapDocs {
     )
 
     this.syntaxes.push(
-      repeater_begin,
-      repeater_begin0,
-      repeater_end,
-      background_change
+      repeaterBegin,
+      repeaterBegin0,
+      repeaterEnd,
+      backgroundChange
     )
     //#endregion
 
     //#region 停車場
 
-    //Station.Load(filePath)
-    let station_load = new MapDoc(
+    // Station.Load(filePath)
+    const stationLoad = new MapDoc(
       MapSyntaxType.Syntax1,
       'Station',
       '',
@@ -794,8 +797,8 @@ export class MapDocs {
       ]
     )
 
-    //Station[].Put(door, margin1, margin2)
-    let station_put = new MapDoc(
+    // Station[].Put(door, margin1, margin2)
+    const stationPut = new MapDoc(
       MapSyntaxType.Syntax2,
       'Station',
       '',
@@ -824,14 +827,14 @@ export class MapDocs {
       )
     )
 
-    this.syntaxes.push(station_load, station_put)
+    this.syntaxes.push(stationLoad, stationPut)
 
     //#endregion
 
     //#region 閉そく
 
-    //Section.Begin(signal0, signal1, ...signalN)
-    let section_signal = new MapDoc(
+    // Section.Begin(signal0, signal1, ...signalN)
+    const sectionBegin = new MapDoc(
       MapSyntaxType.Syntax1,
       'Section',
       '',
@@ -855,8 +858,8 @@ export class MapDocs {
       ]
     )
 
-    //Section.SetSpeedLimit(v0, v1, ...vN)
-    let section_setspeedlimit = new MapDoc(
+    // Section.SetSpeedLimit(v0, v1, ...vN)
+    const sectionSetspeedlimit = new MapDoc(
       MapSyntaxType.Syntax1,
       'Section',
       '',
@@ -889,14 +892,14 @@ export class MapDocs {
       )
     )
 
-    this.syntaxes.push(section_signal, section_setspeedlimit)
+    this.syntaxes.push(sectionBegin, sectionSetspeedlimit)
 
     //#endregion 閉そく
 
     //#region 地上信号機
 
-    //Signal.Load(filePath)
-    let signal_load = new MapDoc(
+    // Signal.Load(filePath)
+    const signalLoad = new MapDoc(
       MapSyntaxType.Syntax1,
       'Signal',
       '',
@@ -912,8 +915,8 @@ export class MapDocs {
       ]
     )
 
-    //Signal.Put(section, trackKey, x, y)
-    let signal_put = new MapDoc(
+    // Signal.Put(section, trackKey, x, y)
+    const signalPut = new MapDoc(
       MapSyntaxType.Syntax2,
       'Signal',
       '',
@@ -932,8 +935,8 @@ export class MapDocs {
       ]
     )
 
-    //Signal.Put(section, trackKey, x, y, z, rx, ry, rz, tilt, span)
-    signal_put.addSyntax(
+    // Signal.Put(section, trackKey, x, y, z, rx, ry, rz, tilt, span)
+    signalPut.addSyntax(
       this.convMarkDown(
         '地上信号機を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)に設置します。'
       ),
@@ -971,14 +974,14 @@ export class MapDocs {
       )
     )
 
-    this.syntaxes.push(signal_load, signal_put)
+    this.syntaxes.push(signalLoad, signalPut)
 
     //#endregion
 
     //#region 地上子
 
-    //Beacon.Put(type, section, sendData)
-    let beacon_put = new MapDoc(
+    // Beacon.Put(type, section, sendData)
+    const beaconPut = new MapDoc(
       MapSyntaxType.Syntax1,
       'Beacon',
       '',
@@ -1007,14 +1010,14 @@ export class MapDocs {
       )
     )
 
-    this.syntaxes.push(beacon_put)
+    this.syntaxes.push(beaconPut)
 
     //#endregion
 
     //#region 速度制限
 
-    //SpeedLimit.Begin(v)
-    let speedlimit_begin = new MapDoc(
+    // SpeedLimit.Begin(v)
+    const speedlimitBegin = new MapDoc(
       MapSyntaxType.Syntax1,
       'SpeedLimit',
       '',
@@ -1025,8 +1028,8 @@ export class MapDocs {
       [this.createParam('v', '**v**: 走行速度 [km/h]')]
     )
 
-    //SpeedLimit.End()
-    let speedlimit_end = new MapDoc(
+    // SpeedLimit.End()
+    const speedlimitEnd = new MapDoc(
       MapSyntaxType.Syntax1,
       'SpeedLimit',
       '',
@@ -1048,14 +1051,14 @@ export class MapDocs {
       )
     )
 
-    this.syntaxes.push(speedlimit_begin, speedlimit_end)
+    this.syntaxes.push(speedlimitBegin, speedlimitEnd)
 
     //#endregion
 
     //#region 先行列車
 
-    //PreTrain.Pass(time)
-    let pretrain_pass = new MapDoc(
+    // PreTrain.Pass(time)
+    const pretrainPass = new MapDoc(
       MapSyntaxType.Syntax1,
       'PreTrain',
       '',
@@ -1065,8 +1068,8 @@ export class MapDocs {
       ),
       [this.createParam('time', "**time**: 時刻を表す文字列 ('hh:mm:ss')")]
     )
-    //PreTrain.Pass(second)
-    pretrain_pass.addSyntax(
+    // PreTrain.Pass(second)
+    pretrainPass.addSyntax(
       this.convMarkDown(
         '先行列車が[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)を通過する時刻を設定します。'
       ),
@@ -1084,14 +1087,14 @@ export class MapDocs {
       )
     )
 
-    this.syntaxes.push(pretrain_pass)
+    this.syntaxes.push(pretrainPass)
 
     //#endregion 先行列車
 
     //#region 光源
 
-    //Light.Ambient(red, green, blue)
-    let light_ambient = new MapDoc(
+    // Light.Ambient(red, green, blue)
+    const lightAmbient = new MapDoc(
       MapSyntaxType.Syntax1,
       'Light',
       '',
@@ -1106,8 +1109,8 @@ export class MapDocs {
       ]
     )
 
-    //Light.Diffuse(red, green, blue)
-    let light_diffuse = new MapDoc(
+    // Light.Diffuse(red, green, blue)
+    const lightDiffuse = new MapDoc(
       MapSyntaxType.Syntax1,
       'Light',
       '',
@@ -1122,8 +1125,8 @@ export class MapDocs {
       ]
     )
 
-    //Light.Direction(pitch, yaw)
-    let light_direction = new MapDoc(
+    // Light.Direction(pitch, yaw)
+    const lightDirection = new MapDoc(
       MapSyntaxType.Syntax1,
       'Light',
       '',
@@ -1148,14 +1151,14 @@ export class MapDocs {
       )
     )
 
-    this.syntaxes.push(light_ambient, light_diffuse, light_direction)
+    this.syntaxes.push(lightAmbient, lightDiffuse, lightDirection)
 
     //#endregion
 
     //#region 霧効果
 
-    //Fog.Interpolate(density, red, green, blue)
-    let fog_interpolate = new MapDoc(
+    // Fog.Interpolate(density, red, green, blue)
+    const fogInterpolate = new MapDoc(
       MapSyntaxType.Syntax1,
       'Fog',
       '',
@@ -1170,14 +1173,14 @@ export class MapDocs {
         this.createParam('blue', '**blue**: 青成分 (0 ~ 1)')
       ]
     )
-    //Fog.Interpolate(density)
-    fog_interpolate.addSyntax(
+    // Fog.Interpolate(density)
+    fogInterpolate.addSyntax(
       this.convMarkDown(
         '[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における霧効果を設定します。2 つの Fog.Interpolate の間は線形補間されます。'
       ),
       [this.createParam('density', '**density**: 濃度')]
     )
-    fog_interpolate.addSyntax(
+    fogInterpolate.addSyntax(
       this.convMarkDown(
         '[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における霧効果を設定します。2 つの Fog.Interpolate の間は線形補間されます。'
       ),
@@ -1195,14 +1198,14 @@ export class MapDocs {
       )
     )
 
-    this.syntaxes.push(fog_interpolate)
+    this.syntaxes.push(fogInterpolate)
 
     //#endregion
 
     //#region 風景描画距離
 
-    //DrawDistance.Change(value)
-    let drawdistance_change = new MapDoc(
+    // DrawDistance.Change(value)
+    const drawdistanceChange = new MapDoc(
       MapSyntaxType.Syntax1,
       'DrawDistance',
       '',
@@ -1229,14 +1232,14 @@ export class MapDocs {
       )
     )
 
-    this.syntaxes.push(drawdistance_change)
+    this.syntaxes.push(drawdistanceChange)
 
     //#endregion
 
     //#region 運転台の明るさ
 
-    //CabIlluminance.Interpolate(value)
-    let cab_interpolate = new MapDoc(
+    // CabIlluminance.Interpolate(value)
+    const cabInterpolate = new MapDoc(
       MapSyntaxType.Syntax1,
       'CabIlluminance',
       '',
@@ -1251,8 +1254,8 @@ export class MapDocs {
         )
       ]
     )
-    //CabIlluminance.Interpolate()
-    cab_interpolate.addSyntax(
+    // CabIlluminance.Interpolate()
+    cabInterpolate.addSyntax(
       this.convMarkDown(
         '[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)における運転台の明るさを設定します。2 つの CabIlluminance.Interpolate の間は線形補間されます。'
       ),
@@ -1270,14 +1273,14 @@ export class MapDocs {
       )
     )
 
-    this.syntaxes.push(cab_interpolate)
+    this.syntaxes.push(cabInterpolate)
 
     //#endregion
 
     //#region 軌道変位
 
-    //Irregularity.Change(x, y, r, lx, ly, lr)
-    let irregularity_change = new MapDoc(
+    // Irregularity.Change(x, y, r, lx, ly, lr)
+    const irregularityChange = new MapDoc(
       MapSyntaxType.Syntax1,
       'Irregularity',
       '',
@@ -1315,14 +1318,14 @@ export class MapDocs {
       )
     )
 
-    this.syntaxes.push(irregularity_change)
+    this.syntaxes.push(irregularityChange)
 
     //#endregion
 
     //#region 粘着特性
 
-    //Adhesion.Change(a)
-    let adhesion_change = new MapDoc(
+    // Adhesion.Change(a)
+    const adhesionChange = new MapDoc(
       MapSyntaxType.Syntax1,
       'Adhesion',
       '',
@@ -1332,8 +1335,8 @@ export class MapDocs {
       ),
       [this.createParam('a', '**a**: 走行速度 0 km/h における粘着係数')]
     )
-    //Adhesion.Change(a,b,c)
-    adhesion_change.addSyntax(
+    // Adhesion.Change(a,b,c)
+    adhesionChange.addSyntax(
       this.convMarkDown(
         '[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)以降の車輪-レール間の粘着特性を設定します。'
       ),
@@ -1358,14 +1361,14 @@ export class MapDocs {
       )
     )
 
-    this.syntaxes.push(adhesion_change)
+    this.syntaxes.push(adhesionChange)
 
     //#endregion
 
     //#region 音
 
-    //Sound.Load(filePath)
-    let sound_load = new MapDoc(
+    // Sound.Load(filePath)
+    const soundLoad = new MapDoc(
       MapSyntaxType.Syntax1,
       'Sound',
       '',
@@ -1381,8 +1384,8 @@ export class MapDocs {
       ]
     )
 
-    //Sound[].Play()
-    let sound_play = new MapDoc(
+    // Sound[].Play()
+    const soundPlay = new MapDoc(
       MapSyntaxType.Syntax2,
       'Sound',
       '',
@@ -1404,14 +1407,14 @@ export class MapDocs {
       )
     )
 
-    this.syntaxes.push(sound_load, sound_play)
+    this.syntaxes.push(soundLoad, soundPlay)
 
     //#endregion
 
     //#region 固定音源
 
-    //Sound3D.Load(filePath)
-    let sound3d_load = new MapDoc(
+    // Sound3D.Load(filePath)
+    const sound3dLoad = new MapDoc(
       MapSyntaxType.Syntax1,
       'Sound3D',
       '',
@@ -1427,8 +1430,8 @@ export class MapDocs {
       ]
     )
 
-    //Sound3D[].Put(x, y)
-    let sound3d_put = new MapDoc(
+    // Sound3D[].Put(x, y)
+    const sound3dPut = new MapDoc(
       MapSyntaxType.Syntax2,
       'Sound3D',
       '',
@@ -1453,14 +1456,14 @@ export class MapDocs {
       )
     )
 
-    this.syntaxes.push(sound3d_load, sound3d_put)
+    this.syntaxes.push(sound3dLoad, sound3dPut)
 
     //#endregion
 
     //#region 走行音
 
-    //RollingNoise.Change(index)
-    let rollingnoise_change = new MapDoc(
+    // RollingNoise.Change(index)
+    const rollingnoiseChange = new MapDoc(
       MapSyntaxType.Syntax1,
       'RollingNoise',
       '',
@@ -1487,14 +1490,14 @@ export class MapDocs {
       )
     )
 
-    this.syntaxes.push(rollingnoise_change)
+    this.syntaxes.push(rollingnoiseChange)
 
     //#endregion
 
     //#region フランジきしり音
 
-    //FlangeNoise.Change(index)
-    let flangenoise_change = new MapDoc(
+    // FlangeNoise.Change(index)
+    const flangenoiseChange = new MapDoc(
       MapSyntaxType.Syntax1,
       'FlangeNoise',
       '',
@@ -1521,14 +1524,14 @@ export class MapDocs {
       )
     )
 
-    this.syntaxes.push(flangenoise_change)
+    this.syntaxes.push(flangenoiseChange)
 
     //#endregion
 
     //#region 分岐器通過音
 
-    //JointNoise.Play(index)
-    let jointnoise_play = new MapDoc(
+    // JointNoise.Play(index)
+    const jointnoisePlay = new MapDoc(
       MapSyntaxType.Syntax1,
       'JointNoise',
       '',
@@ -1555,14 +1558,14 @@ export class MapDocs {
       )
     )
 
-    this.syntaxes.push(jointnoise_play)
+    this.syntaxes.push(jointnoisePlay)
 
     //#endregion
 
     //#region 他列車
 
-    //Train.Add(trainKey, filePath, trackKey, direction)
-    let train_add = new MapDoc(
+    // Train.Add(trainKey, filePath, trackKey, direction)
+    const trainAdd = new MapDoc(
       MapSyntaxType.Syntax1,
       'Train',
       '',
@@ -1584,8 +1587,8 @@ export class MapDocs {
       ]
     )
 
-    //Train[trainKey].Load(filePath, trackKey, direction)
-    let train_load = new MapDoc(
+    // Train[trainKey].Load(filePath, trackKey, direction)
+    const trainLoad = new MapDoc(
       MapSyntaxType.Syntax2,
       'Train',
       '',
@@ -1606,8 +1609,8 @@ export class MapDocs {
       ]
     )
 
-    //Train[].Enable(time)
-    let train_enable = new MapDoc(
+    // Train[].Enable(time)
+    const trainEnable = new MapDoc(
       MapSyntaxType.Syntax2,
       'Train',
       '',
@@ -1617,16 +1620,16 @@ export class MapDocs {
       ),
       [this.createParam('time', "**time**: 時刻を表す文字列 ('hh:mm:ss')")]
     )
-    //Train[].Enable(second)
-    train_enable.addSyntax(
+    // Train[].Enable(second)
+    trainEnable.addSyntax(
       this.convMarkDown(
         '自列車が[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)を通過し、かつ設定された時刻になったとき、他列車の動作を有効にします。'
       ),
       [this.createParam('second', '**second**: 00:00:00 からの経過時間 [sec]')]
     )
 
-    //Train[].Stop(decelerate, stopTime, accelerate, speed)
-    let train_stop = new MapDoc(
+    // Train[].Stop(decelerate, stopTime, accelerate, speed)
+    const trainStop = new MapDoc(
       MapSyntaxType.Syntax2,
       'Train',
       '',
@@ -1653,9 +1656,23 @@ export class MapDocs {
       )
     )
 
-    this.syntaxes.push(train_add, train_load, train_enable, train_stop)
+    this.syntaxes.push(trainAdd, trainLoad, trainEnable, trainStop)
 
     //#endregion
+  }
+
+  /**
+   * 全ての構文を取得します。
+   */
+  public getSyntaxes() {
+    return this.syntaxes
+  }
+
+  /**
+   * 全てのマップ要素名を取得します。
+   */
+  public getMapElements() {
+    return this.mapElements
   }
 
   /**
@@ -1678,25 +1695,11 @@ export class MapDocs {
   /**
    * インスタンスを取得します。
    */
-  public static get instance(): MapDocs {
-    if (!this._instance) {
-      this._instance = new MapDocs()
+  public static get Instance(): MapDocs {
+    if (!this.instance) {
+      this.instance = new MapDocs()
     }
 
-    return this._instance
-  }
-
-  /**
-   * 全ての構文を取得します。
-   */
-  getSyntaxes() {
-    return this.syntaxes
-  }
-
-  /**
-   * 全てのマップ要素名を取得します。
-   */
-  getMapElements() {
-    return this.mapElements
+    return this.instance
   }
 }

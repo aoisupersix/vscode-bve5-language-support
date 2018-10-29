@@ -15,6 +15,44 @@
                 "kind": "build",
                 "isDefault": true
             }
+        },
+        {
+            "label": "tslint",
+            "args": [],
+            "problemMatcher": {
+                "owner": "tslint",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceRoot}"
+                ],
+                "severity": "warning",
+                "pattern": {
+                    "regexp": "^(\\S.*)\\[(\\d+), (\\d+)\\]:\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "message": 4
+                }
+            }
+        },
+        {
+            "label": "tslint-fix",
+            "args": [],
+            "problemMatcher": {
+                "owner": "tslint-fix",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceRoot}"
+                ],
+                "severity": "warning",
+                "pattern": {
+                    "regexp": "^(\\S.*)\\[(\\d+), (\\d+)\\]:\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "message": 4
+                }
+            }
         }
     ]
 }

@@ -1,6 +1,7 @@
 'use strict'
 
 import * as vscode from 'vscode'
+
 import { VehicleDocs } from './VehicleDocs'
 
 export class VehicleHoverProvider implements vscode.HoverProvider {
@@ -10,17 +11,17 @@ export class VehicleHoverProvider implements vscode.HoverProvider {
     token: vscode.CancellationToken
   ): Thenable<vscode.Hover> {
     return new Promise((resolve, reject) => {
-      let word_range = document.getWordRangeAtPosition(position)
-      if (word_range === undefined) {
+      const wordRange = document.getWordRangeAtPosition(position)
+      if (wordRange === undefined) {
         reject()
         return
       }
-      let now_word = document.getText(word_range)
-      let elements = VehicleDocs.instance.getElements()
+      const nowWord = document.getText(wordRange)
+      const elements = VehicleDocs.Instance.getElements()
 
-      for (let i in elements) {
-        if (elements[i].isMatch(now_word)) {
-          resolve(elements[i].getMapHover(word_range))
+      for (const element of elements) {
+        if (element.isMatch(nowWord)) {
+          resolve(element.getMapHover(wordRange))
           return
         }
       }

@@ -1,11 +1,12 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import { DistanceChecker, DistanceCheckerController } from './bve-map/DistanceChecker';
+import { DistanceChecker } from './bve-map/DistanceChecker';
+import { DistanceCheckerController } from './bve-map/DistanceCheckerController';
 import { MapSignatureHelpProvider } from './bve-map/MapSignatureHelpProvider';
 import { MapCompletionItemProvider } from './bve-map/MapCompletionItemProvider';
 import { MapHoverProvider } from './bve-map/MapHoverProvider';
-import { ListFileLoaderController } from './bve-map/ListFileLoader';
+import { ListFileLoaderController } from './bve-map/ListFileLoaderController';
 import { VehicleHoverProvider } from './bve-vehicle/VehicleHoverProvider';
 
 const BVE_MAP_MODE: vscode.DocumentFilter = {language: 'bve-map-2.02', scheme: 'file' };

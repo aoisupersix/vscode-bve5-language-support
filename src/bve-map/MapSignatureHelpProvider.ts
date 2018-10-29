@@ -1,18 +1,51 @@
 'use strict'
 
 import * as vscode from 'vscode'
+
 import * as util from '../util'
-import { MapDocs } from './MapDocs'
+import { MapDocs } from './Docs/MapDocs'
 
 export class MapSignatureHelpProvider implements vscode.SignatureHelpProvider {
-  constructor() {}
+  public provideSignatureHelp(
+    document: vscode.TextDocument,
+    position: vscode.Position,
+    token: vscode.CancellationToken
+  ): Promise<vscode.SignatureHelp> {
+    // テキスト取得
+    const txt = util.trimMapText(
+      document.getText(new vscode.Range(new vscode.Position(0, 0), position))
+    )
+    const nowChar = txt.substring(txt.length - 1)
+    const funcName = this.getFuncName(txt)
+    const funcFirstIdx = txt.lastIndexOf(funcName)
+    const paramCount = this.getNowParamCount(txt)
+
+    return new Promise((resolve, reject) => {
+      if (
+        nowChar === ')' ||
+        nowChar === ';' ||
+        txt.substring(funcFirstIdx).match(/\(/) === null
+      ) {
+        reject()
+      } else {
+        const syntaxes = MapDocs.Instance.getSyntaxes()
+        for (const syntax of syntaxes) {
+          if (syntax.isMatchSyntax(funcName)) {
+            const ret = syntax.getSignatureHelp(paramCount)
+            resolve(ret)
+          }
+        }
+        reject()
+      }
+    })
+  }
 
   /**
    * 引数に与えられた文字列から関数名を取得して返します。
    * @param trimedText 整形済みのマップファイルテキスト
    */
   private getFuncName(trimedText: string): string {
-    let startIdx = trimedText.lastIndexOf(';') + 1
+    const startIdx = trimedText.lastIndexOf(';') + 1
     let endIdx = trimedText.lastIndexOf('(')
     if (endIdx === -1) {
       endIdx = trimedText.length - 1
@@ -26,51 +59,17 @@ export class MapSignatureHelpProvider implements vscode.SignatureHelpProvider {
    * @param trimedText 整形済みのマップファイルテキスト
    */
   private getNowParamCount(trimedText: string): number {
-    let startIdx = trimedText.lastIndexOf('(')
+    const startIdx = trimedText.lastIndexOf('(')
     if (startIdx === -1) {
       return -1
     } else {
-      let txt = trimedText.substring(startIdx)
-      let m = txt.match(/,/gm)
+      const txt = trimedText.substring(startIdx)
+      const m = txt.match(/,/gm)
       if (m !== null) {
         return m.length
       } else {
         return 0
       }
     }
-  }
-
-  public provideSignatureHelp(
-    document: vscode.TextDocument,
-    position: vscode.Position,
-    token: vscode.CancellationToken
-  ): Promise<vscode.SignatureHelp> {
-    //テキスト取得
-    let txt = util.trimMapText(
-      document.getText(new vscode.Range(new vscode.Position(0, 0), position))
-    )
-    let nowChar = txt.substring(txt.length - 1)
-    let funcName = this.getFuncName(txt)
-    let funcFirstIdx = txt.lastIndexOf(funcName)
-    let paramCount = this.getNowParamCount(txt)
-
-    return new Promise((resolve, reject) => {
-      if (
-        nowChar === ')' ||
-        nowChar === ';' ||
-        txt.substring(funcFirstIdx).match(/\(/) === null
-      ) {
-        reject()
-      } else {
-        let syntaxes = MapDocs.instance.getSyntaxes()
-        for (let i in syntaxes) {
-          if (syntaxes[i].isMatchSyntax(funcName)) {
-            let ret = syntaxes[i].getSignatureHelp(paramCount)
-            resolve(ret)
-          }
-        }
-        reject()
-      }
-    })
   }
 }
