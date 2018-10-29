@@ -2,6 +2,7 @@
 
 import * as vscode from 'vscode'
 import * as util from '../util'
+import * as headers from '../const/headers';
 import { StructureKeys } from '../bve-structures/StructureKeys'
 
 export class ListFileLoaderController {
@@ -63,11 +64,10 @@ export class ListFileLoader {
           const txt = util.loadFile(files[i].fsPath)
           const header = txt.split(/[\n\r]/)[0]
           
-          if (header.match(/^\s*BveTs\s*Structure\s*List\s*\d+\.\d+\s*(?::.*)?\s*(?:$|\r\n|\n|\r)/gi)) {
+          if (header.match(headers.STRUCTURES_HEADER)) {
             //ストラクチャーリスト追加
             StructureKeys.instance.addKeys(txt)
           }
-          console.log(txt)
         }
       },
       reason => {

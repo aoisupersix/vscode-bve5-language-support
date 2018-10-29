@@ -2,6 +2,7 @@
 
 import { trimWhiteSpace } from '../util'
 import { List } from 'linqts'
+import * as headers from '../const/headers';
 import * as csvSync from 'csv-parse/lib/sync'
 
 /**
@@ -39,10 +40,7 @@ export class StructureKeys {
    * @param data ストラクチャーリストファイル
    */
   public addKeys(data: string) {
-    let headerRegex = /^\s*BveTs\s*Structure\s*List\s*\d+\.\d+\s*(?::.*)?\s*(?:$|\r\n|\n|\r)/gi
-
-    console.log('Loaded structures list file.')
-    data = trimWhiteSpace(data, headerRegex)
+    data = trimWhiteSpace(data, headers.STRUCTURES_HEADER)
     const matrix = csvSync(data)
 
     const keyList = new List<string[]>(matrix)
