@@ -1,7 +1,7 @@
 'use strict'
 
 import * as vscode from 'vscode'
-import * as util from '../util'
+import * as util from '../../util'
 
 /**
  * 距離程チェッカー

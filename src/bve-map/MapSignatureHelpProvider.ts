@@ -5,7 +5,11 @@ import * as vscode from 'vscode'
 import * as util from '../util'
 import { MapDocs } from './Docs/MapDocs'
 
+/**
+ * マップ構文のシグネチャヘルプを提供します。
+ */
 export class MapSignatureHelpProvider implements vscode.SignatureHelpProvider {
+
   public provideSignatureHelp(
     document: vscode.TextDocument,
     position: vscode.Position,

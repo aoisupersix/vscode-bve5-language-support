@@ -2,11 +2,15 @@
 
 import { List } from 'linqts'
 import * as vscode from 'vscode'
+
 import { StructureKeys } from '../bve-structures/StructureKeys'
 import * as util from '../util'
 import { MapSyntaxType } from './Docs/MapDoc'
 import { MapDocs } from './Docs/MapDocs'
 
+/**
+ * マップ構文のコード補完を提供します。
+ */
 export class MapCompletionItemProvider
   implements vscode.CompletionItemProvider {
   public static readonly FUNC_COMPLETION_TOKEN: string = '.'
@@ -93,6 +97,10 @@ export class MapCompletionItemProvider
     })
   }
 
+  /**
+   * キー名のCompletionItemを生成して返します。
+   * @param txt マップ構文
+   */
   private getKeyCompletionItems(txt: string): Promise<vscode.CompletionItem[]> {
     return new Promise((resolve, reject) => {
       const strKeys = StructureKeys.Instance.KeyList

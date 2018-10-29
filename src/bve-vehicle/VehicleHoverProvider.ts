@@ -4,6 +4,9 @@ import * as vscode from 'vscode'
 
 import { VehicleDocs } from './VehicleDocs'
 
+/**
+ * 車両ファイル構文のホバー表示を提供します。
+ */
 export class VehicleHoverProvider implements vscode.HoverProvider {
   public provideHover(
     document: vscode.TextDocument,

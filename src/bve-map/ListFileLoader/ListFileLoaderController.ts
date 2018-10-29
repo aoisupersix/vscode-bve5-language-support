@@ -3,6 +3,9 @@
 import * as vscode from 'vscode'
 import { ListFileLoader } from './ListFileLoader'
 
+/**
+ * リストファイル読み込み管理。
+ */
 export class ListFileLoaderController {
   private listFileLoader: ListFileLoader
   private disposable: vscode.Disposable

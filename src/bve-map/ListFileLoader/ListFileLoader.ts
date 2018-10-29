@@ -1,11 +1,19 @@
 'use strict'
 
 import * as vscode from 'vscode'
-import { StructureKeys } from '../bve-structures/StructureKeys'
-import * as headers from '../const/headers'
-import * as util from '../util'
 
+import { StructureKeys } from '../../bve-structures/StructureKeys'
+import * as headers from '../../const/headers'
+import * as util from '../../util'
+
+/**
+ * リストファイルの読み込みを行います。
+ */
 export class ListFileLoader {
+
+  /**
+   * ファイルを読み込みます。
+   */
   public loadFiles() {
     // 初期化
     StructureKeys.Instance.clearKey()

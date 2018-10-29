@@ -6,7 +6,11 @@ import * as util from '../util'
 import { MapDoc } from './Docs/MapDoc'
 import { MapDocs } from './Docs/MapDocs'
 
+/**
+ * マップ構文のホバー表示を提供します。
+ */
 export class MapHoverProvider implements vscode.HoverProvider {
+  
   public provideHover(
     document: vscode.TextDocument,
     position: vscode.Position,

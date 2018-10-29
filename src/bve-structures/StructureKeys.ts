@@ -10,17 +10,20 @@ import { trimWhiteSpace } from '../util'
  * ストラクチャーキークラス
  */
 export class StructureKeys {
-  /**
-   * インスタンス
-   */
-  private static instance: StructureKeys
 
+  private static instance: StructureKeys
   private keyList: List<string[]> = new List<string[]>()
 
+  /**
+   * ストラクチャーキーリスト
+   */
   public get KeyList() {
     return this.keyList
   }
 
+  /**
+   * ストラクチャーキーリストを初期化します。
+   */
   public clearKey() {
     this.keyList = new List<string[]>()
   }
