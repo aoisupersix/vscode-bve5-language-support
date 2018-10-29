@@ -94,8 +94,12 @@
         "vscode": "^1.1.6"
     },
     "dependencies": {
+        "@types/encoding-japanese": "^1.0.15",
         "assert": "^1.4.1",
+        "csv-parse": "^3.1.3",
+        "encoding-japanese": "^1.0.29",
+        "iconv-lite": "^0.4.24",
         "linqts": "^1.11.0",
-        "npm": "^6.2.0"
+        "npm": "^6.4.1"
     }
 }

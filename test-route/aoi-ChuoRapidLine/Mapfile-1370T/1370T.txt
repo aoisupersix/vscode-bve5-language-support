@@ -1,0 +1,28 @@
+﻿BveTs Map 2.02
+
+Structure.Load('..\Structures\Structures.csv');
+Sound.Load('..\Sounds.csv');
+Sound3D.Load('..\Sounds3d.csv');
+Station.Load('..\Stations.csv');
+Signal.Load('..\Signals.csv');
+Signal.SpeedLimit(0, 25, 40, 70, );
+
+//****************************
+//* 1370T メインマップファイル
+//****************************
+
+Light.Ambient(0.9375, 0.9375, 1);
+Light.Diffuse(0.3, 0.3, 0.3);
+Light.Direction(100, -30);
+
+//メインマップファイル
+include '..\Mapfile-Common\Map.txt';
+//マップ沿線
+include '..\Mapfile-Common\Ensen.txt';
+
+//先行列車＆ATS-P(snp2.dll)
+include 'PreTrain&Beacons.txt';
+//他列車
+include 'OtherTrains.txt';
+//車内放送
+include 'Announce.txt';
