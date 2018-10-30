@@ -4,6 +4,7 @@ import * as vscode from 'vscode'
 
 import { StructureKeys } from '../../bve-structures/StructureKeys'
 import * as headers from '../../const/headers'
+import * as loadSyntaxes from '../../const/loadSyntaxes'
 import * as util from '../../util'
 
 /**
@@ -20,16 +21,29 @@ export class ListFileLoader {
 
     const rootPath = vscode.workspace.rootPath
     if (rootPath === undefined) {
-      this.loadFilesFromSyntax()
-    } else {
+
+      const editor = vscode.window.activeTextEditor;
+      if (editor !== undefined) {
+        this.loadFilesFromSyntax(editor.document.getText(), editor.document.fileName)
+      }
+    } else if (rootPath !== undefined) {
       this.loadFilesFromWorkspace()
     }
   }
 
+
   /**
    * リストファイルを構文から取得します。
+   * @param data マップ構文
    */
-  public loadFilesFromSyntax() {
+  public loadFilesFromSyntax(data: string, currentPath: string) {
+
+    // ストラクチャーリスト
+    const structureListPath = this.getListFilePath(data, loadSyntaxes.LOAD_STRUCTURE, currentPath);
+    if (structureListPath !== null) {
+      const strList = util.loadFile(structureListPath);
+      StructureKeys.Instance.addKeys(strList);
+    }
     return null
   }
 
@@ -48,5 +62,26 @@ export class ListFileLoader {
         }
       }
     })
+  }
+
+  /**
+   * 引数に与えられたマップ構文とロード構文の種類からロードするリストファイルの絶対パスを取得します。
+   * @param data マップ構文
+   * @param loadSyntaxRegex ロード構文の種類（const/loadSyntaxesから取ってくる)
+   * @param currentPath 現在のファイルパス
+   */
+  private getListFilePath(data: string, loadSyntaxRegex: RegExp, currentPath: string): string | null {
+    const match = loadSyntaxRegex.exec(data);
+    if (match !== null) {
+      const val = match[1];
+      if (val !== undefined) {
+        const path = util.getAbsoluteFilePath(currentPath, val)
+        if (path !== undefined) {
+          return path;
+        }
+      }
+    }
+
+    return null;
   }
 }

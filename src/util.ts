@@ -3,6 +3,7 @@
 import * as encoding from 'encoding-japanese'
 import * as fs from 'fs'
 import * as iconv from 'iconv-lite'
+import * as path from 'path'
 
 import * as headers from './const/headers';
 
@@ -58,6 +59,35 @@ export function trimWhiteSpace(
     }
   }
   return ret
+}
+
+/**
+ * 引数に与えられた相対パスから絶対パスを取得します。
+ * @param currentFilePath 現在のファイルパス
+ * @param relativeFilePath 取得する対象ファイルの相対ファイル
+ */
+export function getAbsoluteFilePath(currentFilePath: string, relativeFilePath: string) {
+  const currentDir = path.dirname(currentFilePath)
+  const absolutePath = path.resolve(currentDir, relativeFilePath)
+  
+  if (isExistsFile(absolutePath)) {
+    return absolutePath;
+  }
+
+  return undefined;
+}
+
+/**
+ * 引数に与えられたファイルパスが存在するか確認します。
+ * @param filePath ファイルパス
+ */
+export function isExistsFile(filePath: string) {
+  try {
+    fs.statSync(filePath);
+    return true
+  } catch(err) {
+    if(err.code === 'ENOENT') { return false }
+  }
 }
 
 /**
