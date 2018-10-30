@@ -6,31 +6,29 @@ import * as iconv from 'iconv-lite'
 import * as path from 'path'
 
 import * as headers from './const/headers';
+import { COMMENT } from './const/syntaxes';
 
-/**
- * 行コメントを示すデフォルトの正規表現パターンです。
- */
-export const COMMENT_REGEX: RegExp = /#|\/\//
+
 
 /**
  * 引数に与えられたMap構文から不要な部分を削除します。
  * @param mapTextData 未整形のマップファイルテキスト
  */
 export function trimMapText(mapTextData: string): string {
-  return trimWhiteSpace(mapTextData, headers.MAP_HEADER, COMMENT_REGEX, true);
+  return trimWhiteSpace(mapTextData, headers.MAP_HEADER, COMMENT, true);
 }
 
 /**
  * 引数に与えられた構文からWhiteSpaceを削除します。
  * @param data 除去対象の構文文字列
  * @param headerRegex ファイルヘッダの正規表現(Optional)
- * @param commentRegex コメントトークンの正規表現(Optional)
+ * @param commentRegex コメントトークンの正規表現(Optional) 引数を指定しない場合は[#|//]になります。
  * @param isDeleteNewLine 改行を削除するか？(Optional)
  */
 export function trimWhiteSpace(
   data: string,
   headerRegex?: RegExp,
-  commentRegex: RegExp = COMMENT_REGEX,
+  commentRegex: RegExp = COMMENT,
   isDeleteNewLine?: boolean
 ): string {
   // ヘッダの削除

@@ -1,6 +1,7 @@
 import * as assert from 'assert'
 
 import { MAP_HEADER, STRUCTURES_HEADER } from '../const/headers'
+import { COMMENT } from '../const/syntaxes'
 import * as util from '../util'
 
 // Defines a Mocha test suite to group tests of similar kind together
@@ -55,8 +56,8 @@ suite('Util', () => {
     })
 
     test('コメントのトリム', () => {
-      assert.equal('', util.trimWhiteSpace('// Curve.Begin()', undefined, util.COMMENT_REGEX))
-      assert.equal('', util.trimWhiteSpace(`# Curve.Begin()`, undefined, util.COMMENT_REGEX))
+      assert.equal('', util.trimWhiteSpace('// Curve.Begin()', undefined, COMMENT))
+      assert.equal('', util.trimWhiteSpace(`# Curve.Begin()`, undefined, COMMENT))
     })
 
     test('改行のトリム', () => {
@@ -66,7 +67,7 @@ suite('Util', () => {
 
         // Comment
         `
-      , MAP_HEADER, util.COMMENT_REGEX, true))
+      , MAP_HEADER, COMMENT, true))
     })
   })
 })
