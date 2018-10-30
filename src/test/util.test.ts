@@ -1,4 +1,6 @@
 import * as assert from 'assert'
+import * as path from 'path'
+import * as vscode from 'vscode'
 
 import { MAP_HEADER, STRUCTURES_HEADER } from '../const/headers'
 import { COMMENT } from '../const/syntaxes'
@@ -67,7 +69,33 @@ suite('Util', () => {
 
         // Comment
         `
-      , MAP_HEADER, COMMENT, true))
+      , MAP_HEADER, undefined, true))
+    })
+
+    test('構文のトリム', () => {
+      assert.equal('Curve.BeginTransition();', util.trimWhiteSpace(
+        `
+        BveTs Map 2.02
+
+        Curve
+        .
+        // BeginTransition(); ここは飛ばされるはず
+        BeginTransition
+        () ;
+        `
+      , MAP_HEADER, undefined, true))
+    })
+  })
+
+  suite('#getAbsoluteFilePath', () => {
+    test('空パス', () => {
+      assert.equal(path.resolve('.'), util.getAbsoluteFilePath('', ''))
+      assert.equal(undefined, util.getAbsoluteFilePath('', './test.txt'))
+
+      const rootPath = vscode.workspace.rootPath
+      if (rootPath !== undefined) {
+        assert.equal(path.dirname(rootPath), util.getAbsoluteFilePath(rootPath, ''))
+      }
     })
   })
 })

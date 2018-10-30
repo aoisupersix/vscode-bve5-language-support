@@ -68,7 +68,7 @@ export function getAbsoluteFilePath(currentFilePath: string, relativeFilePath: s
   const currentDir = path.dirname(currentFilePath)
   const absolutePath = path.resolve(currentDir, relativeFilePath)
   
-  if (isExistsFile(absolutePath)) {
+  if (isExistsPath(absolutePath)) {
     return absolutePath;
   }
 
@@ -79,7 +79,7 @@ export function getAbsoluteFilePath(currentFilePath: string, relativeFilePath: s
  * 引数に与えられたファイルパスが存在するか確認します。
  * @param filePath ファイルパス
  */
-export function isExistsFile(filePath: string) {
+export function isExistsPath(filePath: string) {
   try {
     fs.statSync(filePath);
     return true
