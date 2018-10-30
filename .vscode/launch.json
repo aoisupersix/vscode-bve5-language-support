@@ -25,6 +25,9 @@
             "request": "launch",
             "runtimeExecutable": "${execPath}",
             "args": [
+                "--disable-extensions",
+                "${workspaceFolder}/test-route/",
+                "${workspaceFolder}/test-route/aoi-ChuoRapidLine/Mapfile-Common/Map.txt",
                 "--extensionDevelopmentPath=${workspaceFolder}",
                 "--extensionTestsPath=${workspaceFolder}/out/test"
             ],

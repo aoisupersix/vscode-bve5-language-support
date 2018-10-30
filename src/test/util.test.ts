@@ -1,44 +1,72 @@
 import * as assert from 'assert'
 
-import { MAP_HEADER } from '../const/headers';
+import { MAP_HEADER, STRUCTURES_HEADER } from '../const/headers'
 import * as util from '../util'
 
 // Defines a Mocha test suite to group tests of similar kind together
-suite('Util Tests', () => {
-
-  // TrimMapText
-  test('TrimMapText', () => {
-    assert.equal(
-      'Curve.BeginTransition();',
-      util.trimMapText(
-        `BveTs Map 2.02
-                
-                Curve.
-                BeginTransition
-                ()
-                ;`
+suite('Util', () => {
+  suite('#trimMapText', () => {
+    test('空文字のトリム', () => {
+      assert.equal('', util.trimMapText(``))
+      assert.equal(
+        '',
+        util.trimMapText(
+          `
+        
+        
+        `
+        )
       )
-    )
-    assert.equal('', util.trimMapText(``))
+    })
+
+    test('構文のトリム', () => {
+      assert.equal(
+        'Curve.BeginTransition();',
+        util.trimMapText(
+          `BveTs Map 2.02
+                  
+                  Curve.
+                  BeginTransition
+                  ()
+                  ;`
+        )
+      )
+    })
   })
 
-  // trimWhiteSpace
-  test('TrimWhiteSpace', () => {
-    assert.equal(
-      'Curve.X.Interpolate(4,3.4);',
-      util.trimWhiteSpace(
-        `BveTs Map 2.02:utf-8
-        
-        // これはコメントです。
-
-          Curve .X.
-          Interpolate
-          (4, 
-            3.4);`,
-        MAP_HEADER,
-        util.COMMENT_REGEX,
-        true,
+  suite('#trimWhiteSpace', () => {
+    test('空文字のトリム', () => {
+      assert.equal('', util.trimWhiteSpace(''))
+      assert.equal(
+        '',
+        util.trimWhiteSpace(
+          `
+      
+        `
+        )
       )
-    )
+    })
+
+    test('ヘッダのトリム', () => {
+      assert.equal('', util.trimWhiteSpace('BveTs Map 2.02', MAP_HEADER))
+      assert.equal('', util.trimWhiteSpace('BVETs maP 1.00:utf-8', MAP_HEADER))
+      assert.equal('', util.trimWhiteSpace('BveTs Structure List 2.00', STRUCTURES_HEADER))
+      assert.equal('', util.trimWhiteSpace('BVeTS Structure LIST 9.99:shift_jis', STRUCTURES_HEADER))
+    })
+
+    test('コメントのトリム', () => {
+      assert.equal('', util.trimWhiteSpace('// Curve.Begin()', undefined, util.COMMENT_REGEX))
+      assert.equal('', util.trimWhiteSpace(`# Curve.Begin()`, undefined, util.COMMENT_REGEX))
+    })
+
+    test('改行のトリム', () => {
+      assert.equal('', util.trimWhiteSpace(
+        `
+        BveTs Map 2.02:utf-8
+
+        // Comment
+        `
+      , MAP_HEADER, util.COMMENT_REGEX, true))
+    })
   })
 })
