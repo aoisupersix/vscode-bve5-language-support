@@ -38,7 +38,7 @@
                     "bve5-map"
                 ],
                 "filenamePatterns": [
-                    "*Map*.txt"
+                    "*[mM][aA][pP]*.txt"
                 ],
                 "firstLine": "BveTs\\s*Map\\s*2.02",
                 "configuration": "./lang_config/bve5-map-configuration.json"
@@ -50,7 +50,7 @@
                     "bve5-vehicle"
                 ],
                 "filenamePatterns": [
-                    "*Vehicle*.txt"
+                    "*[vV][eE][hH][iI][cC][lL][eE]*.txt"
                 ],
                 "firstLine": "BveTs\\s*Vehicle\\s*1.00",
                 "configuration": "./lang_config/bve5-vehicle-configuration.json"
@@ -90,20 +90,20 @@
     "devDependencies": {
         "@types/mocha": "^2.2.42",
         "@types/node": "^7.10.0",
+        "assert": "^1.4.1",
         "mocha": "^5.2.0",
         "tslint-config-prettier": "^1.15.0",
-        "typescript": "^2.6.1",
+        "tslint": "^5.11.0",
         "vscode": "^1.1.21"
     },
     "dependencies": {
         "@types/encoding-japanese": "^1.0.15",
-        "assert": "^1.4.1",
         "csv-parse": "^3.1.3",
         "encoding-japanese": "^1.0.29",
         "iconv-lite": "^0.4.24",
         "linqts": "^1.12.1",
         "npm": "^6.4.1",
-        "tslint": "^5.11.0",
+        "typescript": "^2.6.1",
         "vscode": "^1.1.21"
     }
 }
