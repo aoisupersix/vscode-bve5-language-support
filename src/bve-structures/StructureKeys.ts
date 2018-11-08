@@ -2,6 +2,7 @@
 
 import * as csvSync from 'csv-parse/lib/sync'
 import { List } from 'linqts'
+import * as vscode from 'vscode'
 
 import * as headers from '../const/headers'
 import { trimWhiteSpace } from '../util'
@@ -49,5 +50,19 @@ export class StructureKeys {
 
     const keyList = new List<string[]>(matrix)
     this.keyList = keyList.Where(k => k !== undefined && k.length === 2)
+  }
+
+  /**
+   * キーのCompletionItemを生成します。
+   */
+  public getCompletionItems(): vscode.CompletionItem[] {
+    const items = this.keyList.Select(k => {
+      const item = new vscode.CompletionItem(k[0], vscode.CompletionItemKind.Keyword)
+      item.detail = k[1]
+      item.documentation = "ストラクチャー"
+      return item
+    }).ToArray()
+
+    return items
   }
 }

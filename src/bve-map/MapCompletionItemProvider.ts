@@ -99,33 +99,33 @@ export class MapCompletionItemProvider
 
   /**
    * キー名のCompletionItemを生成して返します。
-   * @param txt マップ構文
+   * @param trimedMapText マップ構文
    */
-  private getKeyCompletionItems(txt: string): Promise<vscode.CompletionItem[]> {
+  private getKeyCompletionItems(trimedMapText: string): Promise<vscode.CompletionItem[]> {
     return new Promise((resolve, reject) => {
-      const strKeys = StructureKeys.Instance.KeyList
-      if (txt.substring(txt.length - 2) === "['") {
-        // 関数のキー名
-        const a = txt.substring(0, txt.length - 2)
-        const mapElementName = this.getFuncName(a)
-        if (mapElementName === 'Structure') {
-          // ストラクチャーリストの表示
-          resolve(
-            strKeys
-              .Select(
-                k =>
-                  new vscode.CompletionItem(
-                    k[0],
-                    vscode.CompletionItemKind.Variable
-                  )
-              )
-              .ToArray()
-          )
-          return
-        }
+      if (trimedMapText.substring(trimedMapText.length - 2) === "['") {
+        // 構文内のキー補完
+        resolve(this.getFuncKeyCompletionItems(trimedMapText))
+        return
       }
       // TODO
       reject()
     })
+  }
+
+  /**
+   * 構文内のキー補完アイテムを取得して返します。
+   * 例えば、Track['hoge']のhogeの部分など。
+   * @param trimedMapText マップ構文
+   */
+  private getFuncKeyCompletionItems(trimedMapText: string): vscode.CompletionItem[] {
+    const a = trimedMapText.substring(0, trimedMapText.length - 2)
+    const mapElementName = this.getFuncName(a)
+    if (mapElementName === 'Structure') {
+      // ストラクチャーリストの表示
+      return StructureKeys.Instance.getCompletionItems()
+    }
+
+    return []
   }
 }
