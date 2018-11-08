@@ -232,30 +232,41 @@ export class MapDoc {
    * マップ要素1のコード補完アイテムを取得します。
    */
   public getMapElement1CompletionItem(): vscode.CompletionItem {
-    return new vscode.CompletionItem(
+    const item = new vscode.CompletionItem(
       this.syntaxes[0].getMapElement1Name(),
       vscode.CompletionItemKind.Class
     )
+
+    item.detail = this.syntaxes[0].getMapElement1Name();
+    item.documentation = new vscode.MarkdownString(`マップ要素：${this.syntaxes[0].getMapElement1Name()}`)
+    return item;
   }
 
   /**
    * マップ要素2のコード補完アイテムを取得します。(シンタックス3のみ)
    */
   public getMapElement2CompletionItem(): vscode.CompletionItem {
-    return new vscode.CompletionItem(
+    const item = new vscode.CompletionItem(
       this.syntaxes[0].getMapElement2Name(),
       vscode.CompletionItemKind.Class
     )
+
+    item.detail = `${this.syntaxes[0].getMapElement1Name()}.${this.syntaxes[0].getMapElement2Name()}`
+    return item;
   }
 
   /**
    * 関数名のコード補完アイテムを取得します。
    */
   public getFunctionCompletionItem(): vscode.CompletionItem {
-    return new vscode.CompletionItem(
+    const item = new vscode.CompletionItem(
       this.syntaxes[0].getFuncName(),
       vscode.CompletionItemKind.Function
     )
+
+    item.detail = this.syntaxes[0].getSyntaxDisplayName()
+    item.documentation = this.syntaxes[0].getDocument();
+    return item;
   }
 
   /**
