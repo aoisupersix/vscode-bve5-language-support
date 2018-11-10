@@ -58,13 +58,26 @@ export class MapCompletionItemProvider
    * 引数に与えられた文字列から現在の構文の引数をカウントして返します。
    * @param trimedMapText 整形済みのマップファイルテキスト
    */
-  private getParamsCount(trimedMapText: string): number {
-    const startIdx = trimedMapText.lastIndexOf('(')
-    const endIdx = trimedMapText.length
-    const txt = trimedMapText.substring(startIdx, endIdx)
+  private getParamsCount(trimedText: string): number {
+    const startIdx = trimedText.lastIndexOf('(')
+    const endIdx = trimedText.length
+    const txt = trimedText.substring(startIdx, endIdx)
     const count = txt.split(',').length - 1
 
     return count;
+  }
+
+  /**
+   * 引数に与えられた文字列の現在の構文名のシングルクォートが閉じているか？
+   * @param trimedMapText 整形済みのマップファイルテキスト
+   */
+  private isSyntaxClosedQuote(trimedText: string): boolean {
+    const startIdx = trimedText.lastIndexOf(';') + 1　// 前の構文が存在しない場合、-1が返されるが+1されて0になるため問題ない
+    const endIdx = trimedText.length
+    const txt = trimedText.substring(startIdx, endIdx)
+    const count = txt.split('\'').length - 1
+
+    return count % 2 === 0 // 偶数であれば閉じている
   }
 
   /**
@@ -119,6 +132,13 @@ export class MapCompletionItemProvider
    */
   private getKeyCompletionItems(trimedMapText: string): Promise<vscode.CompletionItem[]> {
     return new Promise((resolve, reject) => {
+
+      // シングルクォートが閉じているので補完を提供しない
+      if (this.isSyntaxClosedQuote(trimedMapText)) {
+        reject()
+        return
+      }
+      
       if (trimedMapText.substring(trimedMapText.length - 2) === "['") {
         // 構文内のキー補完
         resolve(this.getFuncKeyCompletionItems(trimedMapText))
