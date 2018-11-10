@@ -39,14 +39,17 @@ export class MapCompletionItemProvider
   }
 
   /**
-   * 引数に与えられた文字列から関数名を取得して返します。
+   * 引数に与えられた文字列から構文名を取得して返します。
+   * 取得できなかった場合は空文字を返します。
    * @param trimedText 整形済みのマップファイルテキスト
+   * @param endToken 取得する構文の終りを示すトークン
    */
-  private getFuncName(trimedText: string): string {
-    const startIdx = trimedText.lastIndexOf(';') + 1
-    let endIdx = trimedText.lastIndexOf('.')
-    if (endIdx === -1 || endIdx <= startIdx) {
-      endIdx = trimedText.length
+  private getSyntaxName(trimedText: string, endToken: string): string {
+    const startIdx = trimedText.lastIndexOf(';') + 1　// 前の構文が存在しない場合、-1が返されるが+1されて0になるため問題ない
+    const endIdx = trimedText.lastIndexOf(endToken)
+
+    if (endIdx === -1 || endIdx <= startIdx) { /* 結果なし */
+      return ""
     }
     return trimedText.substring(startIdx, endIdx)
   }
@@ -59,31 +62,31 @@ export class MapCompletionItemProvider
     txt: string
   ): Promise<vscode.CompletionItem[]> {
     return new Promise((resolve, reject) => {
-      const mapElementName = this.getFuncName(txt)
+      const targetSyntax = this.getSyntaxName(txt, '.')
       const syntaxes = MapDocs.Instance.getSyntaxes()
       const ret = new List<vscode.CompletionItem>()
 
-      if (mapElementName === '') {
+      if (targetSyntax === '') {
         reject()
-      } else {
-        // 一致する補完の追加
-        for (const syntax of syntaxes) {
-          // 関数名補完
-          if (syntax.isMatchMapElement(mapElementName)) {
-            const item = syntax.getFunctionCompletionItem()
+        return
+      }
+      // 一致する補完の追加
+      for (const syntax of syntaxes) {
+        // 関数名補完
+        if (syntax.isMatchMapElement(targetSyntax)) {
+          const item = syntax.getFunctionCompletionItem()
+          // 重複チェック
+          if (!ret.Any(x => x!.label === item.label)) {
+            ret.Add(item)
+          }
+        }
+        if (syntax.getSyntaxType() === MapSyntaxType.Syntax3) {
+          // シンタックス3のマップ要素2補完
+          if (syntax.isMatchMapElement1(targetSyntax)) {
+            const item = syntax.getMapElement2CompletionItem()
             // 重複チェック
             if (!ret.Any(x => x!.label === item.label)) {
               ret.Add(item)
-            }
-          }
-          if (syntax.getSyntaxType() === MapSyntaxType.Syntax3) {
-            // シンタックス3のマップ要素2補完
-            if (syntax.isMatchMapElement1(mapElementName)) {
-              const item = syntax.getMapElement2CompletionItem()
-              // 重複チェック
-              if (!ret.Any(x => x!.label === item.label)) {
-                ret.Add(item)
-              }
             }
           }
         }
@@ -119,8 +122,7 @@ export class MapCompletionItemProvider
    * @param trimedMapText マップ構文
    */
   private getFuncKeyCompletionItems(trimedMapText: string): vscode.CompletionItem[] {
-    const a = trimedMapText.substring(0, trimedMapText.length - 2)
-    const mapElementName = this.getFuncName(a)
+    const mapElementName = this.getSyntaxName(trimedMapText, '[')
     if (mapElementName === 'Structure') {
       // ストラクチャーリストの表示
       return StructureKeys.Instance.getCompletionItems()
