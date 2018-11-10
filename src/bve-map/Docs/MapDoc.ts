@@ -225,6 +225,16 @@ export class MapDoc {
   }
 
   /**
+   * 引数に与えられた引数番号はトラックキーの引数番号と一致するか？
+   * @param paramNumber 引数番号
+   */
+  public isMatchTrackKeyParamNumber(paramNumber: number): boolean {
+    const list = new List<MapSyntax>(this.syntaxes)
+    const numbers = list.SelectMany(s => new List<number>(s.getTrackKeyParamNumbers()))
+    return numbers.Any(n => paramNumber === n!)
+  }
+
+  /**
    * SignatureHelpを取得します。
    */
   public getSignatureHelp(paramIdx: number): vscode.SignatureHelp {

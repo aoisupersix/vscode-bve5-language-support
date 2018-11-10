@@ -138,7 +138,7 @@ export class MapCompletionItemProvider
         reject()
         return
       }
-      
+
       if (trimedMapText.substring(trimedMapText.length - 2) === "['") {
         // 構文内のキー補完
         resolve(this.getFuncKeyCompletionItems(trimedMapText))
@@ -164,6 +164,10 @@ export class MapCompletionItemProvider
     return []
   }
 
+  /**
+   * 構文引数内のストラクチャーキーとトラックキーの補完アイテムを取得して返します。
+   * @param trimedMapText マップ構文
+   */
   private getParamKeyCompletionItems(trimedMapText: string): vscode.CompletionItem[] {
     const syntaxName = this.getSyntaxName(trimedMapText, '(')
     const paramCount = this.getParamsCount(trimedMapText)
@@ -181,6 +185,12 @@ export class MapCompletionItemProvider
     const trackKeySyntaxList = syntaxList
       .Where(m => m!.hasTrackKeyParams())
       .Where(m => m!.isMatchSyntax(syntaxName))
+      .Where(m => m!.isMatchTrackKeyParamNumber(paramCount))
+
+    if (trackKeySyntaxList.Any()) {
+      // トラックキー補完
+      // TODO
+    }
 
     return []
   }

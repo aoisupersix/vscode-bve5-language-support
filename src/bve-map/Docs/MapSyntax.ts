@@ -86,6 +86,20 @@ export class MapSyntax {
   }
 
   /**
+   * トラックキーの引数番号を取得して返します。
+   */
+  public getTrackKeyParamNumbers(): number[] {
+    const numbers: number[] = []
+    for(let i = 0; i < this.params.length; i++) {
+      if (this.params[i].isTrackKey) {
+        numbers.push(i)
+      }
+    }
+
+    return numbers
+  }
+
+  /**
    * 関数の説明を取得します。
    */
   public getDocument(): vscode.MarkdownString {
