@@ -5,7 +5,7 @@ import * as vscode from 'vscode'
 
 import { StructureKeys } from '../bve-structures/StructureKeys'
 import * as util from '../util'
-import { MapSyntaxType } from './Docs/MapDoc'
+import { MapDoc, MapSyntaxType } from './Docs/MapDoc'
 import { MapDocs } from './Docs/MapDocs'
 
 /**
@@ -39,7 +39,7 @@ export class MapCompletionItemProvider
   }
 
   /**
-   * 引数に与えられた文字列から構文名を取得して返します。
+   * 引数に与えられた文字列から現在の構文名を取得して返します。
    * 取得できなかった場合は空文字を返します。
    * @param trimedText 整形済みのマップファイルテキスト
    * @param endToken 取得する構文の終りを示すトークン
@@ -52,6 +52,19 @@ export class MapCompletionItemProvider
       return ""
     }
     return trimedText.substring(startIdx, endIdx)
+  }
+
+  /**
+   * 引数に与えられた文字列から現在の構文の引数をカウントして返します。
+   * @param trimedMapText 整形済みのマップファイルテキスト
+   */
+  private getParamsCount(trimedMapText: string): number {
+    const startIdx = trimedMapText.lastIndexOf('(')
+    const endIdx = trimedMapText.length
+    const txt = trimedMapText.substring(startIdx, endIdx)
+    const count = txt.split(',').length - 1
+
+    return count;
   }
 
   /**
@@ -111,8 +124,8 @@ export class MapCompletionItemProvider
         resolve(this.getFuncKeyCompletionItems(trimedMapText))
         return
       }
-      // TODO
-      reject()
+      // 引数内のキー補完
+      resolve(this.getParamKeyCompletionItems(trimedMapText))
     })
   }
 
@@ -127,6 +140,27 @@ export class MapCompletionItemProvider
       // ストラクチャーリストの表示
       return StructureKeys.Instance.getCompletionItems()
     }
+
+    return []
+  }
+
+  private getParamKeyCompletionItems(trimedMapText: string): vscode.CompletionItem[] {
+    const syntaxName = this.getSyntaxName(trimedMapText, '(')
+    const paramCount = this.getParamsCount(trimedMapText)
+    const syntaxList = new List<MapDoc>(MapDocs.Instance.getSyntaxes())
+    const strKeySyntaxList = syntaxList
+      .Where(m => m!.hasStructureKeyParams())
+      .Where(m => m!.isMatchSyntax(syntaxName))
+      .Where(m => m!.isMatchStructureKeyParamNumber(paramCount))
+
+    if (strKeySyntaxList.Any()) {
+      // ストラクチャーキー補完
+      return StructureKeys.Instance.getCompletionItems()
+    }
+
+    const trackKeySyntaxList = syntaxList
+      .Where(m => m!.hasTrackKeyParams())
+      .Where(m => m!.isMatchSyntax(syntaxName))
 
     return []
   }

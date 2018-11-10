@@ -72,6 +72,20 @@ export class MapSyntax {
   }
 
   /**
+   * ストラクチャーキーの引数番号を取得して返します。
+   */
+  public getStructureKeyParamNumbers(): number[] {
+    const numbers: number[] = []
+    for(let i = 0; i < this.params.length; i++) {
+      if (this.params[i].isStructureKey) {
+        numbers.push(i)
+      }
+    }
+
+    return numbers
+  }
+
+  /**
    * 関数の説明を取得します。
    */
   public getDocument(): vscode.MarkdownString {
