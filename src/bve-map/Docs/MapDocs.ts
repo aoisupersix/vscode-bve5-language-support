@@ -1681,7 +1681,7 @@ export class MapDocs {
    * @param documentString パラメータの説明
    */
   private createParam(name: string, documentString: string): MapParameter {
-    return new MapParameter(name, this.convMarkDown(documentString))
+    return new MapParameter(name, this.convMarkDown(documentString), name === "structureKey", name === "trackKey")
   }
 
   /**

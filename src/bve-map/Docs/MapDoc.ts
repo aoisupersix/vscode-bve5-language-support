@@ -1,5 +1,6 @@
 'use strict'
 
+import { List } from 'linqts'
 import * as vscode from 'vscode'
 
 import { MapParameter } from './MapParameter'
@@ -195,6 +196,22 @@ export class MapDoc {
       default:
         return false
     }
+  }
+
+  /**
+   * 引数内にストラクチャーキーが含まれているか？
+   */
+  public hasStructureKeyParams(): boolean {
+    const list = new List<MapSyntax>(this.syntaxes)
+    return list.Any(s => s!.hasStructureKeyParams())
+  }
+
+  /**
+   * 引数内にストラクチャーキーが含まれているか？
+   */
+  public hasTrackKeyParams(): boolean {
+    const list = new List<MapSyntax>(this.syntaxes)
+    return list.Any(s => s!.hasTrackKeyParams())
   }
 
   /**
