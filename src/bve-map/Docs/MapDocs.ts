@@ -693,11 +693,178 @@ export class MapDocs {
         this.createParam('span', '**span**: 曲線における弦の長さ [m]'),
         this.createParam('interval', '**interval**: 配置間隔 [m]'),
         this.createParam(
-          '...structureKeyN',
-          '**structureKeyN**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
+          'structureKey1',
+          '**structureKey1**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
         )
       ]
     )
+
+    // #region Repeater.Begin
+    // Repeater.Beginのストラクチャーキー2~5まで
+    repeaterBegin.addSyntax(
+      this.convMarkDown(
+        'ストラクチャーの連続配置を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)から開始します。ストラクチャーは、軌道に沿って一定間隔に配置されます。'
+      ),
+      [
+        this.createParam(
+          'trackKey',
+          '**trackKey**: 配置先の軌道名 (0: 自軌道)'
+        ),
+        this.createParam('x', '**x**: 軌道からの x 座標 [m]'),
+        this.createParam('y', '**y**: 軌道からの y 座標 [m]'),
+        this.createParam(
+          'z',
+          '**z**: [現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)からの z 座標 [m]'
+        ),
+        this.createParam('rx', '**rx**: 軌道に対する x 軸回りの角 [deg]'),
+        this.createParam('ry', '**ry**: 軌道に対する y 軸回りの角 [deg]'),
+        this.createParam('rz', '**rz**: 軌道に対する z 軸回りの角 [deg]'),
+        this.createParam(
+          'tilt',
+          '**tilt**: 傾斜オプション (0: 常に水平, 1: 勾配に連動, 2: カントに連動, 3: 勾配とカントに連動)'
+        ),
+        this.createParam('span', '**span**: 曲線における弦の長さ [m]'),
+        this.createParam('interval', '**interval**: 配置間隔 [m]'),
+        this.createParam(
+          'structureKey1',
+          '**structureKey1**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
+        ),
+        this.createParam(
+          'structureKey2',
+          '**structureKey2**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
+        )
+      ]
+    )
+
+    repeaterBegin.addSyntax(
+      this.convMarkDown(
+        'ストラクチャーの連続配置を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)から開始します。ストラクチャーは、軌道に沿って一定間隔に配置されます。'
+      ),
+      [
+        this.createParam(
+          'trackKey',
+          '**trackKey**: 配置先の軌道名 (0: 自軌道)'
+        ),
+        this.createParam('x', '**x**: 軌道からの x 座標 [m]'),
+        this.createParam('y', '**y**: 軌道からの y 座標 [m]'),
+        this.createParam(
+          'z',
+          '**z**: [現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)からの z 座標 [m]'
+        ),
+        this.createParam('rx', '**rx**: 軌道に対する x 軸回りの角 [deg]'),
+        this.createParam('ry', '**ry**: 軌道に対する y 軸回りの角 [deg]'),
+        this.createParam('rz', '**rz**: 軌道に対する z 軸回りの角 [deg]'),
+        this.createParam(
+          'tilt',
+          '**tilt**: 傾斜オプション (0: 常に水平, 1: 勾配に連動, 2: カントに連動, 3: 勾配とカントに連動)'
+        ),
+        this.createParam('span', '**span**: 曲線における弦の長さ [m]'),
+        this.createParam('interval', '**interval**: 配置間隔 [m]'),
+        this.createParam(
+          'structureKey1',
+          '**structureKey1**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
+        ),
+        this.createParam(
+          'structureKey2',
+          '**structureKey2**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
+        ),
+        this.createParam(
+          'structureKey3',
+          '**structureKey3**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
+        )
+      ]
+    )
+
+    repeaterBegin.addSyntax(
+      this.convMarkDown(
+        'ストラクチャーの連続配置を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)から開始します。ストラクチャーは、軌道に沿って一定間隔に配置されます。'
+      ),
+      [
+        this.createParam(
+          'trackKey',
+          '**trackKey**: 配置先の軌道名 (0: 自軌道)'
+        ),
+        this.createParam('x', '**x**: 軌道からの x 座標 [m]'),
+        this.createParam('y', '**y**: 軌道からの y 座標 [m]'),
+        this.createParam(
+          'z',
+          '**z**: [現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)からの z 座標 [m]'
+        ),
+        this.createParam('rx', '**rx**: 軌道に対する x 軸回りの角 [deg]'),
+        this.createParam('ry', '**ry**: 軌道に対する y 軸回りの角 [deg]'),
+        this.createParam('rz', '**rz**: 軌道に対する z 軸回りの角 [deg]'),
+        this.createParam(
+          'tilt',
+          '**tilt**: 傾斜オプション (0: 常に水平, 1: 勾配に連動, 2: カントに連動, 3: 勾配とカントに連動)'
+        ),
+        this.createParam('span', '**span**: 曲線における弦の長さ [m]'),
+        this.createParam('interval', '**interval**: 配置間隔 [m]'),
+        this.createParam(
+          'structureKey1',
+          '**structureKey1**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
+        ),
+        this.createParam(
+          'structureKey2',
+          '**structureKey2**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
+        ),
+        this.createParam(
+          'structureKey3',
+          '**structureKey3**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
+        ),
+        this.createParam(
+          'structureKey4',
+          '**structureKey4**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
+        )
+      ]
+    )
+
+    repeaterBegin.addSyntax(
+      this.convMarkDown(
+        'ストラクチャーの連続配置を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)から開始します。ストラクチャーは、軌道に沿って一定間隔に配置されます。'
+      ),
+      [
+        this.createParam(
+          'trackKey',
+          '**trackKey**: 配置先の軌道名 (0: 自軌道)'
+        ),
+        this.createParam('x', '**x**: 軌道からの x 座標 [m]'),
+        this.createParam('y', '**y**: 軌道からの y 座標 [m]'),
+        this.createParam(
+          'z',
+          '**z**: [現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)からの z 座標 [m]'
+        ),
+        this.createParam('rx', '**rx**: 軌道に対する x 軸回りの角 [deg]'),
+        this.createParam('ry', '**ry**: 軌道に対する y 軸回りの角 [deg]'),
+        this.createParam('rz', '**rz**: 軌道に対する z 軸回りの角 [deg]'),
+        this.createParam(
+          'tilt',
+          '**tilt**: 傾斜オプション (0: 常に水平, 1: 勾配に連動, 2: カントに連動, 3: 勾配とカントに連動)'
+        ),
+        this.createParam('span', '**span**: 曲線における弦の長さ [m]'),
+        this.createParam('interval', '**interval**: 配置間隔 [m]'),
+        this.createParam(
+          'structureKey1',
+          '**structureKey1**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
+        ),
+        this.createParam(
+          'structureKey2',
+          '**structureKey2**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
+        ),
+        this.createParam(
+          'structureKey3',
+          '**structureKey3**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
+        ),
+        this.createParam(
+          'structureKey4',
+          '**structureKey4**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
+        ),
+        this.createParam(
+          'structureKey5',
+          '**structureKey5**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
+        )
+      ]
+    )
+    // #endregion
 
     // Repeater[].Begin0(trackKey, tilt, span, interval, ...structureKeyN)
     const repeaterBegin0 = new MapDoc(
@@ -720,11 +887,142 @@ export class MapDocs {
         this.createParam('span', '**span**: 曲線における弦の長さ [m]'),
         this.createParam('interval', '**interval**: 配置間隔 [m]'),
         this.createParam(
-          '...structureKeyN',
-          '**structureKeyN**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
+          'structureKey1',
+          '**structureKey1**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
         )
       ]
     )
+
+    // #region Repeater.Begin
+    // Repeater.Beginのストラクチャーキー2~5まで
+    repeaterBegin0.addSyntax(
+      this.convMarkDown(
+        'ストラクチャーの連続配置を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)から開始します。Repeater[].Begin 構文の x, y, z, rx, ry, rz に 0 を設定したことと同じです。'
+      ),
+      [
+        this.createParam(
+          'trackKey',
+          '**trackKey**: 配置先の軌道名 (0: 自軌道)'
+        ),
+        this.createParam(
+          'tilt',
+          '**tilt**: 傾斜オプション (0: 常に水平, 1: 勾配に連動, 2: カントに連動, 3: 勾配とカントに連動)'
+        ),
+        this.createParam('span', '**span**: 曲線における弦の長さ [m]'),
+        this.createParam('interval', '**interval**: 配置間隔 [m]'),
+        this.createParam(
+          'structureKey1',
+          '**structureKey1**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
+        ),
+        this.createParam(
+          'structureKey2',
+          '**structureKey2**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
+        )
+      ]
+    )
+
+    repeaterBegin0.addSyntax(
+      this.convMarkDown(
+        'ストラクチャーの連続配置を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)から開始します。Repeater[].Begin 構文の x, y, z, rx, ry, rz に 0 を設定したことと同じです。'
+      ),
+      [
+        this.createParam(
+          'trackKey',
+          '**trackKey**: 配置先の軌道名 (0: 自軌道)'
+        ),
+        this.createParam(
+          'tilt',
+          '**tilt**: 傾斜オプション (0: 常に水平, 1: 勾配に連動, 2: カントに連動, 3: 勾配とカントに連動)'
+        ),
+        this.createParam('span', '**span**: 曲線における弦の長さ [m]'),
+        this.createParam('interval', '**interval**: 配置間隔 [m]'),
+        this.createParam(
+          'structureKey1',
+          '**structureKey1**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
+        ),
+        this.createParam(
+          'structureKey2',
+          '**structureKey2**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
+        ),
+        this.createParam(
+          'structureKey3',
+          '**structureKey3**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
+        )
+      ]
+    )
+
+    repeaterBegin0.addSyntax(
+      this.convMarkDown(
+        'ストラクチャーの連続配置を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)から開始します。Repeater[].Begin 構文の x, y, z, rx, ry, rz に 0 を設定したことと同じです。'
+      ),
+      [
+        this.createParam(
+          'trackKey',
+          '**trackKey**: 配置先の軌道名 (0: 自軌道)'
+        ),
+        this.createParam(
+          'tilt',
+          '**tilt**: 傾斜オプション (0: 常に水平, 1: 勾配に連動, 2: カントに連動, 3: 勾配とカントに連動)'
+        ),
+        this.createParam('span', '**span**: 曲線における弦の長さ [m]'),
+        this.createParam('interval', '**interval**: 配置間隔 [m]'),
+        this.createParam(
+          'structureKey1',
+          '**structureKey1**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
+        ),
+        this.createParam(
+          'structureKey2',
+          '**structureKey2**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
+        ),
+        this.createParam(
+          'structureKey3',
+          '**structureKey3**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
+        ),
+        this.createParam(
+          'structureKey4',
+          '**structureKey4**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
+        )
+      ]
+    )
+
+    repeaterBegin0.addSyntax(
+      this.convMarkDown(
+        'ストラクチャーの連続配置を[現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)から開始します。Repeater[].Begin 構文の x, y, z, rx, ry, rz に 0 を設定したことと同じです。'
+      ),
+      [
+        this.createParam(
+          'trackKey',
+          '**trackKey**: 配置先の軌道名 (0: 自軌道)'
+        ),
+        this.createParam(
+          'tilt',
+          '**tilt**: 傾斜オプション (0: 常に水平, 1: 勾配に連動, 2: カントに連動, 3: 勾配とカントに連動)'
+        ),
+        this.createParam('span', '**span**: 曲線における弦の長さ [m]'),
+        this.createParam('interval', '**interval**: 配置間隔 [m]'),
+        this.createParam(
+          'structureKey1',
+          '**structureKey1**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
+        ),
+        this.createParam(
+          'structureKey2',
+          '**structureKey2**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
+        ),
+        this.createParam(
+          'structureKey3',
+          '**structureKey3**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
+        ),
+        this.createParam(
+          'structureKey4',
+          '**structureKey4**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
+        ),
+        this.createParam(
+          'structureKey5',
+          '**structureKey5**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
+        )
+      ]
+    )
+    // #endregion
 
     // Repeater[].End()
     const repeaterEnd = new MapDoc(
