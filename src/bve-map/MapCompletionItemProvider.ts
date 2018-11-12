@@ -7,6 +7,7 @@ import { StructureKeys } from '../bve-structures/StructureKeys'
 import * as util from '../util'
 import { MapDoc, MapSyntaxType } from './Docs/MapDoc'
 import { MapDocs } from './Docs/MapDocs'
+import { TrackKeys } from './TrackKeys';
 
 /**
  * マップ構文のコード補完を提供します。
@@ -157,8 +158,9 @@ export class MapCompletionItemProvider
   private getFuncKeyCompletionItems(trimedMapText: string): vscode.CompletionItem[] {
     const mapElementName = this.getSyntaxName(trimedMapText, '[')
     if (mapElementName === 'Structure') {
-      // ストラクチャーリストの表示
       return StructureKeys.Instance.getCompletionItems()
+    }else if (mapElementName === 'Track') {
+      return TrackKeys.Instance.getCompletionItems()
     }
 
     return []

@@ -41,7 +41,7 @@ export class StructureKeys {
   }
 
   /**
-   * 引数に与えられたストラクチャーリストファイルからキーを取得しますして追加します。
+   * 引数に与えられたストラクチャーリストファイルからキーを取得して追加します。
    * @param data ストラクチャーリストファイル
    */
   public addKeys(data: string) {
