@@ -4,7 +4,7 @@ import * as vscode from 'vscode'
 
 import { DistanceChecker } from './bve-map/DistanceChecker/DistanceChecker'
 import { ListFileLoader } from './bve-map/Keys/ListFileLoader'
-import { TrackKeys } from './bve-map/Keys/TrackKeys';
+// import { TrackKeys } from './bve-map/Keys/TrackKeys';
 import { MapCompletionItemProvider } from './bve-map/MapCompletionItemProvider'
 import { MapController } from './bve-map/mapController'
 import { MapHoverProvider } from './bve-map/MapHoverProvider'
@@ -18,7 +18,7 @@ const BVE_VEHICLE_MODE: vscode.DocumentFilter = {language: 'bve-vehicle-1.00', s
 const LANG_ID_MAP: string = "bve-map-2.02"
 
 const structureKeys: StructureKeys = new StructureKeys()
-const trackKeys: TrackKeys = new TrackKeys()
+// const trackKeys: TrackKeys = new TrackKeys()
 
 export function activate(context: vscode.ExtensionContext) {
     const editor = vscode.window.activeTextEditor
