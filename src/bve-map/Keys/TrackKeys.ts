@@ -3,9 +3,9 @@
 import { List } from 'linqts'
 import * as vscode from 'vscode'
 
-import * as headers from '../const/headers'
-import { COMMENT } from '../const/syntaxes';
-import { trimWhiteSpace } from '../util'
+import * as headers from '../../const/headers'
+import { COMMENT } from '../../const/syntaxes';
+import { trimWhiteSpace } from '../../util'
 
 /**
  * ストラクチャーキークラス

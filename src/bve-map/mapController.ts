@@ -3,7 +3,7 @@
 import * as vscode from 'vscode'
 
 import { DistanceChecker } from './DistanceChecker/DistanceChecker'
-import { ListFileLoader } from './ListFileLoader';
+import { ListFileLoader } from './Keys/ListFileLoader';
 
 
 /**

@@ -7,15 +7,18 @@ import { StructureKeys } from '../bve-structures/StructureKeys'
 import * as util from '../util'
 import { MapDoc, MapSyntaxType } from './Docs/MapDoc'
 import { MapDocs } from './Docs/MapDocs'
-import { TrackKeys } from './TrackKeys';
+import { TrackKeys } from './Keys/TrackKeys';
 
 /**
  * マップ構文のコード補完を提供します。
  */
-export class MapCompletionItemProvider
-  implements vscode.CompletionItemProvider {
+export class MapCompletionItemProvider implements vscode.CompletionItemProvider {
   public static readonly FUNC_COMPLETION_TOKEN: string = '.'
   public static readonly KEY_COMPLETION_TOKEN: string = "'"
+
+  constructor(private structureKeys: StructureKeys) {
+
+  }
 
   public provideCompletionItems(
     document: vscode.TextDocument,
@@ -158,7 +161,7 @@ export class MapCompletionItemProvider
   private getFuncKeyCompletionItems(trimedMapText: string): vscode.CompletionItem[] {
     const mapElementName = this.getSyntaxName(trimedMapText, '[')
     if (mapElementName === 'Structure') {
-      return StructureKeys.Instance.getCompletionItems()
+      return this.structureKeys.getCompletionItems()
     }else if (mapElementName === 'Track') {
       return TrackKeys.Instance.getCompletionItems()
     }
@@ -181,7 +184,7 @@ export class MapCompletionItemProvider
 
     if (strKeySyntaxList.Any()) {
       // ストラクチャーキー補完
-      return StructureKeys.Instance.getCompletionItems()
+      return this.structureKeys.getCompletionItems()
     }
 
     const trackKeySyntaxList = syntaxList
