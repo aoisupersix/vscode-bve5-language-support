@@ -1,41 +1,38 @@
 'use strict'
 
+import * as csvSync from 'csv-parse/lib/sync'
 import { List } from 'linqts'
 import * as vscode from 'vscode'
 
 import * as headers from '../../const/headers'
-import { COMMENT } from '../../const/syntaxes';
 import { trimWhiteSpace } from '../../util'
 import { MapDoc } from '../Docs/MapDoc'
 import { IKeyList } from './KeyBase';
 
 /**
- * トラックキークラス
+ * ストラクチャーキークラス
  */
-export class TrackKeys implements IKeyList {
+export class StructureKeys implements IKeyList {
 
-  private keyList: List<string> = new List<string>()
+  private keyList: List<string[]> = new List<string[]>()
 
   /**
    * 現在格納されているキーをすべて削除します。
    */
   public clearKey() {
-    this.keyList = new List<string>()
+    this.keyList = new List<string[]>()
   }
 
   /**
-   * 引数に与えられたマップ構文からキーを取得して格納します。
-   * @param mapText マップ構文
+   * 引数に与えられたストラクチャーリスト構文からキーを取得して格納します。
+   * @param mapText ストラクチャーリスト構文
    */
-  public addKeys(mapText: string) {
-    const trimedMapText = trimWhiteSpace(mapText, headers.MAP_HEADER, COMMENT, true)
-    const trackRegex = /Track\['(.+)'\]/i
-    const keys = new List<string>(trimedMapText.split(';'))
-      .Select(t => trackRegex.exec(t))
-      .Where(r => r !== null)
-      .Select(r => r![1])
-      .Distinct()
-    this.keyList.AddRange(keys.ToArray())
+  public addKeys(structureListText: string) {
+    const csvText = trimWhiteSpace(structureListText, headers.STRUCTURES_HEADER)
+    const matrix = csvSync(csvText)
+
+    const keyList = new List<string[]>(matrix)
+    this.keyList = keyList.Where(k => k !== undefined && k.length === 2)
   }
 
   /**
@@ -50,9 +47,9 @@ export class TrackKeys implements IKeyList {
    */
   public getCompletionItems(): vscode.CompletionItem[] {
     const items = this.keyList.Select(k => {
-      const item = new vscode.CompletionItem(k, vscode.CompletionItemKind.Keyword)
-      item.detail = k
-      item.documentation = "トラック"
+      const item = new vscode.CompletionItem(k[0], vscode.CompletionItemKind.Keyword)
+      item.detail = k[1]
+      item.documentation = "ストラクチャー"
       return item
     }).ToArray()
 
@@ -64,7 +61,7 @@ export class TrackKeys implements IKeyList {
    * @param functionName 構文名
    */
   public isMatchFunctionKey(functionName: string): boolean {
-    return functionName.match(/Track/i) !== null
+    return functionName.match(/Structure/i) !== null
   }
 
   /**
@@ -75,11 +72,11 @@ export class TrackKeys implements IKeyList {
    */
   public isMatchArgumentKey(syntaxes: MapDoc[], syntaxName: string, paramCount: number): boolean {
     const syntaxList = new List<MapDoc>(syntaxes)
-    const trackKeySyntaxList = syntaxList
-    .Where(m => m!.hasTrackKeyParams())
+    const strKeySyntaxList = syntaxList
+    .Where(m => m!.hasStructureKeyParams())
     .Where(m => m!.isMatchSyntax(syntaxName))
-    .Where(m => m!.isMatchTrackKeyParamNumber(paramCount))
+    .Where(m => m!.isMatchStructureKeyParamNumber(paramCount))
 
-    return trackKeySyntaxList.Any()
+    return strKeySyntaxList.Any()
   }
 }

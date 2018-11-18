@@ -3,10 +3,10 @@
 import { List } from 'linqts'
 import * as vscode from 'vscode'
 
-import { StructureKeys } from '../bve-structures/StructureKeys'
 import * as util from '../util'
 import { MapDoc, MapSyntaxType } from './Docs/MapDoc'
 import { MapDocs } from './Docs/MapDocs'
+import { StructureKeys } from './Keys/StructureKeys'
 import { TrackKeys } from './Keys/TrackKeys';
 
 /**

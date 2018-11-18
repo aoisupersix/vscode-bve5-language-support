@@ -4,12 +4,12 @@ import * as vscode from 'vscode'
 
 import { DistanceChecker } from './bve-map/DistanceChecker/DistanceChecker'
 import { ListFileLoader } from './bve-map/Keys/ListFileLoader'
+import { StructureKeys } from './bve-map/Keys/StructureKeys'
 import { TrackKeys } from './bve-map/Keys/TrackKeys';
 import { MapCompletionItemProvider } from './bve-map/MapCompletionItemProvider'
 import { MapController } from './bve-map/mapController'
 import { MapHoverProvider } from './bve-map/MapHoverProvider'
 import { MapSignatureHelpProvider } from './bve-map/MapSignatureHelpProvider'
-import { StructureKeys } from './bve-structures/StructureKeys'
 import { VehicleHoverProvider } from './bve-vehicle/VehicleHoverProvider'
 
 const BVE_MAP_MODE: vscode.DocumentFilter = {language: 'bve-map-2.02', scheme: 'file' }
