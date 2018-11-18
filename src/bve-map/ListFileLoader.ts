@@ -2,10 +2,10 @@
 
 import * as vscode from 'vscode'
 
-import { StructureKeys } from '../../bve-structures/StructureKeys'
-import * as headers from '../../const/headers'
-import * as loadSyntaxes from '../../const/syntaxes'
-import * as util from '../../util'
+import { StructureKeys } from '../bve-structures/StructureKeys'
+import * as headers from '../const/headers'
+import * as loadSyntaxes from '../const/syntaxes'
+import * as util from '../util'
 
 /**
  * リストファイルの読み込みを行います。
