@@ -2,7 +2,7 @@
 
 import * as vscode from 'vscode'
 
-import { StructureKeys } from '../../bve-structures/StructureKeys'
+import { StructureKeys } from '../../bve-structures/StructureKeys';
 import * as headers from '../../const/headers'
 import * as loadSyntaxes from '../../const/syntaxes'
 import * as util from '../../util'
@@ -12,12 +12,16 @@ import * as util from '../../util'
  */
 export class ListFileLoader {
 
+  constructor(private structureKeys: StructureKeys) {
+
+  }
+
   /**
    * ファイルを読み込みます。
    */
   public loadFiles() {
     // 初期化
-    StructureKeys.Instance.clearKey()
+    this.structureKeys.clearKey()
 
     const rootPath = vscode.workspace.rootPath
     if (rootPath === undefined) {
@@ -42,7 +46,7 @@ export class ListFileLoader {
     const structureListPath = this.getListFilePath(data, loadSyntaxes.LOAD_STRUCTURE, currentPath);
     if (structureListPath !== null) {
       const strList = util.loadFile(structureListPath);
-      StructureKeys.Instance.addKeys(strList);
+      this.structureKeys.addKeys(strList);
     }
     return null
   }
@@ -58,7 +62,7 @@ export class ListFileLoader {
 
         if (header.match(headers.STRUCTURES_HEADER)) {
           // ストラクチャーリスト追加
-          StructureKeys.Instance.addKeys(txt)
+          this.structureKeys.addKeys(txt)
         }
       }
     })

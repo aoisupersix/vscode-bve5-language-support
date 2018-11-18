@@ -12,7 +12,6 @@ import { trimWhiteSpace } from '../util'
  */
 export class StructureKeys {
 
-  private static instance: StructureKeys
   private keyList: List<string[]> = new List<string[]>()
 
   /**
@@ -30,18 +29,7 @@ export class StructureKeys {
   }
 
   /**
-   * インスタンスを取得します。
-   */
-  public static get Instance(): StructureKeys {
-    if (!this.instance) {
-      this.instance = new StructureKeys()
-    }
-
-    return this.instance
-  }
-
-  /**
-   * 引数に与えられたストラクチャーリストファイルからキーを取得しますして追加します。
+   * 引数に与えられたストラクチャーリストファイルからキーを取得して追加します。
    * @param data ストラクチャーリストファイル
    */
   public addKeys(data: string) {
