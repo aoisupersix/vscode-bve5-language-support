@@ -16,7 +16,7 @@ export class MapCompletionItemProvider implements vscode.CompletionItemProvider 
   public static readonly FUNC_COMPLETION_TOKEN: string = '.'
   public static readonly KEY_COMPLETION_TOKEN: string = "'"
 
-  constructor(private structureKeys: StructureKeys) {
+  constructor(private structureKeys: StructureKeys, private trackKeys: TrackKeys) {
 
   }
 
@@ -163,7 +163,7 @@ export class MapCompletionItemProvider implements vscode.CompletionItemProvider 
     if (mapElementName === 'Structure') {
       return this.structureKeys.getCompletionItems()
     }else if (mapElementName === 'Track') {
-      return TrackKeys.Instance.getCompletionItems()
+      return this.trackKeys.getCompletionItems()
     }
 
     return []

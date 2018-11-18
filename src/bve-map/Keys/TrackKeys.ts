@@ -12,7 +12,6 @@ import { trimWhiteSpace } from '../../util'
  */
 export class TrackKeys {
 
-  private static instance: TrackKeys
   private keyList: List<string> = new List<string>()
 
   /**
@@ -27,17 +26,6 @@ export class TrackKeys {
    */
   public clearKey() {
     this.keyList = new List<string>()
-  }
-
-  /**
-   * インスタンスを取得します。
-   */
-  public static get Instance(): TrackKeys {
-    if (!this.instance) {
-      this.instance = new TrackKeys()
-    }
-
-    return this.instance
   }
 
   /**
