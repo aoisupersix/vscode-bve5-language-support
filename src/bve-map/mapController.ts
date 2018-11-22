@@ -4,6 +4,7 @@ import * as vscode from 'vscode'
 
 import { DistanceChecker } from './DistanceChecker/DistanceChecker'
 import { ListFileLoader } from './Keys/ListFileLoader';
+import { RepeaterKeys } from './Keys/RepeaterKeys';
 import { TrackKeys } from './Keys/TrackKeys';
 
 
@@ -13,7 +14,7 @@ import { TrackKeys } from './Keys/TrackKeys';
 export class MapController {
   private disposable: vscode.Disposable
 
-  constructor(private distChecker: DistanceChecker, private listFileLoader: ListFileLoader, private trackKeys: TrackKeys) {
+  constructor(private distChecker: DistanceChecker, private listFileLoader: ListFileLoader, private trackKeys: TrackKeys, private repeaterKeys: RepeaterKeys) {
     const subscriptions: vscode.Disposable[] = []
 
     // DistanceCheckerのイベント登録
@@ -48,8 +49,11 @@ export class MapController {
   private _loadKeys() {
     const editor = vscode.window.activeTextEditor;
     if (editor !== undefined) {
-      this.trackKeys.clearKey();
+      this.trackKeys.clearKey()
       this.trackKeys.addKeys(editor.document.getText())
+
+      this.repeaterKeys.clearKey()
+      this.repeaterKeys.addKeys(editor.document.getText())
     }
   }
 }
