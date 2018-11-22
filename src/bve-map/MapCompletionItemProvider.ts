@@ -4,10 +4,9 @@ import { List } from 'linqts'
 import * as vscode from 'vscode'
 
 import * as util from '../util'
-import { MapDoc, MapSyntaxType } from './Docs/MapDoc'
+import { MapSyntaxType } from './Docs/MapDoc'
 import { MapDocs } from './Docs/MapDocs'
-import { StructureKeys } from './Keys/StructureKeys'
-import { TrackKeys } from './Keys/TrackKeys';
+import { IKeyList } from './Keys/IKeyList'
 
 /**
  * マップ構文のコード補完を提供します。
@@ -16,8 +15,10 @@ export class MapCompletionItemProvider implements vscode.CompletionItemProvider 
   public static readonly FUNC_COMPLETION_TOKEN: string = '.'
   public static readonly KEY_COMPLETION_TOKEN: string = "'"
 
-  constructor(private structureKeys: StructureKeys, private trackKeys: TrackKeys) {
+  private keys: List<IKeyList>
 
+  constructor(... keyList: IKeyList[]) {
+    this.keys = new List(keyList)
   }
 
   public provideCompletionItems(
@@ -160,13 +161,10 @@ export class MapCompletionItemProvider implements vscode.CompletionItemProvider 
    */
   private getFuncKeyCompletionItems(trimedMapText: string): vscode.CompletionItem[] {
     const mapElementName = this.getSyntaxName(trimedMapText, '[')
-    if (mapElementName === 'Structure') {
-      return this.structureKeys.getCompletionItems()
-    }else if (mapElementName === 'Track') {
-      return this.trackKeys.getCompletionItems()
-    }
-
-    return []
+    return this.keys
+      .Where(k => k!.isMatchFunctionKey(mapElementName))
+      .SelectMany(k => new List(k.getCompletionItems()))
+      .ToArray()
   }
 
   /**
@@ -176,27 +174,10 @@ export class MapCompletionItemProvider implements vscode.CompletionItemProvider 
   private getParamKeyCompletionItems(trimedMapText: string): vscode.CompletionItem[] {
     const syntaxName = this.getSyntaxName(trimedMapText, '(')
     const paramCount = this.getParamsCount(trimedMapText)
-    const syntaxList = new List<MapDoc>(MapDocs.Instance.getSyntaxes())
-    const strKeySyntaxList = syntaxList
-      .Where(m => m!.hasStructureKeyParams())
-      .Where(m => m!.isMatchSyntax(syntaxName))
-      .Where(m => m!.isMatchStructureKeyParamNumber(paramCount))
 
-    if (strKeySyntaxList.Any()) {
-      // ストラクチャーキー補完
-      return this.structureKeys.getCompletionItems()
-    }
-
-    const trackKeySyntaxList = syntaxList
-      .Where(m => m!.hasTrackKeyParams())
-      .Where(m => m!.isMatchSyntax(syntaxName))
-      .Where(m => m!.isMatchTrackKeyParamNumber(paramCount))
-
-    if (trackKeySyntaxList.Any()) {
-      // トラックキー補完
-      // TODO
-    }
-
-    return []
+    return this.keys
+      .Where(k => k!.isMatchArgumentKey(MapDocs.Instance.getSyntaxes(), syntaxName, paramCount))
+      .SelectMany(k => new List(k.getCompletionItems()))
+      .ToArray()
   }
 }

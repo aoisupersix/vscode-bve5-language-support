@@ -7,7 +7,7 @@ import * as headers from '../../const/headers'
 import { COMMENT } from '../../const/syntaxes';
 import { trimWhiteSpace } from '../../util'
 import { MapDoc } from '../Docs/MapDoc'
-import { IKeyList } from './KeyBase';
+import { IKeyList } from './IKeyList';
 
 /**
  * トラックキークラス

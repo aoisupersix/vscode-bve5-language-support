@@ -7,7 +7,7 @@ import * as vscode from 'vscode'
 import * as headers from '../../const/headers'
 import { trimWhiteSpace } from '../../util'
 import { MapDoc } from '../Docs/MapDoc'
-import { IKeyList } from './KeyBase';
+import { IKeyList } from './IKeyList';
 
 /**
  * ストラクチャーキークラス
