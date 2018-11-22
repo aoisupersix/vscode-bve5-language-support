@@ -8,7 +8,7 @@ import { RepeaterKeys } from './bve-map/Keys/RepeaterKeys';
 import { StructureKeys } from './bve-map/Keys/StructureKeys'
 import { TrackKeys } from './bve-map/Keys/TrackKeys';
 import { MapCompletionItemProvider } from './bve-map/MapCompletionItemProvider'
-import { MapController } from './bve-map/mapController'
+import { MapController } from './bve-map/MapController'
 import { MapHoverProvider } from './bve-map/MapHoverProvider'
 import { MapSignatureHelpProvider } from './bve-map/MapSignatureHelpProvider'
 import { VehicleHoverProvider } from './bve-vehicle/VehicleHoverProvider'

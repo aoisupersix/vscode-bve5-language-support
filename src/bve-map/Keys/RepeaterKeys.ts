@@ -8,11 +8,12 @@ import { COMMENT } from '../../const/syntaxes';
 import { trimWhiteSpace } from '../../util'
 import { MapDoc } from '../Docs/MapDoc'
 import { IKeyList } from './IKeyList';
+import { IKeyLoaderFromMapSyntax } from './IKeyLoaderFromMapSyntax';
 
 /**
  * 連続ストラクチャーキークラス
  */
-export class RepeaterKeys implements IKeyList {
+export class RepeaterKeys implements IKeyList, IKeyLoaderFromMapSyntax {
 
   private keyList: List<string> = new List<string>()
 

@@ -1,11 +1,11 @@
 'use strict'
 
+import { List } from 'linqts'
 import * as vscode from 'vscode'
 
 import { DistanceChecker } from './DistanceChecker/DistanceChecker'
-import { ListFileLoader } from './Keys/ListFileLoader';
-import { RepeaterKeys } from './Keys/RepeaterKeys';
-import { TrackKeys } from './Keys/TrackKeys';
+import { IKeyLoaderFromMapSyntax } from './Keys/IKeyLoaderFromMapSyntax'
+import { ListFileLoader } from './Keys/ListFileLoader'
 
 
 /**
@@ -13,9 +13,11 @@ import { TrackKeys } from './Keys/TrackKeys';
  */
 export class MapController {
   private disposable: vscode.Disposable
+  private keys: List<IKeyLoaderFromMapSyntax>
 
-  constructor(private distChecker: DistanceChecker, private listFileLoader: ListFileLoader, private trackKeys: TrackKeys, private repeaterKeys: RepeaterKeys) {
+  constructor(private distChecker: DistanceChecker, private listFileLoader: ListFileLoader, ... keys: IKeyLoaderFromMapSyntax[]) {
     const subscriptions: vscode.Disposable[] = []
+    this.keys = new List(keys)
 
     // DistanceCheckerのイベント登録
     vscode.window.onDidChangeTextEditorSelection(this._updateDistance, this, subscriptions)
@@ -49,11 +51,10 @@ export class MapController {
   private _loadKeys() {
     const editor = vscode.window.activeTextEditor;
     if (editor !== undefined) {
-      this.trackKeys.clearKey()
-      this.trackKeys.addKeys(editor.document.getText())
-
-      this.repeaterKeys.clearKey()
-      this.repeaterKeys.addKeys(editor.document.getText())
+      this.keys.ForEach(k => {
+        k!.clearKey()
+        k!.addKeys(editor.document.getText())
+      })
     }
   }
 }
