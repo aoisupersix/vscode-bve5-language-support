@@ -26,6 +26,7 @@ export class MapController {
     // ListFileLoaderのイベント登録
     vscode.workspace.onDidChangeConfiguration(this._loadListFiles, this, subscriptions)
     vscode.workspace.onDidSaveTextDocument(this._loadListFiles, this, subscriptions)
+    vscode.workspace.onDidChangeWorkspaceFolders(this._loadListFiles, this, subscriptions)
 
     vscode.workspace.onDidChangeTextDocument(this._loadKeys, this, subscriptions)
 

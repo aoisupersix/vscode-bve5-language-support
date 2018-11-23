@@ -5,14 +5,26 @@ import { List } from 'linqts'
 import * as vscode from 'vscode'
 
 import * as headers from '../../const/headers'
+import * as loadSyntaxes from '../../const/syntaxes'
 import { trimWhiteSpace } from '../../util'
 import { MapDoc } from '../Docs/MapDoc'
 import { IKeyList } from './IKeyList';
+import { IKeyLoaderFromListFile } from './IKeyLoaderFromListFile';
 
 /**
  * ストラクチャーキークラス
  */
-export class StructureKeys implements IKeyList {
+export class StructureKeys implements IKeyList, IKeyLoaderFromListFile {
+
+  /**
+   * リストファイルのヘッダとマッチする正規表現パターン
+   */
+  public listFileHeaderRegex: RegExp = headers.STRUCTURES_HEADER
+
+  /**
+   * リストファイルのロード構文とマッチする正規表現パターン
+   */
+  public listFileLoadSyntaxRegex: RegExp = loadSyntaxes.LOAD_STRUCTURE
 
   private keyList: List<string[]> = new List<string[]>()
 

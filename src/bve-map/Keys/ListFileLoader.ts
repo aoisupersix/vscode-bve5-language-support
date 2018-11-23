@@ -1,19 +1,20 @@
 'use strict'
 
+import { List } from 'linqts'
 import * as vscode from 'vscode'
 
-import * as headers from '../../const/headers'
-import * as loadSyntaxes from '../../const/syntaxes'
 import * as util from '../../util'
-import { StructureKeys } from '../Keys/StructureKeys';
+import { IKeyLoaderFromListFile } from './IKeyLoaderFromListFile';
 
 /**
  * リストファイルの読み込みを行います。
  */
 export class ListFileLoader {
 
-  constructor(private structureKeys: StructureKeys) {
+  private keys: List<IKeyLoaderFromListFile>
 
+  constructor(... lists: IKeyLoaderFromListFile[]) {
+    this.keys = new List(lists)
   }
 
   /**
@@ -21,7 +22,7 @@ export class ListFileLoader {
    */
   public loadFiles() {
     // 初期化
-    this.structureKeys.clearKey()
+    this.keys.ForEach(k => k!.clearKey())
 
     const rootPath = vscode.workspace.rootPath
     if (rootPath === undefined) {
@@ -38,17 +39,21 @@ export class ListFileLoader {
 
   /**
    * リストファイルを構文から取得します。
-   * @param data マップ構文
+   * @param mapText マップ構文
+   * @param currentPath 現在のディレクトリパス
    */
-  public loadFilesFromSyntax(data: string, currentPath: string) {
+  public loadFilesFromSyntax(mapText: string, currentPath: string) {
 
-    // ストラクチャーリスト
-    const structureListPath = this.getListFilePath(data, loadSyntaxes.LOAD_STRUCTURE, currentPath);
-    if (structureListPath !== null) {
-      const strList = util.loadFile(structureListPath);
-      this.structureKeys.addKeys(strList);
-    }
-    return null
+    const lists = this.keys.Select(k => {
+      const ret = { key: k, filePath: this.getListFilePath(mapText, k.listFileLoadSyntaxRegex, currentPath)}
+      return ret
+    }).Where(k => k!.filePath !== null)
+    
+    // 読み込み
+    lists.ForEach(k => {
+      const listFileText = util.loadFile(k!.filePath!)
+      k!.key!.addKeys(listFileText)
+    })
   }
 
   /**
@@ -60,10 +65,9 @@ export class ListFileLoader {
         const txt = util.loadFile(file.fsPath)
         const header = txt.split(/[\n\r]/)[0]
 
-        if (header.match(headers.STRUCTURES_HEADER)) {
-          // ストラクチャーリスト追加
-          this.structureKeys.addKeys(txt)
-        }
+        this.keys
+          .Where(k => header.match(k!.listFileHeaderRegex) !== null)
+          .ForEach(k => k!.addKeys(txt))
       }
     })
   }
