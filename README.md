@@ -1,4 +1,4 @@
-![build_badge](https://travis-ci.org/aoisupersix/vscode-bve5-language-support.svg?branch=master)
+[![build_badge](https://travis-ci.org/aoisupersix/vscode-bve5-language-support.svg?branch=master)](https://travis-ci.org/aoisupersix/vscode-bve5-language-support)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](/LICENSE.md)
 
 # Bve5 Language Support for VSCode
@@ -42,7 +42,16 @@ VSCodeでBveTrainsim5.7構文をサポートするための拡張です。
 
 ## Code completion
 
-要素名(`Curve`,`Gradient`など)を入力した直後、\``.(DOT)`\`を入力することで、マップ要素に対応する関数名の候補を表示します。
+以下の条件でコード補完を行います。
+- 要素名(`Curve`,`Gradient`など)を入力した直後、\``.(DOT)`\`を入力することで、マップ要素に対応する関数名の候補を表示します。
+- 構文内のトラックキー、ストラクチャーキー、連続ストラクチャーキーを入力する際にキーの候補を表示します。
+
+トラックキー、連続ストラクチャーキーの補完候補は、現在開いているファイル内で使用されているキーから取得します。
+ストラクチャーキーの補完候補は、以下の２種類の方法のうち、どちらかを用いて取得します。
+1. VSCode上でフォルダを開いて**いる**場合は、そのフォルダに含まれる全てのストラクチャーリストファイルから取得します。
+2. VSCode上でフォルダを開いて**いない**場合は、現在開いているファイル内のロード構文で読み込まれているストラクチャーリストファイルから取得します。
+
+開いているファイル内でストラクチャーリストを読み込んでいない場合、ストラクチャーキーのコード補完が行えないため、Bveの路線編集中はVSCode上でフォルダを開いておくことをおすすめします。
 
 ## Hover
 
@@ -105,6 +114,9 @@ VSCodeでBveTrainsim5.7構文をサポートするための拡張です。
 ## Release Notes
 
 詳細は[CHANGELOG](CHANGELOG.md)を見てください。
+
+### 0.3.0 - 2018/11/23
+- 各種キーでのコード補完に対応
 
 ### 0.2.2 - 2018/07/15
 - マップファイル文法定義の改良

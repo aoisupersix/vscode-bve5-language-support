@@ -5,6 +5,13 @@ All notable changes to the "bve5-language-support" extension will be documented 
 - 他ファイルの対応
 - インデントの改良
 
+## [0.3.0] - 2018/11/23
+### Added
+- マップ構文のトラックキー、ストラクチャーキー、連続ストラクチャーによるコード補完をサポート
+- テストを追加
+### Updated
+- ファイル構造の見直し
+
 ## [0.2.2] - 2018/07/15
 ### Updated
 - マップファイルの文法定義を改良
