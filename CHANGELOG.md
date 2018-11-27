@@ -5,6 +5,10 @@ All notable changes to the "bve5-language-support" extension will be documented 
 - 他ファイルの対応
 - インデントの改良
 
+## [0.3.1] - 2018/11/27
+### Fixed
+- 悪意ある依存を削除(event-stream 3.3.6)
+
 ## [0.3.0] - 2018/11/23
 ### Added
 - マップ構文のトラックキー、ストラクチャーキー、連続ストラクチャーによるコード補完をサポート
