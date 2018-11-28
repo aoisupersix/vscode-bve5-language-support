@@ -5,6 +5,10 @@ All notable changes to the "bve5-language-support" extension will be documented 
 - 他ファイルの対応
 - インデントの改良
 
+## [0.3.2] - 2018/11/29
+## Updated
+- 依存関係を更新
+
 ## [0.3.1] - 2018/11/27
 ### Fixed
 - 悪意ある依存を削除(event-stream 3.3.6)
