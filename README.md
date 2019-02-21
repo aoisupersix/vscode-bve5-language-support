@@ -115,6 +115,12 @@ VSCodeでBveTrainsim5.7構文をサポートするための拡張です。
 
 詳細は[CHANGELOG](CHANGELOG.md)を見てください。
 
+### 0.3.2 - 2018/11/29
+- 依存関係を更新
+
+### 0.3.1 - 2018/11/27
+- 依存パッケージのアップデート
+
 ### 0.3.0 - 2018/11/23
 - 各種キーでのコード補完に対応
 
@@ -138,6 +144,6 @@ VSCodeでBveTrainsim5.7構文をサポートするための拡張です。
 
 The MIT License(MIT)
 
-Copyright(c) 2018 aoisupersix
+Copyright(c) 2018-2019 aoisupersix
 
 [License.md](LICENSE.md)
