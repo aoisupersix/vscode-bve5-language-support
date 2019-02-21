@@ -13,10 +13,10 @@ import { MapHoverProvider } from './bve-map/MapHoverProvider'
 import { MapSignatureHelpProvider } from './bve-map/MapSignatureHelpProvider'
 import { VehicleHoverProvider } from './bve-vehicle/VehicleHoverProvider'
 
-const BVE_MAP_MODE: vscode.DocumentFilter = {language: 'bve-map-2.02', scheme: 'file' }
-const BVE_VEHICLE_MODE: vscode.DocumentFilter = {language: 'bve-vehicle-1.00', scheme: 'file' }
+const BVE_MAP_MODE: vscode.DocumentFilter = {language: 'bve-map', scheme: 'file' }
+const BVE_VEHICLE_MODE: vscode.DocumentFilter = {language: 'bve-vehicle', scheme: 'file' }
 
-const LANG_ID_MAP: string = "bve-map-2.02"
+const LANG_ID_MAP: string = "bve-map"
 
 const structureKeys: StructureKeys = new StructureKeys()
 const trackKeys: TrackKeys = new TrackKeys()

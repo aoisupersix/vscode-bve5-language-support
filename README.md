@@ -25,8 +25,8 @@ VSCodeでBveTrainsim5.7構文をサポートするための拡張です。
 
 |ファイル種別 |vscode上での文法名|シンタックスハイライト|コード補完|ホバー|シグネチャヘルプ|スニペット|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-|[マップファイル](http://bvets.net/jp/edit/formats/route/map.html)|BveTs Map 2.02|○|○|○|○|△|
-|[車両ファイル](http://bvets.net/jp/edit/formats/vehicle/vehicle.html)|BveTs Vehicle 1.00|○|-|○|-|○|
+|[マップファイル](http://bvets.net/jp/edit/formats/route/map.html)|BveTs Map|○|○|○|○|△|
+|[車両ファイル](http://bvets.net/jp/edit/formats/vehicle/vehicle.html)|BveTs Vehicle|○|-|○|-|○|
 
 凡例：`○`...全構文に対応, `△`...一部構文に対応, `-`...非対応
 
@@ -38,7 +38,7 @@ VSCodeでBveTrainsim5.7構文をサポートするための拡張です。
 
 1. [Visual Studio Code](https://code.visualstudio.com)をインストールして起動し、 `Ctrl+Shift+X`、もしくは`Cmd+Shift+X`を入力して拡張機能パネルを開いてください。 
 2. [Marketplace](https://marketplace.visualstudio.com/items?itemName=aoisupersix.bve5-language-support)から`Bve5 Language Support`を検索してインストールします。
-3. エディタ右下の`言語モードの選択`をクリックして`BveTs Map 2.02`or`BveTs Vehicle 1.00`を選択することで拡張を有効化することが出来ます。
+3. エディタ右下の`言語モードの選択`をクリックして`BveTs Map`or`BveTs Vehicle`を選択することで拡張を有効化することが出来ます。
 
 ## Code completion
 
@@ -115,6 +115,12 @@ VSCodeでBveTrainsim5.7構文をサポートするための拡張です。
 
 詳細は[CHANGELOG](CHANGELOG.md)を見てください。
 
+### 0.3.2 - 2018/11/29
+- 依存関係を更新
+
+### 0.3.1 - 2018/11/27
+- 依存パッケージのアップデート
+
 ### 0.3.0 - 2018/11/23
 - 各種キーでのコード補完に対応
 
@@ -138,6 +144,6 @@ VSCodeでBveTrainsim5.7構文をサポートするための拡張です。
 
 The MIT License(MIT)
 
-Copyright(c) 2018 aoisupersix
+Copyright(c) 2018-2019 aoisupersix
 
 [License.md](LICENSE.md)
