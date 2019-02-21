@@ -24,17 +24,17 @@
         "Other"
     ],
     "activationEvents": [
-        "onLanguage:bve-map-2.02",
-        "onLanguage:bve-vehicle-1.00"
+        "onLanguage:bve-map",
+        "onLanguage:bve-vehicle"
     ],
     "main": "./out/extension",
     "contributes": {
         "commands": [],
         "languages": [
             {
-                "id": "bve-map-2.02",
+                "id": "bve-map",
                 "aliases": [
-                    "BveTs Map 2.02",
+                    "BveTs Map",
                     "bve5-map"
                 ],
                 "filenamePatterns": [
@@ -44,9 +44,9 @@
                 "configuration": "./lang_config/bve5-map-configuration.json"
             },
             {
-                "id": "bve-vehicle-1.00",
+                "id": "bve-vehicle",
                 "aliases": [
-                    "BveTs Vehicle 1.00",
+                    "BveTs Vehicle",
                     "bve5-vehicle"
                 ],
                 "filenamePatterns": [
@@ -58,23 +58,23 @@
         ],
         "grammars": [
             {
-                "language": "bve-map-2.02",
+                "language": "bve-map",
                 "scopeName": "source.bve-map-2.02",
                 "path": "./syntaxes/bve-map-2.02.json"
             },
             {
-                "language": "bve-vehicle-1.00",
+                "language": "bve-vehicle",
                 "scopeName": "source.bve-vehicle-1.00",
                 "path": "./syntaxes/bve-vehicle-1.00.json"
             }
         ],
         "snippets": [
             {
-                "language": "bve-map-2.02",
+                "language": "bve-map",
                 "path": "./snippets/bve-map-2.02.json"
             },
             {
-                "language": "bve-vehicle-1.00",
+                "language": "bve-vehicle",
                 "path": "./snippets/bve-vehicle-1.00.json"
             }
         ]

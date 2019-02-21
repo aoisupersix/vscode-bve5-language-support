@@ -20,7 +20,7 @@ export class DistanceChecker {
     }
 
     const doc = editor.document
-    if (doc.languageId === 'bve-map-2.02') {
+    if (doc.languageId === 'bve-map') {
       const distString = this._getDistance(doc, editor.selections)
 
       this.statusBarItem.text = `距離程： ${distString} [m]`
