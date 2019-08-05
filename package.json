@@ -85,21 +85,21 @@
         "test-mocha": "mocha --opts ./test/cli-test-mocha.opts"
     },
     "devDependencies": {
-        "@types/mocha": "^5.2.6",
-        "@types/node": "^12.0.0",
-        "assert": "^1.4.1",
-        "mocha": "^6.1.4",
-        "tslint": "^5.16.0",
+        "@types/mocha": "^5.2.7",
+        "@types/node": "^12.6.9",
+        "assert": "^2.0.0",
+        "mocha": "^6.2.0",
+        "tslint": "^5.18.0",
         "tslint-config-prettier": "^1.18.0",
-        "typescript": "^3.4.5"
+        "typescript": "^3.5.3"
     },
     "dependencies": {
         "@types/encoding-japanese": "^1.0.15",
-        "csv-parse": "^4.4.1",
+        "csv-parse": "^4.4.3",
         "encoding-japanese": "^1.0.29",
-        "iconv-lite": "^0.4.24",
-        "linqts": "^1.12.2",
-        "npm": "^6.9.0",
-        "vscode": "^1.1.34"
+        "iconv-lite": "^0.5.0",
+        "linqts": "^1.12.6",
+        "npm": "^6.10.2",
+        "vscode": "^1.1.36"
     }
 }
