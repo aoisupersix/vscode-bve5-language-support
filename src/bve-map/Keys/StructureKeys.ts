@@ -1,7 +1,7 @@
 'use strict'
 
 import * as csvSync from 'csv-parse/lib/sync'
-import { List } from 'linqts'
+import * as Enumerable from 'linq'
 import * as vscode from 'vscode'
 
 import * as headers from '../../const/headers'
@@ -26,13 +26,13 @@ export class StructureKeys implements IKeyList, IKeyLoaderFromListFile {
    */
   public listFileLoadSyntaxRegex: RegExp = loadSyntaxes.LOAD_STRUCTURE
 
-  private keyList: List<string[]> = new List<string[]>()
+  private keyList: Enumerable.IEnumerable<string[]> = Enumerable.empty()
 
   /**
    * 現在格納されているキーをすべて削除します。
    */
   public clearKey() {
-    this.keyList = new List<string[]>()
+    this.keyList = Enumerable.empty()
   }
 
   /**
@@ -43,27 +43,27 @@ export class StructureKeys implements IKeyList, IKeyLoaderFromListFile {
     const csvText = trimWhiteSpace(structureListText, headers.STRUCTURES_HEADER)
     const matrix = csvSync(csvText)
 
-    const keyList = new List<string[]>(matrix)
-    this.keyList = keyList.Where(k => k !== undefined && k.length === 2)
+    const keyList = Enumerable.from(matrix as string[][])
+    this.keyList = keyList.where(k => k !== undefined && k.length === 2)
   }
 
   /**
    * 現在格納されているキーを配列で返します。
    */
   public getKeys(): any[] {
-    return this.keyList.ToArray()
+    return this.keyList.toArray()
   }
 
   /**
    * 現在格納されているキーのCompletionItemを返します。
    */
   public getCompletionItems(): vscode.CompletionItem[] {
-    const items = this.keyList.Select(k => {
+    const items = this.keyList.select(k => {
       const item = new vscode.CompletionItem(k[0], vscode.CompletionItemKind.Keyword)
       item.detail = k[1]
       item.documentation = "ストラクチャー"
       return item
-    }).ToArray()
+    }).toArray()
 
     return items
   }
@@ -83,12 +83,12 @@ export class StructureKeys implements IKeyList, IKeyLoaderFromListFile {
    * @param paramCount 引数番号（何番目の引数か？）
    */
   public isMatchArgumentKey(syntaxes: MapDoc[], syntaxName: string, paramCount: number): boolean {
-    const syntaxList = new List<MapDoc>(syntaxes)
+    const syntaxList = Enumerable.from(syntaxes)
     const strKeySyntaxList = syntaxList
-    .Where(m => m!.hasStructureKeyParams())
-    .Where(m => m!.isMatchSyntax(syntaxName))
-    .Where(m => m!.isMatchStructureKeyParamNumber(paramCount))
+    .where(m => m!.hasStructureKeyParams())
+    .where(m => m!.isMatchSyntax(syntaxName))
+    .where(m => m!.isMatchStructureKeyParamNumber(paramCount))
 
-    return strKeySyntaxList.Any()
+    return strKeySyntaxList.any()
   }
 }

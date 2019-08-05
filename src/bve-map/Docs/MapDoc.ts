@@ -1,6 +1,6 @@
 'use strict'
 
-import { List } from 'linqts'
+import * as Enumerable from 'linq'
 import * as vscode from 'vscode'
 
 import { MapParameter } from './MapParameter'
@@ -202,16 +202,16 @@ export class MapDoc {
    * 引数内にストラクチャーキーが含まれているか？
    */
   public hasStructureKeyParams(): boolean {
-    const list = new List<MapSyntax>(this.syntaxes)
-    return list.Any(s => s!.hasStructureKeyParams())
+    const list = Enumerable.from(this.syntaxes)
+    return list.any(s => s!.hasStructureKeyParams())
   }
 
   /**
    * 引数内にストラクチャーキーが含まれているか？
    */
   public hasTrackKeyParams(): boolean {
-    const list = new List<MapSyntax>(this.syntaxes)
-    return list.Any(s => s!.hasTrackKeyParams())
+    const list = Enumerable.from(this.syntaxes)
+    return list.any(s => s!.hasTrackKeyParams())
   }
 
   /**
@@ -219,9 +219,9 @@ export class MapDoc {
    * @param paramNumber 引数番号
    */
   public isMatchStructureKeyParamNumber(paramNumber: number): boolean {
-    const list = new List<MapSyntax>(this.syntaxes)
-    const numbers = list.SelectMany(s => new List<number>(s.getStructureKeyParamNumbers()))
-    return numbers.Any(n => paramNumber === n!)
+    const list = Enumerable.from(this.syntaxes)
+    const numbers = list.selectMany(s => s.getStructureKeyParamNumbers())
+    return numbers.any(n => paramNumber === n!)
   }
 
   /**
@@ -229,9 +229,9 @@ export class MapDoc {
    * @param paramNumber 引数番号
    */
   public isMatchTrackKeyParamNumber(paramNumber: number): boolean {
-    const list = new List<MapSyntax>(this.syntaxes)
-    const numbers = list.SelectMany(s => new List<number>(s.getTrackKeyParamNumbers()))
-    return numbers.Any(n => paramNumber === n!)
+    const list = Enumerable.from(this.syntaxes)
+    const numbers = list.selectMany(s => s.getTrackKeyParamNumbers())
+    return numbers.any(n => paramNumber === n!)
   }
 
   /**

@@ -1,6 +1,6 @@
 'use strict'
 
-import { List } from 'linqts'
+import * as Enumerable from 'linq'
 import * as vscode from 'vscode'
 
 import { DistanceChecker } from './DistanceChecker/DistanceChecker'
@@ -13,11 +13,11 @@ import { ListFileLoader } from './Keys/ListFileLoader'
  */
 export class MapController {
   private disposable: vscode.Disposable
-  private keys: List<IKeyLoaderFromMapSyntax>
+  private keys: Enumerable.IEnumerable<IKeyLoaderFromMapSyntax>
 
   constructor(private distChecker: DistanceChecker, private listFileLoader: ListFileLoader, ... keys: IKeyLoaderFromMapSyntax[]) {
     const subscriptions: vscode.Disposable[] = []
-    this.keys = new List(keys)
+    this.keys = Enumerable.empty()
 
     // DistanceCheckerのイベント登録
     vscode.window.onDidChangeTextEditorSelection(this._updateDistance, this, subscriptions)
@@ -52,7 +52,7 @@ export class MapController {
   private _loadKeys() {
     const editor = vscode.window.activeTextEditor;
     if (editor !== undefined) {
-      this.keys.ForEach(k => {
+      this.keys.forEach(k => {
         k!.clearKey()
         k!.addKeys(editor.document.getText())
       })

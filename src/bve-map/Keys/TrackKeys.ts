@@ -1,6 +1,6 @@
 'use strict'
 
-import { List } from 'linqts'
+import * as Enumerable from 'linq'
 import * as vscode from 'vscode'
 
 import * as headers from '../../const/headers'
@@ -15,13 +15,13 @@ import { IKeyLoaderFromMapSyntax } from './IKeyLoaderFromMapSyntax';
  */
 export class TrackKeys implements IKeyList, IKeyLoaderFromMapSyntax {
 
-  private keyList: List<string> = new List<string>()
+  private keyList: Enumerable.IEnumerable<string> = Enumerable.empty()
 
   /**
    * 現在格納されているキーをすべて削除します。
    */
   public clearKey() {
-    this.keyList = new List<string>()
+    this.keyList = Enumerable.empty()
   }
 
   /**
@@ -31,31 +31,31 @@ export class TrackKeys implements IKeyList, IKeyLoaderFromMapSyntax {
   public addKeys(mapText: string) {
     const trimedMapText = trimWhiteSpace(mapText, headers.MAP_HEADER, COMMENT, true)
     const trackRegex = /Track\['(.+)'\]/i
-    const keys = new List<string>(trimedMapText.split(';'))
-      .Select(t => trackRegex.exec(t))
-      .Where(r => r !== null)
-      .Select(r => r![1])
-      .Distinct()
-    this.keyList.AddRange(keys.ToArray())
+    const keys = Enumerable.from(trimedMapText.split(';'))
+      .select(t => trackRegex.exec(t))
+      .where(r => r !== null)
+      .select(r => r![1])
+      .distinct()
+    this.keyList = this.keyList.concat(keys.toArray())
   }
 
   /**
    * 現在格納されているキーを配列で返します。
    */
   public getKeys(): any[] {
-    return this.keyList.ToArray()
+    return this.keyList.toArray()
   }
 
   /**
    * 現在格納されているキーのCompletionItemを返します。
    */
   public getCompletionItems(): vscode.CompletionItem[] {
-    const items = this.keyList.Select(k => {
+    const items = this.keyList.select(k => {
       const item = new vscode.CompletionItem(k, vscode.CompletionItemKind.Keyword)
       item.detail = k
       item.documentation = "トラック"
       return item
-    }).ToArray()
+    }).toArray()
 
     return items
   }
@@ -75,12 +75,12 @@ export class TrackKeys implements IKeyList, IKeyLoaderFromMapSyntax {
    * @param paramCount 引数番号（何番目の引数か？）
    */
   public isMatchArgumentKey(syntaxes: MapDoc[], syntaxName: string, paramCount: number): boolean {
-    const syntaxList = new List<MapDoc>(syntaxes)
+    const syntaxList = Enumerable.from(syntaxes)
     const trackKeySyntaxList = syntaxList
-    .Where(m => m!.hasTrackKeyParams())
-    .Where(m => m!.isMatchSyntax(syntaxName))
-    .Where(m => m!.isMatchTrackKeyParamNumber(paramCount))
+    .where(m => m!.hasTrackKeyParams())
+    .where(m => m!.isMatchSyntax(syntaxName))
+    .where(m => m!.isMatchTrackKeyParamNumber(paramCount))
 
-    return trackKeySyntaxList.Any()
+    return trackKeySyntaxList.any()
   }
 }

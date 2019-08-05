@@ -1,6 +1,6 @@
 'use strict'
 
-import { List } from 'linqts'
+import * as Enumerable from 'linq'
 import * as vscode from 'vscode'
 
 import * as util from '../util'
@@ -15,10 +15,10 @@ export class MapCompletionItemProvider implements vscode.CompletionItemProvider 
   public static readonly FUNC_COMPLETION_TOKEN: string = '.'
   public static readonly KEY_COMPLETION_TOKEN: string = "'"
 
-  private keys: List<IKeyList>
+  private keys: Enumerable.IEnumerable<IKeyList>
 
   constructor(... keyList: IKeyList[]) {
-    this.keys = new List(keyList)
+    this.keys = Enumerable.from(keyList)
   }
 
   public provideCompletionItems(
@@ -95,7 +95,7 @@ export class MapCompletionItemProvider implements vscode.CompletionItemProvider 
     return new Promise((resolve, reject) => {
       const targetSyntax = this.getSyntaxName(txt, '.')
       const syntaxes = MapDocs.Instance.getSyntaxes()
-      const ret = new List<vscode.CompletionItem>()
+      const ret: vscode.CompletionItem[] = []
 
       if (targetSyntax === '') {
         reject()
@@ -107,8 +107,8 @@ export class MapCompletionItemProvider implements vscode.CompletionItemProvider 
         if (syntax.isMatchMapElement(targetSyntax)) {
           const item = syntax.getFunctionCompletionItem()
           // 重複チェック
-          if (!ret.Any(x => x!.label === item.label)) {
-            ret.Add(item)
+          if (!ret.some(x => x!.label === item.label)) {
+            ret.push(item)
           }
         }
         if (syntax.getSyntaxType() === MapSyntaxType.Syntax3) {
@@ -116,15 +116,15 @@ export class MapCompletionItemProvider implements vscode.CompletionItemProvider 
           if (syntax.isMatchMapElement1(targetSyntax)) {
             const item = syntax.getMapElement2CompletionItem()
             // 重複チェック
-            if (!ret.Any(x => x!.label === item.label)) {
-              ret.Add(item)
+            if (!ret.some(x => x!.label === item.label)) {
+              ret.push(item)
             }
           }
         }
       }
 
-      if (ret.Any()) {
-        resolve(ret.ToArray())
+      if (ret.length > 0) {
+        resolve(ret)
       }
 
       reject()
@@ -162,9 +162,9 @@ export class MapCompletionItemProvider implements vscode.CompletionItemProvider 
   private getFuncKeyCompletionItems(trimedMapText: string): vscode.CompletionItem[] {
     const mapElementName = this.getSyntaxName(trimedMapText, '[')
     return this.keys
-      .Where(k => k!.isMatchFunctionKey(mapElementName))
-      .SelectMany(k => new List(k.getCompletionItems()))
-      .ToArray()
+      .where(k => k!.isMatchFunctionKey(mapElementName))
+      .selectMany(k => k.getCompletionItems())
+      .toArray()
   }
 
   /**
@@ -176,8 +176,8 @@ export class MapCompletionItemProvider implements vscode.CompletionItemProvider 
     const paramCount = this.getParamsCount(trimedMapText)
 
     return this.keys
-      .Where(k => k!.isMatchArgumentKey(MapDocs.Instance.getSyntaxes(), syntaxName, paramCount))
-      .SelectMany(k => new List(k.getCompletionItems()))
-      .ToArray()
+      .where(k => k!.isMatchArgumentKey(MapDocs.Instance.getSyntaxes(), syntaxName, paramCount))
+      .selectMany(k => k.getCompletionItems())
+      .toArray()
   }
 }

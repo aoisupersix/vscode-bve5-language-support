@@ -1,6 +1,6 @@
 'use strict'
 
-import { List } from 'linqts'
+import * as Enumerable from 'linq'
 import * as vscode from 'vscode'
 
 import * as util from '../../util'
@@ -11,10 +11,10 @@ import { IKeyLoaderFromListFile } from './IKeyLoaderFromListFile';
  */
 export class ListFileLoader {
 
-  private keys: List<IKeyLoaderFromListFile>
+  private keys: Enumerable.IEnumerable<IKeyLoaderFromListFile>
 
   constructor(... lists: IKeyLoaderFromListFile[]) {
-    this.keys = new List(lists)
+    this.keys = Enumerable.from(lists)
   }
 
   /**
@@ -22,7 +22,7 @@ export class ListFileLoader {
    */
   public loadFiles() {
     // 初期化
-    this.keys.ForEach(k => k!.clearKey())
+    this.keys.forEach(k => k!.clearKey())
 
     const rootPath = vscode.workspace.rootPath
     if (rootPath === undefined) {
@@ -44,13 +44,13 @@ export class ListFileLoader {
    */
   public loadFilesFromSyntax(mapText: string, currentPath: string) {
 
-    const lists = this.keys.Select(k => {
+    const lists = this.keys.select(k => {
       const ret = { key: k, filePath: this.getListFilePath(mapText, k.listFileLoadSyntaxRegex, currentPath)}
       return ret
-    }).Where(k => k!.filePath !== null)
+    }).where(k => k!.filePath !== null)
     
     // 読み込み
-    lists.ForEach(k => {
+    lists.forEach(k => {
       const listFileText = util.loadFile(k!.filePath!)
       k!.key!.addKeys(listFileText)
     })
@@ -66,8 +66,8 @@ export class ListFileLoader {
         const header = txt.split(/[\n\r]/)[0]
 
         this.keys
-          .Where(k => header.match(k!.listFileHeaderRegex) !== null)
-          .ForEach(k => k!.addKeys(txt))
+          .where(k => header.match(k!.listFileHeaderRegex) !== null)
+          .forEach(k => k!.addKeys(txt))
       }
     })
   }

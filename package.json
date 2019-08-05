@@ -98,7 +98,7 @@
         "csv-parse": "^4.4.3",
         "encoding-japanese": "^1.0.29",
         "iconv-lite": "^0.5.0",
-        "linqts": "^1.12.6",
+        "linq": "^3.2.0",
         "npm": "^6.10.2",
         "vscode": "^1.1.36"
     }

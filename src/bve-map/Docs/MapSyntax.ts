@@ -1,6 +1,6 @@
 'use strict'
 
-import { List } from 'linqts'
+import * as Enumerable from 'linq'
 import * as vscode from 'vscode'
 
 import { MapSyntaxType } from './MapDoc'
@@ -59,16 +59,16 @@ export class MapSyntax {
    * 引数にストラクチャーキーが含まれているか？
    */
   public hasStructureKeyParams(): boolean {
-    const list = new List<MapParameter>(this.params)
-    return list.Any(p => p!.isStructureKey)
+    const list = Enumerable.from(this.params)
+    return list.any(p => p!.isStructureKey)
   }
 
   /**
    * 引数内にトラックキーが含まれているか？
    */
   public hasTrackKeyParams(): boolean {
-    const list = new List<MapParameter>(this.params)
-    return list.Any(p => p!.isTrackKey)
+    const list = Enumerable.from(this.params)
+    return list.any(p => p!.isTrackKey)
   }
 
   /**
