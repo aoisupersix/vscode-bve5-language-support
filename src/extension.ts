@@ -13,11 +13,9 @@ import { VehicleHoverProvider } from './bve-vehicle/VehicleHoverProvider'
 
 const BVE_MAP_MODE: vscode.DocumentFilter = {
     language: 'bve-map',
-    scheme: 'file'
 }
 const BVE_VEHICLE_MODE: vscode.DocumentFilter = {
     language: 'bve-vehicle',
-    scheme: 'file'
 }
 
 const LANG_ID_MAP: string = 'bve-map'
