@@ -1,12 +1,16 @@
 {
-    "defaultSeverity": "error",
-    "extends": [
-        "tslint:latest",
-        "tslint-config-prettier"
-    ],
-    "jsRules": {},
-    "rules": {
-        "no-submodule-imports": false
-    },
-    "rulesDirectory": [ ]
+  "defaultSeverity": "warning",
+  "extends": ["tslint-config-airbnb"],
+  "jsRules": {},
+  "rules": {
+    "max-line-length": [true, 120],
+    "object-literal-shorthand": false,
+    "radix": false,
+    "arrow-parens": false,
+    "semicolon": false,
+    "trailing-comma": false,
+    "ter-indent": [true, 4],
+    "ter-arrow-parens": [false]
+  },
+  "rulesDirectory": []
 }
