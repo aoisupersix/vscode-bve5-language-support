@@ -5,17 +5,15 @@ import * as fs from 'fs'
 import * as iconv from 'iconv-lite'
 import * as path from 'path'
 
-import * as headers from './const/headers';
-import { COMMENT } from './const/syntaxes';
-
-
+import * as headers from './const/headers'
+import { COMMENT } from './const/syntaxes'
 
 /**
  * 引数に与えられたMap構文から不要な部分を削除します。
  * @param mapTextData 未整形のマップファイルテキスト
  */
 export function trimMapText(mapTextData: string): string {
-  return trimWhiteSpace(mapTextData, headers.MAP_HEADER, COMMENT, true);
+    return trimWhiteSpace(mapTextData, headers.MAP_HEADER, COMMENT, true)
 }
 
 /**
@@ -26,37 +24,37 @@ export function trimMapText(mapTextData: string): string {
  * @param isDeleteNewLine 改行を削除するか？(Optional)
  */
 export function trimWhiteSpace(
-  data: string,
-  headerRegex?: RegExp,
-  commentRegex: RegExp = COMMENT,
-  isDeleteNewLine?: boolean
+    data: string,
+    headerRegex?: RegExp,
+    commentRegex: RegExp = COMMENT,
+    isDeleteNewLine?: boolean
 ): string {
-  // ヘッダの削除
-  if (headerRegex !== undefined) {
-    data = data.replace(headerRegex, '')
-  }
-
-  // WhiteSpaceの削除
-  const lines = data.split(/[\n\r]/)
-  let ret = ''
-  for (let line of lines) {
-    const commentIdx = line.search(commentRegex)
-    if (commentIdx !== -1) {
-      line = line.substring(0, commentIdx)
+    // ヘッダの削除
+    if (headerRegex !== undefined) {
+        data = data.replace(headerRegex, '')
     }
-    line = line.replace(/\s+/g, '')
 
-    // 空行は飛ばす
-    if (line !== '') {
-      ret += line
+    // WhiteSpaceの削除
+    const lines = data.split(/[\n\r]/)
+    let ret = ''
+    for (let line of lines) {
+        const commentIdx = line.search(commentRegex)
+        if (commentIdx !== -1) {
+            line = line.substring(0, commentIdx)
+        }
+        line = line.replace(/\s+/g, '')
 
-      // 改行の追加
-      if (isDeleteNewLine === undefined || isDeleteNewLine === false) {
-        ret += '\n'
-      }
+        // 空行は飛ばす
+        if (line !== '') {
+            ret += line
+
+            // 改行の追加
+            if (isDeleteNewLine === undefined || isDeleteNewLine === false) {
+                ret += '\n'
+            }
+        }
     }
-  }
-  return ret
+    return ret
 }
 
 /**
@@ -64,15 +62,18 @@ export function trimWhiteSpace(
  * @param currentFilePath 現在のファイルパス
  * @param relativeFilePath 取得する対象ファイルの相対ファイル
  */
-export function getAbsoluteFilePath(currentFilePath: string, relativeFilePath: string) {
-  const currentDir = path.dirname(currentFilePath)
-  const absolutePath = path.resolve(currentDir, relativeFilePath)
-  
-  if (isExistsPath(absolutePath)) {
-    return absolutePath;
-  }
+export function getAbsoluteFilePath(
+    currentFilePath: string,
+    relativeFilePath: string
+) {
+    const currentDir = path.dirname(currentFilePath)
+    const absolutePath = path.resolve(currentDir, relativeFilePath)
 
-  return undefined;
+    if (isExistsPath(absolutePath)) {
+        return absolutePath
+    }
+
+    return undefined
 }
 
 /**
@@ -80,12 +81,14 @@ export function getAbsoluteFilePath(currentFilePath: string, relativeFilePath: s
  * @param filePath ファイルパス
  */
 export function isExistsPath(filePath: string) {
-  try {
-    fs.statSync(filePath);
-    return true
-  } catch(err) {
-    if(err.code === 'ENOENT') { return false }
-  }
+    try {
+        fs.statSync(filePath)
+        return true
+    } catch (err) {
+        if (err.code === 'ENOENT') {
+            return false
+        }
+    }
 }
 
 /**
@@ -93,7 +96,7 @@ export function isExistsPath(filePath: string) {
  * @param filePath ファイルパス
  */
 export function loadFile(filePath: string): string {
-  const buf = fs.readFileSync(filePath)
-  const encode = encoding.detect(buf)
-  return iconv.decode(buf, encode)
+    const buf = fs.readFileSync(filePath)
+    const encode = encoding.detect(buf)
+    return iconv.decode(buf, encode)
 }

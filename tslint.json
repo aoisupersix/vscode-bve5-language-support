@@ -1,15 +1,16 @@
 {
   "defaultSeverity": "warning",
-  "extends": ["tslint-config-airbnb"],
+  "extends": [
+    "tslint-config-airbnb",
+    "tslint-config-prettier"
+  ],
   "jsRules": {},
   "rules": {
-    "max-line-length": [true, 120],
     "object-literal-shorthand": false,
     "radix": false,
     "arrow-parens": false,
     "semicolon": false,
     "trailing-comma": false,
-    "ter-indent": [true, 4],
     "ter-arrow-parens": [false]
   },
   "rulesDirectory": []
