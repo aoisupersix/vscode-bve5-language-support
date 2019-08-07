@@ -80,14 +80,15 @@
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",
-        "test": "node ./node_modules/vscode/bin/test",
-        "test-mocha": "mocha --opts ./test/cli-test-mocha.opts"
+        "test": "node ./out/test/runTest.js"
     },
     "devDependencies": {
+        "@types/glob": "^7.1.1",
         "@types/mocha": "^5.2.7",
         "@types/node": "^12.6.9",
         "@types/vscode": "^1.24.0",
         "assert": "^2.0.0",
+        "glob": "^7.1.4",
         "mocha": "^6.2.0",
         "tslint": "^5.18.0",
         "tslint-config-airbnb": "^5.11.1",
