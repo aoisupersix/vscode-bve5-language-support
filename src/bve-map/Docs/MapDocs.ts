@@ -1,5 +1,3 @@
-'use strict'
-
 import * as vscode from 'vscode'
 
 import { MapDoc, MapSyntaxType } from './MapDoc'

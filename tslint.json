@@ -1,12 +1,17 @@
 {
-    "defaultSeverity": "error",
-    "extends": [
-        "tslint:latest",
-        "tslint-config-prettier"
-    ],
-    "jsRules": {},
-    "rules": {
-        "no-submodule-imports": false
-    },
-    "rulesDirectory": [ ]
+  "defaultSeverity": "warning",
+  "extends": [
+    "tslint-config-airbnb",
+    "tslint-config-prettier"
+  ],
+  "jsRules": {},
+  "rules": {
+    "object-literal-shorthand": false,
+    "radix": false,
+    "arrow-parens": false,
+    "semicolon": false,
+    "trailing-comma": false,
+    "ter-arrow-parens": [false]
+  },
+  "rulesDirectory": []
 }

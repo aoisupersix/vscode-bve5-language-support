@@ -1,22 +1,24 @@
-'use strict'
-
 import * as vscode from 'vscode'
 
 import { DistanceChecker } from './bve-map/DistanceChecker/DistanceChecker'
 import { ListFileLoader } from './bve-map/Keys/ListFileLoader'
-import { RepeaterKeys } from './bve-map/Keys/RepeaterKeys';
+import { RepeaterKeys } from './bve-map/Keys/RepeaterKeys'
 import { StructureKeys } from './bve-map/Keys/StructureKeys'
-import { TrackKeys } from './bve-map/Keys/TrackKeys';
+import { TrackKeys } from './bve-map/Keys/TrackKeys'
 import { MapCompletionItemProvider } from './bve-map/MapCompletionItemProvider'
 import { MapController } from './bve-map/MapController'
 import { MapHoverProvider } from './bve-map/MapHoverProvider'
 import { MapSignatureHelpProvider } from './bve-map/MapSignatureHelpProvider'
 import { VehicleHoverProvider } from './bve-vehicle/VehicleHoverProvider'
 
-const BVE_MAP_MODE: vscode.DocumentFilter = {language: 'bve-map', scheme: 'file' }
-const BVE_VEHICLE_MODE: vscode.DocumentFilter = {language: 'bve-vehicle', scheme: 'file' }
+const BVE_MAP_MODE: vscode.DocumentFilter = {
+    language: 'bve-map',
+}
+const BVE_VEHICLE_MODE: vscode.DocumentFilter = {
+    language: 'bve-vehicle',
+}
 
-const LANG_ID_MAP: string = "bve-map"
+const LANG_ID_MAP: string = 'bve-map'
 
 const structureKeys: StructureKeys = new StructureKeys()
 const trackKeys: TrackKeys = new TrackKeys()
@@ -24,7 +26,7 @@ const repeaterKeys: RepeaterKeys = new RepeaterKeys()
 
 export function activate(context: vscode.ExtensionContext) {
     const editor = vscode.window.activeTextEditor
-    if(editor !== undefined && editor.document.languageId === LANG_ID_MAP) {
+    if (editor !== undefined && editor.document.languageId === LANG_ID_MAP) {
         const distChecker = new DistanceChecker()
         const listFileLoader = new ListFileLoader(structureKeys)
         const controller = new MapController(distChecker, listFileLoader, trackKeys, repeaterKeys)
@@ -34,8 +36,17 @@ export function activate(context: vscode.ExtensionContext) {
     }
 
     // マップ
-    context.subscriptions.push(vscode.languages.registerSignatureHelpProvider(BVE_MAP_MODE, new MapSignatureHelpProvider(), '('))
-    context.subscriptions.push(vscode.languages.registerCompletionItemProvider(BVE_MAP_MODE, new MapCompletionItemProvider(structureKeys, trackKeys, repeaterKeys), '.', '\''))
+    context.subscriptions.push(
+        vscode.languages.registerSignatureHelpProvider(BVE_MAP_MODE, new MapSignatureHelpProvider(), '(')
+    )
+    context.subscriptions.push(
+        vscode.languages.registerCompletionItemProvider(
+            BVE_MAP_MODE,
+            new MapCompletionItemProvider(structureKeys, trackKeys, repeaterKeys),
+            '.',
+            "'"
+        )
+    )
     context.subscriptions.push(vscode.languages.registerHoverProvider(BVE_MAP_MODE, new MapHoverProvider()))
     // 車両
     context.subscriptions.push(vscode.languages.registerHoverProvider(BVE_VEHICLE_MODE, new VehicleHoverProvider()))
