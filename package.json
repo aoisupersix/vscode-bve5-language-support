@@ -91,7 +91,7 @@
         "glob": "7.1.4",
         "mocha": "6.2.0",
         "tslint": "5.18.0",
-        "tslint-config-airbnb": "5.11.1",
+        "tslint-config-airbnb": "5.11.2",
         "tslint-config-prettier": "1.18.0",
         "typescript": "3.5.3"
     },
