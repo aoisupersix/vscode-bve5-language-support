@@ -89,7 +89,7 @@
         "@types/vscode": "1.24.0",
         "assert": "2.0.0",
         "glob": "7.1.4",
-        "mocha": "6.2.0",
+        "mocha": "6.2.2",
         "tslint": "5.18.0",
         "tslint-config-airbnb": "5.11.1",
         "tslint-config-prettier": "1.18.0",
