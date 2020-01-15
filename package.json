@@ -88,7 +88,7 @@
         "@types/node": "12.12.24",
         "@types/vscode": "1.24.0",
         "assert": "2.0.0",
-        "glob": "7.1.4",
+        "glob": "7.1.6",
         "mocha": "7.0.0",
         "tslint": "5.18.0",
         "tslint-config-airbnb": "5.11.2",
