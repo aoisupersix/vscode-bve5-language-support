@@ -93,7 +93,7 @@
         "tslint": "6.1.0",
         "tslint-config-airbnb": "5.11.2",
         "tslint-config-prettier": "1.18.0",
-        "typescript": "3.8.2"
+        "typescript": "3.8.3"
     },
     "dependencies": {
         "@types/encoding-japanese": "^1.0.15",
