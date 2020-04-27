@@ -228,7 +228,7 @@ export class MapDoc {
         ret.signatures = signatures.sort((a, b) => a.parameters.length - b.parameters.length) // パラメータ数で昇順ソート
         // パラメータ数からシグネチャを選択
         ret.activeSignature = ret.signatures.length - 1
-        for (let i = ret.signatures.length - 1; i >= 0; i += 1) {
+        for (let i = ret.signatures.length - 1; i >= 0; i -= 1) {
             if (paramIdx + 1 <= ret.signatures[i].parameters.length) {
                 ret.activeSignature = i
             }
