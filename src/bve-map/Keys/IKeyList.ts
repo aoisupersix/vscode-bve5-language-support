@@ -12,11 +12,6 @@ export interface KeyList {
   clearKey(): void
 
   /**
-   * 現在格納されているキーを配列で返します。
-   */
-  getKeys(): any[]
-
-  /**
    * 現在格納されているキーのCompletionItemを返します。
    */
   getCompletionItems(): vscode.CompletionItem[]

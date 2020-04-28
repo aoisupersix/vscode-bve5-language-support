@@ -18,11 +18,6 @@ export interface KeyLoaderFromListFile {
   clearKey(): void
 
   /**
-   * 現在格納されているキーを配列で返します。
-   */
-  getKeys(): any[]
-
-  /**
    * キーをファイルパスから取得して追加します。
    * @param listFileText リストファイル文字列
    */

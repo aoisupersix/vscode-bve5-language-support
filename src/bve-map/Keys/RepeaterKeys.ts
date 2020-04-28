@@ -43,13 +43,6 @@ export class RepeaterKeys implements KeyList, KeyLoaderFromMapSyntax {
   }
 
   /**
-   * 現在格納されているキーを配列で返します。
-   */
-  public getKeys(): any[] {
-    return this.keyList.toArray()
-  }
-
-  /**
    * 現在格納されているキーのCompletionItemを返します。
    */
   public getCompletionItems(): vscode.CompletionItem[] {
