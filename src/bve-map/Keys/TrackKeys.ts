@@ -12,13 +12,13 @@ import { KeyLoaderFromMapSyntax } from './IKeyLoaderFromMapSyntax'
  * トラックキークラス
  */
 export class TrackKeys implements KeyList, KeyLoaderFromMapSyntax {
-  private keyList: Enumerable.IEnumerable<string> = Enumerable.empty()
+  private keyList: string[] = []
 
   /**
    * 現在格納されているキーをすべて削除します。
    */
   public clearKey(): void {
-    this.keyList = Enumerable.empty()
+    this.keyList = []
   }
 
   /**
@@ -45,17 +45,15 @@ export class TrackKeys implements KeyList, KeyLoaderFromMapSyntax {
    * 現在格納されているキーのCompletionItemを返します。
    */
   public getCompletionItems(): vscode.CompletionItem[] {
-    const items = this.keyList
-      .select((k) => {
-        const item = new vscode.CompletionItem(
-          k,
-          vscode.CompletionItemKind.Keyword
-        )
-        item.detail = k
-        item.documentation = 'トラック'
-        return item
-      })
-      .toArray()
+    const items = this.keyList.map((k) => {
+      const item = new vscode.CompletionItem(
+        k,
+        vscode.CompletionItemKind.Keyword
+      )
+      item.detail = k
+      item.documentation = 'トラック'
+      return item
+    })
 
     return items
   }

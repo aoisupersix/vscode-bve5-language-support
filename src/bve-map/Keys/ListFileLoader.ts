@@ -1,4 +1,3 @@
-import * as Enumerable from 'linq'
 import * as vscode from 'vscode'
 
 import * as util from '../../util'
@@ -8,10 +7,10 @@ import { KeyLoaderFromListFile } from './IKeyLoaderFromListFile'
  * リストファイルの読み込みを行います。
  */
 export class ListFileLoader {
-  private keys: Enumerable.IEnumerable<KeyLoaderFromListFile>
+  private keys: KeyLoaderFromListFile[]
 
   constructor(...lists: KeyLoaderFromListFile[]) {
-    this.keys = Enumerable.from(lists)
+    this.keys = lists
   }
 
   /**
@@ -42,7 +41,7 @@ export class ListFileLoader {
    */
   public loadFilesFromSyntax(mapText: string, currentPath: string): void {
     const lists = this.keys
-      .select((k) => {
+      .map((k) => {
         const ret = {
           key: k,
           filePath: this.getListFilePath(
@@ -53,7 +52,7 @@ export class ListFileLoader {
         }
         return ret
       })
-      .where((k) => k.filePath !== null)
+      .filter((k) => k.filePath !== null)
 
     // 読み込み
     lists.forEach((k) => {
@@ -72,7 +71,7 @@ export class ListFileLoader {
         const header = txt.split(/[\n\r]/)[0]
 
         this.keys
-          .where((k) => header.match(k.listFileHeaderRegex) !== null)
+          .filter((k) => header.match(k.listFileHeaderRegex) !== null)
           .forEach((k) => k.addKeys(txt))
       }
     })

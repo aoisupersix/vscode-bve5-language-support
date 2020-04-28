@@ -23,13 +23,13 @@ export class StructureKeys implements KeyList, KeyLoaderFromListFile {
    */
   public listFileLoadSyntaxRegex: RegExp = loadSyntaxes.LOAD_STRUCTURE
 
-  private keyList: Enumerable.IEnumerable<string[]> = Enumerable.empty()
+  private keyList: string[][] = []
 
   /**
    * 現在格納されているキーをすべて削除します。
    */
   public clearKey(): void {
-    this.keyList = Enumerable.empty()
+    this.keyList = []
   }
 
   /**
@@ -40,25 +40,23 @@ export class StructureKeys implements KeyList, KeyLoaderFromListFile {
     const csvText = trimWhiteSpace(structureListText, headers.STRUCTURES_HEADER)
     const matrix = csvSync(csvText)
 
-    const keyList = Enumerable.from(matrix as string[][])
-    this.keyList = keyList.where((k) => k !== undefined && k.length === 2)
+    const keyList = matrix as string[][]
+    this.keyList = keyList.filter((k) => k !== undefined && k.length === 2)
   }
 
   /**
    * 現在格納されているキーのCompletionItemを返します。
    */
   public getCompletionItems(): vscode.CompletionItem[] {
-    const items = this.keyList
-      .select((k) => {
-        const item = new vscode.CompletionItem(
-          k[0],
-          vscode.CompletionItemKind.Keyword
-        )
-        item.detail = k[1]
-        item.documentation = 'ストラクチャー'
-        return item
-      })
-      .toArray()
+    const items = this.keyList.map((k) => {
+      const item = new vscode.CompletionItem(
+        k[0],
+        vscode.CompletionItemKind.Keyword
+      )
+      item.detail = k[1]
+      item.documentation = 'ストラクチャー'
+      return item
+    })
 
     return items
   }
