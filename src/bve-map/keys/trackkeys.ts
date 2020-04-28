@@ -4,9 +4,9 @@ import * as vscode from 'vscode'
 import * as headers from '../../const/headers'
 import { COMMENT } from '../../const/syntaxes'
 import { trimWhiteSpace } from '../../util'
-import { MapDoc } from '../Docs/MapDoc'
-import { KeyList } from './IKeyList'
-import { KeyLoaderFromMapSyntax } from './IKeyLoaderFromMapSyntax'
+import { MapDoc } from '../docs/mapdoc'
+import { KeyList } from './key-list'
+import { KeyLoaderFromMapSyntax } from './key-loader-from-mapsyntax'
 
 /**
  * トラックキークラス

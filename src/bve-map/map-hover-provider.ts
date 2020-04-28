@@ -1,8 +1,8 @@
 import * as vscode from 'vscode'
 import * as util from '../util'
 
-import { MapDoc } from './Docs/MapDoc'
-import { MapDocs } from './Docs/MapDocs'
+import { MapDoc } from './docs/mapdoc'
+import { MapDocs } from './docs/mapdocs'
 
 /**
  * マップ構文のホバー表示を提供します。

@@ -1,6 +1,6 @@
 import * as vscode from 'vscode'
 
-import { MapDoc } from '../Docs/MapDoc'
+import { MapDoc } from '../docs/mapdoc'
 
 /**
  * マップ構文の各種キーを管理するインタフェース

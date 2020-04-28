@@ -80,7 +80,7 @@
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",
-        "test": "node ./out/test/runTest.js"
+        "test": "node ./out/test/run-test.js"
     },
     "devDependencies": {
         "@types/glob": "7.1.1",

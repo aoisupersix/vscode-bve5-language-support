@@ -1,7 +1,7 @@
 import * as assert from 'assert'
 import * as vscode from 'vscode'
 
-import { DistanceChecker } from '../bve-map/DistanceChecker/DistanceChecker'
+import { DistanceChecker } from '../bve-map/distance-checker/distance-checker'
 
 suite('DistanceChecker', () => {
   const distChecker = new DistanceChecker()

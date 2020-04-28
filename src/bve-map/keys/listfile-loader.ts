@@ -1,7 +1,7 @@
 import * as vscode from 'vscode'
 
 import * as util from '../../util'
-import { KeyLoaderFromListFile } from './IKeyLoaderFromListFile'
+import { KeyLoaderFromListFile } from './key-loader-from-listfile'
 
 /**
  * リストファイルの読み込みを行います。

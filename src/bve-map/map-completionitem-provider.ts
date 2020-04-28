@@ -2,9 +2,9 @@ import * as Enumerable from 'linq'
 import * as vscode from 'vscode'
 
 import * as util from '../util'
-import { MapSyntaxType } from './Docs/MapDoc'
-import { MapDocs } from './Docs/MapDocs'
-import { KeyList } from './Keys/IKeyList'
+import { MapSyntaxType } from './docs/mapdoc'
+import { MapDocs } from './docs/mapdocs'
+import { KeyList } from './keys/key-list'
 
 /**
  * マップ構文のコード補完を提供します。

@@ -1,15 +1,15 @@
 import * as vscode from 'vscode'
 
-import { DistanceChecker } from './bve-map/DistanceChecker/DistanceChecker'
-import { ListFileLoader } from './bve-map/Keys/ListFileLoader'
-import { RepeaterKeys } from './bve-map/Keys/RepeaterKeys'
-import { StructureKeys } from './bve-map/Keys/StructureKeys'
-import { TrackKeys } from './bve-map/Keys/TrackKeys'
-import { MapCompletionItemProvider } from './bve-map/MapCompletionItemProvider'
-import { MapController } from './bve-map/MapController'
-import { MapHoverProvider } from './bve-map/MapHoverProvider'
-import { MapSignatureHelpProvider } from './bve-map/MapSignatureHelpProvider'
-import { VehicleHoverProvider } from './bve-vehicle/VehicleHoverProvider'
+import { DistanceChecker } from './bve-map/distance-checker/distance-checker'
+import { ListFileLoader } from './bve-map/keys/listfile-loader'
+import { RepeaterKeys } from './bve-map/keys/repeaterkeys'
+import { StructureKeys } from './bve-map/keys/structurekeys'
+import { TrackKeys } from './bve-map/keys/trackkeys'
+import { MapCompletionItemProvider } from './bve-map/map-completionitem-provider'
+import { MapController } from './bve-map/map-controller'
+import { MapHoverProvider } from './bve-map/map-hover-provider'
+import { MapSignatureHelpProvider } from './bve-map/map-signaturehelp-provider'
+import { VehicleHoverProvider } from './bve-vehicle/vehicle-hover-provider'
 
 const BVE_MAP_MODE: vscode.DocumentFilter = {
   language: 'bve-map',

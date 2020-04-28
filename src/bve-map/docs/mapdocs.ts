@@ -1,7 +1,7 @@
 import * as vscode from 'vscode'
 
-import { MapDoc, MapSyntaxType } from './MapDoc'
-import { MapParameter } from './MapParameter'
+import { MapDoc, MapSyntaxType } from './mapdoc'
+import { MapParameter } from './map-parameter'
 
 /**
  * マップ構文を管理するシングルトンクラス

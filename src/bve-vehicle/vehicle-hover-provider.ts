@@ -1,6 +1,6 @@
 import * as vscode from 'vscode'
 
-import { VehicleDocs } from './VehicleDocs'
+import { VehicleDocs } from './vehicle-docs'
 
 /**
  * 車両ファイル構文のホバー表示を提供します。

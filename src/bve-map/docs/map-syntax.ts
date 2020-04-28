@@ -1,8 +1,8 @@
 import * as Enumerable from 'linq'
 import * as vscode from 'vscode'
 
-import { MapSyntaxType } from './MapDoc'
-import { MapParameter } from './MapParameter'
+import { MapSyntaxType } from './mapdoc'
+import { MapParameter } from './map-parameter'
 
 /**
  * 一つのマップ構文を格納するクラス

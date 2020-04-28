@@ -5,9 +5,9 @@ import * as vscode from 'vscode'
 import * as headers from '../../const/headers'
 import * as loadSyntaxes from '../../const/syntaxes'
 import { trimWhiteSpace } from '../../util'
-import { MapDoc } from '../Docs/MapDoc'
-import { KeyList } from './IKeyList'
-import { KeyLoaderFromListFile } from './IKeyLoaderFromListFile'
+import { MapDoc } from '../docs/mapdoc'
+import { KeyList } from './key-list'
+import { KeyLoaderFromListFile } from './key-loader-from-listfile'
 
 /**
  * ストラクチャーキークラス

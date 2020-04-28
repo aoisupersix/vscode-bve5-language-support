@@ -1,7 +1,7 @@
 import * as vscode from 'vscode'
 
 import * as util from '../util'
-import { MapDocs } from './Docs/MapDocs'
+import { MapDocs } from './docs/mapdocs'
 
 /**
  * マップ構文のシグネチャヘルプを提供します。

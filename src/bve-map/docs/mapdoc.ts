@@ -1,8 +1,8 @@
 import * as Enumerable from 'linq'
 import * as vscode from 'vscode'
 
-import { MapParameter } from './MapParameter'
-import { MapSyntax } from './MapSyntax'
+import { MapParameter } from './map-parameter'
+import { MapSyntax } from './map-syntax'
 
 /**
  * マップ構文の種類です。
@@ -311,7 +311,7 @@ export class MapDoc {
 
   /**
    * マップ要素1のホバーを取得します。
-   * @param range　ホバー範囲
+   * @param range ホバー範囲
    */
   public getMapElement1Hover(range: vscode.Range): vscode.Hover {
     return new vscode.Hover(

@@ -1,9 +1,9 @@
 import * as Enumerable from 'linq'
 import * as vscode from 'vscode'
 
-import { DistanceChecker } from './DistanceChecker/DistanceChecker'
-import { KeyLoaderFromMapSyntax } from './Keys/IKeyLoaderFromMapSyntax'
-import { ListFileLoader } from './Keys/ListFileLoader'
+import { DistanceChecker } from './distance-checker/distance-checker'
+import { KeyLoaderFromMapSyntax } from './keys/key-loader-from-mapsyntax'
+import { ListFileLoader } from './keys/listfile-loader'
 
 /**
  * bve-mapのイベント管理

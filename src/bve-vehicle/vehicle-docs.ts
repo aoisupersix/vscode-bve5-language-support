@@ -1,4 +1,4 @@
-import { VehicleDoc } from './VehicleDoc'
+import { VehicleDoc } from './vehicle-doc'
 
 /**
  * 車両ファイルの要素を管理するシングルトンクラス
