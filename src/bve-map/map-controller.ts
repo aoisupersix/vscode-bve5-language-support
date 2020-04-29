@@ -18,7 +18,7 @@ export class MapController {
     ...keys: KeyLoaderFromMapSyntax[]
   ) {
     const subscriptions: vscode.Disposable[] = []
-    this.keys = Enumerable.empty()
+    this.keys = Enumerable.from(keys)
 
     // DistanceCheckerのイベント登録
     vscode.window.onDidChangeTextEditorSelection(
