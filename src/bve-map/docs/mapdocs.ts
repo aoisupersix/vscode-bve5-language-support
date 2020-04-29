@@ -1,7 +1,7 @@
 import * as vscode from 'vscode'
 
-import { MapDoc, MapSyntaxType } from './MapDoc'
-import { MapParameter } from './MapParameter'
+import { MapDoc, MapSyntaxType } from './mapdoc'
+import { MapParameter } from './map-parameter'
 
 /**
  * マップ構文を管理するシングルトンクラス
@@ -65,7 +65,7 @@ export class MapDocs {
         this.createParam(
           'id',
           '**id**: 関数番号 (0: サイン半波長逓減, 1: 直線逓減)'
-        )
+        ),
       ]
     )
 
@@ -95,7 +95,7 @@ export class MapDocs {
           'radius',
           '**radius**: 曲線半径 [m] (正: 右曲線, 負: 左曲線)'
         ),
-        this.createParam('cant', '**cant**: カント [m]')
+        this.createParam('cant', '**cant**: カント [m]'),
       ]
     )
     // Curve.Begin2(radius)
@@ -107,7 +107,7 @@ export class MapDocs {
         this.createParam(
           'radius',
           '**radius**: 曲線半径 [m] (正: 右曲線, 負: 左曲線)'
-        )
+        ),
       ]
     )
     // Curve.Begin()
@@ -144,7 +144,7 @@ export class MapDocs {
           'radius',
           '**radius**: 曲線半径 [m] (正: 右曲線, 負: 左曲線, 0: 直線)'
         ),
-        this.createParam('cant', '**cant**: カント [m]')
+        this.createParam('cant', '**cant**: カント [m]'),
       ]
     )
     // Curve.Interpolate(radius)
@@ -156,7 +156,7 @@ export class MapDocs {
         this.createParam(
           'radius',
           '**radius**: 曲線半径 [m] (正: 右曲線, 負: 左曲線, 0: 直線)'
-        )
+        ),
       ]
     )
     // Curve.Interpolate()
@@ -180,7 +180,7 @@ export class MapDocs {
         this.createParam(
           'id',
           '**id**: 曲線半径 [m] (正: 右曲線, 負: 左曲線, 0: 直線)'
-        )
+        ),
       ]
     )
 
@@ -300,7 +300,7 @@ export class MapDocs {
         this.createParam(
           'radius',
           '**radius**: [現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)以降の自軌道との平面曲線相対半径 [m] (0: 直線)'
-        )
+        ),
       ]
     )
     // Track[].X.Interpolate(x)
@@ -332,7 +332,7 @@ export class MapDocs {
         this.createParam(
           'radius',
           '**radius**: [現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)以降の自軌道との縦曲線相対半径 [m] (0: 直線)'
-        )
+        ),
       ]
     )
     // Track[].Y.Interpolate(x)
@@ -369,7 +369,7 @@ export class MapDocs {
         this.createParam(
           'radiusV',
           '**radiusV**: [現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)以降の自軌道との縦曲線相対半径 [m] (0: 直線)'
-        )
+        ),
       ]
     )
     // Track[].Position(x, y, radiusH)
@@ -383,7 +383,7 @@ export class MapDocs {
         this.createParam(
           'radiusH',
           '**radiusH**: [現在の距離程](http://bvets.net/jp/edit/formats/route/map.html#distance)以降の自軌道との平面曲線相対半径 [m] (0: 直線)'
-        )
+        ),
       ]
     )
     // Track[].Position(x, y)
@@ -393,7 +393,7 @@ export class MapDocs {
       ),
       [
         this.createParam('x', '**x**: 自軌道からの x 座標 [m]'),
-        this.createParam('y', '**y**: 自軌道からの y 座標 [m]')
+        this.createParam('y', '**y**: 自軌道からの y 座標 [m]'),
       ]
     )
 
@@ -422,7 +422,7 @@ export class MapDocs {
         this.createParam(
           'x',
           '**x**: 回転中心の x 座標 [m] (正: 曲線の内側, 負: 曲線の外側)'
-        )
+        ),
       ]
     )
 
@@ -439,7 +439,7 @@ export class MapDocs {
         this.createParam(
           'id',
           '**id**: 関数番号 (0: サイン半波長逓減, 1: 直線逓減)'
-        )
+        ),
       ]
     )
 
@@ -468,7 +468,7 @@ export class MapDocs {
         this.createParam(
           'cant',
           '**cant**: カント [m] (正: 右に傾ける, 負: 左に傾ける)'
-        )
+        ),
       ]
     )
 
@@ -497,7 +497,7 @@ export class MapDocs {
         this.createParam(
           'cant',
           '**cant**: カント [m] (正: 右に傾ける, 負: 左に傾ける)'
-        )
+        ),
       ]
     )
 
@@ -549,7 +549,7 @@ export class MapDocs {
         this.createParam(
           'filePath',
           '**filePath**: このファイルから[ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)への相対パス'
-        )
+        ),
       ]
     )
 
@@ -578,7 +578,7 @@ export class MapDocs {
           'tilt',
           '**tilt**: 傾斜オプション (0: 常に水平, 1: 勾配に連動, 2: カントに連動, 3: 勾配とカントに連動)'
         ),
-        this.createParam('span', '**span**: 曲線における弦の長さ [m]')
+        this.createParam('span', '**span**: 曲線における弦の長さ [m]'),
       ]
     )
 
@@ -600,7 +600,7 @@ export class MapDocs {
           'tilt',
           '**tilt**: 傾斜オプション (0: 常に水平, 1: 勾配に連動, 2: カントに連動, 3: 勾配とカントに連動)'
         ),
-        this.createParam('span', '**span**: 曲線における弦の長さ [m]')
+        this.createParam('span', '**span**: 曲線における弦の長さ [m]'),
       ]
     )
 
@@ -622,7 +622,7 @@ export class MapDocs {
         this.createParam(
           'flag',
           '**flag**: 変形方向 (0: x および y 方向に変形, 1: x 方向のみに変形)'
-        )
+        ),
       ]
     )
 
@@ -636,7 +636,7 @@ export class MapDocs {
           'trackKey1',
           '**trackKey1**: 一方の軌道の軌道名 (0: 自軌道)'
         ),
-        this.createParam('trackKey2', '**trackKey2**: 他方の軌道の軌道名')
+        this.createParam('trackKey2', '**trackKey2**: 他方の軌道の軌道名'),
       ]
     )
 
@@ -693,7 +693,7 @@ export class MapDocs {
         this.createParam(
           'structureKey1',
           '**structureKey1**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
-        )
+        ),
       ]
     )
 
@@ -730,7 +730,7 @@ export class MapDocs {
         this.createParam(
           'structureKey2',
           '**structureKey2**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
-        )
+        ),
       ]
     )
 
@@ -769,7 +769,7 @@ export class MapDocs {
         this.createParam(
           'structureKey3',
           '**structureKey3**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
-        )
+        ),
       ]
     )
 
@@ -812,7 +812,7 @@ export class MapDocs {
         this.createParam(
           'structureKey4',
           '**structureKey4**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
-        )
+        ),
       ]
     )
 
@@ -859,7 +859,7 @@ export class MapDocs {
         this.createParam(
           'structureKey5',
           '**structureKey5**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
-        )
+        ),
       ]
     )
     // #endregion
@@ -887,7 +887,7 @@ export class MapDocs {
         this.createParam(
           'structureKey1',
           '**structureKey1**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
-        )
+        ),
       ]
     )
 
@@ -915,7 +915,7 @@ export class MapDocs {
         this.createParam(
           'structureKey2',
           '**structureKey2**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
-        )
+        ),
       ]
     )
 
@@ -945,7 +945,7 @@ export class MapDocs {
         this.createParam(
           'structureKey3',
           '**structureKey3**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
-        )
+        ),
       ]
     )
 
@@ -979,7 +979,7 @@ export class MapDocs {
         this.createParam(
           'structureKey4',
           '**structureKey4**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
-        )
+        ),
       ]
     )
 
@@ -1017,7 +1017,7 @@ export class MapDocs {
         this.createParam(
           'structureKey5',
           '**structureKey5**: ストラクチャー名 ([ストラクチャーリストファイル](http://bvets.net/jp/edit/formats/route/structure.html)で定義した文字列)'
-        )
+        ),
       ]
     )
     // #endregion
@@ -1089,7 +1089,7 @@ export class MapDocs {
         this.createParam(
           'filePath',
           '**filePath**: このファイルから[停車場リストファイル](http://bvets.net/jp/edit/formats/route/station.html)への相対パス'
-        )
+        ),
       ]
     )
 
@@ -1108,7 +1108,7 @@ export class MapDocs {
           'margin1',
           '**margin1**: 停止位置誤差の後方許容範囲 (負の値で設定)'
         ),
-        this.createParam('margin2', '**margin2**: 停止位置誤差の前方許容範囲')
+        this.createParam('margin2', '**margin2**: 停止位置誤差の前方許容範囲'),
       ]
     )
 
@@ -1150,7 +1150,7 @@ export class MapDocs {
         this.createParam(
           '...signalN',
           '**signalN**: 先行列車が N 閉そく先に存在する場合の信号インデックス'
-        )
+        ),
       ]
     )
 
@@ -1173,7 +1173,7 @@ export class MapDocs {
         this.createParam(
           '...signalN',
           '**signalN**: 走行速度 [km/h] (null: 許容速度なし)'
-        )
+        ),
       ]
     )
 
@@ -1207,7 +1207,7 @@ export class MapDocs {
         this.createParam(
           'filePath',
           '**filePath**: このファイルから[信号現示リストファイル](http://bvets.net/jp/edit/formats/route/signal.html)への相対パス'
-        )
+        ),
       ]
     )
 
@@ -1227,7 +1227,7 @@ export class MapDocs {
         ),
         this.createParam('trackKey', '**trackKey**: 配置先の軌道名'),
         this.createParam('x', '**x**: 軌道からの x 座標 [m]'),
-        this.createParam('y', '**y**: 軌道からの y 座標 [m]')
+        this.createParam('y', '**y**: 軌道からの y 座標 [m]'),
       ]
     )
 
@@ -1255,7 +1255,7 @@ export class MapDocs {
           'tilt',
           '**tilt**: 傾斜オプション (0: 常に水平, 1: 勾配に連動, 2: カントに連動, 3: 勾配とカントに連動)'
         ),
-        this.createParam('span', '**span**: 曲線における弦の長さ [m]')
+        this.createParam('span', '**span**: 曲線における弦の長さ [m]'),
       ]
     )
 
@@ -1291,7 +1291,7 @@ export class MapDocs {
           'section',
           '**section**: 関連づける閉そくの相対インデックス'
         ),
-        this.createParam('sendData', '**sendData**: 保安装置に送る値 (整数)')
+        this.createParam('sendData', '**sendData**: 保安装置に送る値 (整数)'),
       ]
     )
 
@@ -1401,7 +1401,7 @@ export class MapDocs {
       [
         this.createParam('red', '**red**: 赤成分 (0 ~ 1)'),
         this.createParam('green', '**green**: 緑成分 (0 ~ 1)'),
-        this.createParam('blue', '**blue**: 青成分 (0 ~ 1)')
+        this.createParam('blue', '**blue**: 青成分 (0 ~ 1)'),
       ]
     )
 
@@ -1417,7 +1417,7 @@ export class MapDocs {
       [
         this.createParam('red', '**red**: 赤成分 (0 ~ 1)'),
         this.createParam('green', '**green**: 緑成分 (0 ~ 1)'),
-        this.createParam('blue', '**blue**: 青成分 (0 ~ 1)')
+        this.createParam('blue', '**blue**: 青成分 (0 ~ 1)'),
       ]
     )
 
@@ -1432,7 +1432,7 @@ export class MapDocs {
       ),
       [
         this.createParam('pitch', '**pitch**: 平行光のピッチ角 [deg]'),
-        this.createParam('yaw', '**yaw**: 平行光のヨー角 [deg]')
+        this.createParam('yaw', '**yaw**: 平行光のヨー角 [deg]'),
       ]
     )
 
@@ -1466,7 +1466,7 @@ export class MapDocs {
         this.createParam('density', '**density**: 濃度'),
         this.createParam('red', '**red**: 赤成分 (0 ~ 1)'),
         this.createParam('green', '**green**: 緑成分 (0 ~ 1)'),
-        this.createParam('blue', '**blue**: 青成分 (0 ~ 1)')
+        this.createParam('blue', '**blue**: 青成分 (0 ~ 1)'),
       ]
     )
     // Fog.Interpolate(density)
@@ -1513,7 +1513,7 @@ export class MapDocs {
         this.createParam(
           'value',
           '**value**: 距離 [m] (0: [設定] ウィンドウで設定される描画距離を適用)'
-        )
+        ),
       ]
     )
 
@@ -1547,7 +1547,7 @@ export class MapDocs {
         this.createParam(
           'value',
           '**value**: 昼間画像と夜間画像の混合比 (0: 夜間画像 ~ 1: 昼間画像)'
-        )
+        ),
       ]
     )
     // CabIlluminance.Interpolate()
@@ -1599,7 +1599,7 @@ export class MapDocs {
         ),
         this.createParam('lx', '**lx**: 左右変位の遮断波長 [m]'),
         this.createParam('ly', '**ly**: 上下変位の遮断波長 [m]'),
-        this.createParam('lr', '**lr**: ロール変位の遮断波長 [m]')
+        this.createParam('lr', '**lr**: ロール変位の遮断波長 [m]'),
       ]
     )
 
@@ -1642,7 +1642,10 @@ export class MapDocs {
           'b',
           '**b**: 粘着係数の走行速度に対する変化を表す係数'
         ),
-        this.createParam('c', '**c**: 粘着係数の走行速度に対する変化を表す係数')
+        this.createParam(
+          'c',
+          '**c**: 粘着係数の走行速度に対する変化を表す係数'
+        ),
       ]
     )
 
@@ -1676,7 +1679,7 @@ export class MapDocs {
         this.createParam(
           'filePath',
           '**filePath**: このファイルから[サウンドリストファイル](http://bvets.net/jp/edit/formats/route/sound.html)への相対パス'
-        )
+        ),
       ]
     )
 
@@ -1722,7 +1725,7 @@ export class MapDocs {
         this.createParam(
           'filePath',
           '**filePath**: このファイルから[サウンドリストファイル](http://bvets.net/jp/edit/formats/route/sound.html)への相対パス'
-        )
+        ),
       ]
     )
 
@@ -1737,7 +1740,7 @@ export class MapDocs {
       ),
       [
         this.createParam('x', '**x**: 軌道からの x 座標 [m]'),
-        this.createParam('y', '**y**: 軌道からの y 座標 [m]')
+        this.createParam('y', '**y**: 軌道からの y 座標 [m]'),
       ]
     )
 
@@ -1771,7 +1774,7 @@ export class MapDocs {
         this.createParam(
           'index',
           '**index**: [車両サウンドファイル](http://bvets.net/jp/edit/formats/vehicle/sound.html)の [Run] セクションで定義したインデックス'
-        )
+        ),
       ]
     )
 
@@ -1805,7 +1808,7 @@ export class MapDocs {
         this.createParam(
           'index',
           '**index**: [車両サウンドファイル](http://bvets.net/jp/edit/formats/vehicle/sound.html)の [Flange] セクションで定義したインデックス'
-        )
+        ),
       ]
     )
 
@@ -1839,7 +1842,7 @@ export class MapDocs {
         this.createParam(
           'index',
           '**index**: [車両サウンドファイル](http://bvets.net/jp/edit/formats/vehicle/sound.html)の [Joint] セクションで定義したインデックス'
-        )
+        ),
       ]
     )
 
@@ -1879,7 +1882,7 @@ export class MapDocs {
         this.createParam(
           'direction',
           '**direction**: 進行方向 (-1: 対向, 1: 並走)'
-        )
+        ),
       ]
     )
 
@@ -1901,7 +1904,7 @@ export class MapDocs {
         this.createParam(
           'direction',
           '**direction**: 進行方向 (-1: 対向, 1: 並走)'
-        )
+        ),
       ]
     )
 
@@ -1937,7 +1940,7 @@ export class MapDocs {
         this.createParam('decelerate', '**decelerate**: 減速度 [km/h/s]'),
         this.createParam('stopTime', '**stopTime**: 停車時間 [s]'),
         this.createParam('accelerate', '**accelerate**: 加速度 [km/h/s]'),
-        this.createParam('speed', '**speed**: 加速後の走行速度 [km/h]')
+        this.createParam('speed', '**speed**: 加速後の走行速度 [km/h]'),
       ]
     )
 
@@ -1960,14 +1963,14 @@ export class MapDocs {
   /**
    * 全ての構文を取得します。
    */
-  public getSyntaxes() {
+  public getSyntaxes(): MapDoc[] {
     return this.syntaxes
   }
 
   /**
    * 全てのマップ要素名を取得します。
    */
-  public getMapElements() {
+  public getMapElements(): MapDoc[] {
     return this.mapElements
   }
 
@@ -1977,14 +1980,19 @@ export class MapDocs {
    * @param documentString パラメータの説明
    */
   private createParam(name: string, documentString: string): MapParameter {
-    return new MapParameter(name, this.convMarkDown(documentString), name.match('structureKey') !== null, name.match('trackKey') !== null)
+    return new MapParameter(
+      name,
+      this.convMarkDown(documentString),
+      name.match('structureKey') !== null,
+      name.match('trackKey') !== null
+    )
   }
 
   /**
    * 引数に与えられた文字列をMarkDownStringに変換します。
    * @param str 変換する文字列
    */
-  private convMarkDown(str: string) {
+  private convMarkDown(str: string): vscode.MarkdownString {
     return new vscode.MarkdownString(str)
   }
 
