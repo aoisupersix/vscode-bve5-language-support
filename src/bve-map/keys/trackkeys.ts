@@ -34,11 +34,12 @@ export class TrackKeys implements KeyList, KeyLoaderFromMapSyntax {
     )
     const trackRegex = /Track\['(.+)'\]/i
     const keys = Enumerable.from(trimedMapText.split(';'))
-      .select((t) => trackRegex.exec(t))
-      .where((r) => r !== null)
-      .select((r) => r[1])
+      .select((t) => trackRegex.exec(t)?.[1])
       .distinct()
-    this.keyList = this.keyList.concat(keys.toArray())
+      .toArray()
+      .filter((k): k is string => k !== undefined)
+
+    this.keyList = this.keyList.concat(keys)
   }
 
   /**

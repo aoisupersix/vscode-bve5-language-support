@@ -52,7 +52,10 @@ export class ListFileLoader {
         }
         return ret
       })
-      .filter((k) => k.filePath !== null)
+      .filter(
+        (k): k is { key: KeyLoaderFromListFile; filePath: string } =>
+          k.filePath !== null
+      )
 
     // 読み込み
     lists.forEach((k) => {

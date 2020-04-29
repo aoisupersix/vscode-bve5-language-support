@@ -34,12 +34,12 @@ export class RepeaterKeys implements KeyList, KeyLoaderFromMapSyntax {
     )
     const repeaterRegex = /Repeater\['(.+)'\]/i
     const keys = Enumerable.from(trimedMapText.split(';'))
-      .select((t) => repeaterRegex.exec(t))
-      .where((r) => r !== null)
-      .select((r) => r[1])
+      .select((t) => repeaterRegex.exec(t)?.[1])
       .distinct()
+      .toArray()
+      .filter((k): k is string => k !== undefined)
 
-    this.keyList = this.keyList.concat(keys.toArray())
+    this.keyList = this.keyList.concat(keys)
   }
 
   /**
