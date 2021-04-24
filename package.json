@@ -91,7 +91,7 @@
         "@typescript-eslint/parser": "2.30.0",
         "assert": "2.0.0",
         "eslint": "7.0.0",
-        "eslint-config-prettier": "7.2.0",
+        "eslint-config-prettier": "8.3.0",
         "eslint-plugin-prettier": "3.1.4",
         "glob": "7.1.6",
         "mocha": "7.1.2",
