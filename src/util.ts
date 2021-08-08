@@ -98,5 +98,11 @@ export function getAbsoluteFilePath(
 export function loadFile(filePath: string): string {
   const buf = fs.readFileSync(filePath)
   const encode = encoding.detect(buf)
-  return iconv.decode(buf, encode)
+
+  if (typeof encode === 'string') {
+    return iconv.decode(buf, encode)
+  }
+
+  // If encoding cannot be obtained, decode with SJIS, which is often used in BVE.
+  return iconv.decode(buf, 'Shift_JIS')
 }
