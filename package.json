@@ -80,7 +80,8 @@
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",
-        "test": "node ./out/test/run-test.js"
+        "test": "node ./out/test/run-test.js",
+        "lint": "eslint src"
     },
     "devDependencies": {
         "@types/encoding-japanese": "^1.0.18",
