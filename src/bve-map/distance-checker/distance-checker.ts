@@ -5,9 +5,8 @@ import * as util from '../../util'
  * 距離程チェッカー
  */
 export class DistanceChecker {
-  private statusBarItem: vscode.StatusBarItem = vscode.window.createStatusBarItem(
-    vscode.StatusBarAlignment.Left
-  )
+  private statusBarItem: vscode.StatusBarItem =
+    vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left)
 
   public updateDistance(): void {
     // テキストエディタを取得
@@ -37,7 +36,8 @@ export class DistanceChecker {
     doc: vscode.TextDocument,
     selections: vscode.Selection[]
   ): string {
-    const distRegex = /(?:^|;)(?:\$[a-zA-Z]+|\d+(?:\.\d+)?)(?:[+\-*/%](?:\$[a-zA-Z]+|\d+(?:\.\d+)?))*;/g
+    const distRegex =
+      /(?:^|;)(?:\$[a-zA-Z]+|\d+(?:\.\d+)?)(?:[+\-*/%](?:\$[a-zA-Z]+|\d+(?:\.\d+)?))*;/g
 
     if (selections.length === 1) {
       const pos = selections[0].active

@@ -1,5 +1,25 @@
 {
-  "extends": [
-    "config:base"
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:base", ":timezone(Asia/Tokyo)"],
+  "minor": {
+    "groupName": "all dependencies"
+  },
+  "labels": ["dependencies", "renovate"],
+  "schedule": ["after 10pm and before 5am every weekday", "every weekend"],
+  "dependencyDashboard": true,
+  "pin": {
+    "automerge": true
+  },
+  "npm": {
+    "rangeStrategy": "bump"
+  },
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["^@types/"],
+      "automerge": true,
+      "major": {
+        "automerge": false
+      }
+    }
   ]
 }

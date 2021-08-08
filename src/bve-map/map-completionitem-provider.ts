@@ -10,7 +10,8 @@ import { KeyList } from './keys/key-list'
  * マップ構文のコード補完を提供します。
  */
 export class MapCompletionItemProvider
-  implements vscode.CompletionItemProvider {
+  implements vscode.CompletionItemProvider
+{
   public static readonly FUNC_COMPLETION_TOKEN: string = '.'
   public static readonly KEY_COMPLETION_TOKEN: string = "'"
 

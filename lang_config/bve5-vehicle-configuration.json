@@ -1,8 +1,6 @@
 {
-	"comments": {
-		"lineComment": ["#", ";"]
-	},
-	"surroundingPairs": [
-		["'", "'"]
-	]
+  "comments": {
+    "lineComment": ["#", ";"]
+  },
+  "surroundingPairs": [["'", "'"]]
 }

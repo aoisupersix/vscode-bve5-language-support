@@ -28,7 +28,7 @@
           "name": "string.quoted.single.bve-map-2.02"
         }
       }
-    },   
+    },
     {
       "name": "mapelement.bve-map-2.02",
       "match": "(?imx-imx)(?i:(curve|gradient|track|structure|repeater|background|station|section|signal|beacon|speedlimit|pretrain|light|fog|drawdistance|drawdistance|cabilluminance|irregularity|adhesion|sound|sound3d|rollingnoise|flangenoise|jointnoise|train|x|y|cant|include))",
