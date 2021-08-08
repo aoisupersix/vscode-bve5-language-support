@@ -83,6 +83,7 @@
         "test": "node ./out/test/run-test.js"
     },
     "devDependencies": {
+        "@types/encoding-japanese": "^1.0.18",
         "@types/glob": "7.1.4",
         "@types/mocha": "9.0.0",
         "@types/node": "16.4.13",
@@ -96,14 +97,13 @@
         "glob": "7.1.7",
         "mocha": "9.0.3",
         "prettier": "2.3.2",
-        "typescript": "4.3.5"
+        "typescript": "4.3.5",
+        "vscode-test": "^1.6.1"
     },
     "dependencies": {
-        "@types/encoding-japanese": "^1.0.18",
         "csv-parse": "^4.16.0",
         "encoding-japanese": "^1.0.30",
         "iconv-lite": "^0.6.3",
-        "linq": "^3.2.4",
-        "vscode-test": "^1.6.1"
+        "linq": "^3.2.4"
     }
 }
