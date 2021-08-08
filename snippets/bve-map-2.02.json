@@ -1,107 +1,107 @@
 {
-    "curve.begintransition": {
-        "prefix": "Curve.BeginTransition()",
-        "body": "Curve.BeginTransition();${0:}",
-        "description": "平面曲線の緩和曲線を現在の距離程から開始します。"
-    },
-    "curve.begin": {
-        "prefix": "Curve.Begin(radius,cant)",
-        "body": "Curve.Begin(${1:radius},${2:cant});${0:}",
-        "description": "平面曲線の円曲線を現在の距離程から開始します。"
-    },
-    "gradient.begintransition": {
-        "prefix": "Gradient.BeginTransition()",
-        "body": "Gradient.BeginTransition();${0:}",
-        "description": "縦曲線を現在の距離程から開始します。"
-    },
-    "gradient.begin": {
-        "prefix": "Gradient.Begin(gradient)",
-        "body": "Gradient.Begin(${1:gradient});${0:}",
-        "description": "縦曲線を現在の距離程で終了し、勾配を一定に保ちます。"
-    },
-    "track.x.interpolate": {
-        "prefix": "Track.X.Interpolate(x,radius)",
-        "body": "Track['${1:trackKey}'].X.Interpolate(${2:x},${3:radius});${0:}",
-        "description": "現在に距離程における他軌道のx方向位置を設定します。2つのX.Interpolate間は線形補間されます。"
-    },
-    "track.y.interpolate": {
-        "prefix": "Track.Y.Interpolate(y,radius)",
-        "body": "Track['${1:trackKey}'].Y.Interpolate(${2:y},${3:radius});${0:}",
-        "description": "現在に距離程における他軌道のy方向位置を設定します。2つのY.Interpolate間は線形補間されます。"
-    },
-    "track.position": {
-        "prefix": "Track.Position(x,y)",
-        "body": "Track['${1:trackKey}'].Position(${2:x},${3:y});${0:}",
-        "description": "現在の距離程における他軌道の位置を設定します。"
-    },
-    "structure.put": {
-        "prefix": "Structure.Put('trackKey',x,y,z,rx,ry,rz,tilt,span)",
-        "body": "Structure['${1:structureKey}'].Put('${2:trackKey}',${3:x},${4:y},${5:z},${6:rx},${7:ry},${8:rz},${9:tilt},${10:span});${0:}",
-        "description": "ストラクチャを設置します。"
-    },
-    "structure.put0": {
-        "prefix": "Structure.Put0('trackKey'tilt,span)",
-        "body": "Structure['${1:structureKey}'].Put0('${2:trackKey}',${3:tilt},${4:span});${0:}",
-        "description": "ストラクチャを設置します。"
-    },
-    "structure.putbetween": {
-        "prefix": "Structure.PutBetWeen('trackKey1','trackKey2')",
-        "body": "Structure['${1:structureKey}'].PutBetWeen('${2:trackKey1}','${3:trackKey2}');${0:}",
-        "description": "ストラクチャを現在の距離程の2つの軌道の間に設置します。ストラクチャは軌道間の距離に応じて変形します。"
-    },
-    "repeater.begin": {
-        "prefix": "Repeater.Begin('trackKey',x,y,z,rx,ry,rz,tilt,span,interval)",
-        "body": "Repeater['${1:repeaterKey}'].Begin('${2:trackKey}',${3:x},${4:y},${5:z},${6:rx},${7:ry},${8:rz},${9:tilt},${10:span},${11:interval},'${12:structureKey}');${0:}",
-        "description": "ストラクチャの連続配置を現在の距離程から開始します。"
-    },
-    "repeater.begin0": {
-        "prefix": "Repeater.Begin0('trackKey',tilt,span,interval)",
-        "body": "Repeater['${1:repeaterKey}'].Begin0('${2:trackKey}',${3:tilt},${4:span},${5:interval},'${6:structureKey}');${0:}",
-        "description": "ストラクチャの連続配置を現在の距離程から開始します。"
-    },
-    "section.begin": {
-        "prefix": "Section.Begin('singal0','signal1',...,'signalN')",
-        "body": "Section.Begin('${1:signal0}','${2:signal1}','${3:signal2}');${0:}",
-        "description": "新しい閉塞を現在の距離程から開始します。"
-    },
-    "signal.put": {
-        "prefix": "Signal.Put(section,'trackKey',x,y,z,rx,ry,rz,tilt,span)",
-        "body": "Signal['${1:signalAspectKey}'].Put(${2:section},'${3:trackKey}',${4:x},${5:y},${6:z},${7:rx},${8:ry},${9:rz},${10:tilt},${11:span});${0:}",
-        "description": "地上信号機を現在の距離程に設置します。"
-    },
-    "beacon.put": {
-        "prefix": "Beacon.Put(type,section,sendData)",
-        "body": "Beacon.Put(${1:type},${2:section},${3:sendData});${0:}",
-        "description": "地上子の送信イベントを現在の距離程に定義します。"
-    },
-    "cabilluminance.interpolate": {
-        "prefix": "CabIlluminance.Interpolate(value)",
-        "body": "CabIlluminance.Interpolate(${1:value});${0:}",
-        "description": "現在の距離程における運転台の明るさを設定します。2つのCabIlluminance.Interpolate間は線形補間されます。"
-    },
-    "sound.play": {
-        "prefix": "Sound.Play()",
-        "body": "Sound['${1:soundKey}'].Play();${0:}",
-        "description": "現在の距離程を通過するときにサウンドを1回再生します。"
-    },
-    "sound3d.put": {
-        "prefix": "Sound3D['soundKey'].Put(x,y)",
-        "body": "Sound3D['${1:soundKey}'].Put(${2:x},${3:y});${0:}",
-        "description": "地上に固定された音源を現在の距離程に設置します。サウンドは連続再生されます。"
-    },
-    "rollingnoise.change": {
-        "prefix": "RollingNoise.Change(index)",
-        "body": "RollingNoise.Change(${1:index});${0:}",
-        "description": "現在の距離程以降の車輪転動音を設定します。"
-    },
-    "flangenoise.change": {
-        "prefix": "FlangeNoise.Change(index)",
-        "body": "FlangeNoise.Change(${1:index});${0:}",
-        "description": "現在の距離程以降のフランジきしり音を設定します。"
-    },
-    "jointnoise.play": {
-        "prefix": "JointNoise.Play(index)",
-        "body": "JointNoise.Play(${1:index});${0:}",
-        "description": "現在の距離程を通過するときに分岐器通過音を走行速度に応じて再生します。"
-    }
+  "curve.begintransition": {
+    "prefix": "Curve.BeginTransition()",
+    "body": "Curve.BeginTransition();${0:}",
+    "description": "平面曲線の緩和曲線を現在の距離程から開始します。"
+  },
+  "curve.begin": {
+    "prefix": "Curve.Begin(radius,cant)",
+    "body": "Curve.Begin(${1:radius},${2:cant});${0:}",
+    "description": "平面曲線の円曲線を現在の距離程から開始します。"
+  },
+  "gradient.begintransition": {
+    "prefix": "Gradient.BeginTransition()",
+    "body": "Gradient.BeginTransition();${0:}",
+    "description": "縦曲線を現在の距離程から開始します。"
+  },
+  "gradient.begin": {
+    "prefix": "Gradient.Begin(gradient)",
+    "body": "Gradient.Begin(${1:gradient});${0:}",
+    "description": "縦曲線を現在の距離程で終了し、勾配を一定に保ちます。"
+  },
+  "track.x.interpolate": {
+    "prefix": "Track.X.Interpolate(x,radius)",
+    "body": "Track['${1:trackKey}'].X.Interpolate(${2:x},${3:radius});${0:}",
+    "description": "現在に距離程における他軌道のx方向位置を設定します。2つのX.Interpolate間は線形補間されます。"
+  },
+  "track.y.interpolate": {
+    "prefix": "Track.Y.Interpolate(y,radius)",
+    "body": "Track['${1:trackKey}'].Y.Interpolate(${2:y},${3:radius});${0:}",
+    "description": "現在に距離程における他軌道のy方向位置を設定します。2つのY.Interpolate間は線形補間されます。"
+  },
+  "track.position": {
+    "prefix": "Track.Position(x,y)",
+    "body": "Track['${1:trackKey}'].Position(${2:x},${3:y});${0:}",
+    "description": "現在の距離程における他軌道の位置を設定します。"
+  },
+  "structure.put": {
+    "prefix": "Structure.Put('trackKey',x,y,z,rx,ry,rz,tilt,span)",
+    "body": "Structure['${1:structureKey}'].Put('${2:trackKey}',${3:x},${4:y},${5:z},${6:rx},${7:ry},${8:rz},${9:tilt},${10:span});${0:}",
+    "description": "ストラクチャを設置します。"
+  },
+  "structure.put0": {
+    "prefix": "Structure.Put0('trackKey'tilt,span)",
+    "body": "Structure['${1:structureKey}'].Put0('${2:trackKey}',${3:tilt},${4:span});${0:}",
+    "description": "ストラクチャを設置します。"
+  },
+  "structure.putbetween": {
+    "prefix": "Structure.PutBetWeen('trackKey1','trackKey2')",
+    "body": "Structure['${1:structureKey}'].PutBetWeen('${2:trackKey1}','${3:trackKey2}');${0:}",
+    "description": "ストラクチャを現在の距離程の2つの軌道の間に設置します。ストラクチャは軌道間の距離に応じて変形します。"
+  },
+  "repeater.begin": {
+    "prefix": "Repeater.Begin('trackKey',x,y,z,rx,ry,rz,tilt,span,interval)",
+    "body": "Repeater['${1:repeaterKey}'].Begin('${2:trackKey}',${3:x},${4:y},${5:z},${6:rx},${7:ry},${8:rz},${9:tilt},${10:span},${11:interval},'${12:structureKey}');${0:}",
+    "description": "ストラクチャの連続配置を現在の距離程から開始します。"
+  },
+  "repeater.begin0": {
+    "prefix": "Repeater.Begin0('trackKey',tilt,span,interval)",
+    "body": "Repeater['${1:repeaterKey}'].Begin0('${2:trackKey}',${3:tilt},${4:span},${5:interval},'${6:structureKey}');${0:}",
+    "description": "ストラクチャの連続配置を現在の距離程から開始します。"
+  },
+  "section.begin": {
+    "prefix": "Section.Begin('singal0','signal1',...,'signalN')",
+    "body": "Section.Begin('${1:signal0}','${2:signal1}','${3:signal2}');${0:}",
+    "description": "新しい閉塞を現在の距離程から開始します。"
+  },
+  "signal.put": {
+    "prefix": "Signal.Put(section,'trackKey',x,y,z,rx,ry,rz,tilt,span)",
+    "body": "Signal['${1:signalAspectKey}'].Put(${2:section},'${3:trackKey}',${4:x},${5:y},${6:z},${7:rx},${8:ry},${9:rz},${10:tilt},${11:span});${0:}",
+    "description": "地上信号機を現在の距離程に設置します。"
+  },
+  "beacon.put": {
+    "prefix": "Beacon.Put(type,section,sendData)",
+    "body": "Beacon.Put(${1:type},${2:section},${3:sendData});${0:}",
+    "description": "地上子の送信イベントを現在の距離程に定義します。"
+  },
+  "cabilluminance.interpolate": {
+    "prefix": "CabIlluminance.Interpolate(value)",
+    "body": "CabIlluminance.Interpolate(${1:value});${0:}",
+    "description": "現在の距離程における運転台の明るさを設定します。2つのCabIlluminance.Interpolate間は線形補間されます。"
+  },
+  "sound.play": {
+    "prefix": "Sound.Play()",
+    "body": "Sound['${1:soundKey}'].Play();${0:}",
+    "description": "現在の距離程を通過するときにサウンドを1回再生します。"
+  },
+  "sound3d.put": {
+    "prefix": "Sound3D['soundKey'].Put(x,y)",
+    "body": "Sound3D['${1:soundKey}'].Put(${2:x},${3:y});${0:}",
+    "description": "地上に固定された音源を現在の距離程に設置します。サウンドは連続再生されます。"
+  },
+  "rollingnoise.change": {
+    "prefix": "RollingNoise.Change(index)",
+    "body": "RollingNoise.Change(${1:index});${0:}",
+    "description": "現在の距離程以降の車輪転動音を設定します。"
+  },
+  "flangenoise.change": {
+    "prefix": "FlangeNoise.Change(index)",
+    "body": "FlangeNoise.Change(${1:index});${0:}",
+    "description": "現在の距離程以降のフランジきしり音を設定します。"
+  },
+  "jointnoise.play": {
+    "prefix": "JointNoise.Play(index)",
+    "body": "JointNoise.Play(${1:index});${0:}",
+    "description": "現在の距離程を通過するときに分岐器通過音を走行速度に応じて再生します。"
+  }
 }
