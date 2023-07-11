@@ -85,7 +85,7 @@
   },
   "devDependencies": {
     "@types/encoding-japanese": "^1.0.18",
-    "@types/glob": "7.1.4",
+    "@types/glob": "8.1.0",
     "@types/mocha": "9.0.0",
     "@types/node": "16.4.13",
     "@types/vscode": "1.59.0",
