@@ -91,7 +91,7 @@
     "@types/vscode": "1.59.0",
     "@typescript-eslint/eslint-plugin": "4.29.3",
     "@typescript-eslint/parser": "4.29.3",
-    "@vscode/test-electron": "^1.6.2",
+    "@vscode/test-electron": "^2.4.1",
     "assert": "2.0.0",
     "eslint": "7.32.0",
     "eslint-config-prettier": "8.3.0",
