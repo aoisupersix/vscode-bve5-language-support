@@ -16,7 +16,7 @@
     "url": "https://github.com/aoisupersix/vscode-bve5-language-support"
   },
   "engines": {
-    "vscode": "^1.24.0"
+    "vscode": "^1.94.2"
   },
   "categories": [
     "Programming Languages",
@@ -85,21 +85,21 @@
   },
   "devDependencies": {
     "@types/encoding-japanese": "^1.0.18",
-    "@types/glob": "7.1.4",
-    "@types/mocha": "9.0.0",
-    "@types/node": "16.4.13",
-    "@types/vscode": "1.59.0",
+    "@types/glob": "7.2.0",
+    "@types/mocha": "9.1.1",
+    "@types/node": "16.18.115",
+    "@types/vscode": "1.94.0",
     "@typescript-eslint/eslint-plugin": "4.29.3",
     "@typescript-eslint/parser": "4.29.3",
     "@vscode/test-electron": "^1.6.2",
-    "assert": "2.0.0",
+    "assert": "2.1.0",
     "eslint": "7.32.0",
-    "eslint-config-prettier": "8.3.0",
+    "eslint-config-prettier": "8.10.0",
     "eslint-plugin-prettier": "3.4.0",
-    "glob": "7.1.7",
-    "mocha": "9.0.3",
-    "prettier": "2.3.2",
-    "typescript": "4.3.5"
+    "glob": "7.2.3",
+    "mocha": "9.2.2",
+    "prettier": "2.8.8",
+    "typescript": "4.9.5"
   },
   "dependencies": {
     "csv-parse": "^4.16.0",
