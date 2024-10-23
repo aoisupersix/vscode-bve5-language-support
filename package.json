@@ -87,7 +87,7 @@
     "@types/encoding-japanese": "^1.0.18",
     "@types/glob": "7.1.4",
     "@types/mocha": "9.0.0",
-    "@types/node": "16.4.13",
+    "@types/node": "20.17.0",
     "@types/vscode": "1.59.0",
     "@typescript-eslint/eslint-plugin": "4.29.3",
     "@typescript-eslint/parser": "4.29.3",
